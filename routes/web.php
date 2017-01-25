@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'Admin'], function () {
+Route::group(['middleware' => 'admin'], function () {
     Route::get('isp-cpanel', 'HomeController@index');
 
 
