@@ -12,17 +12,21 @@
         <thead>
         <tr>
             <th>Connection Type</th>
+            <th>Connection Method</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         @foreach($data as $x)
             <tr>
-                <td>{{$x -> connection_types}}</td>
+                <td>{{$x -> type }}</td>
+                <td>{{$x -> method }}</td>
                 <td>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#viewModal" onclick="fun_view('{{$x -> id}}')">View</button>
-                    <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="fun_edit('{{$x -> id}}')">Edit</button>
-                    <button class="btn btn-danger" onclick="fun_delete('{{$x -> id}}')">Delete</button>
+                    @if($x -> id == 1)
+                        @else
+                        <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="fun_edit('{{$x -> id}}')">Edit</button>
+                        <button class="btn btn-danger" onclick="fun_delete('{{$x -> id}}')">Delete</button>
+                     @endif
                 </td>
             </tr>
         @endforeach
@@ -30,13 +34,16 @@
         <tfoot>
         <tr>
             <th>connection type</th>
+            <th>Connection Method</th>
             <th>Actions</th>
         </tr>
         </tfoot>
     </table>
 </div>
 <input type="hidden" name="hidden_view" id="hidden_view" value="{{url('isp-cpanel/settings/connection_types/view')}}">
+
 <input type="hidden" name="hidden_delete" id="hidden_delete" value="{{url('isp-cpanel/settings/connection_types/delete')}}">
+
 <!-- Add Modal start -->
 <div class="modal fade" id="addModal" role="dialog">
     <div class="modal-dialog">
@@ -64,8 +71,17 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="connection_types">Connection Type:</label>
-                            <input type="text" class="form-control" id="connection_types" name="connection_types">
+                            <label for="type"><div class="fa fa-gears"></div> Connection Type:</label>
+                            <input type="text" class="form-control" id="type" name="type">
+                        </div>
+                        <div class="form-group">
+                            <label for="method"> <div class="fa fa-gears"></div> Connection Method :</label>
+                            <select class="form-control" id="method" name="method">
+                                    <option value="Wireless">Wireless</option>
+                                    <option value="Fiber Obtic">Fiber Obtic</option>
+                                    <option value="LAN">LAN</option>
+                                    <option value="Unknown!">Unknown!</option>
+                            </select>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-info">this new Connection Type</button>
@@ -115,11 +131,19 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="edit_connection_types">Connection Type :</label>
-                            <input type="text" class="form-control" id="edit_connection_types" name="edit_connection_types">
+                            <label for="edit_type"> <div class="fa fa-gears"></div> Connection Type :</label>
+                            <input type="text" class="form-control" id="edit_type" name="type">
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <label for="method"> <div class="fa fa-gears"></div> Connection Method :</label>
+                        <select class="form-control" id="method" name="method">
+                            <option value="wireless">Wireless</option>
+                            <option value="fiber">Fiber Obtic</option>
+                            <option value="lan">LAN</option>
+                            <option value="Unknown!">Unknown!</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-default">Update</button>
                     <input type="hidden" id="edit_id" name="edit_id">
                 </form>

@@ -21,8 +21,8 @@ class CreateRepeaterNodesTable extends Migration
             $table->string('box_brand')->nullable();
             $table->string('box_borts')->nullable();
             $table->string('google_location')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

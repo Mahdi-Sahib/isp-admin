@@ -28,7 +28,7 @@
             success: function(result){
                 //console.log(result);
                 $("#edit_id").val(result.id);
-                $("#edit_first_name").val(result.place_1);
+                $("#edit_address").val(result.place_1);
             }
         });
     }

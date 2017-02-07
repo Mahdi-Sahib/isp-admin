@@ -13,7 +13,7 @@
             data: {"id":id},
             success: function(result){
                 //console.log(result);
-                $("#view_connection_types").text(result.connection_types);
+                $("#view_connection_types").text(result.method);
             }
         });
     }
@@ -28,7 +28,8 @@
             success: function(result){
                 //console.log(result);
                 $("#edit_id").val(result.id);
-                $("#edit_connection_types").val(result.connection_types);
+                $("#edit_type").val(result.type);
+                $("#edit_method").val(result.method);
             }
         });
     }

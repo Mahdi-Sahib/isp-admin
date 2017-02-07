@@ -10,7 +10,7 @@
         "info": true,
         "autoWidth": true,
     })
-    function fun_view(id)
+    function fun_view_broadcast(id)
     {
         var view_url = $("#hidden_view").val();
         $.ajax({
@@ -32,7 +32,7 @@
         });
     }
 
-    function fun_edit(id)
+    function fun_edit_broadcast(id)
     {
         var view_url = $("#hidden_view").val();
         $.ajax({
@@ -55,7 +55,7 @@
         });
     }
 
-    function fun_delete(id)
+    function fun_delete_broadcast(id)
     {
         var conf = confirm("Are you sure want to delete??");
         if(conf){

@@ -126,11 +126,11 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label for="edit_brand_model">Device :</label>
-                            <input type="text" class="form-control" id="edit_brand_model" name="edit_brand_model">
+                            <input type="text" class="form-control" id="edit_brand_model" name="brand_model">
                         </div>
                         <div class="form-group">
                             <label for="edit_brand">Device :</label>
-                            <input type="text" class="form-control" id="edit_brand" name="edit_brand">
+                            <input type="text" class="form-control" id="edit_brand" name="brand">
                         </div>
                     </div>
 

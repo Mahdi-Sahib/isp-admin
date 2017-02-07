@@ -23,17 +23,18 @@ class ConnectionTypeController extends Controller
     public function add(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'connection_types' => 'required|unique:connection_types'
+            'type' => 'required',
+            'method' => 'required'
         ]);
-
         if ($validator->fails()) {
             return back()
                 ->withErrors($validator);
-
         } else {
             $data = new ConnectionType;
-            $data->connection_types          = $request->connection_types;
+            $data -> type                    = $request -> type;
+            $data -> method                  = $request -> method;
             $data->created_by                = Auth::User()->id;
+            $data -> updated_by              = Auth::User()->id;
             $data->save();
             return back()
                 ->with('success', 'this connection added successfully.');
@@ -46,7 +47,7 @@ class ConnectionTypeController extends Controller
     public function view(Request $request)
     {
         if($request->ajax()){
-            $id = $request->id;
+            $id   = $request->id;
             $info = ConnectionType::find($id);
             //echo json_decode($info);
             return response()->json($info);
@@ -58,13 +59,23 @@ class ConnectionTypeController extends Controller
     */
     public function update(Request $request)
     {
-        $id = $request -> edit_id;
-        $data = ConnectionType::find($id);
-        $data -> connection_types        = $request -> edit_first_name;
-        $data -> updated_by              = Auth::User()->id;
-        $data -> save();
-        return back()
-            ->with('success','Record Updated successfully.');
+        $validator = Validator::make($request->all(), [
+            'type' => 'required',
+            'method' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
+            $id = $request -> edit_id;
+            $data = ConnectionType::find($id);
+            $data -> type                    = $request -> type;
+            $data -> method                  = $request -> method;
+            $data -> updated_by              = Auth::User()->id;
+            $data -> save();
+            return back()
+                ->with('success','connection Updated successfully.');
+        }
     }
 
     /*

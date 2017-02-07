@@ -15,8 +15,10 @@ class CreateBroadcastsTable extends Migration
     {
         Schema::create('broadcasts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tower_id');
-            $table->integer('device_id');
+            $table->integer('tower_id')->unsigned();
+            $table->foreign('tower_id')->references('id')->on('towers')->onDelete('cascade');
+            $table->integer('device_id')->unsigned()->nullable();
+            $table->foreign('device_id')->references('id')->on('devices')->onDelete('set null');
             $table->string('number_sign')->nullable();
             $table->string('name')->nullable();
             $table->string('ssid');
@@ -26,8 +28,8 @@ class CreateBroadcastsTable extends Migration
             $table->string('channal_width');
             $table->string('direction')->nullable();
             $table->string('broadcasts_info')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -21,8 +21,8 @@
 
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
+    <form action="{{ url('isp-cpanel/towers') }}" method="post">
 
-    {!! Form::open(['action'=>'TowerController@store']) !!}
     {{ csrf_field() }}
 
     <div>
@@ -84,7 +84,7 @@
 
     </div>
 
-    {!! Form::close() !!}
+    </form>
 
     @include('adminlte::layouts.partials.pagefooter')
 @endsection

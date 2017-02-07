@@ -58,13 +58,21 @@ class AddressHelperController extends Controller
     */
     public function update(Request $request)
     {
-        $id = $request -> edit_id;
-        $data = AddressHelper::find($id);
-        $data->place_1            = $request -> edit_first_name;
-        $data->updated_by           = Auth::User()->id;
-        $data -> save();
-        return back()
-            ->with('Success','Address Updated successfully.');
+        $validator = Validator::make($request->all(), [
+            'place_1' => 'required|unique:address_helpers'
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
+            $id = $request -> edit_id;
+            $data = AddressHelper::find($id);
+            $data->place_1              = $request -> edit_address;
+            $data->updated_by           = Auth::User()->id;
+            $data -> save();
+            return back()
+                ->with('Success','Address Updated successfully.');
+        }
     }
 
     /*

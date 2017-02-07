@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Device extends Model
+class ConectionModel extends Model
 {
     //
 }

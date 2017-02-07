@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConnectionTypesTable extends Migration
+class CreateConectionModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreateConnectionTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('connection_types', function (Blueprint $table) {
+        Schema::create('conection_models', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type')->unique();
-            $table->string('method');
-            $table->integer('created_by');
-            $table->integer('updated_by');
-            $table->integer('delete_by')->nullable();
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ class CreateConnectionTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('connection_types');
+        Schema::dropIfExists('conection_models');
     }
 }

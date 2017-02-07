@@ -115,11 +115,10 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="edit_first_name">Address :</label>
-                            <input type="text" class="form-control" id="edit_first_name" name="edit_first_name">
+                            <label for="edit_address">Address :</label>
+                            <input type="text" class="form-control" id="edit_address" name="edit_address">
                         </div>
                     </div>
-
                     <button type="submit" class="btn btn-default">Update</button>
                     <input type="hidden" id="edit_id" name="edit_id">
                 </form>

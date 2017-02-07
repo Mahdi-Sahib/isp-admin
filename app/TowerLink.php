@@ -13,10 +13,12 @@ class TowerLink extends Model
     ];
 
     public function Tower() {
-        return $this->belongsTo('App\Tower') ;
-    }
+    return $this->belongsTo('App\Tower') ;
+}
 
     public function ConnectionType(){
-        return $this->hasMany('App\ConnectionType');
+        return $this->belongsTo('App\ConnectionType');
     }
+
+
 }

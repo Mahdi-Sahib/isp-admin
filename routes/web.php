@@ -57,6 +57,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/tower/tower_link', 'TowerLinkController@addAjax');
     Route::get('isp-cpanel/tower/tower_link/view', 'TowerLinkController@viewAjax');
     Route::post('isp-cpanel/tower/tower_link/update', 'TowerLinkController@updateAjax');
+    Route::post('isp-cpanel/tower/tower_link_method/update', 'TowerLinkController@updateMethodAjax');
     Route::post('isp-cpanel/tower/tower_link/delete', 'TowerLinkController@deleteAjax');
 
     Route::get('isp-cpanel/settings/devices', 'DeviceController@index');

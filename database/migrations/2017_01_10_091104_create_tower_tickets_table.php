@@ -15,8 +15,8 @@ class CreateTowerTicketsTable extends Migration
     {
         Schema::create('tower_tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

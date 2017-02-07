@@ -19,8 +19,8 @@ class CreateRepeaterNodeTicketsTable extends Migration
             $table->string('ip');
             $table->string('location');
             $table->string('google_earth');
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

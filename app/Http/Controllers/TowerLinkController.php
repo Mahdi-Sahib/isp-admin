@@ -102,7 +102,7 @@ class TowerLinkController extends Controller
         $data = new TowerLink;
         $data -> tower_id                   = $request -> tower_id;
         $data -> repeater_id                = $request -> repeater_id;
-        $data -> connection_types_id        = $request -> connection_types_id;
+        $data -> connection_type_id         = $request -> connection_type_id;
         $data -> channal_width              = $request -> channal_width;
         $data -> ssid                       = $request -> ssid;
         $data -> authentication             = $request -> authentication;
@@ -112,7 +112,6 @@ class TowerLinkController extends Controller
         $data -> master_antenna             = $request -> master_antenna;
         $data -> master_brand               = $request -> master_brand;
         $data -> created_by                 = Auth::User()->id;
-
         $data -> save();
         return back()
             ->with('success_link','Link Added successfully.');
@@ -149,6 +148,18 @@ class TowerLinkController extends Controller
         $data -> master_ip                  = $request -> master_ip;
         $data -> master_antenna             = $request -> master_antenna;
         $data -> master_brand               = $request -> master_brand;
+        $data -> updated_by                 = Auth::User()->id;
+        $data -> save();
+        return back()
+            ->with('success_link','Link Updated successfully.');
+    }
+
+    public function updateMethodAjax(Request $request)
+    {
+        $id = $request -> edit_id;
+        $data = TowerLink::find($id);
+        $data -> tower_id                   = $request -> tower_id;
+        $data -> connection_types_id        = $request -> connection_types_id;
         $data -> updated_by                 = Auth::User()->id;
         $data -> save();
         return back()

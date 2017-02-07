@@ -17,9 +17,9 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($tower->towerip as $tower_ips)
+        @foreach($tower->towerip as $tower_ip)
             <tr>
-                <td>{{$tower_ips->ip}}</td>
+                <td>{{$tower_ip->tower_ip}}</td>
                 <td class="text-center">
                     <!-- Single button -->
                     <div class="btn-group" >
@@ -27,9 +27,9 @@
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="" data-toggle="modal" data-target="#viewModal_ip" onclick="fun_view('{{$tower_ips -> id}}')">View</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#editModal_ip" onclick="fun_edit('{{$tower_ips -> id}}')">Edit</a></li>
-                            <li><a href="" onclick="fun_delete('{{$tower_ips -> id}}')">Delete</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_ip" onclick="fun_view_ip('{{$tower_ip -> id}}')">View</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#editModal_ip" onclick="fun_edit_ip('{{$tower_ip -> id}}')">Edit</a></li>
+                            <li><a href="" onclick="fun_delete_ip('{{$tower_ip -> id}}')">Delete</a></li>
                         </ul>
                     </div>
                 </td>
@@ -73,8 +73,8 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="ip">IP:</label>
-                            <input type="text" class="form-control" id="ip" name="ip">
+                            <label for="tower_ip">IP:</label>
+                            <input type="text" class="form-control" id="tower_ip" name="tower_ip">
                         </div>
                         <input id="tower_id"  name="tower_id"  value="{{ $tower->id }}" hidden>
                     </div>
@@ -118,19 +118,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit this Broadcast</h4>
+                <h4 class="modal-title">Edit this IP</h4>
             </div>
             <div class="modal-body">
                 <form action="{{ url('isp-cpanel/tower/tower_ip/update') }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="edit_tower_ip">IP : </label>
-                            <input type="text" class="form-control" id="edit_tower_ip" name="ip">
+                            <label for="edit_tower_ip"> IP : </label>
+                            <input type="text" class="form-control" id="edit_tower_ip" name="tower_ip" >
                         </div>
                     </div>
+                    <input id="tower_id"  name="tower_id"  value="{{ $tower->id }}" hidden>
                     <button type="submit" class="btn btn-default">Update</button>
-                    <input type="hidden" id="edit_id" name="edit_id">
+                    <input type="hidden" id="edit_id_ip" name="edit_id_ip">
                 </form>
             </div>
             <div class="modal-footer">

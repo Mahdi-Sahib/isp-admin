@@ -32,8 +32,8 @@ class CreateCustomersTable extends Migration
             $table->text('about')->nullable();
             $table->macAddress('mac')->nullable()->unique();
             $table->ipAddress('ip')->nullable()->unique();
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

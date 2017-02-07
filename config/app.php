@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class, // Acacha AdminLTE template provider
+        Yajra\Datatables\DatatablesServiceProvider::class,  // Yajra - Datatables
+
 
     ],
 

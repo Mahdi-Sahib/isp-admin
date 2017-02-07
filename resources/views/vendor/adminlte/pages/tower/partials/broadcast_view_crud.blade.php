@@ -8,6 +8,7 @@
 <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal">Add New BroadCast</button>
 <br>
 <br>
+
 <div class="box-bod">
     <table id="broadcast" class="table table-bordered table-striped">
         <thead>
@@ -29,7 +30,7 @@
                 <td>{{$x -> ip}}</td>
                 <td>{{$x -> mac}}</td>
                 <td>{{$x -> channal_width}}</td>
-                <td>{{$x->device -> brand_model}}</td>
+                <td> @if ($x->device  ==  null) unknown !   @else {{$x->device->brand_model}} @endif </td>
                 <td class="text-center">
                     <!-- Single button -->
                     <div class="btn-group" >
@@ -37,10 +38,10 @@
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="" data-toggle="modal" data-target="#viewModal_broadcast" onclick="fun_view('{{$x -> id}}')">View</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#editModal" onclick="fun_edit('{{$x -> id}}')">Edit</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_broadcast" onclick="fun_view_broadcast('{{$x -> id}}')">View</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#editModal_broadcast" onclick="fun_edit_broadcast('{{$x -> id}}')">Edit</a></li>
                             <li><a href="">Config</a></li>
-                            <li><a href="" onclick="fun_delete('{{$x -> id}}')">Delete</a></li>
+                            <li><a href="" onclick="fun_delete_broadcast('{{$x -> id}}')">Delete</a></li>
                             <li><a href="#">Ticket</a></li>
                         </ul>
                     </div>
@@ -78,38 +79,48 @@
             <div class="modal-body">
                 <form action="{{ url('isp-cpanel/tower/tower_broadcast') }}" method="post">
                     {{ csrf_field() }}
+
+<br>
                     <div class="form-group">
                         <div class="form-group">
-                            <label><div class="fa fa-gears"></div> Brand</label>
+                            <label><div class="fa fa-gears"></div> Brand : </label>
+                            @if ( count($device) < 1 ) <br> <p style="color: red">you didn't add devices go to settings -> BASIC INPUT -> devices </p>  @else
                             <select name="device_id" class="form-control" value="{{ old('device_id') }}">
                                 @foreach ($device as $device)
                                     <option value="{!! $device->id !!}" >{!! $device->brand_model !!}</option>
                                 @endforeach
                             </select>
+                            @endif
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="number_Sign" class="fa fa-gears"> Number Sign (#):</label>
+                            <input type="text" class="form-control" id="number_Sign" name="number_sign">
                         </div>
 
                         <div class="form-group">
-                            <label for="number_Sign">Number Sign (#):</label>
-                            <input type="text" class="form-control" id="number_Sign" name="number_sign">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
+                            <label for="name" class="fa fa-gears"> Name:</label>
                             <input type="text" class="form-control" id="name" name="name">
                         </div>
+
                         <div class="form-group">
-                            <label for="ssid">SSID:</label>
+                            <label for="ssid" class="fa fa-gears"> SSID:</label>
                             <input type="text" class="form-control" id="ssid" name="ssid">
                         </div>
+
                         <div class="form-group">
-                            <label for="ip">IP:</label>
+                            <label for="ip" class="fa fa-gears"> IP:</label>
                             <input type="text" class="form-control" id="ip" name="ip">
                         </div>
+
                         <div class="form-group">
-                            <label for="mac">MAC Assress:</label>
+                            <label for="mac" class="fa fa-gears"> MAC Assress:</label>
                             <input type="text" class="form-control" id="mac" name="mac" maxlength="17">
                         </div>
+
                         <div class="form-group">
-                            <label for="channal_width">Channal Width (CW):</label>
+                            <label for="channal_width" class="fa fa-gears"> Channal Width (CW):</label>
                             <select class="form-control" id="channal_width" name="channal_width">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
@@ -119,12 +130,14 @@
                                 <option value="20/40">20/40</option>
                             </select>
                         </div>
+
                         <div class="form-group">
-                            <label for="direction">Direction:</label>
+                            <label for="direction" class="fa fa-gears"> Direction:</label>
                             <input type="text" class="form-control" id="direction" name="direction">
                         </div>
-                        <div class="form-group">
-                            <label for="broadcasts_info">Broadcasts info:</label>
+
+                        <div class="form-group" >
+                            <label for="broadcasts_info" class="fa fa-gears"> Broadcasts info:</label>
                             <input type="text" class="form-control" id="broadcasts_info" name="broadcasts_info">
                         </div>
 
@@ -155,39 +168,42 @@
 
 
             <div class="modal-body">
-                <p><b>Device : </b><h3><span id="view_device_id" class="text-success">  </span></h3></p>
+
+                <p><b>Device : </b><h3>@if ( count($device) < 1 ) <p style="color: red">unknown !</p>   @else <span id="view_device_id" class="text-success">  </span> @endif </h3></p>
+
             </div>
 
-            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
+
 
             <div class="modal-body">
                 <p><b>Number Sign (#): </b><h3><span id="view_number_Sign" class="text-success"></span></h3></p>
             </div>
-            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
             <div class="modal-body">
                 <p><b>Name : </b><h3><span id="view_name" class="text-success"></span></h3></p>
             </div>
-            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
             <div class="modal-body">
                 <p><b>SSID : </b><h3><span id="view_ssid" class="text-success"></span></h3></p>
             </div>
-            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
             <div class="modal-body">
                 <p><b>IP : </b><h3><span id="view_ip" class="text-success"></span></h3></p>
             </div>
-            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
             <div class="modal-body">
                 <p><b>MAC Assress : </b><h3><span id="view_mac" class="text-success"></span></h3></p>
             </div>
-            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
             <div class="modal-body">
                 <p><b>Channal Width (CW): </b><h3><span id="view_channal_width" class="text-success"></span></h3></p>
             </div>
-            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
             <div class="modal-body">
                 <p><b>Direction : </b><h3><span id="view_direction" class="text-success"></span></h3></p>
             </div>
-            <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+
             <div class="modal-body">
                 <p><b>Broadcasts info : </b><h3><span id="view_broadcasts_info" class="text-success"></span></h3></p>
             </div>
@@ -200,14 +216,14 @@
 <!-- view modal ends -->
 
 <!-- Edit Modal start -->
-<div class="modal fade" id="editModal" role="dialog">
+<div class="modal fade" id="editModal_broadcast" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit this Broadcast</h4>
+                <h4 class="modal-title">Edit this Link</h4>
             </div>
             <div class="modal-body">
                 <form action="{{ url('isp-cpanel/tower/tower_broadcast/update') }}" method="post">
@@ -215,14 +231,15 @@
 
                     <div class="form-group">
                         <label for="edit_device_id"><div class="fa fa-gears"></div> Station Type</label>
-                        <select id="edit_device_id" name="device_id" class="form-control" >
-                            @foreach ($devicex as $devicex) {
-                            <option value="{{ $devicex->id }}" @if ($tower->device_id == $devicex->id) selected="selected" @endif>{{ $devicex->brand_model }}</option>
-                            }
-                            @endforeach
-                        </select>
+                        @if ( count($device) < 1 ) <br> <p style="color: red">you didn't add devices go to settings -> BASIC INPUT -> devices </p>  @else
+                            <select id="edit_device_id" name="device_id" class="form-control" >
+                                @foreach ($devicex as $devicex) {
+           <option value="{{ $devicex->id }}" @if ($tower->device_id == $devicex->id) selected="selected" @endif>{{ $devicex->brand_model }}</option>
+                                }
+                                @endforeach
+                            </select>
+                        @endif
                     </div>
-
 
                     <div class="form-group">
                         <div class="form-group">

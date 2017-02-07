@@ -26,11 +26,9 @@ class DeviceController extends Controller
             'brand' => 'required',
             'brand_model' => 'required|unique:devices'
         ]);
-
         if ($validator->fails()) {
             return back()
                 ->withErrors($validator);
-
         } else {
             $data = new Device;
             $data->brand                      = $request->brand;
@@ -60,14 +58,23 @@ class DeviceController extends Controller
     */
     public function update(Request $request)
     {
-        $id = $request -> edit_id;
-        $data = Device::find($id);
-        $data -> brand_model            = $request -> brand_model  ;
-        $data -> brand                  = $request -> brand;
-        $data -> updated_by             = Auth::User()->id;
-        $data -> save();
-        return back()
-            ->with('success','Record Updated successfully.');
+        $validator = Validator::make($request->all(), [
+            'brand' => 'required',
+            'brand_model' => 'required|unique:devices'
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
+            $id = $request -> edit_id;
+            $data = Device::find($id);
+            $data -> brand_model            = $request -> brand_model  ;
+            $data -> brand                  = $request -> brand;
+            $data -> updated_by             = Auth::User()->id;
+            $data -> save();
+            return back()
+                ->with('success','Record Updated successfully.');
+        }
     }
 
     /*

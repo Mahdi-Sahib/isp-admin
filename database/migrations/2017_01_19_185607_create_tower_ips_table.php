@@ -15,10 +15,11 @@ class CreateTowerIpsTable extends Migration
     {
         Schema::create('tower_ips', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tower_id');
-            $table->ipAddress('ip');
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->integer('tower_id')->unsigned();
+            $table->foreign('tower_id')->references('id')->on('towers')->onDelete('cascade');
+            $table->ipAddress('tower_ip');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -16,8 +16,8 @@ class CreateFiberBoxTicketsTable extends Migration
         Schema::create('fiber_box_tickets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('google_location')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

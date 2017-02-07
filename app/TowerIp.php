@@ -9,9 +9,8 @@ class TowerIp extends Model
     public $table = 'tower_ips';
 
     public $fillable = [
-        'id', 'tower_id', 'ip','created_by','updated_by','delete_by'
+        'id', 'tower_id', 'tower_ip','created_by','updated_by','delete_by'
     ];
-
     public function Tower() {
         return $this->belongsTo('App\Tower') ;
     }

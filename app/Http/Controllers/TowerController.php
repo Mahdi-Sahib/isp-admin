@@ -68,6 +68,7 @@ class TowerController extends Controller
             $tower->location           = $request->location;
             $tower->google_location    = $request->google_location;
             $tower->created_by         = Auth::User()->id;
+            $tower->updated_by         = Auth::User()->id;
             $tower->save();
             Session::flash('message','Successfuly Add ' . $tower->name . ' !' ) ;
             return redirect('isp-cpanel/towers/towers-table-one-view');
@@ -79,10 +80,11 @@ class TowerController extends Controller
     {
         $tower               = Tower::find($id);
         $connection          = ConnectionType::all();
+        $connectionx         = ConnectionType::all();
         $device              = Device::all();
         $devicex             = Device::all();
         $address             = AddressHelper::all();
-        return view('vendor.adminlte.pages.tower.view-tower' , compact('tower','address','connection','device','devicex'));
+        return view('vendor.adminlte.pages.tower.view-tower' , compact('tower','address','connection','connectionx','device','devicex'));
     }
 
 
