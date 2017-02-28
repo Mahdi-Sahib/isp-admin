@@ -15,7 +15,12 @@ class CreateTowerTicketsTable extends Migration
     {
         Schema::create('tower_tickets', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('tower_id')->unsigned();
+            $table->foreign('tower_id')->references('id')->on('towers')->onDelete('cascade');
+            $table->string('title');
+            $table->text('message');
             $table->integer('created_by');
+            $table->integer('closed_by');
             $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
             $table->softDeletes();

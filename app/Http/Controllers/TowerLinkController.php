@@ -97,24 +97,26 @@ class TowerLinkController extends Controller
     /*
      * Add student data
      */
-    public function addAjax(Request $request)
+    public function addAjaxNew(Request $request)
     {
-        $data = new TowerLink;
-        $data -> tower_id                   = $request -> tower_id;
-        $data -> repeater_id                = $request -> repeater_id;
-        $data -> connection_type_id         = $request -> connection_type_id;
-        $data -> channal_width              = $request -> channal_width;
-        $data -> ssid                       = $request -> ssid;
-        $data -> authentication             = $request -> authentication;
-        $data -> slave_ip                   = $request -> slave_ip;
-        $data -> slave_antenna              = $request -> slave_antenna;
-        $data -> master_ip                  = $request -> master_ip;
-        $data -> master_antenna             = $request -> master_antenna;
-        $data -> master_brand               = $request -> master_brand;
-        $data -> created_by                 = Auth::User()->id;
-        $data -> save();
-        return back()
-            ->with('success_link','Link Added successfully.');
+        $validator = Validator::make($request->all(), [
+            'source_name'               => 'required',
+            'connection_method'        => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
+            $data = new TowerLink;
+            $data -> tower_id                   = $request -> tower_id;
+            $data -> source_name                = $request -> source_name;
+            $data -> connection_method          = $request -> connection_method;
+            $data -> created_by                 = Auth::User()->id;
+            $data -> updated_by                 = Auth::User()->id;
+            $data->save();
+            return back()
+                ->with('success_link', 'Link Added successfully.');
+        }
     }
 
     /*
@@ -135,36 +137,49 @@ class TowerLinkController extends Controller
     */
     public function updateAjax(Request $request)
     {
-        $id = $request -> edit_id;
-        $data = TowerLink::find($id);
-        $data -> tower_id                   = $request -> tower_id;
-        $data -> repeater_id                = $request -> repeater_id;
-        $data -> connection_types_id        = $request -> connection_types_id;
-        $data -> channal_width              = $request -> channal_width;
-        $data -> ssid                       = $request -> ssid;
-        $data -> authentication             = $request -> authentication;
-        $data -> slave_ip                   = $request -> slave_ip;
-        $data -> slave_antenna              = $request -> slave_antenna;
-        $data -> master_ip                  = $request -> master_ip;
-        $data -> master_antenna             = $request -> master_antenna;
-        $data -> master_brand               = $request -> master_brand;
-        $data -> updated_by                 = Auth::User()->id;
-        $data -> save();
-        return back()
-            ->with('success_link','Link Updated successfully.');
+        $validator = Validator::make($request->all(), [
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
+
+            $id = $request -> edit_id;
+            $data = TowerLink::find($id);
+            $data -> repeater_name              = $request -> repeater_name;
+            // wireless
+            $data -> wireless_type              = $request -> wireless_type;
+            $data -> channel_width              = $request -> channel_width;
+            $data -> ssid                       = $request -> ssid;
+            $data -> authentication_method      = $request -> authentication_method;
+            $data -> authentication             = $request -> authentication;
+            $data -> slave_ip                   = $request -> slave_ip;
+            $data -> slave_mac                  = $request -> slave_mac;
+            $data -> slave_antenna              = $request -> slave_antenna;
+            $data -> slave_brand                = $request -> slave_brand;
+            $data -> slave_username             = $request -> slave_username;
+            $data -> slave_password             = $request -> slave_password;
+            $data -> master_ip                  = $request -> master_ip;
+            $data -> master_mac                 = $request -> master_mac;
+            $data -> master_antenna             = $request -> master_antenna;
+            $data -> master_brand               = $request -> master_brand;
+            $data -> master_username            = $request -> master_username;
+            $data -> master_password            = $request -> master_password;
+            // fiber
+            $data -> fiber_type                 = $request -> fiber_type;
+            $data -> fiber_core                 = $request -> fiber_core;
+            $data -> fiber_sfp_type             = $request -> fiber_sfp_type;
+            $data -> fiber_distance             = $request -> fiber_distance;
+            $data -> fiber_master_port_number   = $request -> fiber_master_port_number;
+            $data -> fiber_clint_port_number    = $request -> fiber_clint_port_number;
+            $data -> updated_by                 = Auth::User()->id;
+            $data -> save();
+            return back()
+                ->with('success_link','Link Updated successfully.');
+        }
     }
 
-    public function updateMethodAjax(Request $request)
-    {
-        $id = $request -> edit_id;
-        $data = TowerLink::find($id);
-        $data -> tower_id                   = $request -> tower_id;
-        $data -> connection_types_id        = $request -> connection_types_id;
-        $data -> updated_by                 = Auth::User()->id;
-        $data -> save();
-        return back()
-            ->with('success_link','Link Updated successfully.');
-    }
+
 
     /*
     *   Delete record

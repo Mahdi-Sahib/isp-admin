@@ -76,12 +76,7 @@
                         </div>
                         <div class="form-group">
                             <label for="method"> <div class="fa fa-gears"></div> Connection Method :</label>
-                            <select class="form-control" id="method" name="method">
-                                    <option value="Wireless">Wireless</option>
-                                    <option value="Fiber Obtic">Fiber Obtic</option>
-                                    <option value="LAN">LAN</option>
-                                    <option value="Unknown!">Unknown!</option>
-                            </select>
+                            {!! Form::select("method", connection_method(), null ,['class'=>'form-control','id'=>'method','name'=>'method']) !!}
                         </div>
                     </div>
                     <button type="submit" class="btn btn-info">this new Connection Type</button>

@@ -8,7 +8,7 @@
 <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal_ip">Add New IP</button>
 <br>
 <br>
-<div class="box-bod">
+
     <table id="broadcast" class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -43,7 +43,7 @@
         </tr>
         </tfoot>
     </table>
-</div>
+
 <input type="hidden" name="hidden_view_ip" id="hidden_view_ip" value="{{url('isp-cpanel/tower/tower_ip/view')}}">
 <input type="hidden" name="hidden_delete_ip" id="hidden_delete_ip" value="{{url('isp-cpanel/tower/tower_ip/delete')}}">
 
@@ -99,8 +99,16 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">about this IP </h4>
             </div>
-            <div class="modal-body">
-                <p><b>IP : </b><h3><span id="view_tower_ip" class="text-success"></span></h3></p>
+            <div class="box-body no-padding">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                        <td>IP :</td>
+                        <td><span class="badge bg-yellow" id="view_tower_ip" style="color: yellow ; font-size: 21px;"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
@@ -109,6 +117,7 @@
     </div>
 </div>
 <!-- view modal ends -->
+
 
 <!-- Edit Modal start -->
 <div class="modal fade" id="editModal_ip" role="dialog">
@@ -121,7 +130,7 @@
                 <h4 class="modal-title">Edit this IP</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/tower/tower_ip/update') }}" method="post">
+                {!! Form::open( ['url' => 'isp-cpanel/tower/tower_ip/update' , 'method' => 'post']) !!}
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-group">
@@ -129,10 +138,9 @@
                             <input type="text" class="form-control" id="edit_tower_ip" name="tower_ip" >
                         </div>
                     </div>
-                    <input id="tower_id"  name="tower_id"  value="{{ $tower->id }}" hidden>
                     <button type="submit" class="btn btn-default">Update</button>
                     <input type="hidden" id="edit_id_ip" name="edit_id_ip">
-                </form>
+                {!! Form::close() !!}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -17,9 +17,13 @@ class CreateTowerLinksTable extends Migration
             $table->increments('id');
             $table->integer('tower_id')->unsigned();
             $table->foreign('tower_id')->references('id')->on('towers')->onDelete('cascade');
-            $table->integer('repeater_id')->nullable();
-            $table->integer('connection_type_id')->nullable();
-            $table->string('channal_width')->nullable();
+            $table->string('repeater_name')->nullable();
+            $table->string('connection_type_id')->nullable();
+            $table->string('connection_method')->nullable();
+            $table->string('source_name')->nullable();
+            // wireless
+            $table->string('wireless_type')->nullable();
+            $table->string('channel_width')->nullable();
             $table->string('ssid')->nullable();
             $table->string('authentication_method')->nullable();
             $table->string('authentication')->nullable();
@@ -35,6 +39,14 @@ class CreateTowerLinksTable extends Migration
             $table->string('master_brand')->nullable();
             $table->string('master_username')->nullable();
             $table->string('master_password')->nullable();
+            // fiber obtic
+            $table->string('fiber_type')->nullable();
+            $table->string('fiber_core')->nullable();
+            $table->string('fiber_sfp_type')->nullable();
+            $table->string('fiber_distance')->nullable();
+            $table->string('fiber_master_port_number')->nullable();
+            $table->string('fiber_clint_port_number')->nullable();
+            // other
             $table->string('link_info')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');

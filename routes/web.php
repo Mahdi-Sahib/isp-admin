@@ -35,6 +35,11 @@ Route::group(['middleware' => 'admin'], function () {
         'uses' => 'LinkController@LinkTableOneAjax'
     ]);
 
+    Route::get('isp-cpanel/tower/tower_ticket', [
+        'as'   => 'isp-cpanel.tower.tower_ticket',
+        'uses' => 'TowerTicketController@ticketTable'
+    ]);
+
     Route::get('isp-cpanel/settings/connection_types', 'ConnectionTypeController@index');
     Route::post('isp-cpanel/settings/connection_types', 'ConnectionTypeController@add');
     Route::get('isp-cpanel/settings/connection_types/view', 'ConnectionTypeController@view');
@@ -54,10 +59,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/tower/tower_broadcast/delete', 'BroadcastController@deleteAjax');
 
     Route::get('isp-cpanel/tower/tower_link', 'TowerLinkController@tableAjax');
-    Route::post('isp-cpanel/tower/tower_link', 'TowerLinkController@addAjax');
+    Route::post('isp-cpanel/tower/tower_link', 'TowerLinkController@addAjaxNew');
     Route::get('isp-cpanel/tower/tower_link/view', 'TowerLinkController@viewAjax');
     Route::post('isp-cpanel/tower/tower_link/update', 'TowerLinkController@updateAjax');
-    Route::post('isp-cpanel/tower/tower_link_method/update', 'TowerLinkController@updateMethodAjax');
     Route::post('isp-cpanel/tower/tower_link/delete', 'TowerLinkController@deleteAjax');
 
     Route::get('isp-cpanel/settings/devices', 'DeviceController@index');

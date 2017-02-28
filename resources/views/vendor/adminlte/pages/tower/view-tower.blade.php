@@ -32,6 +32,14 @@
              <div class="row">
                     @include('adminlte::pages.tower.partials.dashboard-heder')
 
+                             <div class="col-lg-12" class="container-fluid spark-screen">
+                                 <div class="panel panel-default">
+                                     <div class="panel-body">
+                                         @include('adminlte::pages.tower.partials.tower_ticket_view')
+                                     </div>
+                                 </div>
+                             </div>
+
                             <div class="col-lg-12" class="container-fluid spark-screen">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
@@ -56,6 +64,7 @@
                                 </div>
                             </div>
                         </div>
+
              </div>
 
       </div>
@@ -68,6 +77,9 @@
 
 
 @section('page-scripts')
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     @include('adminlte::pages.tower.partials.ip_secript_crud')
     @include('adminlte::pages.tower.partials.broadcast_secript_crud')
+    @include('adminlte::pages.tower.partials.link_secript_crud')
+    @include('adminlte::pages.tower.partials.tower_ticket_secript')
 @endsection

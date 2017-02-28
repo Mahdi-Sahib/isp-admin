@@ -1,5 +1,3 @@
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-
 <script type="text/javascript">
     $('#broadcast').DataTable({
         "searching":false,
@@ -18,13 +16,17 @@
             type:"GET",
             data: {"id":id},
             success: function(result){
-                //console.log(result);
-                $("#view_device_id").text(result.device);
+                console.log(result);
+                $("#view_device_id").text(result.device_id);
                 $("#view_number_Sign").text(result.number_sign);
                 $("#view_name").text(result.name);
                 $("#view_ssid").text(result.ssid);
                 $("#view_ip").text(result.ip);
                 $("#view_mac").text(result.mac);
+                $("#view_antenna").text(result.antenna);
+                $("#view_degree").text(result.degree);
+                $("#view_gin").text(result.gin);
+                $("#view_channal").text(result.channal);
                 $("#view_channal_width").text(result.channal_width);
                 $("#view_direction").text(result.direction);
                 $("#view_broadcasts_info").text(result.broadcasts_info);
@@ -40,7 +42,7 @@
             type:"GET",
             data: {"id":id},
             success: function(result){
-                //console.log(result);
+                console.log(result);
                 $("#edit_id").val(result.id);
                 $("#edit_device_id").val(result.device_id);
                 $("#edit_number_Sign").val(result.number_sign);
@@ -48,6 +50,10 @@
                 $("#edit_ssid").val(result.ssid);
                 $("#edit_ip").val(result.ip);
                 $("#edit_mac").val(result.mac);
+                $("#edit_antenna").val(result.antenna);
+                $("#edit_degree").val(result.degree);
+                $("#edit_gin").val(result.gin);
+                $("#edit_channal").val(result.channal);
                 $("#edit_channal_width").val(result.channal_width);
                 $("#edit_direction").val(result.direction);
                 $("#edit_broadcasts_info").val(result.broadcasts_info);

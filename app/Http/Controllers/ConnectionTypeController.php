@@ -23,7 +23,7 @@ class ConnectionTypeController extends Controller
     public function add(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'type' => 'required',
+            'type' => 'required|unique:connection_types',
             'method' => 'required'
         ]);
         if ($validator->fails()) {
@@ -31,10 +31,10 @@ class ConnectionTypeController extends Controller
                 ->withErrors($validator);
         } else {
             $data = new ConnectionType;
-            $data -> type                    = $request -> type;
-            $data -> method                  = $request -> method;
-            $data->created_by                = Auth::User()->id;
-            $data -> updated_by              = Auth::User()->id;
+            $data->type                    = $request->type;
+            $data->method                  = $request->method;
+            $data->created_by              = Auth::User()->id;
+            $data->updated_by              = Auth::User()->id;
             $data->save();
             return back()
                 ->with('success', 'this connection added successfully.');
@@ -60,7 +60,7 @@ class ConnectionTypeController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'type' => 'required',
+            'type' => 'required|unique:connection_types',
             'method' => 'required'
         ]);
         if ($validator->fails()) {

@@ -177,8 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // add by mahdi
+        Collective\Html\HtmlServiceProvider::class,  // laravelcollective/html
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class, // Acacha AdminLTE template provider
         Yajra\Datatables\DatatablesServiceProvider::class,  // Yajra - Datatables
+        Barryvdh\Debugbar\ServiceProvider::class  // Laravel Debugbar
 
 
     ],
@@ -229,7 +232,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // add by mahdi
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class, // Acacha AdminLTE template alias
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,  // Laravel Debugbar
+        'Form' => Collective\Html\FormFacade::class,  // laravelcollective/html
+        'Html' => Collective\Html\HtmlFacade::class,  // laravelcollective/html
+
     ],
 
 ];

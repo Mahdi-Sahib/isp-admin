@@ -78,13 +78,15 @@ class TowerController extends Controller
 
     public function show($id)
     {
+        $cw                  = array(5,10,20,30,40,80);
         $tower               = Tower::find($id);
         $connection          = ConnectionType::all();
         $connectionx         = ConnectionType::all();
         $device              = Device::all();
         $devicex             = Device::all();
+        $devicev             = Device::all();
         $address             = AddressHelper::all();
-        return view('vendor.adminlte.pages.tower.view-tower' , compact('tower','address','connection','connectionx','device','devicex'));
+        return view('vendor.adminlte.pages.tower.view-tower' , compact('tower','address','connection','connectionx','device','devicex','cw','devicev'));
     }
 
 

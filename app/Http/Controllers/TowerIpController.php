@@ -24,7 +24,7 @@ class TowerIpController extends Controller
     public function addAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'tower_ip'                => 'required',
+            'tower_ip'                => 'required|unique:tower_ips',
         ]);
         if ($validator->fails()) {
             return back()
@@ -60,7 +60,7 @@ class TowerIpController extends Controller
     public function updateAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'tower_ip'         => 'required'
+            'tower_ip'         => 'required|unique:tower_ips'
         ]);
         if ($validator->fails()) {
             return back()
@@ -68,7 +68,6 @@ class TowerIpController extends Controller
         } else {
             $id = $request -> edit_id_ip;
             $data = TowerIp::find($id);
-            $data->tower_id              = $request->tower_id;
             $data->tower_ip              = $request->tower_ip;
             $data->updated_by            = Auth::User()->id;
             $data -> save();

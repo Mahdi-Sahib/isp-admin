@@ -116,11 +116,16 @@ class BroadcastController extends Controller
             $data->ssid                  = $request->ssid;
             $data->ip                    = $request->ip;
             $data->mac                   = $request->mac;
+            $data->antenna               = $request->antenna;
+            $data->degree                = $request->degree;
+            $data->gin                   = $request->gin;
+            $data->channal               = $request->channal;
             $data->channal_width         = $request->channal_width;
             $data->direction             = $request->direction;
             $data->broadcasts_info       = $request->broadcasts_info;
             $data->tower_id              = $request->tower_id;
             $data->created_by            = Auth::User()->id;
+            $data->updated_by            = Auth::User()->id;
             $data->save();
             return back()
                 ->with('message_broadcast', 'this Broadcast added successfully.');
@@ -158,16 +163,20 @@ class BroadcastController extends Controller
         } else {
         $id = $request -> edit_id;
         $data = Broadcast::find($id);
-        $data->device_id             = $request->device_id;
-        $data->number_sign           = $request->number_sign;
-        $data->name                  = $request->name;
-        $data->ssid                  = $request->ssid;
-        $data->ip                    = $request->ip;
-        $data->mac                   = $request->mac;
-        $data->channal_width         = $request->channal_width;
-        $data->direction             = $request->direction;
-        $data->broadcasts_info       = $request->broadcasts_info;
-        $data->updated_by            = Auth::User()->id;
+            $data->device_id             = $request->device_id;
+            $data->number_sign           = $request->number_sign;
+            $data->name                  = $request->name;
+            $data->ssid                  = $request->ssid;
+            $data->ip                    = $request->ip;
+            $data->mac                   = $request->mac;
+            $data->antenna               = $request->antenna;
+            $data->degree                = $request->degree;
+            $data->gin                   = $request->gin;
+            $data->channal               = $request->channal;
+            $data->channal_width         = $request->channal_width;
+            $data->direction             = $request->direction;
+            $data->broadcasts_info       = $request->broadcasts_info;
+            $data->updated_by            = Auth::User()->id;
         $data -> save();
         return back()
             ->with('message_broadcast','Broadcast Updated successfully.');

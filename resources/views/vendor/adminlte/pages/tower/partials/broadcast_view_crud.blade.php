@@ -9,7 +9,6 @@
 <br>
 <br>
 
-<div class="box-bod">
     <table id="broadcast" class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -61,7 +60,6 @@
         </tr>
         </tfoot>
     </table>
-</div>
 <input type="hidden" name="hidden_view" id="hidden_view" value="{{url('isp-cpanel/tower/tower_broadcast/view')}}">
 <input type="hidden" name="hidden_delete" id="hidden_delete" value="{{url('isp-cpanel/tower/tower_broadcast/delete')}}">
 
@@ -95,7 +93,7 @@
 
 
                         <div class="form-group">
-                            <label for="number_Sign" class="fa fa-gears"> Number Sign (#):</label>
+                            <label for="number_Sign" class="fa fa-gears"> Label or Sign (#):</label>
                             <input type="text" class="form-control" id="number_Sign" name="number_sign">
                         </div>
 
@@ -118,17 +116,34 @@
                             <label for="mac" class="fa fa-gears"> MAC Assress:</label>
                             <input type="text" class="form-control" id="mac" name="mac" maxlength="17">
                         </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="fa fa-gears">Edit Antenna : </label>
+                                <input type="text" class="form-control"  name="antenna" maxlength="17">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="fa fa-gears">Edit Degree : </label>
+                                <input type="text" class="form-control"  name="degree" maxlength="17">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="fa fa-gears">Edit Gin : </label>
+                                <input type="text" class="form-control"  name="gin" maxlength="17">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="fa fa-gears">Edit Channal : </label>
+                                <input type="text" class="form-control"  name="channal" maxlength="17">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label for="channal_width" class="fa fa-gears"> Channal Width (CW):</label>
-                            <select class="form-control" id="channal_width" name="channal_width">
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="20/40">20/40</option>
-                            </select>
+                                {!! Form::select("channel_width", channel_width(), null ,['class'=>'form-control','name'=>'channal_width']) !!}
                         </div>
 
                         <div class="form-group">
@@ -157,56 +172,105 @@
 <!-- add code ends -->
 
 <!-- View Modal start -->
-<div class="modal fade" id="viewModal_broadcast" role="dialog">
-    <div class="modal-dialog">
+<div class="modal fade " id="viewModal_broadcast" role="dialog">
+    <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">about this Broadcast </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">About This Broadcast</h4>
             </div>
 
+            <div class="box">
 
-            <div class="modal-body">
-
-                <p><b>Device : </b><h3>@if ( count($device) < 1 ) <p style="color: red">unknown !</p>   @else <span id="view_device_id" class="text-success">  </span> @endif </h3></p>
-
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr class="warning">
+                            <th><label class="glyphicon glyphicon-hand-right" style=" font-size: 22px;"></label></th>
+                            <th>Label</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 22px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td>Device :</td>
+                            <td>
+                                @if ( count($device) < 1 ) <br> <p style="color: red">you didn't add devices go to settings -> BASIC INPUT -> devices </p>  @else
+                                <spin id="view_device_id"> </spin>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td>Number or Sign (#) :</td>
+                            <td><span class="badge bg-yellow" id="view_number_Sign" style="color: yellow ; font-size: 21px;"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-question-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Name :</td>
+                            <td><span id="view_name"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>SSID :</td>
+                            <td><span id="view_ssid"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td> IP :</td>
+                            <td><span id="view_ip"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>MAC Address :</td>
+                            <td><span id="view_mac"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Antenna Type :</td>
+                            <td><span id="view_antenna"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Detection Degree :</td>
+                            <td><span id="view_degree"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Antenna Gin :</td>
+                            <td><span id="view_gin"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Channel :</td>
+                            <td><div><span id="view_channal"></span></div></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Channal Width (CW) :</td>
+                            <td><span id="view_channal_width"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Direction :</td>
+                            <td><span id="view_direction"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>More Information :</td>
+                            <td style="width: 75px">
+                                <div class="bs-callout bs-callout-danger">
+                                    <textbox class="form-control" id="view_broadcasts_info" style="height: 100px ; width: 500px"></textbox>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
             </div>
 
-
-
-
-            <div class="modal-body">
-                <p><b>Number Sign (#): </b><h3><span id="view_number_Sign" class="text-success"></span></h3></p>
-            </div>
-
-            <div class="modal-body">
-                <p><b>Name : </b><h3><span id="view_name" class="text-success"></span></h3></p>
-            </div>
-
-            <div class="modal-body">
-                <p><b>SSID : </b><h3><span id="view_ssid" class="text-success"></span></h3></p>
-            </div>
-
-            <div class="modal-body">
-                <p><b>IP : </b><h3><span id="view_ip" class="text-success"></span></h3></p>
-            </div>
-
-            <div class="modal-body">
-                <p><b>MAC Assress : </b><h3><span id="view_mac" class="text-success"></span></h3></p>
-            </div>
-
-            <div class="modal-body">
-                <p><b>Channal Width (CW): </b><h3><span id="view_channal_width" class="text-success"></span></h3></p>
-            </div>
-
-            <div class="modal-body">
-                <p><b>Direction : </b><h3><span id="view_direction" class="text-success"></span></h3></p>
-            </div>
-
-            <div class="modal-body">
-                <p><b>Broadcasts info : </b><h3><span id="view_broadcasts_info" class="text-success"></span></h3></p>
-            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
             </div>
@@ -233,9 +297,8 @@
                         <label for="edit_device_id"><div class="fa fa-gears"></div> Station Type</label>
                         @if ( count($device) < 1 ) <br> <p style="color: red">you didn't add devices go to settings -> BASIC INPUT -> devices </p>  @else
                             <select id="edit_device_id" name="device_id" class="form-control" >
-                                @foreach ($devicex as $devicex) {
+                                @foreach ($devicex as $devicex)
            <option value="{{ $devicex->id }}" @if ($tower->device_id == $devicex->id) selected="selected" @endif>{{ $devicex->brand_model }}</option>
-                                }
                                 @endforeach
                             </select>
                         @endif
@@ -273,9 +336,32 @@
                     </div>
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="edit_channal_width">Channal Width (CW): </label>
-                            <input type="text" class="form-control" id="edit_channal_width" name="channal_width" maxlength="3">
+                            <label for="edit_antenna">Edit Antenna : </label>
+                            <input type="text" class="form-control" id="edit_antenna" name="antenna" maxlength="17">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="edit_degree">Edit Degree : </label>
+                            <input type="text" class="form-control" id="edit_degree" name="degree" maxlength="17">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="edit_gin">Edit Gin : </label>
+                            <input type="text" class="form-control" id="edit_gin" name="gin" maxlength="17">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="edit_channal">Edit Channal : </label>
+                            <input type="text" class="form-control" id="edit_channal" name="channal" maxlength="17">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_channal_width" class="fa fa-gears"> Channal Width (CW):</label>
+                        {!! Form::select("channel_width", channel_width(), null ,['class'=>'form-control','id'=>'edit_channal_width','name'=>'channal_width']) !!}
                     </div>
                     <div class="form-group">
                         <div class="form-group">

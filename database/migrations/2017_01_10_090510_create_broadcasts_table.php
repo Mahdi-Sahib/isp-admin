@@ -24,6 +24,9 @@ class CreateBroadcastsTable extends Migration
             $table->string('ssid');
             $table->ipAddress('ip');
             $table->macAddress('mac')->nullable();
+            $table->string('antenna')->nullable();
+            $table->string('degree')->nullable();
+            $table->string('gin')->nullable();
             $table->string('channal')->nullable();
             $table->string('channal_width');
             $table->string('direction')->nullable();

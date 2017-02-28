@@ -34,6 +34,7 @@ class AddressHelperController extends Controller
             $data = new AddressHelper;
             $data->place_1                  = $request->place_1;
             $data->created_by           = Auth::User()->id;
+            $data->updated_by           = Auth::User()->id;
             $data->save();
             return back()
                 ->with('success', 'this address added successfully.');

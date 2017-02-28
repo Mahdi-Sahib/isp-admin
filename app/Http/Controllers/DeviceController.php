@@ -34,6 +34,7 @@ class DeviceController extends Controller
             $data->brand                      = $request->brand;
             $data->brand_model                = $request->brand_model;
             $data->created_by                 = Auth::User()->id;
+            $data -> updated_by             = Auth::User()->id;
             $data->save();
             return back()
                 ->with('success', 'This Device added successfully.');
