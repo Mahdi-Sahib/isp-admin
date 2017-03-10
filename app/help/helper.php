@@ -20,20 +20,20 @@ function wireless_type(){
     return $connection_method;
 }
 
-// Ticket Functions
+// Tower Ticket Functions
 
-function ticket_category(){
-        $ticket_category = ['wireless 900 MHz'=>'wireless 900 MHz','wireless 2.4 GHz'=>'wireless 2.4 GHz','wireless 3 GHz'=>'wireless 3 GHz','wireless 5.8 GHz'=>'wireless 5.8 GHz','wireless 24 GHz'=>'wireless 24 GHz','wireless 60 GHz'=>'wireless 60 GHz','wireless 64/66 GHz'=>'wireless 64/66 GHz','wireless 70/80 GHz'=>'wireless 70/80 GHz'];
-    return $ticket_category;
-}
-
-function ticket_priority(){
-        $ticket_priority = ['wireless 900 MHz'=>'wireless 900 MHz','wireless 2.4 GHz'=>'wireless 2.4 GHz','wireless 3 GHz'=>'wireless 3 GHz','wireless 5.8 GHz'=>'wireless 5.8 GHz','wireless 24 GHz'=>'wireless 24 GHz','wireless 60 GHz'=>'wireless 60 GHz','wireless 64/66 GHz'=>'wireless 64/66 GHz','wireless 70/80 GHz'=>'wireless 70/80 GHz'];
+function tower_ticket_category(){
+        $ticket_priority = ['1'=>'Tower','2'=>'Broadcast','3'=>'Link'];
     return $ticket_priority;
 }
 
-function ticket_status(){
-        $ticket_status = ['wireless 900 MHz'=>'wireless 900 MHz','wireless 2.4 GHz'=>'wireless 2.4 GHz','wireless 3 GHz'=>'wireless 3 GHz','wireless 5.8 GHz'=>'wireless 5.8 GHz','wireless 24 GHz'=>'wireless 24 GHz','wireless 60 GHz'=>'wireless 60 GHz','wireless 64/66 GHz'=>'wireless 64/66 GHz','wireless 70/80 GHz'=>'wireless 70/80 GHz'];
+function tower_ticket_priority(){
+    $ticket_priority = ['1'=>'Low','2'=>'Normal','3'=>'High','4'=>'Urgent'];
+    return $ticket_priority;
+}
+
+function tower_ticket_status(){
+        $ticket_status = ['1'=>'Open','2'=>'Closed'];
     return $ticket_status;
 }
 
@@ -41,3 +41,4 @@ function ticket_for(){
     $ticket_status = ['wireless 900 MHz'=>'wireless 900 MHz','wireless 2.4 GHz'=>'wireless 2.4 GHz','wireless 3 GHz'=>'wireless 3 GHz','wireless 5.8 GHz'=>'wireless 5.8 GHz','wireless 24 GHz'=>'wireless 24 GHz','wireless 60 GHz'=>'wireless 60 GHz','wireless 64/66 GHz'=>'wireless 64/66 GHz','wireless 70/80 GHz'=>'wireless 70/80 GHz'];
     return $ticket_status;
 }
+

@@ -8,6 +8,7 @@ use Yajra\Datatables\Facades\Datatables;
 use App\Tower;
 use App\Broadcast;
 use App\TowerLink;
+
 use App\Device;
 use App\TowerIp;
 use App\ConnectionType;

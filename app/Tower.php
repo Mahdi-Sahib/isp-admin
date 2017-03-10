@@ -20,6 +20,10 @@ class Tower extends Model
         return $this->hasMany('App\TowerLink');
     }
 
+    public function towerticket() {
+        return $this->hasMany('App\TowerTicket');
+    }
+
     public function AddressHelper() {
         return $this->belongsTo('App\AddressHelper');
     }

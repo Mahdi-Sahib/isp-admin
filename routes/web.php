@@ -35,11 +35,19 @@ Route::group(['middleware' => 'admin'], function () {
         'uses' => 'LinkController@LinkTableOneAjax'
     ]);
 
-    Route::get('isp-cpanel/tower/tower_ticket', [
+    // Tower Ticket
+    Route::get('isp-cpanel/tower/tower_ticket/{id?}', [
         'as'   => 'isp-cpanel.tower.tower_ticket',
         'uses' => 'TowerTicketController@ticketTable'
     ]);
 
+    Route::post('isp-cpanel/tower/tower_ticket', 'TowerTicketController@addAjax');
+    Route::get('isp-cpanel/tower/tower_ticket/view', 'TowerTicketController@viewAjax');
+    Route::post('isp-cpanel/tower/tower_ticket/update', 'TowerTicketController@updateAjax');
+    Route::post('isp-cpanel/tower/tower_ticket/delete', 'TowerTicketController@deleteAjax');
+
+
+    // connection_types
     Route::get('isp-cpanel/settings/connection_types', 'ConnectionTypeController@index');
     Route::post('isp-cpanel/settings/connection_types', 'ConnectionTypeController@add');
     Route::get('isp-cpanel/settings/connection_types/view', 'ConnectionTypeController@view');
