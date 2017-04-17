@@ -10,15 +10,13 @@
         "autoWidth": true,
         "paging": true,
         "ajax": '{{ url('isp-cpanel/tower/tower_ticket/'.$tower->id) }}',
-
-
         "columns": [
             { data: 'id',             name: 'id' , width:'10%' , class:'text-center'},
-            { data: 'category',          name: 'category' },
+            { data: 'category',       name: 'category' },
             { data: 'title',          name: 'title' },
-            { data: 'created_by',     name: 'created_by' },
+            { data: 'user.name',      name: 'user.name'},
             { data: 'created_at',     name: 'created_at' },
-            { data: 'status',          name: 'status' },
+            { data: 'status',         name: 'status' },
             { data: 'action',         name: 'action', orderable: false, searchable: false , width:'11%' , class:'text-center'}
         ]
     });
@@ -48,7 +46,6 @@
             data: {"id":id},
             success: function(result){
                 //console.log(result);
-
             }
         });
     }

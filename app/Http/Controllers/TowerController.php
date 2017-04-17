@@ -83,11 +83,13 @@ class TowerController extends Controller
         $tower               = Tower::find($id);
         $connection          = ConnectionType::all();
         $connectionx         = ConnectionType::all();
+        $broadcast           = Broadcast::all();
+        $link                = TowerLink::all();
         $device              = Device::all();
         $devicex             = Device::all();
         $devicev             = Device::all();
         $address             = AddressHelper::all();
-        return view('vendor.adminlte.pages.tower.view-tower' , compact('tower','address','connection','connectionx','device','devicex','cw','devicev'));
+        return view('vendor.adminlte.pages.tower.view-tower' , compact('tower','address','connection','connectionx','device','devicex','cw','devicev','broadcast','link'));
     }
 
 

@@ -15,19 +15,33 @@ use App\TowerTicket;
 
 class TowerTicketController extends Controller
 {
-
     public function ticketTable(Request $request , $id){
-
         if ($request->ajax()) {
             $tickets = Tower::find($id);
-            return Datatables::of(TowerTicket::where('tower_id', $tickets->id))
+            return Datatables::of(TowerTicket::with('user')->where('tower_id', $tickets->id))
                 ->orderBy('created_at', 'id $1')
 
-                ->editColumn('created_at', function ($ticket) {
-                    return $ticket->created_at->format('(D g:i A) d-n-y');
+                ->editColumn('category', function ($tickets) {
+                    if ($tickets->category == 1){
+                        return "Tower";
+                    }elseif ($tickets->category == 2){
+                        return "Broadcast";
+                    }elseif ($tickets->category == 3){
+                        return "Link";
+                    };
                 })
 
+                ->editColumn('status', function ($tickets) {
+                    if ($tickets->status == 1){
+                        return "Open";
+                    }elseif ($tickets->status == 2){
+                        return "Closed";
+                    };
+                })
 
+                ->editColumn('created_at', function ($tickets) {
+                    return $tickets->created_at->format('(D g:i A) d-n-y');
+                })
                 ->addColumn('action', function ($tower) {
                     return '
                     <a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket(' . $tower -> id . ')">View</a>
@@ -58,7 +72,9 @@ class TowerTicketController extends Controller
             $data->title                 = $request->title;
             $data->message               = $request->message;
             $data->category              = $request->category;
-            $data->created_by            = Auth::User()->name;
+            $data->broadcast_id          = $request->broadcast_id;
+            $data->tower_link_id         = $request->tower_link_id;
+            $data->created_by            = Auth::User()->id;
             $data->updated_by            = Auth::User()->id;
             $data->save();
             return back()

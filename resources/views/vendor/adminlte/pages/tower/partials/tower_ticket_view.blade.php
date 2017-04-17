@@ -88,30 +88,109 @@
 
 <input type="hidden" name="hidden_view_ticket" id="hidden_view_ticket" value="{{url('isp-cpanel/tower/tower_ticket/view')}}">
 <!-- View Modal start -->
-<div class="modal fade" id="viewModal_ticket" role="dialog">
-    <div class="modal-dialog">
+<div class="modal fade " id="viewModal_ticket" role="dialog">
+    <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">about this ticket </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">The Tower {{ $tower->name }} have a Ticket with</h4>
             </div>
-            <div class="box-body no-padding">
-                <table class="table table-striped">
-                    <tbody>
-                    <tr>
-                        <td> </td>
-                        <td></td>
-                        <td><span class="badge bg-yellow" id="view_tower_ticket_title" style="color: yellow ; font-size: 21px;"></span></td>
-                    </tr>
-                    </tbody>
-                </table>
+
+            <div class="box">
+
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr class="warning">
+                            <th><label class="glyphicon glyphicon-hand-right" style=" font-size: 22px;"></label></th>
+                            <th>Label</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 22px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td>Device :</td>
+                            <td>
+                                @if ( count($device) < 1 ) <br> <p style="color: red">you didn't add devices go to settings -> BASIC INPUT -> devices </p>  @else
+                                    <spin id="view_device_id"> </spin>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td>Number or Sign (#) :</td>
+                            <td><span class="badge bg-yellow" id="view_number_Sign" style="color: yellow ; font-size: 21px;"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-question-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Name :</td>
+                            <td><span id="view_name"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>SSID :</td>
+                            <td><span id="view_ssid"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td> IP :</td>
+                            <td><span id="view_ip"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>MAC Address :</td>
+                            <td><span id="view_mac"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Antenna Type :</td>
+                            <td><span id="view_antenna"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Detection Degree :</td>
+                            <td><span id="view_degree"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Antenna Gin :</td>
+                            <td><span id="view_gin"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Channel :</td>
+                            <td><div><span id="view_channal"></span></div></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Channal Width (CW) :</td>
+                            <td><span id="view_channal_width"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>Direction :</td>
+                            <td><span id="view_direction"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td>More Information :</td>
+                            <td style="width: 75px">
+                                <div class="bs-callout bs-callout-danger">
+                                    <textbox class="form-control" id="view_broadcasts_info" style="height: 100px ; width: 500px"></textbox>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
             </div>
         </div>
     </div>
 </div>
-
 <!-- view modal ends -->

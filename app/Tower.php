@@ -27,4 +27,10 @@ class Tower extends Model
     public function AddressHelper() {
         return $this->belongsTo('App\AddressHelper');
     }
+
+    public function user() {
+        return $this->belongsTo('App\User') ;
+    }
+
+
 }

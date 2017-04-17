@@ -26,4 +26,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAvatarUrl()
+    {
+        if (is_null($this->avatar)) {
+            return 'http://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=mm&s=40';
+        }
+
+        return $this->avatar;
+    }
+
+
+
 }
