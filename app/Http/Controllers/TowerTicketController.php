@@ -42,10 +42,19 @@ class TowerTicketController extends Controller
                 ->editColumn('created_at', function ($tickets) {
                     return $tickets->created_at->format('(D g:i A) d-n-y');
                 })
-                ->addColumn('action', function ($tower) {
+                ->addColumn('action', function ($tickets) {
                     return '
-                    <a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket(' . $tower -> id . ')">View</a>
-                    ';
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket(' . $tickets->id . ')">View</a></li>
+                        </ul>
+                    </div>
+                </td>                    ';
                 })
                 ->make(true);
         }
