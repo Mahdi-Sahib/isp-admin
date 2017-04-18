@@ -95,7 +95,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">The Tower {{ $tower->name }} have a Ticket with</h4>
+                <h4 class="modal-title"> Ticket : </h4>
             </div>
 
             <div class="box">
@@ -109,77 +109,44 @@
                             <th>Value</th>
                         </tr>
                         <tr>
-                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 22px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td>Device :</td>
-                            <td>
-                                @if ( count($device) < 1 ) <br> <p style="color: red">you didn't add devices go to settings -> BASIC INPUT -> devices </p>  @else
-                                    <spin id="view_device_id"> </spin>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
                             <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td>Number or Sign (#) :</td>
-                            <td><span class="badge bg-yellow" id="view_number_Sign" style="color: yellow ; font-size: 21px;"></span></td>
+                            <td> Category :</td>
+                            <td><span  id="view_category"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-question-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>Name :</td>
-                            <td><span id="view_name"></span></td>
+                            <td> Priority :</td>
+                            <td><span id="view_priority"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>SSID :</td>
-                            <td><span id="view_ssid"></span></td>
+                            <td> Status :</td>
+                            <td><span id="view_status" class="label bg-red" style="font-size: 21px;"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td> IP :</td>
-                            <td><span id="view_ip"></span></td>
+                            <td> Created by :</td>
+                            <td><span id="view_created_by"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>MAC Address :</td>
-                            <td><span id="view_mac"></span></td>
+                            <td> Closed_by :</td>
+                            <td><span id="view_closed_by"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>Antenna Type :</td>
-                            <td><span id="view_antenna"></span></td>
+                            <td> Last Update by :</td>
+                            <td><span id="view_updated_by"></span></td>
+                        </tr>
+
+                        <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                        <td> Title :</td>
+                        <td><span id="view_title"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>Detection Degree :</td>
-                            <td><span id="view_degree"></span></td>
-                        </tr>
-                        <tr>
-                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>Antenna Gin :</td>
-                            <td><span id="view_gin"></span></td>
-                        </tr>
-                        <tr>
-                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>Channel :</td>
-                            <td><div><span id="view_channal"></span></div></td>
-                        </tr>
-                        <tr>
-                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>Channal Width (CW) :</td>
-                            <td><span id="view_channal_width"></span></td>
-                        </tr>
-                        <tr>
-                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>Direction :</td>
-                            <td><span id="view_direction"></span></td>
-                        </tr>
-                        <tr>
-                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
-                            <td>More Information :</td>
-                            <td style="width: 75px">
-                                <div class="bs-callout bs-callout-danger">
-                                    <textbox class="form-control" id="view_broadcasts_info" style="height: 100px ; width: 500px"></textbox>
-                                </div>
-                            </td>
+                            <td> Message :</td>
+                            <td><span id="view_message"></span></td>
                         </tr>
                         </tbody>
                     </table>

@@ -23,8 +23,20 @@
 </script>
 
 <script type="text/javascript">
+
+    $(window).ajaxComplete(function () {console.log('Ajax Complete'); });
+    $(window).ajaxError(function (data, textStatus, jqXHR) {console.log('Ajax Error');
+        console.log('data: ' + data);
+        console.log('textStatus: ' + textStatus);
+        console.log('jqXHR: ' + jqXHR); });
+    $(window).ajaxSend(function () {console.log('Ajax Send'); });
+    $(window).ajaxStart(function () {console.log('Ajax Start'); });
+    $(window).ajaxStop(function () {console.log('Ajax Stop'); });
+    $(window).ajaxSuccess(function () {console.log('Ajax Success'); });
+
     function fun_view_ticket(id)
     {
+
         var view_url = $("#hidden_view_ticket").val();
         $.ajax({
             url: view_url,
@@ -32,8 +44,42 @@
             data: {"id":id},
             success: function(result){
                 console.log(result);
-                $("#view_tower_ticket_title").text(result.title);
-            }
+                $("#view_title").text(result.title);
+                $("#view_message").text(result.message);
+                $("#view_created_by").text(result.user.name);
+                $("#view_closed_by").text(result.user.name);
+                $("#view_updated_by").text(result.user.name);
+
+                if(  (result.category) == 1 )
+                {
+                    $("#view_category").text('Tower');
+                } else if (  (result.category) == 2 ) {
+                    $("#view_category").text('Broadcast');
+                } else if (  (  (result.category) == 3 ) ) {
+                    $("#view_category").text('Link');
+                }
+
+                if(  (result.priority) == 1 )
+                {
+                    $("#view_priority").text('Low');
+                } else if (  (result.priority) == 2 ) {
+                    $("#view_priority").text('Normal');
+                } else if (  (  (result.priority) == 3 ) ) {
+                    $("#view_priority").text('High');
+                } else if (  (  (result.priority) == 4 ) ) {
+                    $("#view_priority").text('Urgent');
+                }
+
+                if(  (result.status) == 1 )
+                {
+                    $("#view_status").text('Open');
+                } else if (  (result.status) == 2 ) {
+                    $("#view_status").text('Closed');
+                }
+
+
+            },
+            error:function(exception){alert('Exeption:'+exception);}
         });
     }
 

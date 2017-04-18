@@ -36,13 +36,13 @@ Route::group(['middleware' => 'admin'], function () {
     ]);
 
     // Tower Ticket
+    Route::get('isp-cpanel/tower/tower_ticket/view', 'TowerTicketController@viewAjax');
     Route::get('isp-cpanel/tower/tower_ticket/{id?}', [
         'as'   => 'isp-cpanel.tower.tower_ticket',
         'uses' => 'TowerTicketController@ticketTable'
     ]);
 
     Route::post('isp-cpanel/tower/tower_ticket', 'TowerTicketController@addAjax');
-    Route::get('isp-cpanel/tower/tower_ticket/view', 'TowerTicketController@viewAjax');
     Route::post('isp-cpanel/tower/tower_ticket/update', 'TowerTicketController@updateAjax');
     Route::post('isp-cpanel/tower/tower_ticket/delete', 'TowerTicketController@deleteAjax');
 

@@ -89,7 +89,7 @@ class TowerTicketController extends Controller
     {
         if($request->ajax()){
             $id = $request->id;
-            $info = TowerTicket::find($id);
+            $info = TowerTicket::with('user')->find($id);
             //echo json_decode($info);
             return response()->json($info);
         }
