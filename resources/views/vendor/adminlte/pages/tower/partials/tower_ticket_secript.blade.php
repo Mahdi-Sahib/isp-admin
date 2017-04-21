@@ -49,6 +49,7 @@
                 $("#view_created_by").text(result.user.name);
                 $("#view_closed_by").text(result.user.name);
                 $("#view_updated_by").text(result.user.name);
+                $("#view_close_message").text(result.close_message);
 
                 if(  (result.category) == 1 )
                 {
@@ -73,7 +74,7 @@
                 if(  (result.status) == 1 )
                 {
                     $("#view_status").text('Open');
-                } else if (  (result.status) == 2 ) {
+                } else if (  (result.status) == 0 ) {
                     $("#view_status").text('Closed');
                 }
 
@@ -95,6 +96,22 @@
             }
         });
     }
+
+    function fun_close_ticket(id)
+    {
+        var view_url = $("#hidden_view_ticket").val();
+        $.ajax({
+            url: view_url,
+            type:"GET",
+            data: {"id":id},
+            success: function(result){
+                //console.log(result);
+                $("#edit_id_ticket").val(result.id);
+                $("#edit_close_message").val(result.close_message);
+            }
+        });
+    }
+
 
     function fun_delete_ticket(id)
     {

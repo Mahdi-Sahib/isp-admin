@@ -28,6 +28,7 @@
     <section class="content">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+            @include('adminlte::layouts.partials.notifications')
 
              <div class="row">
                     @include('adminlte::pages.tower.partials.dashboard-heder')

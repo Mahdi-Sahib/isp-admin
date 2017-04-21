@@ -4,7 +4,7 @@
         <strong>{{ $message }}</strong>
     </div>
 @endif
-@include('adminlte::layouts.partials.notifications')
+
 <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal">Add New BroadCast</button>
 <br>
 <br>

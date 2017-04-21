@@ -44,7 +44,6 @@
             success: function(result){
                 console.log(result);
                 $("#edit_id").val(result.id);
-                $("#edit_device_id").val(result.device_id);
                 $("#edit_number_Sign").val(result.number_sign);
                 $("#edit_name").val(result.name);
                 $("#edit_ssid").val(result.ssid);
@@ -63,7 +62,7 @@
 
     function fun_delete_broadcast(id)
     {
-        var conf = confirm("Are you sure want to delete??");
+        var conf = confirm("When you delete Broadcast all ticket's for this broadcast will deleted.");
         if(conf){
             var delete_url = $("#hidden_delete").val();
             $.ajax({

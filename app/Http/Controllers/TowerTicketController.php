@@ -34,7 +34,7 @@ class TowerTicketController extends Controller
                 ->editColumn('status', function ($tickets) {
                     if ($tickets->status == 1){
                         return "Open";
-                    }elseif ($tickets->status == 2){
+                    }elseif ($tickets->status == 0){
                         return "Closed";
                     };
                 })
@@ -52,9 +52,11 @@ class TowerTicketController extends Controller
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket(' . $tickets->id . ')">View</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_close_ticket(' .  $tickets->id  . ')">Close Ticket</a></li>
                         </ul>
                     </div>
-                </td>                    ';
+                </td>       
+                             ';
                 })
                 ->make(true);
         }
@@ -87,7 +89,7 @@ class TowerTicketController extends Controller
             $data->updated_by            = Auth::User()->id;
             $data->save();
             return back()
-                ->with('message_ip', 'this IP added successfully.');
+                ->with('message_ticket', 'Ticket Opened successfully.');
         }
     }
 
@@ -119,12 +121,12 @@ class TowerTicketController extends Controller
             $data->updated_by            = Auth::User()->id;
             $data -> save();
             return back()
-                ->with('message_ip','ip Updated successfully.');
+                ->with('message_ticket','ip Updated successfully.');
         }
     }
 
     /*
-    *   Delete record
+    *   close Ticket
     */
     public function deleteAjax(Request $request)
     {
@@ -135,6 +137,18 @@ class TowerTicketController extends Controller
             echo "IP Deleted successfully.";
         else
             echo "There was a problem. Please try again later.";
+    }
+
+    public function closeTicket(Request $request)
+    {
+            $id = $request -> edit_id_ticket;
+            $data = TowerTicket::find($id);
+            $data->status               = 0;
+            $data->close_message        = $request->close_message;
+            $data->closed_by            = Auth::User()->id;
+            $data -> save();
+            return back()
+                ->with('message_ticket','Ticket Closed successfully.');
     }
 
 }

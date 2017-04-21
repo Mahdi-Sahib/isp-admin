@@ -1,26 +1,20 @@
 
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box bg-aqua">
+            <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>150</h3>
-
-                    <p>New Orders</p>
+                    <h3>{{ \App\TowerTicket::where(['status' => 1])->whereDay('created_at', '=', date('d'))->get()->count() }}</h3>
+                    <p>Open Ticket's</p>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
+                <a href="#" class="small-box-footer"> {{  \App\TowerTicket::whereDay('created_at', '=', date('d'))->get()->count() }} Tecket(s) Today Opened</a></div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                    <p>Bounce Rate</p>
+                    <h3>{{ \App\TowerTicket::where(['status' => 0])->whereDay('created_at', '=', date('d'))->get()->count() }}</h3>
+                    <p>Ticket Closed Today</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -33,9 +27,9 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>44</h3>
+                    <h3>{{  \App\Broadcast::count()  }}</h3>
 
-                    <p>User Registrations</p>
+                    <p>Broadcast's</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -48,9 +42,9 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>65</h3>
+                    <h3>{{  \App\TowerLink::count()  }}</h3>
 
-                    <p>Unique Visitors</p>
+                    <p>Link's</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>

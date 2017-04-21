@@ -23,11 +23,12 @@ class CreateTowerTicketsTable extends Migration
             $table->foreign('tower_link_id')->references('id')->on('tower_links')->onDelete('cascade');
             $table->integer('category')->unsigned();
             $table->integer('priority')->unsigned();
-            $table->integer('status')->default(1);
+            $table->boolean('status')->default(1);
             $table->string('title');
             $table->text('message');
             $table->integer('created_by');
             $table->integer('closed_by')->nullable();
+            $table->text('close_message')->nullable();
             $table->integer('updated_by')->nullable();
             $table->integer('delete_by')->nullable();
             $table->softDeletes();

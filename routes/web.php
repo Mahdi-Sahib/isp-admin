@@ -43,6 +43,7 @@ Route::group(['middleware' => 'admin'], function () {
     ]);
 
     Route::post('isp-cpanel/tower/tower_ticket', 'TowerTicketController@addAjax');
+    Route::post('isp-cpanel/tower/tower_ticket/close_ticket', 'TowerTicketController@closeTicket');
     Route::post('isp-cpanel/tower/tower_ticket/update', 'TowerTicketController@updateAjax');
     Route::post('isp-cpanel/tower/tower_ticket/delete', 'TowerTicketController@deleteAjax');
 

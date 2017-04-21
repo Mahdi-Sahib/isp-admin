@@ -118,7 +118,7 @@
 
     function fun_delete_tl(id)
     {
-        var conf = confirm("Are you sure want to delete??");
+        var conf = confirm("When you delete Link all ticket's for this Link will deleted.");
         if(conf){
             var delete_url = $("#hidden_delete_tl").val();
             $.ajax({
