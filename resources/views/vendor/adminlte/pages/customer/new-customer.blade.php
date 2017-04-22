@@ -21,12 +21,11 @@
 
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
-
-    {!! Form::open ([ url('isp-cpanel/customer/store')  , 'method' => 'POST']) !!}
-    {{ csrf_field() }}
+    <form action="{{ url('isp-cpanel/customers') }}" method="post">
+        {{ csrf_field() }}
     <div>
     <div class="box-body">
-        <label><div class="fa fa-info-circle"></div>   Customer information</label>
+        <label><div class="fa fa-info-circle"></div>  Customer information</label>
         <br>
         <br>
         <div  class="col-lg-3 form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
@@ -95,7 +94,7 @@
                     <label><div class="fa fa-home"></div> Address</label>
                     <select name="address_1" class="form-control" >
                         @foreach ($address as $address) {
-                        <option value="{!! $address->id !!}" >{!! $address->place_1 !!}</option>
+                        <option value="{{ $address->id }}" >{{ $address->place_1 }}</option>
                         }
                         @endforeach
                     </select>
@@ -134,7 +133,7 @@
                 <label><div class="fa fa-gears"></div> Station Type</label>
                 <select name="device_id" class="form-control" value="{{ old('device_id') }}">
                     @foreach ($device as $device)
-                        <option value="{!! $device->id !!}" >{!! $device->brand_model !!}</option>
+                        <option value="{{ $device->id }}" >{{ $device->brand_model }}</option>
                     @endforeach
                 </select>
             </div>
@@ -163,9 +162,9 @@
         <div class="col-lg-3">
             <div class="form-group">
                 <label><div class="fa fa-gears"></div> Connection Type</label>
-                <select name="device_id" class="form-control" value="{{ old('device_id') }}">
+                <select name="connection_method" class="form-control" value="{{ old('connection_method') }}">
                     @foreach ($connection_types as $connection_types)
-                        <option value="{!! $connection_types->id !!}" >{!! $connection_types->connection_types !!}</option>
+                        <option value="{{ $connection_types->id }}" >{{ $connection_types->method }}</option>
                     @endforeach
                 </select>
             </div>
@@ -182,10 +181,10 @@
 
         <div class="col-lg-3">
             <div class="form-group">
-                <label><div class="fa fa-map-signs"></div> Tower ASOC</label>
+                <label><div class="fa fa-map-signs"></div> point / Tower</label>
                 <select name="tower_id" class="form-control" >
-                    @foreach ($tower as $tower) {
-                    <option value="{!! $tower->id !!}" >{!! $tower->name !!}</option>
+                    @foreach ($towers as $tower) {
+                    <option value="{{ $tower->id }}" >{{ $tower->name }}</option>
                     }
                     @endforeach
                 </select>
@@ -194,10 +193,10 @@
 
         <div class="col-lg-3">
             <div class="form-group">
-                <label><div class="fa fa-wifi"></div> SSID ASOC</label>
+                <label><div class="fa fa-wifi"></div> Broadcast SSID</label>
                 <select name="broadcast_id" class="form-control" >
                     @foreach ($broadcast as $broadcast)
-                        <option value="{!! $broadcast->id !!}" >{!! $broadcast->ssid !!}</option>
+                        <option value="{{ $broadcast->id }}" >{{ $broadcast->ssid }}</option>
                     @endforeach
                 </select>
             </div>
@@ -205,10 +204,10 @@
 
         <div class="col-lg-3">
             <div class="form-group">
-                <label><div class="fa fa-barcode"></div> AP MAC</label>
+                <label><div class="fa fa-barcode"></div> Broadcast AP MAC</label>
                 <select name="apmac_id" class="form-control" >
                     @foreach ($apmac as $apmac)
-                        <option value="{!! $apmac->id !!}" >{!! $apmac->mac  !!}</option>
+                        <option value="{{ $apmac->id }}" >{{ $apmac->mac  }}</option>
                     @endforeach
                 </select>
             </div>
@@ -224,10 +223,7 @@
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-resize-small"></div> Box Node</label>
                     <select name="tower_id" class="form-control" >
-                        @foreach ($tower as $tower) {
-                        <option value="{!! $tower->id !!}" >{!! $tower->name !!}</option>
-                        }
-                        @endforeach
+
                     </select>
                 </div>
             </div>
@@ -236,9 +232,7 @@
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-resize-full"></div> Fiber Box</label>
                     <select name="broadcast_id" class="form-control" >
-                        @foreach ($broadcast as $broadcast)
-                            <option value="{!! $broadcast->id !!}" >{!! $broadcast->ssid !!}</option>
-                        @endforeach
+
                     </select>
                 </div>
             </div>
@@ -247,10 +241,7 @@
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-random"></div> Hub Switch</label>
                     <select name="tower_id" class="form-control" >
-                        @foreach ($tower as $tower) {
-                        <option value="{!! $tower->id !!}" >{!! $tower->name !!}</option>
-                        }
-                        @endforeach
+
                     </select>
                 </div>
             </div>
@@ -259,9 +250,7 @@
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-inbox"></div> Port Number</label>
                     <select name="broadcast_id" class="form-control" >
-                        @foreach ($broadcast as $broadcast)
-                            <option value="{!! $broadcast->id !!}" >{!! $broadcast->ssid !!}</option>
-                        @endforeach
+
                     </select>
                 </div>
             </div>
@@ -276,7 +265,7 @@
         </div>
 
 </div>
-    {!! Form::close() !!}
+    </form>
 
     @include('adminlte::layouts.partials.pagefooter')
 @endsection

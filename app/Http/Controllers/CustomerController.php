@@ -44,13 +44,33 @@ class CustomerController extends Controller
         $customers = Customer::select('customers.*');
         return Datatables::of($customers)
             ->orderBy('created_at', 'id $1')
-            ->addColumn('action', function ($customer) {
+            ->editColumn('connection_method',function ($customers){
+                if ($customers->connection_method == 1){
+                    return "Unknown!" ;
+                }elseif ($customers->connection_method == 2){
+                    return "Wireless" ;
+                }elseif ($customers->connection_method == 3){
+                    return "LAN" ;
+                }elseif ($customers->connection_method == 4){
+                    return "Fiber Obtic";
+                }
+            })
+            ->addColumn('action', function ($customers) {
                 return '
-                
-                <a href="customer/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> View</a>
-                <a href="customer/'.$customer->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                <a href="customer/'.$customer->id.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Delete</a>
-                
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_fullview_customer('.$customers->id.')">Peek</a></li>
+                            <li><a href="customers/'.$customers->id.'">View</a></li>
+                            <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_customer_ticket('.$customers->id.')">Ticket</a></li>
+                        </ul>
+                    </div>
+                </td>
                 ';
             })
             ->make(true);
@@ -73,13 +93,13 @@ class CustomerController extends Controller
     public function create()
     {
         $customer           = Customer::all();
-        $tower              = Tower::all();
+        $towers             = Tower::all();
         $broadcast          = Broadcast::all();
         $connection_types   = ConnectionType::all();
         $device             = Device::all();
         $address            = AddressHelper::all();
         $apmac              = Broadcast::all();
-        return view('vendor.adminlte.pages.customer.new-customer' , compact('customer','device','tower','broadcast','address','apmac','connection_types'));
+        return view('vendor.adminlte.pages.customer.new-customer' , compact('customer','device','towers','broadcast','address','apmac','connection_types'));
     }
 
     /**
@@ -121,7 +141,7 @@ class CustomerController extends Controller
             $customer->apmac_id           = $request->apmac_id;
             $customer->fiberbox_id        = $request->fiberbox_id;
             $customer->switch_id          = $request->switch_id;
-            $customer->connection_type    = $request->connection_type;
+            $customer->connection_method  = $request->connection_method;
             $customer->created_by         = Auth::User()->id;
             $customer->save();
 
@@ -146,7 +166,6 @@ class CustomerController extends Controller
         $device             = Device::all();
         $apmac              = Broadcast::all();
         $ticket             = CustomerTicket::all();
-        $user               = User::all();
         $fiberbox           = FiberBox::all();
         $fibernode          = FiberNode::all();
         $customer           = Customer::find($id);

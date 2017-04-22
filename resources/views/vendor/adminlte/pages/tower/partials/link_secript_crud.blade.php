@@ -12,7 +12,7 @@
                 $("#view_connection_type_id").text(result.connection_type_id);
                 $("#view_source_name").text(result.source_name);
                 $("#view_repeater_id").text(result.repeater_id);
-                $("#view_channal_width").text(result.channal_width);
+                $("#view_channel_width").text(result.channel_width);
                 $("#view_ssid").text(result.ssid);
                 $("#view_authentication_method").text(result.authentication_method);
                 $("#view_authentication").text(result.authentication);

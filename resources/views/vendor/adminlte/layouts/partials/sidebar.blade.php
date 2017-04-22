@@ -94,11 +94,11 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="#"><i class="fa fa-map-signs"></i> Towers <i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-map-signs"></i> Wireless Point <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ url('isp-cpanel/towers/create') }}"><i class="fa fa-map-signs"></i> New Tower</a></li>
-                            <li><a href="{{ url('isp-cpanel/towers/towers-table-one-view') }}"><i class="fa fa-map-signs"></i> Tower Table</a></li>
-                            <li><a href="{{ url('isp-cpanel/towers/ticket') }}"><i class="fa fa-map-signs"></i> Tower Ticket's</a></li>
+                            <li><a href="{{ url('isp-cpanel/towers/create') }}"><i class="fa fa-map-signs"></i> New Point</a></li>
+                            <li><a href="{{ url('isp-cpanel/towers/towers-table-one-view') }}"><i class="fa fa-map-signs"></i> Points Table</a></li>
+                            <li><a href="{{ url('isp-cpanel/towers/ticket') }}"><i class="fa fa-map-signs"></i> Points Ticket's</a></li>
                         </ul>
                     </li>
                     <li>

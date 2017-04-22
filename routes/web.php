@@ -9,6 +9,8 @@ Route::group(['middleware' => 'admin'], function () {
         'as'   => 'isp-cpanel.customers.customer-table-one-ajax',
         'uses' => 'CustomerController@CustomerTableOneAjax'
     ]);
+    Route::resource('isp-cpanel/customers', 'CustomerController');
+
     Route::get('isp-cpanel/towers/towers-table-one-view', 'TowerController@TowersTableOneView');
     Route::get('isp-cpanel/towers/tower-table-one-ajax', [
         'as'   => 'isp-cpanel.towers.tower-table-one-ajax',
@@ -85,7 +87,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/settings/address/update', 'AddressHelperController@update');
     Route::post('isp-cpanel/settings/address/delete', 'AddressHelperController@delete');
 
-    Route::resource('isp-cpanel/customers', 'CustomerController');
+
     Route::resource('isp-cpanel/towers', 'TowerController');
     Route::resource('isp-cpanel/fibernodes', 'FiberNodeController');
     Route::resource('isp-cpanel/fiberboxes', 'FiberBoxController');

@@ -23,7 +23,7 @@ class TowerTicketController extends Controller
 
                 ->editColumn('category', function ($tickets) {
                     if ($tickets->category == 1){
-                        return "Tower";
+                        return "Point/Tower";
                     }elseif ($tickets->category == 2){
                         return "Broadcast";
                     }elseif ($tickets->category == 3){

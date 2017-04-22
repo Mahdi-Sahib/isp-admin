@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
 
 @section('page-name')
-    Towers  Table
+    Broadcast point / Tower
 @endsection
 
 
@@ -28,7 +28,7 @@
         <table id="data" class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th>Tower</th>
+                <th>Broadcast Point</th>
                 <th>Agent / Admin</th>
                 <th>Location</th>
                 <th>Google Location</th>
@@ -40,7 +40,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <th>Tower</th>
+                <th>Broadcast Point</th>
                 <th>Agent / Admin</th>
                 <th>Location</th>
                 <th>Google Location</th>

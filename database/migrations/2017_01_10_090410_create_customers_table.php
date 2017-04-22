@@ -16,12 +16,15 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('connection_type_id')->nullable();
+            $table->tinyInteger('connection_method')->nullable();
             $table->integer('tower_id')->nullable();
             $table->integer('broadcast_id')->nullable();
             $table->integer('fiberbox_id')->nullable();
             $table->integer('switch_id')->nullable();
             $table->tinyInteger('device_id')->nullable();
             $table->integer('apmac_id')->nullable();
+            $table->integer('customer_ticket_id')->nullable();
+            $table->integer('customer_debt_id')->nullable();
             $table->string('fullname')->unique();
             $table->string('username')->unique();
             $table->string('password')->default('0000');
@@ -33,7 +36,7 @@ class CreateCustomersTable extends Migration
             $table->macAddress('mac')->nullable()->unique();
             $table->ipAddress('ip')->nullable()->unique();
             $table->integer('created_by');
-            $table->integer('updated_by');
+            $table->integer('updated_by')->nullable();
             $table->integer('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

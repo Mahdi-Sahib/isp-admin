@@ -176,10 +176,10 @@
                         <tr class="Active">
                             <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td>Channal Width (CW) :</td>
-                            <td><span id="view_channal_width"></span></td>
+                            <td><span id="view_channel_width"></span></td>
                         </tr>
                         <tr class="Active">
-                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></td>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td>SSID :</td>
                             <td><span id="view_ssid"></span></td>
                         </tr>
@@ -216,7 +216,7 @@
                         <tr class="Active">
                             <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td>Slave Brand :</td>
-                            <td><span id="view_slave_brande"></span></td>
+                            <td><span id="view_slave_brand"></span></td>
                         </tr>
                         <tr class="Active">
                             <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>

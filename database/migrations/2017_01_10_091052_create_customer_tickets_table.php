@@ -15,6 +15,12 @@ class CreateCustomerTicketsTable extends Migration
     {
         Schema::create('customer_tickets', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('customer_id')->unsigned();
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->boolean('status')->default(1);
+            $table->text('message');
+            $table->integer('closed_by')->nullable();
+            $table->text('close_message')->nullable();
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->integer('delete_by')->nullable();
