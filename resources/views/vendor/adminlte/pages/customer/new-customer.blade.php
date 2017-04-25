@@ -21,6 +21,34 @@
 
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#wireless").hide();
+            $("#fiber").hide();
+            $("#lan").hide();
+            $('#type').on('change', function() {
+                if ( this.value == 'Wireless')
+                {
+                    $("#wireless").show();
+                    $("#fiber").hide();
+                    $("#lan").hide();
+                }
+                else if ( this.value == 'Fiber Optic')
+                {
+                    $("#fiber").show();
+                    $("#wireless").hide();
+                    $("#lan").hide();
+                }
+                else if ( this.value == 'LAN')
+                {
+                    $("#fiber").hide();
+                    $("#wireless").hide();
+                    $("#lan").show();
+                }
+            });
+        });
+    </script>
     <form action="{{ url('isp-cpanel/customers') }}" method="post">
         {{ csrf_field() }}
     <div>
@@ -124,7 +152,7 @@
         </div>
     </div>
     <hr>
-    <div class="panel-body">
+    <div class="panel-body" >
         <label><div class="fa fa-gears"></div> Station Type & Connection Type</label>
         <br>
         <br>
@@ -159,25 +187,21 @@
             @endif
         </div>
 
-        <div class="col-lg-3">
-            <div class="form-group">
-                <label><div class="fa fa-gears"></div> Connection Type</label>
-                <select name="connection_method" class="form-control" value="{{ old('connection_method') }}">
-                    @foreach ($connection_types as $connection_types)
-                        <option value="{{ $connection_types->id }}" >{{ $connection_types->method }}</option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="col-lg-3" class="form-group">
+            <label><div class="fa fa-chevron-down"></div> Connection Method :</label>
+            {!! Form::select("connection_method", connection_method(), null ,['class'=>'form-control','name'=>'','id'=>'type']) !!}
         </div>
+
     </div>
+
+
+<div id="wireless">
     <hr>
 
     <div class="panel-body">
         <label><div class="fa fa-gears"></div> Wirless AP Information</label>
         <br>
         <br>
-
-
 
         <div class="col-lg-3">
             <div class="form-group">
@@ -213,10 +237,24 @@
             </div>
         </div>
 
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label><div class="fa fa-gears"></div> Wireless Method</label>
+                <select name="connection_method" class="form-control" value="{{ old('connection_method') }}">
+                    @foreach ($connection_types as $connection_types)
+                        <option value="{{ $connection_types->id }}" >{{ $connection_types->type }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
     </div>
-    <hr>
+</div>
+
+        <div  id="fiber">
+            <hr>
         <div class="panel-body">
-            <label><div class="fa fa-gears"></div> Link's Fiber or LAN</label>
+            <label><div class="fa fa-gears"></div> Provided by Fiber Optic</label>
             <br>
             <br>
             <div class="col-lg-3">
@@ -237,6 +275,14 @@
                 </div>
             </div>
 
+        </div>
+</div>
+ <div  id="lan">
+                <hr>
+        <div class="panel-body" >
+            <label><div class="fa fa-gears"></div>Provided by LAN</label>
+            <br>
+            <br>
        <div class="col-lg-3">
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-random"></div> Hub Switch</label>
@@ -256,8 +302,8 @@
             </div>
 
         </div>
-
-
+ </div>
+        <hr>
     <div class="panel-body">
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="save" name="save">
@@ -272,4 +318,5 @@
 
 
 @section('page-scripts')
+
 @endsection

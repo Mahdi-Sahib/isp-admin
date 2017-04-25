@@ -20,7 +20,7 @@
 
 @endsection
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
 
 @section('main-content')
 
@@ -78,7 +78,7 @@
 
 
 @section('page-scripts')
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     @include('adminlte::pages.tower.partials.ip_secript_crud')
     @include('adminlte::pages.tower.partials.broadcast_secript_crud')
     @include('adminlte::pages.tower.partials.link_secript_crud')

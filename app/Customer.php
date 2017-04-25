@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Controllers\CustomerTicketController;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
@@ -24,7 +25,7 @@ class Customer extends Model
         return $this->belongsTo('App\Info','address_1','id') ;
     }
 
-    public function Ticket() {
-        return $this->hasMany('App\Ticket','customer_id','id') ;
+    public function customerticket() {
+        return $this->hasMany(CustomerTicketController::class);
     }
 }

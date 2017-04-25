@@ -11,7 +11,7 @@ function authentication_method(){
 }
 
 function connection_method(){
-        $connection_method = ['Unknown!','Wireless','LAN','Fiber Obtic'];
+        $connection_method = ['Unknown!','Wireless','LAN','Fiber Optic'];
     return array_combine($connection_method,$connection_method);
 }
 

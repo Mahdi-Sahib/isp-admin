@@ -65,7 +65,7 @@ class CustomerController extends Controller
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_fullview_customer('.$customers->id.')">Peek</a></li>
-                            <li><a href="customers/'.$customers->id.'">View</a></li>
+                            <li><a href="'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
                             <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_customer_ticket('.$customers->id.')">Ticket</a></li>
                         </ul>
