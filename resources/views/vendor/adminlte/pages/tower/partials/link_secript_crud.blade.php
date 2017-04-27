@@ -7,7 +7,7 @@
             type:"GET",
             data: {"id":id},
             success: function(result){
-                console.log(result);
+                // console.log(result);
                 $("#view_connection_method").text(result.connection_method);
                 $("#view_connection_type_id").text(result.connection_type_id);
                 $("#view_source_name").text(result.source_name);

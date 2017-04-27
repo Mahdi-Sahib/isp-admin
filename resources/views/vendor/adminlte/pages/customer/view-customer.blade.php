@@ -20,7 +20,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
 
 @section('main-content')
-
     @include('adminlte::layouts.partials.pageheader')
     @include('adminlte::pages.customer.partials.customer_view')
     @include('adminlte::pages.customer.partials.customer_ticket_view')

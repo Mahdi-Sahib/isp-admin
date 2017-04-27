@@ -27,24 +27,30 @@
             $("#wireless").hide();
             $("#fiber").hide();
             $("#lan").hide();
-            $('#type').on('change', function() {
-                if ( this.value == 'Wireless')
+            $('#connection_method').on('change', function() {
+                if ( this.value == '1')
                 {
                     $("#wireless").show();
                     $("#fiber").hide();
                     $("#lan").hide();
                 }
-                else if ( this.value == 'Fiber Optic')
+                else if ( this.value == '3')
                 {
                     $("#fiber").show();
                     $("#wireless").hide();
                     $("#lan").hide();
                 }
-                else if ( this.value == 'LAN')
+                else if ( this.value == '2')
                 {
                     $("#fiber").hide();
                     $("#wireless").hide();
                     $("#lan").show();
+                }
+                else if ( this.value == '0')
+                {
+                    $("#fiber").hide();
+                    $("#wireless").hide();
+                    $("#lan").hide();
                 }
             });
         });
@@ -189,7 +195,7 @@
 
         <div class="col-lg-3" class="form-group">
             <label><div class="fa fa-chevron-down"></div> Connection Method :</label>
-            {!! Form::select("connection_method", connection_method(), null ,['class'=>'form-control','name'=>'','id'=>'type']) !!}
+            {!! Form::select("connection_method", connection_method_value(), null ,['class'=>'form-control','name'=>'connection_method','id'=>'connection_method']) !!}
         </div>
 
     </div>
@@ -240,7 +246,7 @@
         <div class="col-lg-3">
             <div class="form-group">
                 <label><div class="fa fa-gears"></div> Wireless Method</label>
-                <select name="connection_method" class="form-control" value="{{ old('connection_method') }}">
+                <select name="connection_type_id" class="form-control" value="{{ old('connection_type_id') }}">
                     @foreach ($connection_types as $connection_types)
                         <option value="{{ $connection_types->id }}" >{{ $connection_types->type }}</option>
                     @endforeach
@@ -257,20 +263,25 @@
             <label><div class="fa fa-gears"></div> Provided by Fiber Optic</label>
             <br>
             <br>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="form-group">
-                    <label><div class="glyphicon glyphicon-resize-small"></div> Box Node</label>
+                    <label><div class="glyphicon glyphicon-resize-small"></div> OLT No. & Location</label>
                     <select name="tower_id" class="form-control" >
 
                     </select>
                 </div>
             </div>
-
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="form-group">
-                    <label><div class="glyphicon glyphicon-resize-full"></div> Fiber Box</label>
+                    <label><div class="glyphicon glyphicon-resize-full"></div> First Splitter No. & Location</label>
                     <select name="broadcast_id" class="form-control" >
-
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label><div class="glyphicon glyphicon-resize-full"></div> Second Splitter No. & Location</label>
+                    <select name="broadcast_id" class="form-control" >
                     </select>
                 </div>
             </div>
@@ -280,7 +291,7 @@
  <div  id="lan">
                 <hr>
         <div class="panel-body" >
-            <label><div class="fa fa-gears"></div>Provided by LAN</label>
+            <label><div class="fa fa-gears"></div> Provided by LAN</label>
             <br>
             <br>
        <div class="col-lg-3">

@@ -15,12 +15,15 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('connection_type_id')->nullable();
             $table->tinyInteger('connection_method')->nullable();
+            $table->tinyInteger('wireless_type_id')->nullable();
             $table->integer('tower_id')->nullable();
             $table->integer('broadcast_id')->nullable();
-            $table->integer('fiberbox_id')->nullable();
             $table->integer('switch_id')->nullable();
+            $table->integer('switch_port')->nullable();
+            $table->integer('olt_id')->nullable();
+            $table->integer('first_splitter_id')->nullable();
+            $table->integer('second_splitter_id')->nullable();
             $table->tinyInteger('device_id')->nullable();
             $table->integer('apmac_id')->nullable();
             $table->integer('customer_ticket_id')->nullable();

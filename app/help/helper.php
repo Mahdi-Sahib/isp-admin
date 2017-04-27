@@ -11,8 +11,13 @@ function authentication_method(){
 }
 
 function connection_method(){
-        $connection_method = ['Unknown!','Wireless','LAN','Fiber Optic'];
+        $connection_method = ['Unknown!','Wireless','LAN','FTTX'];
     return array_combine($connection_method,$connection_method);
+}
+
+function connection_method_value(){
+    $connection_method = ['0'=>'Unknown!','1'=>'Wireless','2'=>'LAN','3'=>'FTTX'];
+    return $connection_method;
 }
 
 function wireless_type(){

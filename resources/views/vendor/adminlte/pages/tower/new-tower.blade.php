@@ -6,7 +6,7 @@
 
 
 @section('contentheader_title')
-    New Tower
+    New ًWireless Point
 @endsection
 
 
@@ -15,7 +15,7 @@
 
 
 @section('page-name')
-    Add New Tower
+    Add New ًWireless (Tower or Access points)
 @endsection
 
 
@@ -27,11 +27,11 @@
 
     <div>
         <div class="box-body">
-            <label><div class="fa fa-info-circle"></div>   Tower information</label>
+            <label><div class="fa fa-info-circle"></div>   Point information</label>
             <br>
             <br>
             <div  class="col-lg-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label><div for="name" class="glyphicon glyphicon-info-sign control-label" ></div> Tower Name</label>
+                <label><div for="name" class="glyphicon glyphicon-info-sign control-label" ></div> Wireless Point Name</label>
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Enter the  Name" >
                 @if ($errors->has('name'))
                     <span  class="help-block">

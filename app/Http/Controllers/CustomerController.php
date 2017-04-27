@@ -65,7 +65,7 @@ class CustomerController extends Controller
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_fullview_customer('.$customers->id.')">Peek</a></li>
-                            <li><a href="'.$customers->id.'">View</a></li>
+                            <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
                             <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_customer_ticket('.$customers->id.')">Ticket</a></li>
                         </ul>
@@ -139,8 +139,12 @@ class CustomerController extends Controller
             $customer->broadcast_id       = $request->broadcast_id;
             $customer->tower_id           = $request->tower_id;
             $customer->apmac_id           = $request->apmac_id;
-            $customer->fiberbox_id        = $request->fiberbox_id;
+            $customer->wireless_type_id   = $request->wireless_type_id;
+            $customer->olt_id             = $request->olt_id;
+            $customer->first_splitter_id  = $request->first_splitter_id;
+            $customer->second_splitter_id = $request->second_splitter_id;
             $customer->switch_id          = $request->switch_id;
+            $customer->switch_port        = $request->switch_port;
             $customer->connection_method  = $request->connection_method;
             $customer->created_by         = Auth::User()->id;
             $customer->save();
