@@ -27,6 +27,8 @@ class CreateCustomersTable extends Migration
             $table->tinyInteger('device_id')->nullable();
             $table->integer('apmac_id')->nullable();
             $table->integer('customer_ticket_id')->nullable();
+            $table->integer('supplier_id')->nullable();
+            $table->integer('plan_id')->nullable();
             $table->integer('customer_debt_id')->nullable();
             $table->string('fullname')->unique();
             $table->string('username')->unique();
