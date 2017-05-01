@@ -62,6 +62,30 @@
             <!-- --------------------------------------------------------------------------------- -->
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-gears"></i> <span> Financial</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('isp-cpanel/financial/sales') }}"><i class="fa fa-money"></i> Sales</a></li>
+                    <li><a href="{{ url('isp-cpanel/financial/supplier') }}"><i class="fa fa-hospital-o"></i> Supplier</a></li>
+                    <li><a href="{{ url('isp-cpanel/financial/product') }}"><i class="fa fa-cube"></i> Product</a></li>
+                    <li><a href="{{ url('isp-cpanel/financial/inventory') }}"><i class="fa fa-cubes"></i> Inventory<small class="label pull-right bg-green">new</small></a></li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-navicon"></i> Repeater Node<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ url('isp-cpanel/repeaters/create') }}"><i class="fa fa-navicon"></i> New repeater Node</a></li>
+                            <li><a href="{{ url('isp-cpanel/repeaters') }}"><i class="fa fa-navicon"></i> repeater Node Table</a></li>
+                            <li><a href="{{ url('isp-cpanel/repeaters') }}"><i class="fa fa-navicon"></i> repeater Node Ticket's</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- --------------------------------------------------------------------------------- -->
+
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-gears"></i> <span>{{ trans('layout.node-manager') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>

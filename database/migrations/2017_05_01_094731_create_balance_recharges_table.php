@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSuppliersTable extends Migration
+class CreateBalanceRechargesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateSuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
+        Schema::create('balance_recharges', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
-            $table->string('address')->nullable();
-            $table->string('contact')->nullable();
-            $table->string('website')->nullable();
-            $table->string('bank_account')->nullable();
+            $table->integer('supplier_id')->unsigned();
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
             $table->string('currency')->nullable();
-            $table->string('payment_terms')->nullable();
+            $table->decimal('amount')->nullable();
+            $table->string('description')->nullable();
+            $table->string('copy_of_invoice')->nullable();
+            $table->string('supplier_invoice_no')->nullable();
             $table->string('tax_included')->nullable();
             $table->string('created_by');
             $table->string('updated_by')->nullable();
@@ -38,6 +36,6 @@ class CreateSuppliersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('balance_recharges');
     }
 }

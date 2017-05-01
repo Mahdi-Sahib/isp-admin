@@ -102,6 +102,18 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('isp-cpanel/fiberboxes', 'FiberBoxController');
     Route::resource('isp-cpanel/repeaters', 'RepeaterNodeController');
 
+    // financial
+    Route::get('isp-cpanel/financial/supplier', 'SupplierController@index');
+    Route::post('isp-cpanel/financial/supplier', 'SupplierController@add');
+    Route::get('isp-cpanel/financial/supplier/view', 'SupplierController@view');
+    Route::post('isp-cpanel/financial/supplier/update', 'SupplierController@update');
+    Route::post('isp-cpanel/financial/supplier/delete', 'SupplierController@delete');
+
+    Route::get('isp-cpanel/financial/product', 'ProductsController@index');
+    Route::post('isp-cpanel/financial/product', 'ProductsController@add');
+    Route::get('isp-cpanel/financial/product/view', 'ProductsController@view');
+    Route::post('isp-cpanel/financial/product/update', 'ProductsController@update');
+    Route::post('isp-cpanel/financial/product/delete', 'ProductsController@delete');
 
 });
 
