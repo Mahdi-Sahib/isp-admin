@@ -2,30 +2,32 @@
 
 
 @section('htmlheader_title')
-    Supplier
 @endsection
 
 
 @section('contentheader_title')
+    <br>
 @endsection
 
 
 @section('contentheader_description')
 @endsection
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
 
 @section('page-name')
-    Supplier
+    Balance Recharges
 @endsection
 
 
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
-    @include('adminlte::pages.sales.partials.supplier_view')
-    @include('adminlte::pages.sales.partials.supplier_script')
+    @include('adminlte::pages.sales.balance_recharges.partials.balance_recharges_view')
     @include('adminlte::layouts.partials.pagefooter')
 @endsection
 
 
 @section('page-scripts')
+    @include('adminlte::pages.sales.balance_recharges.partials.balance_recharges_script')
 @endsection
+

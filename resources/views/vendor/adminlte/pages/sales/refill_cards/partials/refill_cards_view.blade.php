@@ -1,48 +1,34 @@
-@if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-@endif
-<button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal">Add new Supplier</button>
+
+<button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal">Add Card</button>
 <br>
 <br>
-<div class="box-bod" >
-    <table id="data" class="table table-bordered table-striped">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($data as $x)
-            <tr>
-                <td>{{$x -> name}}</td>
-                <td>{{$x -> phone}}</td>
-                <td>{{$x -> email}}</td>
-                <td>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#viewModal" onclick="fun_view('{{$x -> id}}')">View</button>
-                    <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="fun_edit('{{$x -> id}}')">Edit</button>
-                  <!--  <button class="btn btn-danger" onclick="fun_delete('{{$x -> id}}')">Delete</button> -->
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Actions</th>
-        </tr>
-        </tfoot>
-    </table>
-</div>
-<input type="hidden" name="hidden_view" id="hidden_view" value="{{url('isp-cpanel/financial/supplier/view')}}">
-<input type="hidden" name="hidden_delete" id="hidden_delete" value="{{url('isp-cpanel/financial/supplier/delete')}}">
+<table id="data" class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Supplier</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Selling Price</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>Supplier</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Selling Price</th>
+        <th>Action</th>
+    </tr>
+    </tfoot>
+</table>
+
+
+<input type="hidden" name="hidden_view" id="hidden_view" value="{{url('isp-cpanel/sales/refill_cards/view')}}">
+<input type="hidden" name="hidden_delete" id="hidden_delete" value="{{url('isp-cpanel/sales/refill_cards/delete')}}">
 <!-- Add Modal start -->
 <div class="modal fade" id="addModal" role="dialog">
     <div class="modal-dialog">
@@ -51,56 +37,59 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add Supplier</h4>
+                <h4 class="modal-title">Refill Cards</h4>
             </div>
+            @if ( count($suppliers) < 1 ) <br> <p style="color: red">you didn't add Supplier <br>  go to settings -> Sales -> Supplier </p>  @else
 
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/financial/supplier') }}" method="post">
+                <form action="{{ url('isp-cpanel/financial/refill_cards') }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <br>
                         <div class="form-group">
-                            <label for="brand_model">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <label> Supplier : </label>
+                                <select name="supplier_id" class="form-control">
+                                    @foreach ($suppliers as $supplier)
+                                        <option value="{!! $supplier->id !!}" >{!! $supplier->name !!}</option>
+                                    @endforeach
+                                </select>
+
                         </div>
                         <div class="form-group">
-                            <label for="brand_model">Phone:</label>
-                            <input type="text" class="form-control" id="phone" name="phone">
+                            <label for="brand">Title:</label>
+                            <input type="text" class="form-control"  name="title">
                         </div>
                         <div class="form-group">
-                            <label for="brand_model">Email:</label>
-                            <input type="text" class="form-control" id="email" name="email">
+                            <label for="brand">Description:</label>
+                            <input type="text" class="form-control"  name="description">
                         </div>
                         <div class="form-group">
-                            <label for="brand_model">Address:</label>
-                            <input type="text" class="form-control" id="address" name="address">
-                        </div>                        <div class="form-group">
-                            <label for="brand_model">Contact:</label>
-                            <input type="text" class="form-control" id="contact" name="contact">
+                            <label for="brand">Thumb:</label>
+                            <input type="text" class="form-control"  name="thumb">
                         </div>
                         <div class="form-group">
-                            <label for="brand_model">Website:</label>
-                            <input type="text" class="form-control" id="website" name="website">
+                            <label for="brand">Image:</label>
+                            <input type="text" class="form-control"  name="image">
                         </div>
                         <div class="form-group">
-                            <label for="brand_model">Bank Account:</label>
-                            <input type="text" class="form-control" id="bank_account" name="bank_account">
+                            <label for="brand">Code:</label>
+                            <input type="text" class="form-control"  name="code">
                         </div>
                         <div class="form-group">
                             <label for="brand">Currency:</label>
-                            <input type="text" class="form-control" id="currency" name="currency">
+                            <input type="text" class="form-control"  name="currency">
                         </div>
                         <div class="form-group">
-                            <label for="brand">Payment Terms:</label>
-                            <input type="text" class="form-control" id="payment_terms" name="payment_terms">
+                            <label for="brand">Cost Price:</label>
+                            <input type="text" class="form-control"  name="cost_price">
                         </div>
                         <div class="form-group">
-                            <label for="brand">Tax Included:</label>
-                            <input type="text" class="form-control" id="tax_included" name="tax_included">
+                            <label for="brand">Selling Price:</label>
+                            <input type="text" class="form-control"  name="selling_price">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-info">This new Supplier</button>
+                    <button type="submit" class="btn btn-info">Add New Card</button>
                 </form>
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -121,9 +110,7 @@
                     <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title"> Ticket : </h4>
             </div>
-
             <div class="box">
-
                 <div class="box-body no-padding">
                     <table class="table table-striped">
                         <tbody>
@@ -132,50 +119,55 @@
                             <th>Label</th>
                             <th>Value</th>
                         </tr>
+                        </tr>                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td> product_categorie :</td>
+                            <td><span id="view_product_categorie"  ></span></td>
+                        </tr>
+                        </tr>                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td> supplier_id :</td>
+                            <td><span id="view_supplier_id"  ></span></td>
+                        </tr>
                         <tr>
                             <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Name :</td>
-                            <td><span  id="view_name"></span></td>
+                            <td> title :</td>
+                            <td><span  id="view_title"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-question-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Phone :</td>
-                            <td><span id="view_phone"></span></td>
+                            <td> price :</td>
+                            <td><span id="view_price"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Email :</td>
-                            <td><span id="view_email"  ></span></td>
+                            <td> description :</td>
+                            <td><span id="view_description"  ></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Address :</td>
-                            <td><span id="view_address"  ></span></td>
+                            <td> thumb :</td>
+                            <td><span id="view_thumb"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Contact :</td>
-                            <td><span id="view_contact"  ></span></td>
+                            <td> image :</td>
+                            <td><span id="view_image"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Website :</td>
-                            <td><span id="view_website"  ></span></td>
+                            <td> code :</td>
+                            <td><span id="view_code"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Bank Account :</td>
-                            <td><span id="view_status"  ></span></td>
-                        </tr>                        <tr>
-                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Currency :</td>
+                            <td> currency :</td>
                             <td><span id="view_currency"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Payment Terms :</td>
-                            <td><span id="view_payment_terms"  ></span></td>
-                        </tr>
+                            <td> cost_price :</td>
+                            <td><span id="view_cost_price"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Tax Included :</td>
-                            <td><span id="view_tax_included"  ></span></td>
+                            <td> selling_price :</td>
+                            <td><span id="view_selling_price"  ></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
@@ -202,7 +194,6 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
             </div>
@@ -214,56 +205,51 @@
 <!-- Edit Modal start -->
 <div class="modal fade" id="editModal" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit this Supplier</h4>
+                <h4 class="modal-title">Edit this product</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/financial/supplier/update') }}" method="post">
+                <form action="{{ url('isp-cpanel/financial/product/update') }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="edit_brand_model">Name :</label>
-                            <input type="text" class="form-control" id="edit_name" name="name">
+                            <label for="edit_brand_model">title :</label>
+                            <input type="text" class="form-control" id="Edit_title" name="title">
                         </div>
                         <div class="form-group">
-                            <label for="edit_brand_model">Phone :</label>
-                            <input type="text" class="form-control" id="edit_phone" name="phone">
+                            <label for="brand_model">price:</label>
+                            <input type="text" class="form-control" id="Edit_price" name="price">
                         </div>
                         <div class="form-group">
-                            <label for="edit_brand_model">Email :</label>
-                            <input type="text" class="form-control" id="edit_email" name="email">
+                            <label for="brand_model">description:</label>
+                            <input type="text" class="form-control" id="Edit_description" name="description">
                         </div>
                         <div class="form-group">
-                            <label for="edit_brand_model">Address :</label>
-                            <input type="text" class="form-control" id="edit_address" name="address">
+                            <label for="brand_model">thumb:</label>
+                            <input type="text" class="form-control" id="Edit_thumb" name="thumb">
                         </div>
                         <div class="form-group">
-                            <label for="edit_brand_model">Contact :</label>
-                            <input type="text" class="form-control" id="edit_contact" name="contact">
+                            <label for="brand_model">image:</label>
+                            <input type="text" class="form-control" id="Edit_image" name="image">
                         </div>
                         <div class="form-group">
-                            <label for="edit_brand_model">Website :</label>
-                            <input type="text" class="form-control" id="edit_website" name="website">
+                            <label for="brand_model">code:</label>
+                            <input type="text" class="form-control" id="Edit_code" name="code">
                         </div>
                         <div class="form-group">
-                            <label for="edit_brand_model">Bank Account :</label>
-                            <input type="text" class="form-control" id="edit_bank_account" name="bank_account">
+                            <label for="brand_model">currency:</label>
+                            <input type="text" class="form-control" id="Edit_currency" name="currency">
                         </div>
                         <div class="form-group">
-                            <label for="edit_brand_model">Currency :</label>
-                            <input type="text" class="form-control" id="edit_currency" name="currency">
+                            <label for="Edit_cost_price">cost_price:</label>
+                            <input type="text" class="form-control" id="Edit_cost_price" name="cost_price">
                         </div>
                         <div class="form-group">
-                            <label for="edit_brand_model">Payment Terms :</label>
-                            <input type="text" class="form-control" id="edit_payment_terms" name="payment_terms">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit_brand_model">Tax Included :</label>
-                            <input type="text" class="form-control" id="edit_tax_included" name="tax_included">
+                            <label for="Edit_selling_price">selling_price:</label>
+                            <input type="text" class="form-control" id="Edit_selling_price" name="selling_price">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-default">Update</button>
@@ -276,6 +262,3 @@
         </div>
     </div>
 </div>
-
-
-

@@ -57,10 +57,12 @@
         <label><div class="fa fa-home"></div> More Information</label>
         <input type="text" class="form-control" value="{{ $customer->about }}" disabled >
     </div>
+    @if($customer->Device)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-gears"></div> Station Type</label>
         <input type="text" class="form-control" value="{{ $customer->Device->brand_model }}" disabled >
     </div>
+    @endif
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-barcode"></div> MAC Address</label>
         <input type="text" class="form-control" value="{{ $customer->mac }}" disabled >
@@ -69,56 +71,68 @@
         <label><div class="fa fa-sitemap"></div> IP Address</label>
         <input type="text" class="form-control" value="{{ $customer->ip }}" disabled >
     </div>
+    @if($customer->connectionMmethod)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-sitemap"></div> Connection Method :</label>
         <input type="text" class="form-control"  value="{{ $customer->connectionMmethod->method }}" disabled >
     </div>
+    @endif
         <input id="v" value="{{ $customer->connection_method }}" hidden>
 
 </div>
 <hr>
 <div class="box-body" id="wireless">
+    @if($customer->tower)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> point / Tower</label>
         <input  type="text" class="form-control" value="{{ $customer->towerName->name }}" disabled >
     </div>
+    @endif
+    @if($customer->BroadcastSSID)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> Broadcast SSID</label>
         <input type="text" class="form-control"  value="{{ $customer->BroadcastSSID->ssid }}" disabled >
     </div>
+    @endif
+    @if($customer->BroadcastMAC)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> Broadcast AP MAC</label>
         <input type="text" class="form-control"  value="{{ $customer->BroadcastMAC->mac }}" disabled >
     </div>
+    @endif
+    @if($customer->wirelessType)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> Wireless Method</label>
         <input type="text" class="form-control"  value="{{ $customer->wirelessType->type }}" disabled >
     </div>
+    @endif
 </div>
 
 <div class="box-body" id="fttx">
+    @if($customer->tower)
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> OLT No. & Location</label>
-        <input  type="text" class="form-control" value="{{ $customer->towerName->name }}" disabled >
+        <input  type="text" class="form-control" value="{{ $customer->tower->name }}" disabled >
     </div>
+    @endif
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> First Splitter No. & Location</label>
-        <input type="text" class="form-control"  value="{{ $customer->BroadcastSSID->ssid }}" disabled >
+        <input type="text" class="form-control"  value="" disabled >
     </div>
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> Second Splitter No. & Location</label>
-        <input type="text" class="form-control"  value="{{ $customer->BroadcastMAC->mac }}" disabled >
+        <input type="text" class="form-control"  value="" disabled >
     </div>
 </div>
 
 <div class="box-body" id="lan">
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> Hub Switch</label>
-        <input  type="text" class="form-control" value="{{ $customer->towerName->name }}" disabled >
+        <input  type="text" class="form-control" value="" disabled >
     </div>
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> Port Number</label>
-        <input type="text" class="form-control"  value="{{ $customer->BroadcastSSID->ssid }}" disabled >
+        <input type="text" class="form-control"  value="" disabled >
     </div>
 </div>
 <hr>

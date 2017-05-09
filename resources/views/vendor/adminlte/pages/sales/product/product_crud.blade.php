@@ -19,11 +19,11 @@
 
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
-    @include('adminlte::pages.sales.partials.product_view')
-    @include('adminlte::pages.sales.partials.product_script')
+    @include('adminlte::pages.sales.product.partials.product_view')
     @include('adminlte::layouts.partials.pagefooter')
 @endsection
 
 
 @section('page-scripts')
+    @include('adminlte::pages.sales.product.partials.product_script')
 @endsection

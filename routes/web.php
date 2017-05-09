@@ -102,18 +102,46 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('isp-cpanel/fiberboxes', 'FiberBoxController');
     Route::resource('isp-cpanel/repeaters', 'RepeaterNodeController');
 
-    // financial
-    Route::get('isp-cpanel/financial/supplier', 'SupplierController@index');
-    Route::post('isp-cpanel/financial/supplier', 'SupplierController@add');
-    Route::get('isp-cpanel/financial/supplier/view', 'SupplierController@view');
-    Route::post('isp-cpanel/financial/supplier/update', 'SupplierController@update');
-    Route::post('isp-cpanel/financial/supplier/delete', 'SupplierController@delete');
+
 
     Route::get('isp-cpanel/financial/product', 'ProductsController@index');
     Route::post('isp-cpanel/financial/product', 'ProductsController@add');
     Route::get('isp-cpanel/financial/product/view', 'ProductsController@view');
     Route::post('isp-cpanel/financial/product/update', 'ProductsController@update');
     Route::post('isp-cpanel/financial/product/delete', 'ProductsController@delete');
+
+    Route::get('isp-cpanel/financial/balance_recharges/view', 'ProductsController@viewAjax');
+    Route::get('isp-cpanel/financial/balance_recharges', 'BalanceRechargesController@BalanceRechargeTableView');
+    Route::get('isp-cpanel/financial/balance_recharges_ajax', [
+        'as'   => 'isp-cpanel.financial.balance_recharges_ajax',
+        'uses' => 'BalanceRechargesController@BalanceRechargeTableAjax'
+    ]);
+
+    // financial
+    Route::get('isp-cpanel/financial/supplier/view', 'SupplierController@view');
+    Route::post('isp-cpanel/financial/supplier/update', 'SupplierController@update');
+    Route::post('isp-cpanel/financial/supplier/delete', 'SupplierController@delete');
+
+    Route::resource('isp-cpanel/financial/supplier', 'SupplierController');    Route::get('isp-cpanel/financial/supplier_table_ajax', [
+        'as'   => 'isp-cpanel.financial.supplier',
+        'uses' => 'SupplierController@SupplierTableAjax'
+    ]);
+    Route::resource('isp-cpanel/financial/supplier', 'SupplierController');
+
+    Route::get('isp-cpanel/financial/supplier_balance_recharge_table_view', 'SupplierController@SupplierBalanceRechargeTableView');
+    Route::get('isp-cpanel/financial/supplier_dashboard/{id?}', [
+        'as'   => 'isp-cpanel.financial.supplier_balance_recharge_table_ajax',
+        'uses' => 'SupplierController@SupplierBalanceRechargeTableAjax'
+    ]);
+    Route::post('isp-cpanel/financial/balance_recharges', 'BalanceRechargesController@add');
+
+    // refill_cards
+    Route::resource('isp-cpanel/financial/refill_cards', 'RefillCardController');
+    Route::get('isp-cpanel/financial/refill_card_ajax', [
+        'as'   => 'isp-cpanel.financial.refill_cards',
+        'uses' => 'RefillCardController@RefillCardsTableAjax'
+    ]);
+
 
 });
 

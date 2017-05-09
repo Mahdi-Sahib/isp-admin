@@ -66,19 +66,18 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('isp-cpanel/financial/sales') }}"><i class="fa fa-money"></i> Sales</a></li>
-                    <li><a href="{{ url('isp-cpanel/financial/supplier') }}"><i class="fa fa-hospital-o"></i> Supplier</a></li>
-                    <li><a href="{{ url('isp-cpanel/financial/product') }}"><i class="fa fa-cube"></i> Product</a></li>
-                    <li><a href="{{ url('isp-cpanel/financial/inventory') }}"><i class="fa fa-cubes"></i> Inventory<small class="label pull-right bg-green">new</small></a></li>
-
                     <li>
-                        <a href="#"><i class="fa fa-navicon"></i> Repeater Node<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-money"></i> Sales<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ url('isp-cpanel/repeaters/create') }}"><i class="fa fa-navicon"></i> New repeater Node</a></li>
+                            <li><a href="{{ url('isp-cpanel/financial/balance_recharges') }}"><i class="fa fa-money"></i> Buy refill Balance</a></li>
                             <li><a href="{{ url('isp-cpanel/repeaters') }}"><i class="fa fa-navicon"></i> repeater Node Table</a></li>
                             <li><a href="{{ url('isp-cpanel/repeaters') }}"><i class="fa fa-navicon"></i> repeater Node Ticket's</a></li>
                         </ul>
                     </li>
+                    <li><a href="{{ url('isp-cpanel/financial/supplier') }}"><i class="fa fa-hospital-o"></i> Supplier</a></li>
+                    <li><a href="{{ url('isp-cpanel/financial/product') }}"><i class="fa fa-cube"></i> Product</a></li>
+                    <li><a href="{{ url('isp-cpanel/financial/refill_cards') }}"><i class="fa fa-cube"></i> Refill Cards</a></li>
+                    <li><a href="{{ url('isp-cpanel/financial/inventory') }}"><i class="fa fa-cubes"></i> Inventory<small class="label pull-right bg-green">new</small></a></li>
                 </ul>
             </li>
 

@@ -14,7 +14,7 @@ class ProductsController extends Controller
     public function index()
     {
         $data = Product::all();
-        return view('vendor.adminlte.pages.sales.product')->with('data',$data);
+        return view('vendor.adminlte.pages.sales.product.product_crud')->with('data',$data);
     }
 
     /*

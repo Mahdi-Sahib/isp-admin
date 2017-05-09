@@ -1,4 +1,3 @@
-
 <script type="text/javascript">
     function fun_view(id)
     {

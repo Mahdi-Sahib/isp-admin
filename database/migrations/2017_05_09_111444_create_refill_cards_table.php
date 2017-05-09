@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBalanceRechargesTable extends Migration
+class CreateRefillCardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateBalanceRechargesTable extends Migration
      */
     public function up()
     {
-        Schema::create('balance_recharges', function (Blueprint $table) {
+        Schema::create('refill_cards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('supplier_id')->unsigned();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
-            $table->string('currency')->nullable();
-            $table->decimal('amount')->nullable();
+            $table->string('title')->nullable();
             $table->string('description')->nullable();
-            $table->integer('by_employee')->nullable();
-            $table->string('copy_of_invoice')->nullable();
-            $table->string('supplier_invoice_no')->nullable();
-            $table->string('tax_included')->nullable();
+            $table->string('thumb')->nullable();
+            $table->string('image')->nullable();
+            $table->string('code')->nullable();
+            $table->string('currency');
+            $table->decimal('cost_price');
+            $table->decimal('selling_price');
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->timestamps();
@@ -37,6 +38,6 @@ class CreateBalanceRechargesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('balance_recharges');
+        Schema::dropIfExists('refill_cards');
     }
 }
