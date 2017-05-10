@@ -24,8 +24,8 @@ class CreateBalanceRechargesTable extends Migration
             $table->string('copy_of_invoice')->nullable();
             $table->string('supplier_invoice_no')->nullable();
             $table->string('tax_included')->nullable();
-            $table->string('created_by');
-            $table->string('updated_by')->nullable();
+            $table->integer('created_by');
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }

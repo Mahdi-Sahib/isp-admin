@@ -1,11 +1,9 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-
 <script type="text/javascript">
     $('#data').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": '{{ route('isp-cpanel.financial.refill_cards') }}',
-
 
         "columns": [
             { data: 'supplier.name',      name: 'supplier_id' , orderable: false, searchable: true ,class:'text-center'},
@@ -17,8 +15,16 @@
     });
 </script>
 
-
 <script type="text/javascript">
+    $(window).ajaxComplete(function () {console.log('Ajax Complete'); });
+    $(window).ajaxError(function (data, textStatus, jqXHR) {console.log('Ajax Error');
+        console.log('data: ' + data);
+        console.log('textStatus: ' + textStatus);
+        console.log('jqXHR: ' + jqXHR); });
+    $(window).ajaxSend(function () {console.log('Ajax Send'); });
+    $(window).ajaxStart(function () {console.log('Ajax Start'); });
+    $(window).ajaxStop(function () {console.log('Ajax Stop'); });
+    $(window).ajaxSuccess(function () {console.log('Ajax Success'); });
     function fun_view(id)
     {
         var view_url = $("#hidden_view").val();
@@ -27,11 +33,20 @@
             type:"GET",
             data: {"id":id},
             success: function(result){
-                //console.log(result);
-                $("#view_product_categorie").text(result.product_categorie);
+                // console.log(result);
                 $("#view_supplier_id").text(result.supplier_id);
                 $("#view_title").text(result.title);
-                $("#view_price").text(result.price);
+                $("#view_description").text(result.description);
+                $("#view_thumb").text(result.thumb);
+                $("#view_image").text(result.image);
+                $("#view_code").text(result.code);
+                $("#view_currency").text(result.currency);
+                $("#view_cost_price").text(result.cost_price);
+                $("#view_selling_price").text(result.selling_price);
+                $("#view_created_at").text(result.created_at);
+                $("#view_created_by").text(result.created_by);
+                $("#view_updated_at").text(result.updated_at);
+                $("#view_updated_by").text(result.updated_by);
             }
         });
     }

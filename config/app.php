@@ -181,7 +181,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,  // laravelcollective/html
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class, // Acacha AdminLTE template provider
         Yajra\Datatables\DatatablesServiceProvider::class,  // Yajra - Datatables
-        Barryvdh\Debugbar\ServiceProvider::class  // Laravel Debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,  // Laravel Debugbar
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class // barryvdh/laravel-ide-helper
 
 
     ],

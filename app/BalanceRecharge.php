@@ -4,6 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\BalanceRecharge
+ *
+ * @property-read \App\Supplier $supplier
+ * @property-read \App\User $user
+ * @mixin \Eloquent
+ */
 class BalanceRecharge extends Model
 {
     public $table='balance_recharges';

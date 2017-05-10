@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Validator, Input, Redirect ,Session ;
+use Validator ;
 
 class ProductsController extends Controller
 {
@@ -30,8 +30,6 @@ class ProductsController extends Controller
                 ->withErrors($validator);
         } else {
             $data = new Product;
-    //      $data->product_categorie_id            = 1;
-     //     $data->supplier_id                     = 1;
             $data->title                           = $request->title;
             $data->price                           = $request->price;
             $data->description                     = $request->description;

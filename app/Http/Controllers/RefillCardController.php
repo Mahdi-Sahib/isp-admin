@@ -96,12 +96,9 @@ class RefillCardController extends Controller
      * @param  \App\RefillCard  $refillCard
      * @return \Illuminate\Http\Response
      */
-    public function show(RefillCard $refillCard)
-    {
-        //
-    }
 
-    public function view(Request $request)
+
+    public function show(Request $request)
     {
         if($request->ajax()){
             $id = $request->id;

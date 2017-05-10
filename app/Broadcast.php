@@ -4,6 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Broadcast
+ *
+ * @property-read \App\Device $Device
+ * @property-read \App\Tower $Tower
+ * @mixin \Eloquent
+ */
 class Broadcast extends Model
 {
     public $table="broadcasts";

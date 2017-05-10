@@ -142,6 +142,8 @@ Route::group(['middleware' => 'admin'], function () {
         'uses' => 'RefillCardController@RefillCardsTableAjax'
     ]);
 
+    // Customer Transaction
+    Route::resource('isp-cpanel/financial/customer_transaction', 'CustomerTransactionController');
 
 });
 

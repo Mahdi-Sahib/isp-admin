@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-
+        <!-- ajax -->
     </tbody>
     <tfoot>
     <tr>
@@ -26,8 +26,7 @@
     </tfoot>
 </table>
 
-
-<input type="hidden" name="hidden_view" id="hidden_view" value="{{url('isp-cpanel/sales/refill_cards/view')}}">
+<input type="hidden" name="hidden_view" id="hidden_view" value="{{url('isp-cpanel/sales/refill_cards/show')}}">
 <input type="hidden" name="hidden_delete" id="hidden_delete" value="{{url('isp-cpanel/sales/refill_cards/delete')}}">
 <!-- Add Modal start -->
 <div class="modal fade" id="addModal" role="dialog">
@@ -101,7 +100,7 @@
 <!-- add code ends -->
 
 <!-- View Modal start -->
-<div class="modal fade " id="viewModal" role="dialog">e
+<div class="modal fade" id="viewModal" role="dialog">e
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
@@ -121,73 +120,68 @@
                         </tr>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> product_categorie :</td>
-                            <td><span id="view_product_categorie"  ></span></td>
+                            <td> supplier :</td>
+                            <td><span id="view_supplier_id"  ></span></td>
                         </tr>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> supplier_id :</td>
-                            <td><span id="view_supplier_id"  ></span></td>
-                        </tr>
-                        <tr>
-                            <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> title :</td>
-                            <td><span  id="view_title"></span></td>
+                            <td><span id="view_title"  ></span></td>
                         </tr>
-                        <tr>
-                            <td><label  class="glyphicon glyphicon-question-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> price :</td>
-                            <td><span id="view_price"></span></td>
-                        </tr>
-                        <tr>
+                        </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> description :</td>
                             <td><span id="view_description"  ></span></td>
                         </tr>
-                        <tr>
+                        </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> thumb :</td>
                             <td><span id="view_thumb"  ></span></td>
+                        </tr>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> image :</td>
                             <td><span id="view_image"  ></span></td>
+                        </tr>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> code :</td>
-                            <td><span id="view_code"  ></span></td>
+                            <td><span id=view_code  ></span></td>
+                        </tr>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> currency :</td>
                             <td><span id="view_currency"  ></span></td>
+                        </tr>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> cost_price :</td>
                             <td><span id="view_cost_price"  ></span></td>
+                        </tr>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> selling_price :</td>
                             <td><span id="view_selling_price"  ></span></td>
                         </tr>
-                        <tr>
+                        </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Created at :</td>
-                            <td><span id="view_created_at"></span></td>
+                            <td> created_at :</td>
+                            <td><span id="view_created_at"  ></span></td>
                         </tr>
-                        <tr>
+                        </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Created by :</td>
-                            <td><span id="view_created_by"></span></td>
+                            <td> created_by :</td>
+                            <td><span id="view_created_by"  ></span></td>
                         </tr>
-                        <tr>
+                        </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Last Update at :</td>
-                            <td><span id="view_updated_at"></span></td>
+                            <td> updated_at :</td>
+                            <td><span id="view_updated_at"  ></span></td>
                         </tr>
-                        <tr>
+                        </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Last Update by :</td>
-                            <td><span id="view_updated_by"></span></td>
+                            <td> updated_by :</td>
+                            <td><span id="view_updated_by"  ></span></td>
                         </tr>
                         </tbody>
                     </table>

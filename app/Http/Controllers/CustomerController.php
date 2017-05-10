@@ -68,6 +68,7 @@ class CustomerController extends Controller
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
                             <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_customer_ticket('.$customers->id.')">Ticket</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_refill_card('.$customers->id.')">Refill</a></li>
                         </ul>
                     </div>
                 </td>
