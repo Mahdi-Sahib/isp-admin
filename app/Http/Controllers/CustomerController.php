@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\RefillCard;
+use App\RefillCustomer;
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\Caster\CutStub;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Customer;
@@ -30,19 +33,21 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('vendor.adminlte.pages.customer.customers-table-one');
+        $refills = RefillCard::all();
+        return view('vendor.adminlte.pages.customer.customers_dashboard',compact('refills'));
     }
 
 
     public function CustomerTableOneView()
     {
-        return view('vendor.adminlte.pages.customer.customers-table-one');
+        $refills = RefillCard::all();
+        return view('vendor.adminlte.pages.customer.customers_dashboard',compact('refills'));
     }
 
     public function CustomerTableOneAjax()
     {
         $customers = Customer::select('customers.*');
-        return Datatables::of($customers)
+        return Datatables::of($customers)->with('RefillCustomer')
             ->orderBy('created_at', 'id $1')
             ->editColumn('connection_method',function ($customers){
                 if ($customers->connection_method == 1){
@@ -55,6 +60,25 @@ class CustomerController extends Controller
                     return "Fiber Obtic";
                 }
             })
+            ->rawColumns(['action','navigation','fullname'])
+            ->editColumn('fullname',function ($customers){
+                if ($customers->unpaidSum() > 0 or $customers->openTicketCount() > 0){
+                    return '<div class="text-red" >'.$customers->fullname.'</div>';
+                }else{
+                    return $customers->fullname ;
+                }
+            })
+            ->addColumn('navigation',function ($customers){
+                if ($customers->unpaidSum() > 0 and $customers->openTicketCount() > 0){
+                    return '<small class="label bg-red-active"> UnPaid  '.number_format( $customers->getUnpaid() / 1, 0).' </small>' . '<br> <br>' .'<small class="label bg-yellow"> '. $customers->openTicketCount() .' Open Ticket  </small>';
+                }elseif ($customers->unpaidSum() > 0 and $customers->openTicketCount() == 0){
+                    return '<small class="label bg-red-active"> UnPaid  '.number_format( $customers->getUnpaid() / 1, 0).' </small>' ;
+                }elseif ( $customers->unpaidSum() == 0 and $customers->openTicketCount() > 0){
+                    return '<small class="label bg-yellow-active"> '. $customers->openTicketCount() .' Open Ticket  </small>' ;
+                }else{
+                    return '' ;
+                }
+            })
             ->addColumn('action', function ($customers) {
                 return '
                 <td class="text-center">
@@ -64,11 +88,12 @@ class CustomerController extends Controller
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_fullview_customer('.$customers->id.')">Peek</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_customer" onclick="fun_peek_customer('.$customers->id.')">Peek</a></li>
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_debt_repayment" onclick="fun_get_id('.$customers->id.')">Repayment</a></li>
                             <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_customer_ticket('.$customers->id.')">Ticket</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_refill_card('.$customers->id.')">Refill</a></li>
                         </ul>
                     </div>
                 </td>
@@ -86,11 +111,16 @@ class CustomerController extends Controller
             ->make(true);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function Peek(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Customer::find($id);
+            //echo json_decode($info);
+            return response()->json($info);
+        }
+    }
+
     public function create()
     {
         $customer           = Customer::all();
@@ -158,6 +188,7 @@ class CustomerController extends Controller
         }
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -167,6 +198,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         $tower              = Tower::all();
+        $refills            = RefillCard::all();
         $broadcast          = Broadcast::all();
         $device             = Device::all();
         $apmac              = Broadcast::all();
@@ -174,7 +206,7 @@ class CustomerController extends Controller
         $fiberbox           = FiberBox::all();
         $fibernode          = FiberNode::all();
         $customer           = Customer::find($id);
-        return view('vendor.adminlte.pages.customer.view-customer' , compact('customer','device','tower','broadcast','apmac','ticket','user','fiberbox','fibernode')) ;
+        return view('vendor.adminlte.pages.customer.view-customer' , compact('customer','device','tower','broadcast','apmac','ticket','user','fiberbox','fibernode','refills')) ;
 
     }
 
@@ -231,6 +263,7 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         $customer = Customer::find($id);

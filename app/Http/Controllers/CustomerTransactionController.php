@@ -35,7 +35,7 @@ class CustomerTransactionController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-
+            'title' => 'required|unique:refill_cards'
         ]);
         if ($validator->fails()) {
             return back()
@@ -43,7 +43,13 @@ class CustomerTransactionController extends Controller
         } else {
             $data = new RefillCard;
             $data->supplier_id                     = $request->supplier_id;
-            $data->customer_id                     = $request->customer_id;
+            $data->title                           = $request->title;
+            $data->description                     = $request->description;
+            $data->thumb                           = $request->thumb;
+            $data->image                           = $request->thumb;
+            $data->code                            = $request->code;
+            $data->code                            = $request->code;
+            $data->currency                        = 'usd';
             $data->cost_price                      = $request->cost_price;
             $data->selling_price                   = $request->selling_price;
             $data->created_by                      = Auth::User()->id;

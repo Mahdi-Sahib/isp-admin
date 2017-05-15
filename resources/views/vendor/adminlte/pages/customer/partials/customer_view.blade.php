@@ -71,6 +71,10 @@
         <label><div class="fa fa-sitemap"></div> IP Address</label>
         <input type="text" class="form-control" value="{{ $customer->ip }}" disabled >
     </div>
+    <div  class="col-lg-3 form-group @if ($customer->openTicketCount() > 0) has-error  @endif">
+        <label><div class="fa fa-ticket"></div> Open Ticket Count</label>
+        <input type="text" class="form-control" value="{{ $customer->openTicketCount() }}" disabled >
+    </div>
     @if($customer->connectionMmethod)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-sitemap"></div> Connection Method :</label>
@@ -82,30 +86,30 @@
 </div>
 <hr>
 <div class="box-body" id="wireless">
-    @if($customer->tower)
+
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> point / Tower</label>
-        <input  type="text" class="form-control" value="{{ $customer->towerName->name }}" disabled >
+        <input  type="text" class="form-control" @if($customer->tower) value="{{ $customer->towerName->name }}" @endif disabled >
     </div>
-    @endif
-    @if($customer->BroadcastSSID)
+
+
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> Broadcast SSID</label>
-        <input type="text" class="form-control"  value="{{ $customer->BroadcastSSID->ssid }}" disabled >
+        <input type="text" class="form-control" @if($customer->BroadcastSSID) value="{{ $customer->BroadcastSSID->ssid }}" @endif disabled >
     </div>
-    @endif
-    @if($customer->BroadcastMAC)
+
+
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> Broadcast AP MAC</label>
-        <input type="text" class="form-control"  value="{{ $customer->BroadcastMAC->mac }}" disabled >
+        <input type="text" class="form-control" @if($customer->BroadcastMAC) value="{{ $customer->BroadcastMAC->mac }}" @endif disabled >
     </div>
-    @endif
-    @if($customer->wirelessType)
+
+
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> Wireless Method</label>
-        <input type="text" class="form-control"  value="{{ $customer->wirelessType->type }}" disabled >
+        <input type="text" class="form-control" @if($customer->wirelessType) value="{{ $customer->wirelessType->type }}" @endif disabled >
     </div>
-    @endif
+
 </div>
 
 <div class="box-body" id="fttx">
@@ -137,23 +141,24 @@
 </div>
 <hr>
 <div class="box-body" id="lan">
-    <div  class="col-lg-3 form-group">
-        <label><div class="fa fa-wifi"></div> Last Dibet</label>
-        <input  type="text" class="form-control" value="232323" disabled >
+    <div class="col-lg-3 form-group @if ($customer->unpaidCount()) has-error  @endif">
+        <label><div class="fa fa-money"></div> Unpaid Count</label>
+        <input  type="text" class="form-control" value="{{ $customer->unpaidCount() }}" disabled >
+    </div>
+    <div  class="col-lg-3 form-group @if ($customer->unpaidCount()) has-error  @endif">
+        <label><div class="fa fa-money"></div> Total Unpaid Amount</label>
+        <input type="text" class="form-control"  value="{{ number_format( $customer->getUnpaid() / 1, 0) }}" disabled >
+    </div>
+    <div  class="col-lg-3 form-group" class="dunger">
+        <label><div class="fa fa-money"></div> Refill Count</label>
+        <input type="text" class="form-control"  value="{{ $customer->refillCount() }}" disabled >
     </div>
     <div  class="col-lg-3 form-group">
-        <label><div class="fa fa-wifi"></div> Balance</label>
-        <input type="text" class="form-control"  value="2323232" disabled >
-    </div>
-    <div  class="col-lg-3 form-group">
-        <label><div class="fa fa-wifi"></div> Balance</label>
-        <input type="text" class="form-control"  value="4432" disabled >
-    </div>
-    <div  class="col-lg-3 form-group">
-        <label><div class="fa fa-wifi"></div> Balance</label>
+        <label><div class="fa fa-money"></div> Balance</label>
         <input type="text" class="form-control"  value="643234" disabled >
     </div>
 </div>
+
 <hr>
 <div class="box-body">
     <div  class="col-lg-3 form-group">

@@ -37,6 +37,14 @@ class Customer extends Model
         return $this->belongsTo('App\Info','address_1','id');
     }
 
+    public function ticket() {
+        return $this->hasMany('App\CustomerTicket');
+    }
+
+    public function openTicketCount() {
+        return $this->hasMany('App\CustomerTicket')->where('status','=', 1)->count();
+    }
+
     public function customerticket() {
         return $this->hasMany(CustomerTicketController::class);
     }
@@ -48,4 +56,29 @@ class Customer extends Model
     public function userUpdated(){
         return $this->belongsTo('App\User','updated_by','id');
     }
+
+    public function unpaidCount(){
+        return $this->hasMany('App\RefillCustomer')->where('payment_status','=', 1)->count();
+    }
+
+    public function refillCount(){
+        return $this->hasMany('App\RefillCustomer')->pluck('id')->count();
+    }
+
+    //  ======================== start
+    public function totalUnpaidSum(){
+        return $this->hasMany('App\RefillCustomer')->where('payment_status','=', 1)->pluck('card_price')->sum();
+    }
+
+    public function unpaidSum(){
+        return $this->hasMany('App\RefillCustomer')->where('payment_status','=', 1)->pluck('amount_paid')->sum();
+    }
+
+    public function getUnpaid(){
+        return $this->totalUnpaidSum() - $this->unpaidSum();
+    }
+    // ======================== end
+
+
+
 }

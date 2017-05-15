@@ -10,8 +10,16 @@ Route::group(['middleware' => 'admin'], function () {
         'uses' => 'CustomerController@CustomerTableOneAjax'
     ]);
     Route::resource('isp-cpanel/customers', 'CustomerController');
+    Route::get('isp-cpanel/customer/customer_peek', 'CustomerController@Peek');
+    Route::post('isp-cpanel/customer/customer_refill', 'RefillCustomerController@refillCustomer');
 
-    Route::get('isp-cpanel/customers/customer-ticket-view', 'CustomerTicketController@CustomerTicketView');
+    // Route::get('isp-cpanel/customers/customer-refill-view', 'RefillCustomerController@CustomerRefillView');
+    Route::get('isp-cpanel/customers/customer-refill-ajax/{id?}', [
+        'as'   => 'isp-cpanel.customers.customer-refill-ajax',
+        'uses' => 'RefillCustomerController@CustomerRefillAjax'
+    ]);
+
+    // Route::get('isp-cpanel/customers/customer-ticket-view', 'CustomerTicketController@CustomerTicketView');
     Route::get('isp-cpanel/customers/customer-ticket-ajax/{id?}', [
         'as'   => 'isp-cpanel.customers.customer-ticket-ajax',
         'uses' => 'CustomerTicketController@CustomerTicketAjax'
@@ -19,6 +27,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/customer/customer_ticket', 'CustomerTicketController@addAjax');
     Route::get('isp-cpanel/customer/customer_ticket/view', 'CustomerTicketController@viewAjax');
     Route::post('isp-cpanel/customer/customer_ticket/close_ticket', 'CustomerTicketController@closeTicket');
+
 
     Route::get('isp-cpanel/towers/towers-table-one-view', 'TowerController@TowersTableOneView');
     Route::get('isp-cpanel/towers/tower-table-one-ajax', [

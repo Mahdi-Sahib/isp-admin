@@ -52,7 +52,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('isp-cpanel/customers/create') }}"><i class="fa fa-user-plus"></i> {{ trans('layout.new-customers') }}<small class="label pull-right bg-green">new</small></a></li>
-                    <li><a href="{{ url('isp-cpanel/customers/customer-table-one-view') }}"><i class="fa fa-user-md"></i> {{ trans('layout.all-customers') }}<small class="label pull-right bg-green">1452</small></a></li>
+                    <li><a href="{{ url('isp-cpanel/customers') }}"><i class="fa fa-user-md"></i> {{ trans('layout.all-customers') }}<small class="label pull-right bg-green">1452</small></a></li>
                     <li><a href="{{ url('isp-cpanel/customers/ticket') }}"><i class="fa fa-wheelchair"></i> {{ trans('layout.ticket-customers') }}<small class="label pull-right bg-green">new</small></a></li>
                     <li><a href="{{ url('isp-cpanel/customers/invoice') }}"><i class="fa fa-user-plus"></i> {{ trans('layout.customers-invoices') }}<small class="label pull-right bg-green">new</small></a></li>
                     <li><a href="{{ url('isp-cpanel/customers/dashboard') }}"><i class="fa fa-user-plus"></i> {{ trans('layout.dashboard-customers') }}<smal ></smal></a></li>

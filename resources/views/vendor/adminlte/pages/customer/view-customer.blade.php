@@ -23,11 +23,16 @@
     @include('adminlte::layouts.partials.pageheader')
     @include('adminlte::pages.customer.partials.customer_view')
     @include('adminlte::pages.customer.partials.customer_ticket_view')
+    <hr>
+    @include('adminlte::pages.customer.refill.refill_table_view')
+    @include('adminlte::pages.customer.refill.customer_refill_view')
     @include('adminlte::layouts.partials.pagefooter')
 @endsection
 
 
 @section('page-scripts')
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    @include('adminlte::pages.customer.partials.customer_ticket_secript')
+    @include('adminlte::pages.customer.partials.customer_ticket_script')
+    @include('adminlte::pages.customer.refill.partials.refill_table_script')
+    @include('adminlte::pages.customer.refill.partials.customer_refill_script')
 @endsection
