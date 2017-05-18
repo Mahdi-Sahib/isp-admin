@@ -10,6 +10,7 @@ use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Customer;
 use App\User;
+use Carbon\Carbon;
 use App\AddressHelper;
 use App\ConnectionType;
 use App\Device;
@@ -69,11 +70,11 @@ class CustomerController extends Controller
                 }
             })
             ->addColumn('navigation',function ($customers){
-                if ($customers->unpaidSum() > 0 and $customers->openTicketCount() > 0){
+                if ($customers->getUnpaid() > 0 and $customers->openTicketCount() > 0){
                     return '<small class="label bg-red-active"> UnPaid  '.number_format( $customers->getUnpaid() / 1, 0).' </small>' . '<br> <br>' .'<small class="label bg-yellow"> '. $customers->openTicketCount() .' Open Ticket  </small>';
-                }elseif ($customers->unpaidSum() > 0 and $customers->openTicketCount() == 0){
+                }elseif ($customers->getUnpaid() > 0 and $customers->openTicketCount() == 0){
                     return '<small class="label bg-red-active"> UnPaid  '.number_format( $customers->getUnpaid() / 1, 0).' </small>' ;
-                }elseif ( $customers->unpaidSum() == 0 and $customers->openTicketCount() > 0){
+                }elseif ( $customers->getUnpaid() == 0 and $customers->openTicketCount() > 0){
                     return '<small class="label bg-yellow-active"> '. $customers->openTicketCount() .' Open Ticket  </small>' ;
                 }else{
                     return '' ;
@@ -88,11 +89,11 @@ class CustomerController extends Controller
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="" data-toggle="modal" data-target="#viewModal_customer" onclick="fun_peek_customer('.$customers->id.')">Peek</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$customers->id.')" >Peek</a></li>
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_customer_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_debt_repayment" onclick="fun_get_id('.$customers->id.')">Repayment</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_debt_repayment" onclick="fun_get_id('.$customers->id.')" >Repayment</a></li>
                             <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_customer_ticket('.$customers->id.')">Ticket</a></li>
                         </ul>
                     </div>
@@ -133,12 +134,8 @@ class CustomerController extends Controller
         return view('vendor.adminlte.pages.customer.new-customer' , compact('customer','device','towers','broadcast','address','apmac','connection_types'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

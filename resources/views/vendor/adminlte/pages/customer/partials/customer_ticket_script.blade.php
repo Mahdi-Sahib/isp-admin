@@ -3,7 +3,7 @@
         "processing": true,
         "serverSide": true,
         "searching": false,
-        "iDisplayLength": 5,
+        "iDisplayLength": 10,
         "lengthChange": false,
         "ordering": true,
         "info": true,
@@ -12,9 +12,9 @@
         "ajax": '{{ url('isp-cpanel/customers/customer-ticket-ajax/'.$customer->id) }}',
         "columns": [
             { data: 'message',        name: 'message' },
+            { data: 'status',         name: 'status', width:'8%' },
             { data: 'user.name',      name: 'user.name', width:'10%'},
             { data: 'created_at',     name: 'created_at', width:'20%', orderable: false, searchable: false },
-            { data: 'status',         name: 'status', width:'8%' },
             { data: 'action',         name: 'action', orderable: false, searchable: false , width:'10%' , class:'text-center'}
         ]
     });

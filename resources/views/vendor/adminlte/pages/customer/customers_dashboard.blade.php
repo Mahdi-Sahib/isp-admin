@@ -30,7 +30,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 @include('adminlte::pages.customer.partials.dashboard.customer_table_one_view')
-                                @include('adminlte::pages.customer.refill.customer_refill_view')
+                                @include('adminlte::pages.customer.refill.addModal_customer_refill')
                                 @include('adminlte::pages.customer.partials.customer_peek_view')
                             </div>
                         </div>
@@ -43,7 +43,6 @@
 @endsection
 
 @section('page-scripts')
-    @include('adminlte::pages.customer.refill.partials.customer_refill_script')
     @include('adminlte::pages.customer.partials.dashboard.customer_table_one_script')
     @include('adminlte::pages.customer.partials.customer_peek_script')
 @endsection

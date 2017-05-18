@@ -26,20 +26,22 @@ class CustomerTicketController extends Controller
                 ->orderBy('created_at', 'id $1')
                 ->editColumn('status', function ($tickets) {
                     if ($tickets->status == 1) {
-                        return 'open';
+                        return '<div class="text-red" >Open</div>';
                     } elseif ($tickets->status == 0) {
-                        return 'close';
+                        return '<div class="text-green" >Closed</div>';
                     };
                 })
                 ->editColumn('created_at', function ($tickets) {
                     return $tickets->created_at->format('(D g:i A) d-n-Y');
                 })
+                ->rawColumns(['action','status'])
                 ->addColumn('action', function ($tickets) {
+                    if ($tickets->status == 1){
                     return '
                 <td class="text-center">
                     <!-- Single button -->
                     <div class="btn-group" >
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
@@ -49,6 +51,21 @@ class CustomerTicketController extends Controller
                     </div>
                 </td>       
                              ';
+                    }elseif ($tickets->status == 0){
+                        return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket('.$tickets->id.')">View</a></li>
+                        </ul>
+                    </div>
+                </td>       
+                             ';
+                    }
                 })
                 ->make(true);
         }

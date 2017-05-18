@@ -1,54 +1,68 @@
 
-
-    <div class="col-md-3 col-sm-6 col-xs-12 " >
+    <div class="col-md-4 col-12-4 col-xs-4">
         <div class="info-box">
-            <span class="info-box-icon bg-aqua " ><i class="fa fa-envelope-o " style="padding-top:20px;"></i></span>
-
-            <div class="info-box-content" style="padding-top:20px;">
-                <span class="info-box-text">Messages</span>
-                <span class="info-box-number">1,410</span>
+            <span class="info-box-icon bg-yellow"><i class="fa fa-ticket" style="padding-top:20px;"></i></span>
+            <div class="info-box-content" style="padding-top:5px;">
+                <small class="info-box-text">Today Ticket's by <i style="color: #9f191f;"> {{ Auth::user()->name }} </i></small>
+                <small class="info-box-number">{{ App\CustomerTicket::with('user')->where('created_by', Auth::user()->id)->where('status','1')->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->count() }} &nbsp; Open Today</small>
+                <small class="info-box-number">{{ App\CustomerTicket::with('user')->where('created_by', Auth::user()->id)->where('status','0')->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->count() }} &nbsp; Closed Owned Today</small>
+                <small class="info-box-number">{{ App\CustomerTicket::with('user')->where('status','0')->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->count() }} &nbsp; Closed Foreign Today</small>
             </div>
-            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
-    <div class="col-md-3 col-sm-6 col-xs-12">
+
+    <div class="col-md-4 col-12-4 col-xs-4 " >
         <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-flag-o" style="padding-top:20px;"></i></span>
-
-            <div class="info-box-content" style="padding-top:20px;">
-                <span class="info-box-text">Bookmarks</span>
-                <span class="info-box-number">410</span>
+            <span class="info-box-icon bg-yellow" ><i class="fa fa-ticket" style="padding-top:20px;"></i></span>
+            <div class="info-box-content" style="padding-top:5px;">
+                <small class="info-box-text ">All Time Ticket,s by <i style="color: #9f191f;"> {{ Auth::user()->name }} </i> </small>
+                <small class="info-box-number">{{ App\CustomerTicket::with('user')->where('created_by', Auth::user()->id)->where('status','1')->count() }} &nbsp; Open Ticket's </small>
+                <small class="info-box-number">{{ App\CustomerTicket::with('user')->where('created_by', Auth::user()->id)->where('status','0')->count() }} &nbsp; Closed Owned Ticket's</small>
+                <small class="info-box-number">{{ App\CustomerTicket::with('user')->where('created_by', '!=' , Auth::user()->id)->where('status','0')->count() }} &nbsp; Closed Foreign Ticket's</small>
             </div>
-            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
-    <div class="col-md-3 col-sm-6 col-xs-12">
+
+    <div class="col-md-4 col-12-4 col-xs-4">
         <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-files-o" style="padding-top:20px;"></i></span>
-
-            <div class="info-box-content" style="padding-top:20px;">
-                <span class="info-box-text">Uploads</span>
-                <span class="info-box-number">13,648</span>
+            <span class="info-box-icon bg-yellow"><i class="fa fa-ticket" style="padding-top:20px;"></i></span>
+            <div class="info-box-content" style="padding-top:5px;">
+                <small class="info-box-number">{{ App\CustomerTicket::where('status','1')->count() }} &nbsp; All Unclosed Ticket's All members</small>
+                <small class="info-box-number">{{ App\CustomerTicket::with('user')->where('created_by', Auth::user()->id)->where('status','1')->count() }} &nbsp; Your Unclosed Ticket's All Time</small>
+                <small class="info-box-number">{{ App\CustomerTicket::where('status','1')->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->count() }} &nbsp; Open By members Today</small>
+                <small class="info-box-number">{{ App\CustomerTicket::where('status','0')->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->count() }} &nbsp; Closed By members Today</small>
             </div>
-            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
-    <div class="col-md-3 col-sm-6 col-xs-12">
+        <!-----  ==============  ------>
+    <div class="col-md-4 col-12-4 col-xs-4">
         <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-star-o" style="padding-top:20px;"></i></span>
-
-            <div class="info-box-content" style="padding-top:20px;">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">93,139</span>
+            <span class="info-box-icon bg-red" ><i class="fa fa-money" style="padding-top:20px;"></i></span>
+            <div class="info-box-content" style="padding-top:5px;">
+                <small class="info-box-text">Today Card Refill by <i style="color: #9f191f;"> {{ Auth::user()->name }} </i></small>
+                <small class="info-box-number" style="margin-top: 10px;">{{ App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->count() }} &nbsp; Card Refill Today</small>
+                <small class="info-box-number">{{ App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('payment_status','1')->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->count() }} &nbsp; Unpaid Refill</small>
             </div>
-            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
+
+    <div class="col-md-4 col-12-4 col-xs-4">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-money" style="padding-top:20px;"></i></span>
+            <div class="info-box-content" style="padding-top:5px;">
+                <small class="info-box-text">Today Card Refill by <i style="color: #9f191f;"> {{ Auth::user()->name }} </i></small>
+                <small class="info-box-number" style="margin-top: 10px;">{{ number_format(App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->pluck('amount_paid')->sum()) }} &nbsp; Total Amount Paid Today</small>
+                <small class="info-box-number">{{ number_format(App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} &nbsp; Total Amount Unpaid Today</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-12-4 col-xs-4">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-money" style="padding-top:20px;"></i></span>
+            <div class="info-box-content" style="padding-top:15px;">
+                <small class="info-box-number">{{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} Total Unpaid Amount</small>
+                <small class="info-box-number">{{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} Total Debt</small>
+            </div>
+        </div>
+    </div>

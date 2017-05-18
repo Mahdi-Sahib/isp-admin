@@ -7,9 +7,9 @@
             <thead>
             <tr>
                 <th>Message</th>
+                <th>Status</th>
                 <th>Created by</th>
                 <th>Created at</th>
-                <th>Status</th>
                 <th>Options</th>
             </tr>
             </thead>
@@ -19,9 +19,9 @@
             <tfoot>
             <tr>
                 <th>Message</th>
+                <th>Status</th>
                 <th>Created by</th>
                 <th>Created at</th>
-                <th>Status</th>
                 <th>Options</th>
             </tr>
             </tfoot>

@@ -1,4 +1,4 @@
-<div class="modal fade" id="addModal_customer_debt_repayment" role="dialog">
+<div class="modal fade" id="addModal_customer_refill" role="dialog">
     <div class="modal-dialog ">
         <!-- Modal content-->
         <div class="modal-content">
@@ -7,13 +7,13 @@
                 <h4 class="modal-title" > <label class="fa fa-ticket"></label> Refill</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/customer/debt_repayment') }}" method="post">
+                <form action="{{ url('isp-cpanel/customer/customer_refill') }}" method="post">
                     {{ csrf_field() }}
                     <input id="x" name="customer_id" hidden>
                     <div class="form-group">
                         <div class="form-group">
                             <label><div class="fa fa-gears"></div> Card Name / Type : </label>
-                            @if ( count($refills) < 1 ) <br> <p style="color: red">you didn't add any Card </p>  @else
+                            @if ( count($refills) < 1 ) <br> <p style="color: red">you didn't add devices go to settings -> BASIC INPUT -> devices </p>  @else
                                 <select name="refill_card_id" class="form-control">
                                     @foreach ($refills as $refill)
                                         <option value="{{ $refill->id }}" >{{ $refill->title .' - ' .'[ ' . number_format( $refill->selling_price / 1, 0) . '  ]'}}</option>
@@ -52,4 +52,15 @@
         </div>
     </div>
 </div>
-<!-- add code ends -->
+
+<script type="text/javascript">
+    function fun_get_id(id)
+    {
+        document.getElementById("x").value = id;
+    }
+
+    document.getElementById('checkbox').onchange = function() {
+        document.getElementById('amount_paid').disabled = !this.checked;
+    };
+
+</script>

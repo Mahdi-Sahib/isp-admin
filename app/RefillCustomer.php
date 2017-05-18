@@ -16,5 +16,8 @@ class RefillCustomer extends Model
         return $this->belongsTo('App\RefillCard','refill_card_id','id');
     }
 
+    public function totalUnpaid(){
+        return $this->hasMany('App\RefillCustomer')->where('payment_status','=', 1)->pluck('amount_paid')->sum();
+    }
 
 }

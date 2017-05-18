@@ -1,6 +1,6 @@
-<input type="hidden" name="hidden_view_customer" id="hidden_view_customer" value="{{url('isp-cpanel/customer/customer_peek')}}">
+<input type="hidden" name="hidden_customer_peek" id="hidden_customer_peek" value="{{url('isp-cpanel/customer/customer_peek')}}">
 <!-- View Modal start -->
-<div class="modal fade " id="viewModal_customer" role="dialog">e
+<div class="modal fade " id="viewModal_customer_peek" role="dialog">e
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">

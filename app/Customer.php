@@ -79,6 +79,10 @@ class Customer extends Model
     }
     // ======================== end
 
+    public function remainingAmountOnCard(){
+        return $this->hasMany('App\RefillCustomer')->where('payment_status','=', 1)->pluck('amount_paid');
+    }
+
 
 
 }
