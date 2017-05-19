@@ -19,12 +19,11 @@
 
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
-
-    <!-- Your Page Content Here -->
-
+    @include('adminlte::pages.customer.partials.edit_customer_view')
     @include('adminlte::layouts.partials.pagefooter')
 @endsection
 
 
 @section('page-scripts')
+    @include('adminlte::pages.customer.partials.edit_customer_script')
 @endsection

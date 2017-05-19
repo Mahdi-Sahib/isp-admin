@@ -23,7 +23,7 @@ class CreateRefillCustomersTable extends Migration
             $table->foreign('refill_card_id')->references('id')->on('refill_cards')->onDelete('cascade');
             $table->boolean('payment_status')->unsigned();
             $table->integer('card_price')->unsigned();
-            $table->decimal('amount_paid')->unsigned()->default(0);
+            $table->decimal('amount_paid')->default(0);
             $table->string('description')->nullable();
             $table->string('by_person')->nullable();
             $table->integer('created_by');

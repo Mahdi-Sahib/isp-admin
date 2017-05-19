@@ -15,6 +15,7 @@ function connection_method(){
     return array_combine($connection_method,$connection_method);
 }
 
+
 function connection_method_value(){
     $connection_method = ['0'=>'Unknown!','1'=>'Wireless','2'=>'LAN','3'=>'FTTX'];
     return $connection_method;

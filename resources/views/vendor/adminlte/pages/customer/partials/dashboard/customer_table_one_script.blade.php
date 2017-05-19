@@ -3,6 +3,13 @@
     $('#data').DataTable({
         "processing": true,
         "serverSide": true,
+        "searching": false,
+        "iDisplayLength": 10,
+        "lengthChange": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true,
+        "paging": true,
         "ajax": '{!! route('isp-cpanel.customers.customer-table-one-ajax') !!}',
 
 

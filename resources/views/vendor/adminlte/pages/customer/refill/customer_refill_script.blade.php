@@ -28,9 +28,17 @@
         document.getElementById("x").value = id;
     }
 
-    document.getElementById('checkbox').onchange = function() {
-        document.getElementById('amount_paid').disabled = !this.checked;
-    };
+    function calc()
+    {
+        if (document.getElementById('checkbox').checked)
+        {
+            document.getElementById('amount_paid').disabled = this.checked;
+            document.getElementById('submit_refill').className = 'btn btn-warning';
+        } else {
+            document.getElementById('amount_paid').disabled = !this.checked;
+            document.getElementById('submit_refill').className = 'btn btn-success';
+        }
+    }
 
 </script>
 

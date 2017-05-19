@@ -25,7 +25,7 @@
 
     <div class="col-md-4 col-12-4 col-xs-4">
         <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-ticket" style="padding-top:20px;"></i></span>
+            <span class="info-box-icon bg-yellow"><i class="fa fa-pie-chart" style="padding-top:20px;"></i></span>
             <div class="info-box-content" style="padding-top:5px;">
                 <small class="info-box-number">{{ App\CustomerTicket::where('status','1')->count() }} &nbsp; All Unclosed Ticket's All members</small>
                 <small class="info-box-number">{{ App\CustomerTicket::with('user')->where('created_by', Auth::user()->id)->where('status','1')->count() }} &nbsp; Your Unclosed Ticket's All Time</small>
@@ -50,7 +50,7 @@
         <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-money" style="padding-top:20px;"></i></span>
             <div class="info-box-content" style="padding-top:5px;">
-                <small class="info-box-text">Today Card Refill by <i style="color: #9f191f;"> {{ Auth::user()->name }} </i></small>
+                <small class="info-box-text">Today Payment Status  <i style="color: #9f191f;"> {{ Auth::user()->name }} </i></small>
                 <small class="info-box-number" style="margin-top: 10px;">{{ number_format(App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->pluck('amount_paid')->sum()) }} &nbsp; Total Amount Paid Today</small>
                 <small class="info-box-number">{{ number_format(App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} &nbsp; Total Amount Unpaid Today</small>
             </div>
@@ -59,10 +59,12 @@
 
     <div class="col-md-4 col-12-4 col-xs-4">
         <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-money" style="padding-top:20px;"></i></span>
-            <div class="info-box-content" style="padding-top:15px;">
-                <small class="info-box-number">{{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} Total Unpaid Amount</small>
-                <small class="info-box-number">{{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} Total Debt</small>
+            <span class="info-box-icon bg-red"><i class="fa fa-line-chart" style="padding-top:20px;"></i></span>
+            <div class="info-box-content" style="padding-top:5px;">
+                <small class="info-box-number"><i class="fa fa-arrow-down"></i> {{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} Total Unpaid Amount</small>
+                <small class="info-box-number"><i class="fa fa-arrow-up"></i> {{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} Customer Add By {{ Auth::user()->name }}</small>
+                <small class="info-box-number"><i class="fa fa-arrow-up"></i> {{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} Total Unpaid Amount</small>
+                <small class="info-box-number"><i class="fa fa-arrow-down"></i> {{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }} Total Debt</small>
             </div>
         </div>
     </div>

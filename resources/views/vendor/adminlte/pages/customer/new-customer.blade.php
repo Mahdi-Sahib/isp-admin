@@ -63,7 +63,7 @@
         <br>
         <br>
         <div  class="col-lg-3 form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
-            <label><div for="fullname" class="fa fa-user control-label" ></div> Full Name</label>
+            <label><div for="fullname" class="fa fa-user control-label" ></div> Full Name <i style="color: red">*</i></label>
             <input id="fullname" type="text" class="form-control" name="fullname" value="{{ old('fullname') }}" placeholder="Enter Full Name" >
             @if ($errors->has('fullname'))
                 <span  class="help-block">
@@ -73,7 +73,7 @@
         </div>
 
         <div  class="col-lg-3 form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-            <label><div for="username" class="fa fa-user-plus control-label" ></div> PPPOE User</label>
+            <label><div for="username" class="fa fa-user-plus control-label" ></div> PPPOE User <i style="color: red">*</i></label>
             <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="PPPOE user (host name)">
             @if ($errors->has('username'))
                 <span class="help-block">
@@ -93,7 +93,7 @@
         </div>
 
         <div  class="col-lg-2 form-group{{ $errors->has('mobile_1') ? ' has-error' : '' }}">
-            <label><div for="mobile_1" class="fa fa-phone control-label" ></div> Mobile</label>
+            <label><div for="mobile_1" class="fa fa-phone control-label" ></div> Mobile <i style="color: red">*</i></label>
             <input id="mobile_1" type="text" class="form-control" name="mobile_1" value="{{ old('mobile_1') }}" placeholder="Mobile" maxlength="11">
             @if ($errors->has('mobile_1'))
                 <span class="help-block">
@@ -128,7 +128,7 @@
                     <label><div class="fa fa-home"></div> Address</label>
                     <select name="address_1" class="form-control" >
                         @foreach ($address as $address) {
-                        <option value="{{ $address->id }}" >{{ $address->place_1 }}</option>
+                        <option value="{{ $address->id }}" @if(old('address_1') == $address->id) selected="selected" @endif>{{ $address->place_1 }}</option>
                         }
                         @endforeach
                     </select>
@@ -136,7 +136,7 @@
             </div>
 
             <div  class="col-lg-3 form-group{{ $errors->has('address_2') ? ' has-error' : '' }}">
-                <label><div for="address_2" class="glyphicon glyphicon-map-marker control-label" ></div> About the address</label>
+                <label><div for="address_2" class="glyphicon glyphicon-map-marker control-label" ></div> About the address <i style="color: red">*</i></label>
                 <input id="address_2" type="text" class="form-control" name="address_2" value="{{ old('address_2') }}" placeholder="about the address">
                 @if ($errors->has('address_2'))
                     <span class="help-block">
@@ -150,8 +150,8 @@
                 <input id="about" type="text" class="form-control" name="about" value="{{ old('about') }}" placeholder="information here">
                 @if ($errors->has('about'))
                     <span class="help-block">
-                                                <strong>{{ $errors->first('about') }}</strong>
-                                            </span>
+                       <strong>{{ $errors->first('about') }}</strong>
+                    </span>
                 @endif
             </div>
 
@@ -167,7 +167,7 @@
                 <label><div class="fa fa-gears"></div> Station Type</label>
                 <select name="device_id" class="form-control" value="{{ old('device_id') }}">
                     @foreach ($device as $device)
-                        <option value="{{ $device->id }}" >{{ $device->brand_model }}</option>
+                        <option value="{{ $device->id }}" @if(old('device_id') == $device->id) selected="selected" @endif>{{ $device->brand_model }}</option>
                     @endforeach
                 </select>
             </div>
@@ -193,9 +193,16 @@
             @endif
         </div>
 
-        <div class="col-lg-3" class="form-group">
-            <label><div class="fa fa-chevron-down"></div> Connection Method :</label>
-            {!! Form::select("connection_method", connection_method_value(), null ,['class'=>'form-control','name'=>'connection_method','id'=>'connection_method']) !!}
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label><div class="fa fa-gears"></div> Station Type</label>
+                <select id="connection_method" name="connection_method" class="form-control">
+                    @foreach (connection_method_value() as $key => $value) {
+                    <option value="{!! $key !!}">{!! $value !!}</option>
+                    }
+                    @endforeach
+                </select>
+            </div>
         </div>
 
     </div>
@@ -214,7 +221,7 @@
                 <label><div class="fa fa-map-signs"></div> point / Tower</label>
                 <select name="tower_id" class="form-control" >
                     @foreach ($towers as $tower) {
-                    <option value="{{ $tower->id }}" >{{ $tower->name }}</option>
+                    <option value="{{ $tower->id }}" @if(old('tower_id') == $tower->id) selected="selected" @endif>{{ $tower->name }}</option>
                     }
                     @endforeach
                 </select>
@@ -226,7 +233,7 @@
                 <label><div class="fa fa-wifi"></div> Broadcast SSID</label>
                 <select name="broadcast_id" class="form-control" >
                     @foreach ($broadcast as $broadcast)
-                        <option value="{{ $broadcast->id }}" >{{ $broadcast->ssid }}</option>
+                        <option value="{{ $broadcast->id }}" @if(old('broadcast_id') == $broadcast->id) selected="selected" @endif>{{ $broadcast->ssid }}</option>
                     @endforeach
                 </select>
             </div>
@@ -237,7 +244,7 @@
                 <label><div class="fa fa-barcode"></div> Broadcast AP MAC</label>
                 <select name="apmac_id" class="form-control" >
                     @foreach ($apmac as $apmac)
-                        <option value="{{ $apmac->id }}" >{{ $apmac->mac  }}</option>
+                        <option value="{{ $apmac->id }}" @if(old('apmac_id') == $apmac->id) selected="selected" @endif>{{ $apmac->mac  }}</option>
                     @endforeach
                 </select>
             </div>
@@ -248,7 +255,7 @@
                 <label><div class="fa fa-gears"></div> Wireless Method</label>
                 <select name="connection_type_id" class="form-control" value="{{ old('connection_type_id') }}">
                     @foreach ($connection_types as $connection_types)
-                        <option value="{{ $connection_types->id }}" >{{ $connection_types->type }}</option>
+                        <option value="{{ $connection_types->id }}" @if(old('connection_type_id') == $connection_types->id) selected="selected" @endif >{{ $connection_types->type }}</option>
                     @endforeach
                 </select>
             </div>
@@ -267,7 +274,6 @@
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-resize-small"></div> OLT No. & Location</label>
                     <select name="tower_id" class="form-control" >
-
                     </select>
                 </div>
             </div>

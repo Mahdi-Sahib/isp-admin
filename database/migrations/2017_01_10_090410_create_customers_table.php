@@ -15,7 +15,7 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('connection_method')->nullable();
+            $table->tinyInteger('connection_method')->default('0');
             $table->tinyInteger('wireless_type_id')->nullable();
             $table->integer('tower_id')->nullable();
             $table->integer('broadcast_id')->nullable();

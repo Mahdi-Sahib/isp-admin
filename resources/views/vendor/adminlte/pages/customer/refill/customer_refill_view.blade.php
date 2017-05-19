@@ -72,7 +72,7 @@
                             <label> <div class="fa fa-gears" ></div> UnPaid:</label>
                             <div class="input-group">
                         <span class="input-group-addon">
-                          <input id="checkbox" type="checkbox" name="payment_status" value="1">
+                          <input id="checkbox" type="checkbox" name="payment_status" onclick="calc()" value="1">
                         </span>
                                 <input id="amount_paid" type="text" class="form-control" name="amount_paid" placeholder="amount paid / empty if no amount" disabled="disabled">
                             </div>
@@ -88,7 +88,7 @@
                         </div>
 
                     <br>
-                    <button type="submit" class="btn btn-warning"><i class="fa fa-btn fa-ticket"></i> Refill</button>
+                    <button type="submit" id="submit_refill" class="btn btn-success"><i class="fa fa-btn fa-ticket"></i> Refill</button>
                     </div>
                 </form>
             </div>

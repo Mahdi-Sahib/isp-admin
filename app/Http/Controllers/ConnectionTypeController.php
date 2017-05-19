@@ -32,7 +32,7 @@ class ConnectionTypeController extends Controller
         } else {
             $data = new ConnectionType;
             $data->type                    = $request->type;
-            $data->method                  = $request->methodc;
+            $data->method                  = $request->method;
             $data->created_by              = Auth::User()->id;
             $data->updated_by              = Auth::User()->id;
             $data->save();
