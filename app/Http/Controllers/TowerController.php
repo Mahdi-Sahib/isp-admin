@@ -19,13 +19,10 @@ class TowerController extends Controller
 {
     public function index()
     {
-        return view('vendor.adminlte.pages.tower.towers-table-one') ;
+        return view('vendor.adminlte.pages.tower.towers_index');
     }
 
-    public function TowersTableOneView()
-    {
-        return view('vendor.adminlte.pages.tower.towers-table-one');
-    }
+
 
     public function TowerTableOneAjax()
     {
@@ -35,7 +32,7 @@ class TowerController extends Controller
             ->addColumn('action', function ($towers) {
                 return '
                 
-                <a href="'.$towers->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> View</a>
+                <a href="towers/'.$towers->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> View</a>
                 <a href="towers/'.$towers->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
                 <a href="towers/'.$towers->id.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Delete</a>
                 

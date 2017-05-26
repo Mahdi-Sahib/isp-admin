@@ -51,11 +51,25 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('isp-cpanel/customers/create') }}"><i class="fa fa-user-plus"></i> {{ trans('layout.new-customers') }}<small class="label pull-right bg-green">new</small></a></li>
-                    <li><a href="{{ url('isp-cpanel/customers') }}"><i class="fa fa-user-md"></i> {{ trans('layout.all-customers') }}<small class="label pull-right bg-green">1452</small></a></li>
-                    <li><a href="{{ url('isp-cpanel/customers/ticket') }}"><i class="fa fa-wheelchair"></i> {{ trans('layout.ticket-customers') }}<small class="label pull-right bg-green">new</small></a></li>
-                    <li><a href="{{ url('isp-cpanel/customers/invoice') }}"><i class="fa fa-user-plus"></i> {{ trans('layout.customers-invoices') }}<small class="label pull-right bg-green">new</small></a></li>
-                    <li><a href="{{ url('isp-cpanel/customers/dashboard') }}"><i class="fa fa-user-plus"></i> {{ trans('layout.dashboard-customers') }}<smal ></smal></a></li>
+                    <li><a href="{{ url('isp-cpanel/customers/create') }}"><i class="fa fa-user-plus"></i> {{ trans('layout.new-customers') }}<small class="label pull-right bg-blue">new</small></a></li>
+                    <li><a href="{{ url('isp-cpanel/customers') }}"><i class="fa fa-user-md"></i> {{ trans('layout.all-customers') }}<small class="label pull-right bg-green">{{ App\Customer::count() }}</small></a></li>
+                    <li><a href="{{ url('isp-cpanel/customers/ticket') }}"><i class="fa fa-wheelchair"></i> {{ trans('layout.ticket-customers') }}<small class="label pull-right bg-yellow">{{ App\CustomerTicket::where('status','1')->count() }}</small></a></li>
+                    <li><a href="{{ url('isp-cpanel/customer/unpaid') }}"><i class="fa fa-user-plus"></i> Unpaid Card<small class="label pull-right bg-red">{{ App\RefillCustomer::where('payment_status','1')->count() }}</small></a></li>
+                </ul>
+            </li>
+
+            <!-- --------------------------------------------------------------------------------- -->
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-gears"></i> <span> Hardware Dashboard</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('isp-cpanel/fttx/olt') }}"><i class="fa fa-navicon"></i> FTTX Dashboard</a></li>
+                    <li><a href="{{ url('isp-cpanel/towers') }}"><i class="fa fa-map-signs"></i> Point's Dashboard</a></li>
+                    <li><a href="{{ url('isp-cpanel/broadcasts/broadcast-table-one-view') }}"><i class="fa fa-signal"></i> Broadcast's Dashboard</a></li>
+                    <li><a href="{{ url('isp-cpanel/links/links-table-one-view') }}"><i class="fa fa-navicon"></i> Link's Dashboard</a></li>
                 </ul>
             </li>
 
@@ -90,7 +104,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="#"><i class="fa fa-navicon"></i> {{ trans('layout.fiber-node') }}<i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa fa-navicon"></i> FTTX<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <li><a href="{{ url('isp-cpanel/fibernodes/create') }}"><i class="fa fa-navicon"></i> {{ trans('layout.new-fiber-node') }}</a></li>
                             <li><a href="{{ url('isp-cpanel/fibernodes/fibernodes-table-one-view') }}"><i class="fa fa-navicon"></i> {{ trans('layout.fiber-node-table') }}</a></li>
@@ -110,48 +124,6 @@
 
             <!-- --------------------------------------------------------------------------------- -->
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-gears"></i> <span> End Point </span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="#"><i class="fa fa-map-signs"></i> Wireless Point <i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ url('isp-cpanel/towers/create') }}"><i class="fa fa-map-signs"></i> New Point</a></li>
-                            <li><a href="{{ url('isp-cpanel/towers/towers-table-one-view') }}"><i class="fa fa-map-signs"></i> Points Table</a></li>
-                            <li><a href="{{ url('isp-cpanel/towers/ticket') }}"><i class="fa fa-map-signs"></i> Points Ticket's</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-wifi"></i> Broadcast <i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ url('isp-cpanel/broadcasts/create') }}"><i class="fa fa-signal"></i> New Broadcast</a></li>
-                            <li><a href="{{ url('isp-cpanel/broadcasts/broadcast-table-one-view') }}"><i class="fa fa-signal"></i> Broadcast Table</a></li>
-                            <li><a href="{{ url('isp-cpanel/broadcasts/ticket') }}"><i class="fa fa-signal"></i> Broadcast Ticket's</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-navicon"></i> Fiber BOX<i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ url('isp-cpanel/fiberboxs/create') }}"><i class="fa fa-navicon"></i> Fiber BOX</a></li>
-                            <li><a href="{{ url('isp-cpanel/fiberboxs/fiberboxs-table-one-view') }}"><i class="fa fa-navicon"></i> Fiber BOX Table</a></li>
-                            <li><a href="{{ url('isp-cpanel/fiberboxs/ticket') }}"><i class="fa fa-navicon"></i> Fiber BOX Ticket's</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-navicon"></i> Link's Out<i class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ url('isp-cpanel/links/create') }}"><i class="fa fa-navicon"></i> New Link</a></li>
-                            <li><a href="{{ url('isp-cpanel/links/links-table-one-view') }}"><i class="fa fa-navicon"></i> Link's Table</a></li>
-                            <li><a href="{{ url('isp-cpanel/links') }}"><i class="fa fa-navicon"></i> Link's Ticket's</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
-            <!-- --------------------------------------------------------------------------------- -->
 
             <li class="treeview">
                 <a href="#">

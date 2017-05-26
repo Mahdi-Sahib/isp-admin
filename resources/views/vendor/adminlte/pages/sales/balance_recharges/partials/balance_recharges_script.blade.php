@@ -4,9 +4,7 @@
     $('#data').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": '{{ route('isp-cpanel.financial.balance_recharges_ajax') }}',
-
-
+        "ajax": '{{ url('isp-cpanel/financial/balance_recharges_table') }}',
         "columns": [
             { data: 'supplier.name',      name: 'supplier_id' , orderable: false, searchable: true ,class:'text-center'},
             { data: 'amount',           name: 'amount' , orderable: false, searchable: true  },

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Product;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Validator ;
+use Illuminate\Support\Facades\Auth;
+use Yajra\Datatables\Facades\Datatables;
+use Validator, Input, Redirect ,Session ;
+
 
 class ProductsController extends Controller
 {

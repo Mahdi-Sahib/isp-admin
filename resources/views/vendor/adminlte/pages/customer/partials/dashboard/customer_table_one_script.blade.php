@@ -3,14 +3,15 @@
     $('#data').DataTable({
         "processing": true,
         "serverSide": true,
-        "searching": false,
-        "iDisplayLength": 10,
+        "searching": true,
+        "iDisplayLength": 5,
+        "lengthMenu": [ 5,10, 25, 50, 75, 100 ],
         "lengthChange": true,
         "ordering": true,
         "info": true,
         "autoWidth": true,
         "paging": true,
-        "ajax": '{!! route('isp-cpanel.customers.customer-table-one-ajax') !!}',
+        "ajax": '{{ url('isp-cpanel/customers/customer-table') }}',
 
 
         "columns": [

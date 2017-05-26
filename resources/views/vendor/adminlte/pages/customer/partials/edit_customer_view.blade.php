@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label><div class="fa fa-wifi"></div> Broadcast SSID</label>
+                        <label><div class="fa fa-wifi"></div> Access Point SSID</label>
                         <select name="broadcast_id" class="form-control" >
                             @foreach ($broadcasts as $broadcast) {
                             <option value="{!! $broadcast->id !!}" @if ($customer->broadcast_id == $broadcast->id) selected="selected" @endif>{!! $broadcast->ssid !!}</option>
@@ -133,7 +133,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label><div class="fa fa-wifi"></div> Broadcast AP MAC</label>
+                        <label><div class="fa fa-wifi"></div> Access Point MAC</label>
                         <select name="apmac_id" class="form-control" >
                             @foreach ($apmac as $apmac) {
                             <option value="{!! $apmac->id !!}" @if ($customer->apmac_id == $apmac->id) selected="selected" @endif>{!! $apmac->mac !!}</option>
@@ -156,13 +156,13 @@
           </div>
     </div>
 
-
+<hr>
             <div class="box-body" id="fttx">
                         <label><div class="fa fa-gears"></div> Station Type & Connection Type</label>
                         <br>
                         <br>
                         <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-4">
                                     <div class="form-group">
                                         <label><div class="fa fa-wifi"></div> OLT No. & Location</label>
                                         <select name="olt_id" class="form-control" >
@@ -175,21 +175,25 @@
                                 </div>
                                 @if($customer->tower)
                                     <div  class="col-lg-4 form-group">
-                                        <label><div class="fa fa-wifi"></div> OLT No. & Location</label>
+                                        <label><div class="fa fa-random"></div> OLT No. & Location</label>
                                         <input  type="text" class="form-control" value="{{ $customer->tower->name }}"  >
                                     </div>
                                 @endif
                                 <div  class="col-lg-4 form-group">
-                                    <label><div class="fa fa-wifi"></div> First Splitter No. & Location</label>
+                                    <label><div class="fa fa-sitemap"></div> First Splitter No. & Location</label>
                                     <input type="text" class="form-control"  value=""  >
                                 </div>
                                 <div  class="col-lg-4 form-group">
-                                    <label><div class="fa fa-wifi"></div> Second Splitter No. & Location</label>
+                                    <label><div class="fa fa-sitemap"></div> Second Splitter No. & Location</label>
                                     <input type="text" class="form-control"  value=""  >
                                 </div>
                                 </div>
                             </div>
+</dive>
+</dive>
 
+
+<hr>
                             <div class="box-body" id="lan">
                                 <div  class="col-lg-4 form-group">
                                     <label><div class="fa fa-wifi"></div> Hub Switch</label>
@@ -200,11 +204,7 @@
                                     <input type="text" class="form-control"  value=""  >
                                 </div>
                             </div>
-                       </dive>
-                    </dive>
 
-
-<hr>
 
 
 <hr>

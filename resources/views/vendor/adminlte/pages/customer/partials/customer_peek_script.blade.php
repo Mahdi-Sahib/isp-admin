@@ -15,6 +15,7 @@
                 $("#view_mobile_2").text(result.mobile_2);
                 $("#view_address_2").text(result.address_2);
                 $("#view_about").text(result.about);
+                $("#view_address_1").text(result.address_helper.place_1);
             },
             error:function(exception){alert('Exeption:'+exception);}
         });

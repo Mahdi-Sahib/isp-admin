@@ -11,13 +11,13 @@ use Validator, Input, Redirect ,Session ;
 
 class BalanceRechargesController extends Controller
 {
-    public function BalanceRechargeTableView()
+    public function index()
     {
         $suppliers = Supplier::all();
         return view('vendor.adminlte.pages.sales.balance_recharges.balance_recharges_crud',compact('suppliers'));
     }
 
-    public function BalanceRechargeTableAjax()
+    public function BalanceRechargeTable()
     {
         $balance_recharges = BalanceRecharge::with('user','supplier')->select('balance_recharges.*');
         return Datatables::of($balance_recharges)
@@ -45,7 +45,7 @@ class BalanceRechargesController extends Controller
             ->make(true);
     }
 
-    public function add(Request $request)
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
 
@@ -65,7 +65,7 @@ class BalanceRechargesController extends Controller
         }
     }
 
-    public function viewAjax(Request $request)
+    public function show(Request $request)
     {
         if($request->ajax()){
             $id = $request->id;

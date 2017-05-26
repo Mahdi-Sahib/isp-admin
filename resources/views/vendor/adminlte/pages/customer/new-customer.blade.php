@@ -230,7 +230,7 @@
 
         <div class="col-lg-3">
             <div class="form-group">
-                <label><div class="fa fa-wifi"></div> Broadcast SSID</label>
+                <label><div class="fa fa-wifi"></div> Access Point SSID</label>
                 <select name="broadcast_id" class="form-control" >
                     @foreach ($broadcast as $broadcast)
                         <option value="{{ $broadcast->id }}" @if(old('broadcast_id') == $broadcast->id) selected="selected" @endif>{{ $broadcast->ssid }}</option>
@@ -241,7 +241,7 @@
 
         <div class="col-lg-3">
             <div class="form-group">
-                <label><div class="fa fa-barcode"></div> Broadcast AP MAC</label>
+                <label><div class="fa fa-barcode"></div> Access Point AP MAC</label>
                 <select name="apmac_id" class="form-control" >
                     @foreach ($apmac as $apmac)
                         <option value="{{ $apmac->id }}" @if(old('apmac_id') == $apmac->id) selected="selected" @endif>{{ $apmac->mac  }}</option>

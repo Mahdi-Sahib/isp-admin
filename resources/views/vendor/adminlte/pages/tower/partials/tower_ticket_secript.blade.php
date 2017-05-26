@@ -46,9 +46,8 @@
                 console.log(result);
                 $("#view_title").text(result.title);
                 $("#view_message").text(result.message);
-                $("#view_created_by").text(result.user.name);
-                $("#view_closed_by").text(result.user.name);
-                $("#view_updated_by").text(result.user.name);
+                $("#view_created_by").text(result.created_by.name);
+                $("#view_closed_by").text(result.closed_by.name);
                 $("#view_close_message").text(result.close_message);
 
                 if(  (result.category) == 1 )

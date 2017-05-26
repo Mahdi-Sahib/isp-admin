@@ -9,7 +9,7 @@
         "info": true,
         "autoWidth": true,
         "paging": true,
-        "ajax": '{{ url('isp-cpanel/customers/customer-ticket-ajax/'.$customer->id) }}',
+        "ajax": '{{ url('isp-cpanel/customers/customer-ticket-table/'.$customer->id) }}',
         "columns": [
             { data: 'message',        name: 'message' },
             { data: 'status',         name: 'status', width:'8%' },

@@ -17,13 +17,11 @@ class RefillCustomer extends Model
     }
 
     public function customer() {
-        return $this->belongsTo('App\RefillCard');
+        return $this->belongsTo('App\Customer','customer_id','id');
     }
 
     public function totalUnpaid(){
         return $this->hasMany('App\RefillCustomer')->where('payment_status','=', 1)->pluck('amount_paid')->sum();
     }
-
-
 
 }

@@ -13,6 +13,10 @@ class Customer extends Model
         return $this->belongsTo('App\Tower','tower_id','id') ;
     }
 
+    public function address_helper() {
+        return $this->belongsTo('App\AddressHelper','address_1','id') ;
+    }
+
     public function BroadcastSSID() {
         return $this->belongsTo('App\Broadcast','broadcast_id','id') ;
     }
@@ -33,8 +37,8 @@ class Customer extends Model
         return $this->belongsTo('App\ConnectionType','wireless_type_id','id');
     }
 
-    public function Info() {
-        return $this->belongsTo('App\Info','address_1','id');
+    public function unpaid(){
+        return $this->belongsTo('App\RefillCustomer')->where('payment_status','=', 1);
     }
 
     public function ticket() {

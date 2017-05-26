@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class OpticalSplitter extends Model
+class Splitter extends Model
 {
     //
 }

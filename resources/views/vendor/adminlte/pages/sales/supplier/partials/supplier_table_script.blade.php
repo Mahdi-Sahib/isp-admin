@@ -9,7 +9,7 @@
         "info": true,
         "autoWidth": true,
         "paging": true,
-        "ajax": '{!! route('isp-cpanel.financial.supplier') !!}',
+        "ajax": '{{ url('isp-cpanel/financial/supplier_table') }}',
 
         "columns": [
             { data: 'name',          name: 'fullname' , orderable: false, searchable: true ,class:'text-center'},

@@ -13,6 +13,12 @@ use Validator, Input, Redirect ,Session ;
 
 class RefillCustomerController extends Controller
 {
+
+    public function unpaid()
+    {
+        return view('vendor.adminlte.pages.customer.unpaid.page_unpaid');
+    }
+
     public function CustomerRefillAjax(Request $request, $id)
     {
         if ($request->ajax()) {
@@ -75,6 +81,58 @@ class RefillCustomerController extends Controller
                 ->make(true);
         }
     }
+
+    public function unpaidTable()
+    {
+        $unpaid = RefillCustomer::with('customer','user','card')->where('payment_status', '1')->select('refill_customers.*');
+        return Datatables::of($unpaid)
+            ->editColumn('card.title', function ($refill) {
+                return $refill->card->title . ' ' . number_format($refill->card->selling_price/ 1, 0);
+            })
+            ->editColumn('amount_paid', function ($refill) {
+                return number_format( $refill->amount_paid / 1, 0);
+            })
+            ->editColumn('payment_status',function ($refill){
+                if ($refill->payment_status == 1){
+                    return '<div class="text-red" >Unpaid</div>' ;
+                }elseif ($refill->payment_status == 0){
+                    return "Paid" ;
+                }
+            })
+            ->editColumn('created_at', function ($refill) {
+                return $refill->created_at->format('(D g:i A) d-n-Y');
+            })
+            ->addColumn('navigation',function ($unpaid){
+                $total_unpaid = $unpaid->where('payment_status', '=', 1)->where('customer_id', $unpaid->customer->id)->pluck('card_price')->sum() - $unpaid->where('payment_status', '=', 1)->where('customer_id', $unpaid->customer->id)->pluck('amount_paid')->sum() ;
+                $card_amount_paid = $unpaid->card_price - $unpaid->amount_paid;
+                if (($total_unpaid - $card_amount_paid) == 0) {
+                    return '<small class="label bg-blue"> Unpaid  ' . number_format($card_amount_paid / 1, 0) . ' </small>';
+                }elseif (($total_unpaid - $card_amount_paid) > 0){
+                    return '<small class="label bg-blue"> Unpaid  ' . number_format($card_amount_paid / 1, 0) . ' </small>' . '<br><br>' .
+                           '<small class="label bg-red-active"> Total  ' . number_format($total_unpaid / 1, 0) . ' </small>'
+                        ;
+                }
+            })
+            ->addColumn('action', function ($unpaid) {
+                return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$unpaid->id.')" >Peek</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_repayment" onclick="fun_get_id('.$unpaid->id.')" disabled="disabled">Repayment</a></li>
+                        </ul>
+                    </div>
+                </td>
+                ';
+            })
+            ->rawColumns(['payment_status','action','navigation'])
+            ->make(true);
+    }
+
 
     public function viewAjax(Request $request)
     {

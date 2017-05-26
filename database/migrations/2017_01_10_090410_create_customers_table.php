@@ -35,7 +35,8 @@ class CreateCustomersTable extends Migration
             $table->string('password')->default('0000');
             $table->string('mobile_1')->nullable();
             $table->string('mobile_2')->nullable();
-            $table->integer('address_1')->nullable();
+            $table->integer('address_1')->unsigned();
+            $table->foreign('address_1')->references('id')->on('address_helpers');
             $table->string('address_2')->nullable();
             $table->text('about')->nullable();
             $table->macAddress('mac')->nullable()->unique();

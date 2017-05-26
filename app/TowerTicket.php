@@ -18,5 +18,11 @@ class TowerTicket extends Model
         return $this->belongsTo('App\User','created_by','id');
     }
 
+    public function created_by() {
+        return $this->created_by('App\User','created_by','id');
+    }
+    public function closed_by() {
+        return $this->belongsTo('App\User','closed_by','id');
+    }
 
 }

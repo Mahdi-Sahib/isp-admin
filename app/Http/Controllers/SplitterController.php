@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\OpticalSplitter;
+use App\Splitter;
 use Illuminate\Http\Request;
 
-class OpticalSplitterController extends Controller
+class SplitterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OpticalSplitterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\OpticalSplitter  $opticalSplitter
+     * @param  \App\Splitter  $splitter
      * @return \Illuminate\Http\Response
      */
-    public function show(OpticalSplitter $opticalSplitter)
+    public function show(Splitter $splitter)
     {
         //
     }
@@ -52,10 +52,10 @@ class OpticalSplitterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\OpticalSplitter  $opticalSplitter
+     * @param  \App\Splitter  $splitter
      * @return \Illuminate\Http\Response
      */
-    public function edit(OpticalSplitter $opticalSplitter)
+    public function edit(Splitter $splitter)
     {
         //
     }
@@ -64,10 +64,10 @@ class OpticalSplitterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\OpticalSplitter  $opticalSplitter
+     * @param  \App\Splitter  $splitter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OpticalSplitter $opticalSplitter)
+    public function update(Request $request, Splitter $splitter)
     {
         //
     }
@@ -75,10 +75,10 @@ class OpticalSplitterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\OpticalSplitter  $opticalSplitter
+     * @param  \App\Splitter  $splitter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OpticalSplitter $opticalSplitter)
+    public function destroy(Splitter $splitter)
     {
         //
     }

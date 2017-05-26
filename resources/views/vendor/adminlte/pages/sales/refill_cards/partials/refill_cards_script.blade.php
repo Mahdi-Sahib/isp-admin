@@ -3,7 +3,7 @@
     $('#data').DataTable({
         "processing": true,
         "serverSide": true,
-        "ajax": '{{ route('isp-cpanel.financial.refill_cards') }}',
+        "ajax": '{{ url('isp-cpanel/financial/refill_card_table') }}',
 
         "columns": [
             { data: 'supplier.name',      name: 'supplier_id' , orderable: false, searchable: true ,class:'text-center'},

@@ -47,7 +47,7 @@
     </div>
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-home"></div> Adress</label>
-        <input type="text" class="form-control" value="" disabled >
+        <input type="text" class="form-control" value="{{ $customer->address_helper->place_1 }}" disabled >
     </div>
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-home"></div> About the address</label>

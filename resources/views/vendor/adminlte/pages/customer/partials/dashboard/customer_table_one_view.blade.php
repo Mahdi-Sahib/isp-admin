@@ -5,7 +5,7 @@
             <th>Full Name</th>
             <th>User Name</th>
             <th>Mobile</th>
-            <th>Connection Type</th>
+            <th>Connection Method</th>
             <th>Navigation's</th>
             <th>Action</th>
         </tr>
@@ -18,7 +18,7 @@
             <th>Full Name</th>
             <th>User Name</th>
             <th>Mobile</th>
-            <th>Connection Type</th>
+            <th>Connection Method</th>
             <th>Navigation's</th>
             <th>Action</th>
         </tr>

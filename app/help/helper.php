@@ -17,34 +17,53 @@ function connection_method(){
 
 
 function connection_method_value(){
-    $connection_method = ['0'=>'Unknown!','1'=>'Wireless','2'=>'LAN','3'=>'FTTX'];
-    return $connection_method;
+    $array = ['0'=>'Unknown!','1'=>'Wireless','2'=>'LAN','3'=>'FTTX'];
+    return $array;
 }
 
 function wireless_type(){
-        $connection_method = ['wireless 900 MHz','wireless 2.4 GHz','wireless 3 GHz','wireless 5.8 GHz','wireless 24 GHz','wireless 60 GHz','wireless 64/66 GHz','wireless 70/80 GHz'];
-    return $connection_method;
+    $array = ['wireless 900 MHz','wireless 2.4 GHz','wireless 3 GHz','wireless 5.8 GHz','wireless 24 GHz'];
+    return $array;
 }
 
 // Tower Ticket Functions
 
 function tower_ticket_category(){
-        $ticket_priority = ['1'=>'Point/Tower','2'=>'Broadcast','3'=>'Link'];
-    return $ticket_priority;
+    $array = ['1'=>'Point/Tower','2'=>'Broadcast','3'=>'Link'];
+    return $array;
 }
 
 function tower_ticket_priority(){
-    $ticket_priority = ['1'=>'Low','2'=>'Normal','3'=>'High','4'=>'Urgent'];
-    return $ticket_priority;
+    $array = ['1'=>'Low','2'=>'Normal','3'=>'High','4'=>'Urgent'];
+    return $array;
 }
 
 function tower_ticket_status(){
-        $ticket_status = ['1'=>'Open','2'=>'Closed'];
-    return $ticket_status;
+    $array = ['1'=>'Open','2'=>'Closed'];
+    return $array;
 }
 
-function ticket_for(){
-    $ticket_status = ['wireless 900 MHz'=>'wireless 900 MHz','wireless 2.4 GHz'=>'wireless 2.4 GHz','wireless 3 GHz'=>'wireless 3 GHz','wireless 5.8 GHz'=>'wireless 5.8 GHz','wireless 24 GHz'=>'wireless 24 GHz','wireless 60 GHz'=>'wireless 60 GHz','wireless 64/66 GHz'=>'wireless 64/66 GHz','wireless 70/80 GHz'=>'wireless 70/80 GHz'];
-    return $ticket_status;
+function splitting_level(){
+    $array = ['Single Splitting','Two-level Splitting','Multi-level Splitting'];
+    return $array;
 }
 
+function splitting_method(){
+    $array = ['FBT SPLITTER','PLC SPLITTER'];
+    return $array;
+}
+
+function splitting_ratio_level(){
+    $array = ['1×4','1×8','1×16','1×32','1×64'];
+    return $array;
+}
+
+function olt_type(){
+    $array = ['G-PON','E-PON'];
+    return $array;
+}
+
+function adaptor_type(){
+    $array = ['SC / APC','FC / PAC','SC / PC','FC / PC'];
+    return $array;
+}

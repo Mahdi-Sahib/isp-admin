@@ -46,7 +46,12 @@
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
                             <td> Address :</td>
-                            <td><span id="view_title"></span></td>
+                            <td><span id="view_address_1"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td> Address :</td>
+                            <td><span id="view_address_2"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>

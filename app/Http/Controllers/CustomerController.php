@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Olt;
 use App\RefillCard;
 use App\RefillCustomer;
 use Illuminate\Http\Request;
@@ -48,8 +49,8 @@ class CustomerController extends Controller
 
     public function CustomerTableOneAjax()
     {
-        $customers = Customer::select('customers.*');
-        return Datatables::of($customers)->with('RefillCustomer')
+        $customers = Customer::select('id','fullname','username','mobile_1','connection_method');
+        return Datatables::of($customers)->take(5)
             ->orderBy('created_at', 'id $1')
             ->editColumn('connection_method',function ($customers){
                 if ($customers->connection_method == 1){
@@ -94,7 +95,7 @@ class CustomerController extends Controller
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_customer_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_debt_repayment" onclick="fun_get_id('.$customers->id.')" >Repayment</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_debt_repayment" onclick="fun_get_id('.$customers->id.')" disabled="disabled">Repayment</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_tower_ticket" onclick="fun_get_Ticket_id('.$customers->id.')">Ticket</a></li>
                         </ul>
                     </div>
@@ -103,6 +104,7 @@ class CustomerController extends Controller
             })
             ->make(true);
     }
+
 
 
     public function CustomersTableTwoAjax()
@@ -117,7 +119,7 @@ class CustomerController extends Controller
     {
         if($request->ajax()){
             $id = $request->id;
-            $info = Customer::find($id);
+            $info = Customer::with('address_helper')->find($id);
             //echo json_decode($info);
             return response()->json($info);
         }
@@ -220,7 +222,7 @@ class CustomerController extends Controller
         $broadcasts   = Broadcast::all();
         $device      = Device::all();
         $apmac       = Broadcast::all();
-        $olt         = Olt::all();
+        $olt            = Olt::all();
         $connection         = ConnectionType::all();
         $fiberbox           = FiberBox::all();
         $fibernode          = FiberNode::all();
