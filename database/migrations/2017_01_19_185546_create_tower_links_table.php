@@ -14,18 +14,17 @@ class CreateTowerLinksTable extends Migration
     public function up()
     {
         Schema::create('tower_links', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('tower_id')->unsigned();
-            $table->foreign('tower_id')->references('id')->on('towers')->onDelete('cascade');
-            $table->string('repeater_name')->nullable();
-            $table->string('connection_type_id')->nullable();
+            $table->tinyIncrements('id');
+            $table->unsignedTinyInteger('tower_id');
+            $table->string('repeater_name','50')->nullable();
+            $table->unsignedTinyInteger('connection_type_id')->nullable();
             $table->string('connection_method')->nullable();
-            $table->string('source_name')->nullable();
+            $table->string('source_name','50')->nullable();
             // wireless
-            $table->string('wireless_type')->nullable();
-            $table->string('channel_width')->nullable();
-            $table->string('ssid')->nullable();
-            $table->string('authentication_method')->nullable();
+            $table->unsignedTinyInteger('wireless_type')->nullable();
+            $table->unsignedTinyInteger('channel_width')->nullable();
+            $table->string('ssid','30')->nullable();
+            $table->unsignedTinyInteger('authentication_method')->nullable();
             $table->string('authentication')->nullable();
             $table->ipAddress('slave_ip')->nullable();
             $table->macAddress('slave_mac')->nullable();
@@ -40,19 +39,26 @@ class CreateTowerLinksTable extends Migration
             $table->string('master_username')->nullable();
             $table->string('master_password')->nullable();
             // fiber obtic
-            $table->string('fiber_type')->nullable();
-            $table->string('fiber_core')->nullable();
-            $table->string('fiber_sfp_type')->nullable();
+            $table->unsignedTinyInteger('fiber_type')->nullable();
+            $table->unsignedTinyInteger('fiber_core')->nullable();
+            $table->unsignedTinyInteger('fiber_sfp_type')->nullable();
             $table->string('fiber_distance')->nullable();
-            $table->string('fiber_master_port_number')->nullable();
-            $table->string('fiber_clint_port_number')->nullable();
+            $table->unsignedTinyInteger('fiber_master_port_number')->nullable();
+            $table->unsignedTinyInteger('fiber_clint_port_number')->nullable();
             // other
-            $table->string('link_info')->nullable();
-            $table->integer('created_by');
-            $table->integer('updated_by');
-            $table->integer('delete_by')->nullable();
+            $table->string('link_info','100')->nullable();
+            $table->unsignedTinyInteger('created_by')->nullable();
+            $table->unsignedTinyInteger('updated_by')->nullable();
+            $table->unsignedTinyInteger('delete_by')->nullable();
             $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::table('tower_links', function($table) {
+            $table->foreign('tower_id')->references('id')->on('towers')->onDelete('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('delete_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 

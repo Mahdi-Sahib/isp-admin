@@ -62,18 +62,6 @@
                             <input type="text" class="form-control"  name="description">
                         </div>
                         <div class="form-group">
-                            <label for="brand">Thumb:</label>
-                            <input type="text" class="form-control"  name="thumb">
-                        </div>
-                        <div class="form-group">
-                            <label for="brand">Image:</label>
-                            <input type="text" class="form-control"  name="image">
-                        </div>
-                        <div class="form-group">
-                            <label for="brand">Code:</label>
-                            <input type="text" class="form-control"  name="code">
-                        </div>
-                        <div class="form-group">
                             <label for="brand">Currency:</label>
                             <input type="text" class="form-control"  name="currency">
                         </div>

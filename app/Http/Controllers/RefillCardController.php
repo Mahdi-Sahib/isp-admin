@@ -76,10 +76,6 @@ class RefillCardController extends Controller
             $data->supplier_id                     = $request->supplier_id;
             $data->title                           = $request->title;
             $data->description                     = $request->description;
-            $data->thumb                           = $request->thumb;
-            $data->image                           = $request->thumb;
-            $data->code                            = $request->code;
-            $data->code                            = $request->code;
             $data->currency                        = 'usd';
             $data->cost_price                      = $request->cost_price;
             $data->selling_price                   = $request->selling_price;
@@ -140,10 +136,6 @@ class RefillCardController extends Controller
             $data->supplier_id                     = $request->supplier_id;
             $data->title                           = $request->title;
             $data->description                     = $request->description;
-            $data->thumb                           = $request->thumb;
-            $data->image                           = $request->thumb;
-            $data->code                            = $request->code;
-            $data->code                            = $request->code;
             $data->currency                        = 'usd';
             $data->cost_price                      = $request->cost_price;
             $data->selling_price                   = $request->selling_price;

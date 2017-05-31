@@ -94,7 +94,7 @@ class CustomerController extends Controller
                             <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$customers->id.')" >Peek</a></li>
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_customer_debt_repayment" onclick="fun_get_id('.$customers->id.')" disabled="disabled">Repayment</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_tower_ticket" onclick="fun_get_Ticket_id('.$customers->id.')">Ticket</a></li>
                         </ul>
@@ -171,9 +171,8 @@ class CustomerController extends Controller
             $customer->apmac_id           = $request->apmac_id;
             $customer->wireless_type_id   = $request->wireless_type_id;
             $customer->olt_id             = $request->olt_id;
-            $customer->first_splitter_id  = $request->first_splitter_id;
-            $customer->second_splitter_id = $request->second_splitter_id;
-            $customer->switch_id          = $request->switch_id;
+            $customer->splitter_id        = $request->splitter_id;
+            $customer->hub_id             = $request->hub_id;
             $customer->switch_port        = $request->switch_port;
             $customer->connection_method  = $request->connection_method;
             $customer->created_by         = Auth::User()->id;
@@ -202,8 +201,6 @@ class CustomerController extends Controller
         $device             = Device::all();
         $apmac              = Broadcast::all();
         $ticket             = CustomerTicket::all();
-        $fiberbox           = FiberBox::all();
-        $fibernode          = FiberNode::all();
         $customer           = Customer::find($id);
         return view('vendor.adminlte.pages.customer.view-customer' , compact('customer','device','tower','broadcast','apmac','ticket','user','fiberbox','fibernode','refills')) ;
 

@@ -273,25 +273,17 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-resize-small"></div> OLT No. & Location</label>
-                    <select name="tower_id" class="form-control" >
+                    <select name="olt_id" class="form-control" >
                     </select>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-resize-full"></div> First Splitter No. & Location</label>
-                    <select name="broadcast_id" class="form-control" >
+                    <select name="splitter_id" class="form-control" >
                     </select>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="form-group">
-                    <label><div class="glyphicon glyphicon-resize-full"></div> Second Splitter No. & Location</label>
-                    <select name="broadcast_id" class="form-control" >
-                    </select>
-                </div>
-            </div>
-
         </div>
 </div>
  <div  id="lan">
@@ -303,7 +295,7 @@
        <div class="col-lg-3">
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-random"></div> Hub Switch</label>
-                    <select name="tower_id" class="form-control" >
+                    <select name="hub_id" class="form-control" >
 
                     </select>
                 </div>
@@ -312,7 +304,7 @@
             <div class="col-lg-3">
                 <div class="form-group">
                     <label><div class="glyphicon glyphicon-inbox"></div> Port Number</label>
-                    <select name="broadcast_id" class="form-control" >
+                    <select name="switch_port" class="form-control" >
 
                     </select>
                 </div>

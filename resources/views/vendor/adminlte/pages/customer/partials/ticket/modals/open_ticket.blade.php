@@ -1,3 +1,4 @@
+<!-- Add Modal start -->
 <div class="modal fade" id="addModal_tower_ticket" role="dialog">
     <div class="modal-dialog ">
         <!-- Modal content-->
@@ -9,18 +10,16 @@
             <div class="modal-body">
                 <form action="{{ url('isp-cpanel/customers/customer_ticket/add') }}" method="post">
                     {{ csrf_field() }}
-                    <input id="z" name="customer_id" hidden>
                     <div class="form-group">
                         <label><div class="fa fa-commenting"></div> Message :</label>
                         <textarea type="text" rows="5"  class="form-control"  name="message"> </textarea>
                     </div>
                     <input id="category"  name="category"  value="1" hidden>
-
+                    <input id="customer_id"  name="customer_id"  value="{{ $customer->id }}" hidden>
                     <br>
                     <button type="submit" class="btn btn-warning">
                         <i class="fa fa-btn fa-ticket"></i> Open Ticket
-                    </button>
-                </form>
+                    </button>                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -28,3 +27,4 @@
         </div>
     </div>
 </div>
+<!-- add code ends -->

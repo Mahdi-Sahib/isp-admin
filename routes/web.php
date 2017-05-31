@@ -9,23 +9,36 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('isp-cpanel/customers/customer-refill-table/{id?}', 'RefillCustomerController@CustomerRefillAjax');
     Route::get('isp-cpanel/customers/customer-ticket-table/{id?}', 'CustomerTicketController@CustomerTicketAjax');
     Route::get('isp-cpanel/customers/customer-table', 'CustomerController@CustomerTableOneAjax');
+    Route::get('isp-cpanel/customers/customer_ticket/open_ticket', 'CustomerTicketController@OpenTickets');
 
     // ---------  customers Ajax tables  ------------
 
-    Route::get('isp-cpanel/customer/customer_peek', 'CustomerController@Peek');
-    Route::get('isp-cpanel/customer/customer_refill/view', 'RefillCustomerController@viewAjax');
-    Route::post('isp-cpanel/customer/customer_refill', 'RefillCustomerController@refillCustomer');
-    Route::post('isp-cpanel/customer/debt_repayment', 'RefillCustomerController@repayment');
 
-    Route::post('isp-cpanel/customer/customer_ticket', 'CustomerTicketController@addAjax');
-    Route::get('isp-cpanel/customer/customer_ticket/view', 'CustomerTicketController@viewAjax');
-    Route::post('isp-cpanel/customer/customer_ticket/close_ticket', 'CustomerTicketController@closeTicket');
+    // xxxxxxxxxxx
+    Route::get('isp-cpanel/customers/customer_peek', 'CustomerController@Peek');
+
+
+    Route::get('isp-cpanel/customers/customer_refill/view', 'RefillCustomerController@viewAjax');
+    Route::post('isp-cpanel/customers/customer_refill', 'RefillCustomerController@refillCustomer');
+    Route::post('isp-cpanel/customers/debt_repayment', 'RefillCustomerController@repayment');
+
+    // unpaid
+    Route::get('isp-cpanel/customers/unpaid', 'RefillCustomerController@unpaid');
+    Route::get('isp-cpanel/customers/unpaid-table', 'RefillCustomerController@unpaidTable');
+    //  xxxxxxxxxxx
+
+
+    Route::get('isp-cpanel/customers/customer_ticket', 'CustomerTicketController@home');
+    Route::post('isp-cpanel/customers/customer_ticket/add', 'CustomerTicketController@addAjax');
+    Route::get('isp-cpanel/customers/customer_ticket/view', 'CustomerTicketController@viewAjax');
+    Route::post('isp-cpanel/customers/customer_ticket/close_ticket', 'CustomerTicketController@closeTicket');
+
+
+
+
     Route::resource('isp-cpanel/customers', 'CustomerController');
 
 
-    // unpaid
-    Route::get('isp-cpanel/customer/unpaid', 'RefillCustomerController@unpaid');
-    Route::get('isp-cpanel/customer/unpaid-table', 'RefillCustomerController@unpaidTable');
 
 
 

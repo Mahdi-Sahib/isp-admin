@@ -16,7 +16,7 @@ class RefillCustomerController extends Controller
 
     public function unpaid()
     {
-        return view('vendor.adminlte.pages.customer.unpaid.page_unpaid');
+        return view('vendor.adminlte.pages.customer.unpaid_customer');
     }
 
     public function CustomerRefillAjax(Request $request, $id)
@@ -122,8 +122,8 @@ class RefillCustomerController extends Controller
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$unpaid->id.')" >Peek</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#addModal_repayment" onclick="fun_get_id('.$unpaid->id.')" disabled="disabled">Repayment</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_refill_view" onclick="fun_view_refill('.$unpaid->id.')" >Peek</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_repayment" onclick="fun_repayment('.$unpaid->id.')" disabled="disabled">Repayment</a></li>
                         </ul>
                     </div>
                 </td>
@@ -180,7 +180,11 @@ class RefillCustomerController extends Controller
             $refill->created_by               = Auth::User()->id;
             $refill->save();
         }elseif ($request->payment_status == 1) {
-            $refill->amount_paid              = $request->amount_paid;
+            if ($request->amount_paid > 0) {
+                $refill->amount_paid              = $request->amount_paid;
+            }elseif ($request->amount_paid == 0) {
+                 0 ;
+            }
             $refill->payment_status           = 1;
             $refill->customer_id              = $request->customer_id;
             $refill->refill_card_id           = $request->refill_card_id;

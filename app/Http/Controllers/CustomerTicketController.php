@@ -13,6 +13,37 @@ use App\CustomerTicket;
 
 class CustomerTicketController extends Controller
 {
+
+
+    public function home()
+    {
+        return view('vendor.adminlte.pages.customer.open_ticket_home');
+    }
+
+    public function OpenTickets()
+    {
+        $tickets = CustomerTicket::with('customer','user')->where('status','1')->select('customer_tickets.*');
+        return Datatables::of($tickets)->take(20)
+            ->rawColumns(['action'])
+            ->addColumn('action', function ($tickets) {
+                return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket('.$tickets->id.')">View</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_close_ticket('.$tickets->id.')">Close Ticket</a></li>
+                        </ul>
+                    </div>
+                </td>
+                ';
+            })
+            ->make(true);
+    }
+
     public function CustomerTicketView()
     {
         return view('vendor.adminlte.pages.customer.partials.customer_view_table_ticket');
@@ -106,12 +137,12 @@ class CustomerTicketController extends Controller
     {
         $id = $request -> edit_id_ticket;
         $data = CustomerTicket::find($id);
-        $data->status               = 0;
-        $data->close_message        = $request->close_message;
-        $data->closed_by            = Auth::User()->id;
+        $data->status                = 0;
+        $data->close_message         = $request->close_message;
+        $data->updated_by            = Auth::User()->id;
         $data -> save();
         return back()
-            ->with('message_ticket','Ticket Closed successfully.');
+            ->with('message','Ticket Closed successfully.');
     }
 
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateSplittersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('splitters', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->unsignedTinyInteger('product_categories_id')->nullable();
-            $table->unsignedTinyInteger('supplier_id')->nullable();
-            $table->string('title','100')->nullable();
-            $table->decimal('price')->nullable();
-            $table->string('description','100')->nullable();
-            $table->string('thumb')->nullable();
-            $table->string('image')->nullable();
-            $table->string('code')->nullable();
-            $table->decimal('currency')->nullable();
-            $table->decimal('cost_price')->nullable();
-            $table->decimal('selling_price')->nullable();
+            $table->unsignedTinyInteger('type')->nullable();
+            $table->string('title','20')->nullable();
+            $table->unsignedTinyInteger('adaptor_typ')->nullable();
+            $table->unsignedTinyInteger('accommodate')->nullable();
+            $table->unsignedTinyInteger('brand')->nullable();
+            $table->unsignedTinyInteger('model')->nullable();
+            $table->unsignedTinyInteger('splitting_level')->nullable();
+            $table->unsignedTinyInteger('splitting_ratio')->nullable();
+            $table->unsignedTinyInteger('max_splitting_ratio')->nullable();
+            $table->unsignedTinyInteger('pon_count')->nullable();
+            $table->string('title','25')->nullable();
+            $table->string('location','30')->nullable();
             $table->unsignedTinyInteger('created_by')->nullable();
             $table->unsignedTinyInteger('updated_by')->nullable();
             $table->unsignedTinyInteger('delete_by')->nullable();
@@ -33,8 +34,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('products', function($table) {
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('set null');
+        Schema::table('splitters', function($table) {
             $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('delete_by')->references('id')->on('users')->onDelete('set null');
@@ -48,6 +48,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('splitters');
     }
 }

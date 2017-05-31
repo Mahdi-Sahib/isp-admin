@@ -47,7 +47,7 @@
     </div>
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-home"></div> Adress</label>
-        <input type="text" class="form-control" value="{{ $customer->address_helper->place_1 }}" disabled >
+        <input type="text" class="form-control" @if($customer->address_helper) value="{{ $customer->address_helper->place_1 }}" @endif disabled >
     </div>
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-home"></div> About the address</label>
@@ -60,7 +60,7 @@
     @if($customer->Device)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-gears"></div> Station Type</label>
-        <input type="text" class="form-control" value="{{ $customer->Device->brand_model }}" readonly >
+        <input type="text" class="form-control" @if($customer->Device) value="{{ $customer->Device->brand_model }}" @endif readonly >
     </div>
     @endif
     <div  class="col-lg-3 form-group">
@@ -89,7 +89,7 @@
 
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> point / Tower</label>
-        <input  type="text" class="form-control" @if($customer->tower) value="{{ $customer->towerName->name }}" @endif readonly >
+        <input  type="text" class="form-control" @if($customer->towerName) value="{{ $customer->towerName->name }}" @endif readonly >
     </div>
 
 
@@ -113,30 +113,26 @@
 </div>
 
 <div class="box-body" id="fttx">
-    @if($customer->tower)
+    @if($customer->olt)
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> OLT No. & Location</label>
-        <input  type="text" class="form-control" value="{{ $customer->tower->name }}" readonly >
+        <input  type="text" class="form-control" @if($customer->olt) value="{{ $customer->olt->title }}" @endif  readonly >
     </div>
     @endif
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> First Splitter No. & Location</label>
-        <input type="text" class="form-control"  value="" readonly >
-    </div>
-    <div  class="col-lg-4 form-group">
-        <label><div class="fa fa-wifi"></div> Second Splitter No. & Location</label>
-        <input type="text" class="form-control"  value="" readonly >
+        <input type="text" class="form-control"  @if($customer->splitter) value="{{ $customer->splitter->title }}" @endif readonly >
     </div>
 </div>
 
 <div class="box-body" id="lan">
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> Hub Switch</label>
-        <input  type="text" class="form-control" value="" readonly >
+        <input  type="text" class="form-control" @if($customer->hub) value="{{ $customer->hub->name }}" @endif readonly >
     </div>
     <div  class="col-lg-4 form-group">
         <label><div class="fa fa-wifi"></div> Port Number</label>
-        <input type="text" class="form-control"  value="" readonly >
+        <input type="text" class="form-control"   value="{{ $customer->switch_port }}"  readonly >
     </div>
 </div>
 <hr>

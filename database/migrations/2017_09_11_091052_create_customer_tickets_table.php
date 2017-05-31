@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTowerIpsTable extends Migration
+class CreateCustomerTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateTowerIpsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tower_ips', function (Blueprint $table) {
-            $table->tinyIncrements('id');
-            $table->unsignedTinyInteger('tower_id');
-            $table->ipAddress('tower_ip');
+        Schema::create('customer_tickets', function (Blueprint $table) {
+            $table->mediumIncrements('id');
+            $table->unsignedSmallInteger('customer_id');
+            $table->boolean('status')->default(1);
+            $table->string('message','150');
+            $table->string('close_message','150')->nullable();
             $table->unsignedTinyInteger('created_by')->nullable();
             $table->unsignedTinyInteger('updated_by')->nullable();
             $table->unsignedTinyInteger('delete_by')->nullable();
@@ -24,8 +26,8 @@ class CreateTowerIpsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('tower_ips', function($table) {
-            $table->foreign('tower_id')->references('id')->on('towers')->onDelete('cascade');
+        Schema::table('customer_tickets', function($table) {
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
             $table->foreign('delete_by')->references('id')->on('users')->onDelete('set null');
@@ -39,6 +41,6 @@ class CreateTowerIpsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tower_ips');
+        Schema::dropIfExists('customer_tickets');
     }
 }
