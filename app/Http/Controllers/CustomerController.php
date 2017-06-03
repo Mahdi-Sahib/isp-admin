@@ -221,8 +221,6 @@ class CustomerController extends Controller
         $apmac       = Broadcast::all();
         $olt            = Olt::all();
         $connection         = ConnectionType::all();
-        $fiberbox           = FiberBox::all();
-        $fibernode          = FiberNode::all();
         $customer    = Customer::find($id);
         return view('vendor.adminlte.pages.customer.edit-customer' , compact('customer','device','towers','broadcasts','apmac','fiberbox','fibernode','address','connection','olt')) ;
     }
