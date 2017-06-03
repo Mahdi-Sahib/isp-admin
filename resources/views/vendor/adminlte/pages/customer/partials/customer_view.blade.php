@@ -1,29 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(function() {
-        $("#wireless").hide();
-        $("#fttx").hide();
-        $("#lan").hide();
-        var value = $('#v').val();
-        if(value == 0) {
-            $("#fttx").hide();
-            $("#wireless").hide();
-            $("#lan").hide();
-        }else if (value == 1){
-            $("#wireless").show();
-            $("#fttx").hide();
-            $("#lan").hide();
-        }else if (value == 2){
-            $("#fiber").hide();
-            $("#wireless").hide();
-            $("#lan").show();
-        }else if (value == 3){
-            $("#fttx").show();
-            $("#wireless").hide();
-            $("#lan").hide();
-        }
-    });
-</script>
 <div class="box-body">
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-user"></div> Full Name</label>
