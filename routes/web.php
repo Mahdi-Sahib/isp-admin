@@ -63,9 +63,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/tower/tower_broadcast/delete', 'BroadcastController@deleteAjax');
 
     // link
+    Route::get('isp-cpanel/tower/tower_link/view', 'TowerLinkController@viewAjax');
     Route::get('isp-cpanel/tower/tower_link', 'TowerLinkController@tableAjax');
     Route::post('isp-cpanel/tower/tower_link', 'TowerLinkController@addAjaxNew');
-    Route::get('isp-cpanel/tower/tower_link/view', 'TowerLinkController@viewAjax');
     Route::post('isp-cpanel/tower/tower_link/update', 'TowerLinkController@updateAjax');
     Route::post('isp-cpanel/tower/tower_link/delete', 'TowerLinkController@deleteAjax');
 
