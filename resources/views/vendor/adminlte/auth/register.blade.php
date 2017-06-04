@@ -64,7 +64,6 @@
                         </div><!-- /.col -->
                     </div>
                 </form>
-                
 
                 <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
             </div><!-- /.form-box -->
