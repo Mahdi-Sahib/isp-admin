@@ -1,13 +1,44 @@
 <script type="text/javascript">
-    $('#broadcast').DataTable({
-        "searching":false,
-  //    "paging": false,
-        "lengthChange": false,
-        "searching": false,
-        "ordering" : true,
+    $('#broadcast_table').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "searching": true,
+        "iDisplayLength": 10,
+        "lengthChange": true,
+        "ordering": true,
         "info": true,
         "autoWidth": true,
-    })
+        "paging": true,
+        "ajax": '{{ url('isp-cpanel/tower/tower_broadcast/ajax_table/'.$tower->id) }}',
+        "columns": [
+            {data: 'number_sign', name: 'number_sign', orderable: false, searchable: false, width: '5%', class: 'text-center'},
+            {data: 'ssid', name: 'ssid', orderable: false, searchable: false},
+            {data: 'direction', name: 'direction', orderable: false, searchable: true},
+            {
+                data: 'ip',
+                name: 'ip',
+                orderable: true,
+                searchable: false,
+                width: '10%',
+                class: 'text-center'
+            },
+            {
+                data: 'mac',
+                name: 'mac',
+                orderable: true,
+                searchable: false,
+                width: '10%',
+                class: 'text-center'
+            },
+            {data: 'channal_width', name: 'channal_width', searchable: false, width: '5%', class: 'text-center'},
+            {data: 'device.brand_model', name: 'device.brand_model', searchable: false, width: '10%', class: 'text-center'},
+            {data: 'action', name: 'action', orderable: false, searchable: false, width: '11%', class: 'text-center'}
+        ]
+    });
+</script>
+
+<script type="text/javascript">
+
     function fun_view_broadcast(id)
     {
         var view_url = $("#hidden_view").val();
@@ -30,6 +61,10 @@
                 $("#view_channal_width").text(result.channal_width);
                 $("#view_direction").text(result.direction);
                 $("#view_broadcasts_info").text(result.broadcasts_info);
+                $("#view_created").text(result.broadcast_created_by.name);
+                $("#view_updated").text(result.broadcast_updated_by.name);
+                $("#view_broadcast_created_at").text(broadcast_updated_by.name);
+                $("#view_broadcast_updated_at").text(result.updated_at);
             }
         });
     }

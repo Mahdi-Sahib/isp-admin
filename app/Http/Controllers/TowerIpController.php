@@ -24,7 +24,7 @@ class TowerIpController extends Controller
     public function addAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'tower_ip'                => 'required|unique:tower_ips',
+            'tower_ip'                => 'ip | required|unique:tower_ips',
         ]);
         if ($validator->fails()) {
             return back()
@@ -60,7 +60,7 @@ class TowerIpController extends Controller
     public function updateAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'tower_ip'         => 'required|unique:tower_ips'
+            'tower_ip'         => 'ip | required|unique:tower_ips'
         ]);
         if ($validator->fails()) {
             return back()

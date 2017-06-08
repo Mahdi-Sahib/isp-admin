@@ -16,33 +16,33 @@ class CreateTowerLinksTable extends Migration
         Schema::create('tower_links', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->unsignedTinyInteger('tower_id');
-            $table->string('repeater_name','50')->nullable();
+            $table->string('repeater_name','20')->nullable();
             $table->unsignedTinyInteger('connection_type_id')->nullable();
-            $table->string('connection_method')->nullable();
+            $table->unsignedTinyInteger('connection_method')->nullable();
             $table->string('source_name','50')->nullable();
             // wireless
             $table->unsignedTinyInteger('wireless_type')->nullable();
             $table->unsignedTinyInteger('channel_width')->nullable();
             $table->string('ssid','30')->nullable();
             $table->unsignedTinyInteger('authentication_method')->nullable();
-            $table->string('authentication')->nullable();
+            $table->string('authentication','50')->nullable();
             $table->ipAddress('slave_ip')->nullable();
             $table->macAddress('slave_mac')->nullable();
-            $table->string('slave_antenna')->nullable();
-            $table->string('slave_brand')->nullable();
-            $table->string('slave_username')->nullable();
-            $table->string('slave_password')->nullable();
+            $table->string('slave_antenna','20')->nullable();
+            $table->string('slave_brand','20')->nullable();
+            $table->string('slave_username','20')->nullable();
+            $table->string('slave_password','20')->nullable();
             $table->ipAddress('master_ip')->nullable();
             $table->macAddress('master_mac')->nullable();
-            $table->string('master_antenna')->nullable();
-            $table->string('master_brand')->nullable();
-            $table->string('master_username')->nullable();
-            $table->string('master_password')->nullable();
+            $table->string('master_antenna','20')->nullable();
+            $table->string('master_brand','20')->nullable();
+            $table->string('master_username','20')->nullable();
+            $table->string('master_password','20')->nullable();
             // fiber obtic
             $table->unsignedTinyInteger('fiber_type')->nullable();
             $table->unsignedTinyInteger('fiber_core')->nullable();
             $table->unsignedTinyInteger('fiber_sfp_type')->nullable();
-            $table->string('fiber_distance')->nullable();
+            $table->unsignedSmallInteger('fiber_distance')->nullable();
             $table->unsignedTinyInteger('fiber_master_port_number')->nullable();
             $table->unsignedTinyInteger('fiber_clint_port_number')->nullable();
             // other

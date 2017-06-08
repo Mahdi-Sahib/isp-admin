@@ -1,45 +1,39 @@
 <?php
 
 function channel_width(){
-        $channel_width = ['5','10','15','20','25','30','35','40','50','60','80','120','160'];
-    return array_combine($channel_width,$channel_width);
+    $array = ['5','10','15','20','25','30','35','40','50','60','80','120','160'];
+    return $array;
 }
 
 function authentication_method(){
-        $authentication_method = ['EAP','WPA'];
-    return array_combine($authentication_method,$authentication_method);
+    $array = ['EAP','WPA'];
+    return $array;
 }
-
-function connection_method(){
-        $connection_method = ['Unknown!','Wireless','LAN','FTTX'];
-    return array_combine($connection_method,$connection_method);
-}
-
 
 function connection_method_value(){
-    $array = ['0'=>'Unknown!','1'=>'Wireless','2'=>'LAN','3'=>'FTTX'];
+    $array = ['Unknown!','Wireless','LAN','FTTX'];
     return $array;
 }
 
 function wireless_type(){
-    $array = ['wireless 900 MHz','wireless 2.4 GHz','wireless 3 GHz','wireless 5.8 GHz','wireless 24 GHz'];
+    $array = ['2.4 GHz (802.11b/g/n)','3.65 GHz (802.11y)','4.9 GHz (802.11j)','5 GHz (802.11a/h/j/n/ac)','5.9 GHz (802.11p)','24 GHz','60 GHz (802.11ad)'];
     return $array;
 }
 
 // Tower Ticket Functions
 
 function tower_ticket_category(){
-    $array = ['1'=>'Point/Tower','2'=>'Broadcast','3'=>'Link'];
+    $array = ['Point/Tower','Broadcast','Link'];
     return $array;
 }
 
 function tower_ticket_priority(){
-    $array = ['1'=>'Low','2'=>'Normal','3'=>'High','4'=>'Urgent'];
+    $array = ['Low','Normal','High','Urgent'];
     return $array;
 }
 
 function tower_ticket_status(){
-    $array = ['1'=>'Open','2'=>'Closed'];
+    $array = ['Open','Closed'];
     return $array;
 }
 
@@ -65,5 +59,10 @@ function olt_type(){
 
 function adaptor_type(){
     $array = ['SC / APC','FC / PAC','SC / PC','FC / PC'];
+    return $array;
+}
+
+function fiber_core_count(){
+    $array = ['Single Core','Dual Core','Quad Core','Octa Core'];
     return $array;
 }

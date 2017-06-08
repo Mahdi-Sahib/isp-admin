@@ -19,7 +19,7 @@ class TowerTicketController extends Controller
         if ($request->ajax()) {
             $tickets = Tower::find($id);
             return Datatables::of(TowerTicket::with('user')->where('tower_id', $tickets->id))
-                ->orderBy('created_at', 'id $1')
+
 
                 ->editColumn('category', function ($tickets) {
                     if ($tickets->category == 1){
@@ -33,17 +33,19 @@ class TowerTicketController extends Controller
 
                 ->editColumn('status', function ($tickets) {
                     if ($tickets->status == 1){
-                        return "Open";
+                        return '<div class="text-red" >'. 'Open' .'</div>';
                     }elseif ($tickets->status == 0){
-                        return "Closed";
+                        return '<div class="text-green" >'. 'Closed' .'</div>';
                     };
                 })
 
                 ->editColumn('created_at', function ($tickets) {
                     return $tickets->created_at->format('(D g:i A) d-n-y');
                 })
+                ->rawColumns(['action', 'status'])
                 ->addColumn('action', function ($tickets) {
-                    return '
+                    if ($tickets->status == 1){
+                        return '
                 <td class="text-center">
                     <!-- Single button -->
                     <div class="btn-group" >
@@ -57,6 +59,21 @@ class TowerTicketController extends Controller
                     </div>
                 </td>       
                              ';
+                    }elseif ($tickets->status == 0) {
+                        return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket(' . $tickets->id . ')">View</a></li>
+                        </ul>
+                    </div>
+                </td>       
+                             ';
+                    }
                 })
                 ->make(true);
         }
@@ -70,8 +87,8 @@ class TowerTicketController extends Controller
         $validator = Validator::make($request->all(), [
             'tower_id'                => 'required',
             'priority'                => 'required',
-            'title'                   => 'required',
-            'message'                 => 'required',
+            'title'                   => 'required | max:50',
+            'message'                 => 'required | max:150',
         ]);
         if ($validator->fails()) {
             return back()
@@ -106,24 +123,6 @@ class TowerTicketController extends Controller
         }
     }
 
-    public function updateAjax(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'tower_ip'         => 'required|unique:tower_ips'
-        ]);
-        if ($validator->fails()) {
-            return back()
-                ->withErrors($validator);
-        } else {
-            $id = $request -> edit_id_ip;
-            $data = TowerTicket::find($id);
-            $data->tower_ip              = $request->tower_ip;
-            $data->updated_by            = Auth::User()->id;
-            $data -> save();
-            return back()
-                ->with('message_ticket','ip Updated successfully.');
-        }
-    }
 
     /*
     *   close Ticket
@@ -141,14 +140,22 @@ class TowerTicketController extends Controller
 
     public function closeTicket(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'message'                 => 'required | max:150',
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
             $id = $request -> edit_id_ticket;
             $data = TowerTicket::find($id);
             $data->status               = 0;
             $data->close_message        = $request->close_message;
-            $data->closed_by            = Auth::User()->id;
+            $data->updated_by            = Auth::User()->id;
             $data -> save();
             return back()
                 ->with('message_ticket','Ticket Closed successfully.');
+        }
     }
 
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Broadcast;
+use App\Tower;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use Validator, Input, Redirect ,Session ;
 
@@ -88,7 +90,33 @@ class BroadcastController extends Controller
 /*
 * Display all data
 */
-    public function tableAjax()
+
+    public function BroadcastTable(Request $request , $id){
+        if ($request->ajax()) {
+            $broadcast = Tower::find($id);
+            return Datatables::of(Broadcast::with('user','device')->where('tower_id', $broadcast->id))
+                ->rawColumns(['action'])
+                ->addColumn('action', function ($broadcast) {
+                        return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_broadcast" onclick="fun_view_broadcast(' . $broadcast->id . ')">View</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#editModal_broadcast" onclick="fun_edit_broadcast(' .  $broadcast->id  . ')">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>       
+                             ';
+                })
+                ->make(true);
+        }
+    }
+
+    public function broadcast_view_crud()
     {
         return view('vendor.adminlte.pages.tower.partials.broadcast_view_crud');
     }
@@ -99,10 +127,13 @@ class BroadcastController extends Controller
     public function addAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'number_Sign'       => 'numeric | unique:broadcasts',
+            'number_sign'       => 'max:5 | unique:broadcasts',
+            'name'       => 'max:20 | unique:broadcasts',
+            'ssid'       => 'max:30 | required',
+            'antenna'       => 'max:20',
+            'direction'       => 'max:50',
             'device_id'         => 'required',
-            'ssid'              => 'required',
-            'ip'                => 'required',
+            'ip'                => 'ip | required | unique:broadcasts',
         ]);
 
         if ($validator->fails()) {
@@ -151,10 +182,13 @@ class BroadcastController extends Controller
     public function updateAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'number_Sign'       => 'numeric | unique:broadcasts',
+            'number_sign'       => 'max:5 | unique:broadcasts',
+            'name'       => 'max:20 | unique:broadcasts',
+            'ssid'       => 'max:30 | required',
+            'antenna'       => 'max:20',
+            'direction'       => 'max:50',
             'device_id'         => 'required',
-            'ssid'              => 'required',
-            'ip'                => 'required',
+            'ip'                => 'ip | required | unique:broadcasts',
         ]);
 
         if ($validator->fails()) {

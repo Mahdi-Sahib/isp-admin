@@ -13,19 +13,27 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Broadcast extends Model
 {
-    public $table="broadcasts";
-
-    public $fillable = [
-        'id', 'tower_id', 'device_id', 'number_sign','name','ssid','ip', 'mac','channal','channal_width','direction', 'broadcasts_info','created_by','updated_by','delete_by'
-    ];
-
 
     public function Tower() {
         return $this->belongsTo('App\Tower') ;
     }
 
-    public function Device(){
+    public function device(){
         return $this->belongsTo('App\Device');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function broadcast_created_by()
+    {
+        return $this->belongsTo('App\User', 'created_by', 'id');
+    }
+
+    public function broadcast_updated_by()
+    {
+        return $this->belongsTo('App\User', 'updated_by', 'id');
     }
 
 

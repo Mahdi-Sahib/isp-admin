@@ -1,12 +1,13 @@
+
+
 <script type="text/javascript">
-    function fun_view_tl(id)
-    {
+    function fun_view_tl(id) {
         var view_url = $("#hidden_view_tl").val();
         $.ajax({
             url: view_url,
-            type:"GET",
-            data: {"id":id},
-            success: function(result){
+            type: "GET",
+            data: {"id": id},
+            success: function (result) {
                 // console.log(result);
                 $("#view_connection_method").text(result.connection_method);
                 $("#view_connection_type_id").text(result.connection_type_id);
@@ -31,39 +32,128 @@
                 $("#view_link_info").text(result.link_info);
                 // fiber
                 $("#view_fiber_type").text(result.fiber_type);
-                $("#view_fiber_core").text(result.fiber_core);
-                $("#view_fiber_sfp_type").text(result.fiber_sfp_type);
                 $("#view_fiber_distance").text(result.fiber_distance);
                 $("#view_fiber_master_port_number").text(result.fiber_master_port_number);
                 $("#view_fiber_clint_port_number").text(result.fiber_clint_port_number);
 
-                if(  (result.connection_method) == "Wireless" )
-                {
-                    $("#wirless_show").show();
-                    $("#fiber_show").hide();
-                    $("#show_message_lanx").hide();
-                } else if (  (result.connection_method) == "Fiber Obtic" ) {
-                    $("#fiber_show").show();
-                    $("#wirless_show").hide();
-                    $("#show_message_lanx").hide();
-                } else if (  (result.connection_method) == "LAN" ) {
+                if ((result.connection_method) === "0") {
                     $("#fiber_show").hide();
                     $("#wirless_show").hide();
                     $("#show_message_lanx").show();
+                } else if ((result.connection_method) === "1") {
+                    $("#fiber_show").hide();
+                    $("#wirless_show").show();
+                    $("#show_message_lanx").hide();
+                }   else if ((result.connection_method) === "2") {
+                    $("#fiber_show").hide();
+                    $("#wirless_show").hide();
+                    $("#show_message_lanx").show();
+                } else if ((result.connection_method) === "3") {
+                    $("#fiber_show").show();
+                    $("#wirless_show").hide();
+                    $("#show_message_lanx").hide();
                 }
+
+
+                $('#view_wireless_type').each(
+                    function()
+                    {
+                        if ((result.wireless_type) === 0) {
+                            return $("#view_wireless_type").text('2.4 GHz (802.11b/g/n)');
+                        } else if ((result.fiber_core) === 1) {
+                            return $("#view_wireless_type").text('3.65 GHz (802.11y)');
+                        } else if ((result.fiber_core) === 2) {
+                            return $("#view_wireless_type").text("4.9 GHz (802.11j)");
+                        } else if ((result.wireless_type) === 3) {
+                            return $("#view_wireless_type").text('5 GHz (802.11a/h/j/n/ac)');
+                        } else if ((result.wireless_type) === 4) {
+                            return $("#view_wireless_type").text('5.9 GHz (802.11p)');
+                        } else if ((result.wireless_type) === 5) {
+                            return $("#view_wireless_type").text('24 GHz');
+                        } else if ((result.wireless_type) === 6) {
+                            return $("#view_wireless_type").text('60 GHz (802.11ad)');
+                        }
+                    }
+                );
+
+
+                $('#view_fiber_core').each(
+                    function()
+                    {
+                    if ((result.fiber_core) === 0) {
+                        return $("#view_fiber_core").text('Single Core');
+                    } else if ((result.fiber_core) === 1) {
+                        return $("#view_fiber_core").text('Dual Core');
+                    } else if ((result.fiber_core) === 2) {
+                        return $("#view_fiber_core").text("Quad Core");
+                    } else if ((result.fiber_core) === 3) {
+                        return $("#view_fiber_core").text('Octa Core');
+                    }
+                }
+                );
+
+                $('#view_channel_width').each(
+                    function()
+                    {
+                        if ((result.channel_width) === 0) {
+                            return $("#view_channel_width").text('5');
+                        } else if ((result.channel_width) === 1) {
+                            return $("#view_channel_width").text('10');
+                        } else if ((result.channel_width) === 2) {
+                            return $("#view_channel_width").text("15");
+                        } else if ((result.channel_width) === 3) {
+                            return $("#view_channel_width").text('20');
+                        }else if ((result.channel_width) === 4) {
+                            return $("#view_channel_width").text('25');
+                        }else if ((result.channel_width) === 5) {
+                            return $("#view_channel_width").text('30');
+                        }else if ((result.channel_width) === 6) {
+                            return $("#view_channel_width").text('35');
+                        }else if ((result.channel_width) === 7) {
+                            return $("#view_channel_width").text('40');
+                        }else if ((result.channel_width) === 8) {
+                            return $("#view_channel_width").text('50');
+                        }else if ((result.channel_width) === 9) {
+                            return $("#view_channel_width").text('60');
+                        }else if ((result.channel_width) === 10) {
+                            return $("#view_channel_width").text('80');
+                        }else if ((result.channel_width) === 11) {
+                            return $("#view_channel_width").text('120');
+                        }else if ((result.channel_width) === 12) {
+                            return $("#view_channel_width").text('160');
+                        }
+                    }
+                );
+
+                $('#view_fiber_sfp_type').each(
+                    function()
+                    {
+                        if ((result.fiber_sfp_type) === 0) {
+                            return $("#view_fiber_sfp_type").text('SC / APC');
+                        } else if ((result.fiber_sfp_type) === 1) {
+                            return $("#view_fiber_sfp_type").text('FC / PAC');
+                        } else if ((result.fiber_sfp_type) === 2) {
+                            return $("#view_fiber_sfp_type").text("SC / PC");
+                        } else if ((result.fiber_sfp_type) === 3) {
+                            return $("#view_fiber_sfp_type").text('FC / PC');
+                        }
+                    }
+                );
+
+
+
             }
         });
     }
 
-    function fun_edit_tl(id)
-    {
+    function fun_edit_tl(id) {
         var view_url = $("#hidden_view_tl").val();
         $.ajax({
             url: view_url,
-            type:"GET",
-            data: {"id":id},
-            success: function(result){
-                 console.log(result);
+            type: "GET",
+            data: {"id": id},
+            success: function (result) {
+                console.log(result);
                 $("#edit_id_tl").val(result.id);
                 $("#edit_connection_method").val(result.connection_method);
                 // wireless
@@ -96,42 +186,44 @@
                 $("#edit_fiber_master_port_number").val(result.fiber_master_port_number);
                 $("#edit_fiber_clint_port_number").val(result.fiber_clint_port_number);
 
-                if(  (result.connection_method) == "Wireless" )
-                {
-                    $("#wirless_edit").show();
-                    $("#fiber_edit").hide();
-                    $("#show_message_lan").hide();
-                } else if (  (result.connection_method) == "Fiber Obtic" ) {
-                    $("#fiber_edit").show();
-                    $("#wirless_edit").hide();
-                    $("#show_message_lan").hide();
-                } else if (  (result.connection_method) == "LAN" ) {
+                if ((result.connection_method) === "0") {
                     $("#fiber_edit").hide();
                     $("#wirless_edit").hide();
                     $("#show_message_lan").show();
+                } else if ((result.connection_method) === "1") {
+                    $("#fiber_edit").hide();
+                    $("#wirless_edit").show();
+                    $("#show_message_lan").hide();
+                }   else if ((result.connection_method) === "2") {
+                    $("#fiber_edit").hide();
+                    $("#wirless_edit").hide();
+                    $("#show_message_lan").show();
+                } else if ((result.connection_method) === "3") {
+                    $("#fiber_edit").show();
+                    $("#wirless_edit").hide();
+                    $("#show_message_lan").hide();
                 }
+
             }
         });
     }
 
 
-
-    function fun_delete_tl(id)
-    {
+    function fun_delete_tl(id) {
         var conf = confirm("When you delete Link all ticket's for this Link will deleted.");
-        if(conf){
+        if (conf) {
             var delete_url = $("#hidden_delete_tl").val();
             $.ajax({
                 url: delete_url,
-                type:"POST",
-                data: {"id":id,_token: "{{ csrf_token() }}"},
-                success: function(response){
+                type: "POST",
+                data: {"id": id, _token: "{{ csrf_token() }}"},
+                success: function (response) {
                     alert(response);
                     location.reload();
                 }
             });
         }
-        else{
+        else {
             return false;
         }
     }

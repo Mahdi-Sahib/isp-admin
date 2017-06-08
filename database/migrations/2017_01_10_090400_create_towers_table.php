@@ -15,10 +15,10 @@ class CreateTowersTable extends Migration
     {
         Schema::create('towers', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('name','25');
+            $table->string('name','25')->unique()->index();
             $table->string('location','50')->nullable();
             $table->string('google_location','50')->nullable();
-            $table->string('tower_info','100')->nullable();
+            $table->string('tower_info')->nullable();
             $table->unsignedTinyInteger('created_by')->nullable();
             $table->unsignedTinyInteger('updated_by')->nullable();
             $table->unsignedTinyInteger('delete_by')->nullable();

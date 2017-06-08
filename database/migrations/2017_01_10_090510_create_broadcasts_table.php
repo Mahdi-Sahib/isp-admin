@@ -23,11 +23,11 @@ class CreateBroadcastsTable extends Migration
             $table->ipAddress('ip');
             $table->macAddress('mac')->nullable();
             $table->string('antenna','20')->nullable();
-            $table->unsignedTinyInteger('degree')->nullable();
+            $table->unsignedSmallInteger('degree')->nullable();
             $table->unsignedTinyInteger('gin')->nullable();
             $table->string('channal')->nullable();
             $table->unsignedTinyInteger('channal_width');
-            $table->string('direction','50')->nullable();
+            $table->string('direction','50')->index()->nullable();
             $table->string('broadcasts_info')->nullable();
             $table->unsignedTinyInteger('created_by')->nullable();
             $table->unsignedTinyInteger('updated_by')->nullable();

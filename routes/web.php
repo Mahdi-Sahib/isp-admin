@@ -55,8 +55,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/tower/tower_ip/update', 'TowerIpController@updateAjax');
     Route::post('isp-cpanel/tower/tower_ip/delete', 'TowerIpController@deleteAjax');
 
-
-    Route::get('isp-cpanel/tower/tower_broadcast', 'BroadcastController@tableAjax');
+    Route::get('isp-cpanel/tower/tower_broadcast/ajax_table/{id?}', 'BroadcastController@BroadcastTable');
+    Route::get('isp-cpanel/tower/tower_broadcast', 'BroadcastController@broadcast_view_crud');
     Route::post('isp-cpanel/tower/tower_broadcast', 'BroadcastController@addAjax');
     Route::get('isp-cpanel/tower/tower_broadcast/view', 'BroadcastController@viewAjax');
     Route::post('isp-cpanel/tower/tower_broadcast/update', 'BroadcastController@updateAjax');
@@ -71,10 +71,10 @@ Route::group(['middleware' => 'admin'], function () {
 
 
     // Tower Ticket
+    Route::get('isp-cpanel/tower/tower_ticket/view-ticket', 'TowerTicketController@viewAjax');
     Route::get('isp-cpanel/tower/tower_ticket/{id?}', 'TowerTicketController@ticketTable');
     Route::post('isp-cpanel/tower/tower_ticket', 'TowerTicketController@addAjax');
     Route::post('isp-cpanel/tower/tower_ticket/close_ticket', 'TowerTicketController@closeTicket');
-
     Route::resource('isp-cpanel/towers', 'TowerController');
     ##############################################################################################
 

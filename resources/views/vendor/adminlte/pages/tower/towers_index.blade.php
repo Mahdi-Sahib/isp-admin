@@ -30,7 +30,8 @@
                 <th>Broadcast Point</th>
                 <th>Agent / Admin</th>
                 <th>Location</th>
-                <th>Google Location</th>
+                <th>Statistics</th>
+                <th>Navigation's</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -42,7 +43,8 @@
                 <th>Broadcast Point</th>
                 <th>Agent / Admin</th>
                 <th>Location</th>
-                <th>Google Location</th>
+                <th>Statistics</th>
+                <th>Navigation's</th>
                 <th>Action</th>
             </tr>
             </tfoot>
@@ -63,12 +65,26 @@
             "serverSide": true,
             "ajax": '{{ url('isp-cpanel/towers/tower-table') }}',
             "columns": [
-                { data: 'name',          name: 'name' , orderable: false, searchable: true ,class:'text-center'},
-                { data: 'agent',          name: 'agent' , orderable: false, searchable: true ,class:'text-center'},
-                { data: 'location',          name: 'location' , orderable: false, searchable: true  },
-                { data: 'google_location',          name: 'google_location' , orderable: false, searchable: true  },
-                { data: 'action',            name: 'action', orderable: false, searchable: false , class:'text-center'}
-            ]
+                {data: 'name', name: 'name', orderable: false, searchable: true, class: 'text-center'},
+                {data: 'agent', name: 'agent', orderable: false, searchable: true, class: 'text-center'},
+                {data: 'location', name: 'location', orderable: false, searchable: true},
+                {data: 'statistics', name: 'statistics', orderable: false, searchable: true},
+                {
+                    data: 'navigation',
+                    name: 'navigation',
+                    orderable: false,
+                    searchable: false,
+                    width: '11%',
+                    class: 'text-center'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                    width: '11%',
+                    class: 'text-center'
+                }]
         });
     </script>
 @endsection

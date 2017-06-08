@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Tower;
 use App\TowerLink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -100,7 +101,7 @@ class TowerLinkController extends Controller
     public function addAjaxNew(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'source_name'               => 'required',
+            'source_name'               => 'required | max:50',
             'connection_method'        => 'required',
         ]);
         if ($validator->fails()) {
@@ -138,6 +139,20 @@ class TowerLinkController extends Controller
     public function updateAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'repeater_name'               => 'required | max:20',
+            'ssid'               => 'max:30',
+            'master_ip'               => 'ip',
+            'slave_ip'               => 'ip',
+            'master_mac'               => 'max:17',
+            'slave_mac'               => 'max:17',
+            'slave_antenna'               => 'max:20',
+            'slave_brand'               => 'max:20',
+            'slave_username'               => 'max:20',
+            'slave_password'               => 'max:20',
+            'master_antenna'               => 'max:20',
+            'master_brand'               => 'max:20',
+            'master_username'               => 'max:20',
+            'master_password'               => 'max:20',
         ]);
         if ($validator->fails()) {
             return back()

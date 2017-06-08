@@ -30,48 +30,47 @@
         <div class="row">
             @include('adminlte::layouts.partials.notifications')
 
-             <div class="row">
-                    @include('adminlte::pages.tower.partials.dashboard-heder')
+            <div class="row">
+                @include('adminlte::pages.tower.partials.dashboard-heder')
 
-                             <div class="col-lg-12" class="container-fluid spark-screen">
-                                 <div class="panel panel-default">
-                                     <div class="panel-body">
-                                         @include('adminlte::pages.tower.partials.tower_ticket_view')
-                                     </div>
-                                 </div>
-                             </div>
-
-                            <div class="col-lg-12" class="container-fluid spark-screen">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        @include('adminlte::pages.tower.partials.broadcast_view_crud')
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4" class="container-fluid spark-screen">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                    @include('adminlte::pages.tower.partials.ip_view_crud')
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8" class="container-fluid spark-screen">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        @include('adminlte::pages.tower.partials.link_view_crud')
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-lg-12" class="container-fluid spark-screen">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @include('adminlte::pages.tower.partials.tower_ticket_view')
                         </div>
+                    </div>
+                </div>
 
-             </div>
+                <div class="col-lg-12" class="container-fluid spark-screen">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @include('adminlte::pages.tower.partials.broadcast_view_crud')
+                        </div>
+                    </div>
+                </div>
 
-      </div>
-             <!-- /.row -->
-   </section>
-             <!-- /.content -->
+                <div class="col-lg-4" class="container-fluid spark-screen">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @include('adminlte::pages.tower.partials.ip_view_crud')
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8" class="container-fluid spark-screen">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @include('adminlte::pages.tower.partials.link_view_crud')
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
 
 
 @endsection
