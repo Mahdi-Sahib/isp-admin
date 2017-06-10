@@ -15,7 +15,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 
     // xxxxxxxxxxx
-    Route::get('isp-cpanel/customers/customer_peek', 'CustomerController@Peek');
+    Route::get('customer_peek', 'CustomerController@Peek');
 
 
     Route::get('isp-cpanel/customers/customer_refill/view', 'RefillCustomerController@viewAjax');

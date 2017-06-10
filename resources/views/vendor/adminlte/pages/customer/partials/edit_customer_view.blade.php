@@ -38,8 +38,6 @@
     </div>
 </div>
 
-<hr>
-
 <div class="panel-body">
     <label>
         <div class="fa fa-edit"></div>
@@ -75,8 +73,6 @@
         </div>
     </div>
 </div>
-
-<hr>
 
 <div class="panel-body">
     <label>
@@ -126,11 +122,9 @@
                 </select>
             </div>
         </div>
-        <input id="v" value="{{ $customer->connection_method }}" hidden>
+        <input id="connection_method_id" value="{{ $customer->connection_method }}" hidden>
     </div>
 </div>
-
-<hr>
 
 <div class="box-body" id="wireless">
     <label>
@@ -199,7 +193,6 @@
     </div>
 </div>
 
-<hr>
 <div class="box-body" id="fttx">
     <label>
         <div class="fa fa-gears"></div>
@@ -243,11 +236,7 @@
         </div>
     </div>
 </div>
-</dive>
-</dive>
 
-
-<hr>
 <div class="box-body" id="lan">
     <div class="col-lg-4 form-group">
         <label>
@@ -262,37 +251,3 @@
         <input type="text" class="form-control" value="">
     </div>
 </div>
-
-
-<hr>
-<div class="box-body">
-    <div class="col-lg-3 form-group">
-        <label>
-            <div class="fa fa-calendar-times-o"></div>
-            Add Date</label>
-        <input type="text" class="form-control" value="{{ $customer->created_at->format('(D g:i A)    d-n-Y') }}">
-    </div>
-    <div class="col-lg-3 form-group">
-        <label>
-            <div class="fa  fa-user-secret"></div>
-            Add by</label>
-        <input type="text" class="form-control" value="{{ $customer->userCreated->name}}">
-    </div>
-    @if ($customer->updated_at != $customer->created_at)
-        <div class="col-lg-3 form-group">
-            <label>
-                <div class="fa fa-calendar-times-o"></div>
-                Last Update at</label>
-            <input type="text" class="form-control" value="{{ $customer->updated_at->format('(D g:i A)    d-n-Y') }}">
-        </div>
-    @endif
-    @if ($customer->updated_by)
-        <div class="col-lg-3 form-group">
-            <label>
-                <div class="fa  fa-user-secret"></div>
-                Last Update by</label>
-            <input type="text" class="form-control" value="{{ $customer->userUpdated->name}}">
-        </div>
-    @endif
-</div>
-<hr>

@@ -27,7 +27,7 @@
 
     @include('adminlte::layouts.partials.pageheader')
 
-    @include('adminlte::pages.customer.partials.customer_view')
+    @include('adminlte::pages.customer.partials.customer_profile')
     <hr>
 
 
@@ -55,7 +55,7 @@
 @section('page-scripts')
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
-
+    @include('adminlte::pages.customer.partials.script.customer_profile_script')
     @include('adminlte::pages.customer.partials.ticket.script.table_ticket_script')
     @include('adminlte::pages.customer.partials.ticket.script.ticket_peek_script')
     @include('adminlte::pages.customer.partials.ticket.script.close_ticket_script')

@@ -1,26 +1,26 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#wireless").hide();
-        $("#fiber").hide();
+        $("#fttx").hide();
         $("#lan").hide();
-        $('#connection_method').on('change', function () {
+        $('#connection_method_id').on('change', function () {
             if (this.value === '1') {
                 $("#wireless").show();
-                $("#fiber").hide();
+                $("#fttx").hide();
                 $("#lan").hide();
             }
             else if (this.value === '3') {
-                $("#fiber").show();
+                $("#fttx").show();
                 $("#wireless").hide();
                 $("#lan").hide();
             }
             else if (this.value === '2') {
-                $("#fiber").hide();
+                $("#fttx").hide();
                 $("#wireless").hide();
                 $("#lan").show();
             }
             else if (this.value === '0') {
-                $("#fiber").hide();
+                $("#fttx").hide();
                 $("#wireless").hide();
                 $("#lan").hide();
             }

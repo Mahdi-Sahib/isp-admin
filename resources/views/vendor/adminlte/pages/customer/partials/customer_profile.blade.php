@@ -55,7 +55,7 @@
         <input type="text" class="form-control"  value="{{ $customer->connectionMmethod->method }}" readonly >
     </div>
     @endif
-        <input id="v" value="{{ $customer->connection_method }}" hidden>
+        <input id="connection_method" value="{{ $customer->connection_method }}" hidden>
 
 </div>
 <hr>
@@ -97,6 +97,7 @@
         <label><div class="fa fa-wifi"></div> First Splitter No. & Location</label>
         <input type="text" class="form-control"  @if($customer->splitter) value="{{ $customer->splitter->title }}" @endif readonly >
     </div>
+
 </div>
 
 <div class="box-body" id="lan">
@@ -108,6 +109,7 @@
         <label><div class="fa fa-wifi"></div> Port Number</label>
         <input type="text" class="form-control"   value="{{ $customer->switch_port }}"  readonly >
     </div>
+
 </div>
 <hr>
 <div class="box-body" id="lan">
@@ -127,6 +129,7 @@
         <label><div class="fa fa-money"></div> Balance</label>
         <input type="text" class="form-control"  value="643234" readonly >
     </div>
+    <hr>
 </div>
 
 <hr>
@@ -152,4 +155,4 @@
     </div>
     @endif
 </div>
-<hr>
+
