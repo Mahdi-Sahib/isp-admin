@@ -6,6 +6,8 @@ use App\Customer;
 use App\RefillCard;
 use App\RefillCustomer;
 use App\User;
+use Response;
+use UxWeb\SweetAlert\SweetAlert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\Datatables\Facades\Datatables;
@@ -167,7 +169,14 @@ class RefillCustomerController extends Controller
 
     public function refillCustomer(Request $request)
     {
-
+        $validator = Validator::make($request->all(), [
+            'by_person'                => 'max:20',
+            'description'                => 'max:60',
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
         $refill = new RefillCustomer;
         if ($request->payment_status == 0){
             $refill->payment_status           = 0;
@@ -179,11 +188,14 @@ class RefillCustomerController extends Controller
             $refill->by_person                = $request->by_person;
             $refill->created_by               = Auth::User()->id;
             $refill->save();
+            // redirect
+            Session::flash('message', 'Successfuly Refill !');
+            return back();
         }elseif ($request->payment_status == 1) {
             if ($request->amount_paid > 0) {
                 $refill->amount_paid              = $request->amount_paid;
             }elseif ($request->amount_paid == 0) {
-                 0 ;
+            $refill->amount_paid              = 0 ;
             }
             $refill->payment_status           = 1;
             $refill->customer_id              = $request->customer_id;
@@ -192,12 +204,20 @@ class RefillCustomerController extends Controller
             $refill->card_price               = RefillCard::find($refill->refill_card_id)->selling_price;
             $refill->by_person                = $request->by_person;
             $refill->created_by               = Auth::User()->id;
-            $refill->save();
-            }
-        // redirect
-        Session::flash('message','Successfuly Refill !' ) ;
+                if($request->amount_paid < $refill->card_price) {
+                    $refill->save();
+                    return back();
+                }elseif ($request->amount_paid == $refill->card_price){
+                    $refill->payment_status           = 0;
+                    $refill->save();
+                    return back();
+                }elseif ($request->amount_paid > $refill->card_price){
+                    Session::flash('message_danger', 'try again!     Dude the amount paid much more then card price be careful');
+                    return back();
+                }
 
-        return redirect('isp-cpanel/customers');
+            }
+        }
     }
 
     public function repayment(Request $request)
@@ -211,9 +231,5 @@ class RefillCustomerController extends Controller
         return back()
             ->with('message_ticket','Ticket Closed successfully.');
     }
-
-
-
-
 
 }

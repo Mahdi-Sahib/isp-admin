@@ -1,6 +1,9 @@
 
 
 <script type="text/javascript">
+
+
+
     function fun_view_refill(id)
     {
         var view_url = $("#hidden_view_refill").val();
@@ -10,6 +13,7 @@
             data: {"id":id},
             success: function(result){
                 //console.log(result);
+
                 $("#view_refill_card_id").text(result.card.title);
                 $("#view_card_price").text(result.card_price);
                 $("#view_amount_paid").text(result.amount_paid);

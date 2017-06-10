@@ -106,7 +106,7 @@ class CustomerTicketController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'customer_id'                => 'required',
-            'message'                    => 'required',
+            'message'                    => 'required | max:150',
         ]);
         if ($validator->fails()) {
             return back()
@@ -135,14 +135,22 @@ class CustomerTicketController extends Controller
 
     public function closeTicket(Request $request)
     {
-        $id = $request -> edit_id_ticket;
-        $data = CustomerTicket::find($id);
-        $data->status                = 0;
-        $data->close_message         = $request->close_message;
-        $data->updated_by            = Auth::User()->id;
-        $data -> save();
-        return back()
-            ->with('message','Ticket Closed successfully.');
+        $validator = Validator::make($request->all(), [
+            'close_message'                    => 'required | max:150',
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
+            $id = $request->edit_id_ticket;
+            $data = CustomerTicket::find($id);
+            $data->status = 0;
+            $data->close_message = $request->close_message;
+            $data->updated_by = Auth::User()->id;
+            $data->save();
+            return back()
+                ->with('message', 'Ticket Closed successfully.');
+        }
     }
 
 }

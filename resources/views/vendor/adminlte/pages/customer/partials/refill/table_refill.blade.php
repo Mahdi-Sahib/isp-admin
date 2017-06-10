@@ -1,3 +1,11 @@
+@if (Session::has('message_success'))
+    <div class="alert alert-success">{{ Session::get('message') . ' by  '  . '( ' . Auth::user()->name . ' )'}} </div>
+@endif
+
+@if (Session::has('message_danger'))
+    <div class="alert alert-danger">{{ Session::get('message_danger') }} </div>
+@endif
+
 <div class="box-body">
     <button type="button" class="btn btn-warning btn-sm pull-right" data-toggle="modal" data-target="#addModal_refill" onclick="fun_get_id('{{ $customer->id }}')"><i class="fa fa-btn fa-ticket"></i> Refill</button>
     <br>

@@ -5,8 +5,7 @@
     </div>
 @endif
 
-<button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal">Add New
-    BroadCast
+<button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal">Add Access Point
 </button>
 <br>
 <br>
@@ -52,7 +51,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add New Broadcast</h4>
+                <h4 class="modal-title">Add New Access Point</h4>
             </div>
 
             <div class="modal-body">
@@ -144,7 +143,7 @@
                         <input id="tower_id" name="tower_id" value="{{ $tower->id }}" hidden>
 
                     </div>
-                    <button type="submit" class="btn btn-info">This is a new Broadcast</button>
+                    <button type="submit" class="btn btn-info">This is a new Access Point</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -164,7 +163,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">About This Broadcast</h4>
+                <h4 class="modal-title">About This Access Point</h4>
             </div>
 
             <div class="box">
@@ -331,7 +330,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit this Link</h4>
+                <h4 class="modal-title">Edit this Access Point</h4>
             </div>
             <div class="modal-body">
                 <form action="{{ url('isp-cpanel/tower/tower_broadcast/update') }}" method="post">

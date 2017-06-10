@@ -95,7 +95,6 @@ class CustomerController extends Controller
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_debt_repayment" onclick="fun_get_id('.$customers->id.')" disabled="disabled">Repayment</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_tower_ticket" onclick="fun_get_Ticket_id('.$customers->id.')">Ticket</a></li>
                         </ul>
                     </div>

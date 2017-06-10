@@ -6,10 +6,12 @@
 
 
 @section('contentheader_title')
+    Customer Information
 @endsection
 
 
 @section('contentheader_description')
+    Information & Ticket's & Refill
 @endsection
 
 
