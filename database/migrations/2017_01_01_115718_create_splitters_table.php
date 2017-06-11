@@ -25,7 +25,6 @@ class CreateSplittersTable extends Migration
             $table->unsignedTinyInteger('splitting_ratio')->nullable();
             $table->unsignedTinyInteger('max_splitting_ratio')->nullable();
             $table->unsignedTinyInteger('pon_count')->nullable();
-            $table->string('title','25')->nullable();
             $table->string('location','30')->nullable();
             $table->unsignedTinyInteger('created_by')->nullable();
             $table->unsignedTinyInteger('updated_by')->nullable();
