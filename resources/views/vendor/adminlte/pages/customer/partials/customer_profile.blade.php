@@ -142,11 +142,13 @@
         <label><div class="fa  fa-user-secret"></div> Add by</label>
         <input type="text" class="form-control" value="{{ $customer->userCreated->name}}" readonly >
     </div>
+    @if ($customer->updated_at)
     @if ($customer->updated_at != $customer->created_at)
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-calendar-times-o"></div> Last Update at</label>
         <input type="text" class="form-control" value="{{ $customer->updated_at->format('(D g:i A)    d-n-Y') }}" readonly >
     </div>
+    @endif
     @endif
     @if ($customer->updated_by)
     <div  class="col-lg-3 form-group">

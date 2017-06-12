@@ -24,6 +24,9 @@ class CustomerTicketController extends Controller
     {
         $tickets = CustomerTicket::with('customer','user')->where('status','1')->select('customer_tickets.*');
         return Datatables::of($tickets)->take(20)
+            ->editColumn('created_at', function ($tickets) {
+                return $tickets->created_at->format('(D g:i A) d-n-Y');
+            })
             ->rawColumns(['action'])
             ->addColumn('action', function ($tickets) {
                 return '

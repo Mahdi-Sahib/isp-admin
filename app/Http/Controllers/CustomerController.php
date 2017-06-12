@@ -6,7 +6,6 @@ use App\Olt;
 use App\RefillCard;
 use App\RefillCustomer;
 use Illuminate\Http\Request;
-use Symfony\Component\VarDumper\Caster\CutStub;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Customer;
@@ -18,9 +17,6 @@ use App\Device;
 use App\Tower;
 use App\CustomerTicket;
 use App\Broadcast;
-use App\Ticket;
-use App\FiberBox;
-use App\FiberNode;
 use Validator, Input, Redirect ,Session ;
 
 
@@ -95,7 +91,6 @@ class CustomerController extends Controller
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#addModal_customer_debt_repayment" onclick="fun_get_id('.$customers->id.')" disabled="disabled">Repayment</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_tower_ticket" onclick="fun_get_Ticket_id('.$customers->id.')">Ticket</a></li>
                         </ul>
                     </div>

@@ -2,14 +2,17 @@
 
 
 @section('htmlheader_title')
+    Customers Tickets
 @endsection
 
 
 @section('contentheader_title')
+    Customers Tickets
 @endsection
 
 
 @section('contentheader_description')
+    all opened tickets sorted from older
 @endsection
 
 

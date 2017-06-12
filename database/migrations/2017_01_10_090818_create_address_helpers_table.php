@@ -15,7 +15,7 @@ class CreateAddressHelpersTable extends Migration
     {
         Schema::create('address_helpers', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('place_1','20');
+            $table->string('place_1','50');
             $table->unsignedTinyInteger('created_by')->nullable();
             $table->unsignedTinyInteger('updated_by')->nullable();
             $table->unsignedTinyInteger('delete_by')->nullable();
