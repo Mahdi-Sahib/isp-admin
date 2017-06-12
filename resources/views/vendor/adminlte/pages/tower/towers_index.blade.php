@@ -2,32 +2,37 @@
 
 
 @section('htmlheader_title')
+    Wireless Point's
 @endsection
 
 
 @section('contentheader_title')
+    Wireless Point's
 @endsection
 
 
 @section('contentheader_description')
+    tower - or group of AP 's
 @endsection
 
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
 
 @section('page-name')
-    Broadcast point / Tower
+    Wireless Point's
 @endsection
 
 
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
-
+    <a href="towers/create"  class="btn btn-info btn-sm pull-right">New Tower</a>
+    <br>
+    <br>
     <div class="box-body">
         <table id="data" class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th>Broadcast Point</th>
+                <th>Wireliss Point</th>
                 <th>Agent / Admin</th>
                 <th>Location</th>
                 <th>Statistics</th>
@@ -40,7 +45,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <th>Broadcast Point</th>
+                <th>Wireliss Point</th>
                 <th>Agent / Admin</th>
                 <th>Location</th>
                 <th>Statistics</th>
@@ -63,6 +68,14 @@
         $('#data').DataTable({
             "processing": true,
             "serverSide": true,
+            "searching": false,
+            "iDisplayLength": 50,
+            "lengthMenu": [ 5,10, 25, 50, 75, 100 ],
+            "lengthChange": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "paging": true,
             "ajax": '{{ url('isp-cpanel/towers/tower-table') }}',
             "columns": [
                 {data: 'name', name: 'name', orderable: false, searchable: true, class: 'text-center'},

@@ -40,10 +40,6 @@ class Tower extends Model
         return $this->hasMany('App\TowerTicket')->where('status','1')->count();
     }
 
-    public function AddressHelper() {
-        return $this->belongsTo('App\AddressHelper');
-    }
-
     public function user() {
         return $this->belongsTo('App\User') ;
     }

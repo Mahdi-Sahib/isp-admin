@@ -89,7 +89,7 @@ class TowerController extends Controller
             $tower->updated_by = Auth::User()->id;
             $tower->save();
             Session::flash('message', 'Successfuly Add ' . $tower->name . ' !');
-            return redirect('isp-cpanel/towers/towers-table-one-view');
+            return redirect('isp-cpanel/towers');
         }
     }
 

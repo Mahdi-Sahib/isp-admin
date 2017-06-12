@@ -51,7 +51,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('isp-cpanel/customers/create') }}"><i class="fa fa-user-plus"></i> {{ trans('layout.new-customers') }}<small class="label pull-right bg-blue">new</small></a></li>
+                    <li><a href="{{ url('isp-cpanel/customers/create') }}"><i class="fa fa-user-plus"></i> New Customer<small class="label pull-right bg-blue">new</small></a></li>
                     <li><a href="{{ url('isp-cpanel/customers') }}"><i class="fa fa-users"></i> {{ trans('layout.all-customers') }}<small class="label pull-right bg-green">{{ App\Customer::count() }}</small></a></li>
                     <li><a href="{{ url('isp-cpanel/customers/customer_ticket') }}"><i class="fa fa-wheelchair"></i> Open Ticket's<small class="label pull-right bg-yellow">{{ App\CustomerTicket::where('status','1')->count() }}</small></a></li>
                     <li><a href="{{ url('isp-cpanel/customers/unpaid') }}"><i class="fa fa-money"></i> Unpaid Card<small class="label pull-right bg-red">{{ App\RefillCustomer::where('payment_status','1')->count() }}</small></a></li>

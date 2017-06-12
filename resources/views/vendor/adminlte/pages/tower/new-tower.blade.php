@@ -50,17 +50,16 @@
                 @endif
             </div>
 
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label><div class="fa fa-home"></div> Address</label>
-                    <select name="location" class="form-control" >
-                        @foreach ($address as $address) {
-                        <option value="{!! $address->id !!}" >{!! $address->place_1 !!}</option>
-                        }
-                        @endforeach
-                    </select>
-                </div>
+            <div  class="col-lg-3 form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                <label><div for="location" class="glyphicon glyphicon-map-marker control-label" ></div> Location</label>
+                <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}"  >
+                @if ($errors->has('location'))
+                    <span  class="help-block">
+                                            <strong>{{ $errors->first('location') }}</strong>
+                                        </span>
+                @endif
             </div>
+
 
             <div  class="col-lg-3 form-group{{ $errors->has('google_location') ? ' has-error' : '' }}">
                 <label><div for="google_location" class="glyphicon glyphicon-map-marker control-label" ></div> google_location</label>
