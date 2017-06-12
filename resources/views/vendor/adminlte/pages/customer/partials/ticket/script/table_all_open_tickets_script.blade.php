@@ -14,7 +14,7 @@
             { data: 'message',        name: 'message' },
             { data: 'customer.fullname',         name: 'customer.fullname', width:'18%' },
             { data: 'user.name',      name: 'user.name', width:'10%'},
-            { data: 'created_at',     name: 'created_at', width:'15%', orderable: false, searchable: false },
+            { data: 'created_at',     name: 'created_at', orderable: false, searchable: false },
             { data: 'action',         name: 'action', orderable: false, searchable: false , width:'10%' , class:'text-center'}
         ]
     });
