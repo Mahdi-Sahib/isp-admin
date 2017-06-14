@@ -79,7 +79,7 @@
             "ajax": '{{ url('isp-cpanel/towers/tower-table') }}',
             "columns": [
                 {data: 'name', name: 'name', orderable: false, searchable: true, class: 'text-center'},
-                {data: 'agent', name: 'agent', orderable: false, searchable: true, class: 'text-center'},
+                {data: 'name', name: 'name', orderable: false, searchable: true, class: 'text-center'},
                 {data: 'location', name: 'location', orderable: false, searchable: true},
                 {data: 'statistics', name: 'statistics', orderable: false, searchable: true},
                 {
