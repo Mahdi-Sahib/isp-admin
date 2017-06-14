@@ -127,11 +127,11 @@ class BroadcastController extends Controller
     public function addAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'number_sign'       => 'max:5 | unique:broadcasts',
-            'name'       => 'max:20 | unique:broadcasts',
-            'ssid'       => 'max:30 | required',
-            'antenna'       => 'max:20',
-            'direction'       => 'max:50',
+            'number_sign'       => 'max:10',
+            'name'              => 'max:20',
+            'ssid'              => 'max:30 | required',
+            'antenna'           => 'max:20',
+            'direction'         => 'max:100',
             'device_id'         => 'required',
             'ip'                => 'ip | required | unique:broadcasts',
         ]);

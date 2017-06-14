@@ -63,7 +63,7 @@
                 $("#view_broadcasts_info").text(result.broadcasts_info);
                 $("#view_created").text(result.broadcast_created_by.name);
                 $("#view_updated").text(result.broadcast_updated_by.name);
-                $("#view_broadcast_created_at").text(broadcast_updated_by.name);
+                $("#view_broadcast_created_at").text(result.broadcast_updated_by.name);
                 $("#view_broadcast_updated_at").text(result.updated_at);
             }
         });
