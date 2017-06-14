@@ -15,7 +15,7 @@
     <tr>
         <th>#</th>
         <th>ssid</th>
-        <th>Direction</th>
+        <th>Direction / Target point</th>
         <th>IP</th>
         <th>MAC</th>
         <th>CW</th>
@@ -30,7 +30,7 @@
     <tr>
         <th>#</th>
         <th>ssid</th>
-        <th>Direction</th>
+        <th>Direction / Target point</th>
         <th>IP</th>
         <th>MAC</th>
         <th>CW</th>
@@ -130,8 +130,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="direction" class="fa fa-gears"> Direction:</label>
-                            <input type="text" class="form-control" id="direction" name="direction" maxlength="50">
+                            <label for="direction" class="fa fa-gears"> Direction / Target point:</label>
+                            <input type="text" class="form-control" id="direction" name="direction" maxlength="100">
                         </div>
 
                         <div class="form-group">
@@ -265,7 +265,7 @@
                             <td><label class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;"
                                        href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left"
                                        title="any sign for hint the broadcast"></label></td>
-                            <td>Direction :</td>
+                            <td>Direction / Target point:</td>
                             <td><span id="view_direction"></span></td>
                         </tr>
                         <tr>
