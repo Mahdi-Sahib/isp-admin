@@ -1,5 +1,8 @@
 <div class="box-body">
-    <button type="button" class="btn btn-warning btn-sm pull-right" data-toggle="modal" data-target="#addModal_tower_ticket"><i class="fa fa-btn fa-ticket"></i> Something Happened</button>
+    <div class="form-group pull-right">
+    <button  class="btn btn-warning btn-sm " data-toggle="modal" data-target="#addModal_tower_ticket"><i class="fa fa-btn fa-ticket"></i> Something Happened</button>
+    <button  class="btn btn-info btn-sm " data-toggle="modal" data-target="#addModal_hint"><i class="fa fa-btn fa-pencil"></i> Make a Hint</button>
+    </div>
     <br>
     <br>
     <div>
@@ -28,3 +31,4 @@
         </table>
     </div>
 </div>
+<hr>

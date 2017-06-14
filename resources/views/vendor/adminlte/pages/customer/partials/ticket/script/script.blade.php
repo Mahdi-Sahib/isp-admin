@@ -1,6 +1,5 @@
-
-
 <script type="text/javascript">
+
     function fun_view_ticket(id)
     {
         var view_url = $("#hidden_view_ticket").val();

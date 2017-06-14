@@ -1,15 +1,18 @@
-<div class="modal fade" id="addModal_tower_ticket" role="dialog">
+<div class="modal fade" id="addModal_hint" role="dialog">
     <div class="modal-dialog ">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" > <label class="fa fa-ticket"></label> Open new ticket</h4>
+                <h4 class="modal-title" > <label class="fa fa-ticket"></label> Add Hint</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/customers/customer_ticket/add') }}" method="post">
+                <form action="{{ url('isp-cpanel/customers/customer_ticket/hint') }}" method="post">
                     {{ csrf_field() }}
-                    <input id="z" name="customer_id" hidden>
+                    <input id="f" name="customer_id" hidden>
+                    @if (isset($customer))
+                        <input id="customer_id"  name="customer_id"  value="{{ $customer->id }}" hidden>
+                    @endif
                     <div class="form-group">
                         <label><div class="fa fa-commenting"></div> Message :</label>
                         <textarea type="text" rows="5"  class="form-control"  name="message"> </textarea>
@@ -18,7 +21,7 @@
 
                     <br>
                     <button type="submit" class="btn btn-warning">
-                        <i class="fa fa-btn fa-ticket"></i> Open Ticket
+                        <i class="fa fa-btn fa-ticket"></i> Add Hint
                     </button>
                 </form>
             </div>

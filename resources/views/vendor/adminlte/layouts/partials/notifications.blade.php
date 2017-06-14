@@ -12,7 +12,7 @@
 @endif
 
 <!-- will be used to show any messages -->
-@if (Session::has('message_success'))
+@if (Session::has('message'))
     <div class="alert alert-success">{{ Session::get('message') . ' by  '  . '( ' . Auth::user()->name . ' )'}} </div>
 @endif
 

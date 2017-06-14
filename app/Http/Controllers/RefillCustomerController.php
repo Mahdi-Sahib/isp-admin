@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\RefillCard;
 use App\RefillCustomer;
-use App\User;
-use Response;
-use UxWeb\SweetAlert\SweetAlert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\Datatables\Facades\Datatables;
@@ -124,8 +121,10 @@ class RefillCustomerController extends Controller
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="" data-toggle="modal" data-target="#viewModal_refill_view" onclick="fun_view_refill('.$unpaid->id.')" >Peek</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_refill_view" onclick="fun_view_refill('.$unpaid->id.')" >Peek Refill</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_repayment" onclick="fun_repayment('.$unpaid->id.')" disabled="disabled">Repayment</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$unpaid->customer->id.')" >Peek Customer</a></li>
+                             <li><a href="'.$unpaid->customer->id.'">View Customer</a></li>
                         </ul>
                     </div>
                 </td>

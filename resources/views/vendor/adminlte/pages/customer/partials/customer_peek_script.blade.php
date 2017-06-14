@@ -7,7 +7,7 @@
             type:"GET",
             data: {"id":id},
             success: function(result){
-                console.log(result);
+                // console.log(result);
                 $("#view_fullname").text(result.fullname);
                 $("#view_username").text(result.username);
                 $("#view_password").text(result.password);

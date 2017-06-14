@@ -34,6 +34,7 @@
                     <div class="panel-body">
                         @include('adminlte::pages.customer.partials.refill.table_unpaid')
                         @include('adminlte::pages.customer.partials.refill.modals.refill_peek')
+                        @include('adminlte::pages.customer.partials.customer_peek_view')
                         @include('adminlte::pages.customer.partials.refill.modals.repayment')
                     </div>
                 </div>
@@ -51,5 +52,6 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
     @include('adminlte::pages.customer.partials.refill.script.table_unpaid_script')
+    @include('adminlte::pages.customer.partials.customer_peek_script')
     @include('adminlte::pages.customer.partials.refill.script.script')
 @endsection

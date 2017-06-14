@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Customer;
-use App\User;
-use Carbon\Carbon;
 use App\AddressHelper;
 use App\ConnectionType;
 use App\Device;
@@ -91,6 +89,7 @@ class CustomerController extends Controller
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_hint" onclick="fun_get_hint_id('.$customers->id.')">Hint</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_tower_ticket" onclick="fun_get_Ticket_id('.$customers->id.')">Ticket</a></li>
                         </ul>
                     </div>

@@ -30,6 +30,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('isp-cpanel/customers/customer_ticket/view', 'CustomerTicketController@viewAjax');
     Route::get('isp-cpanel/customers/customer_ticket', 'CustomerTicketController@home');
     Route::post('isp-cpanel/customers/customer_ticket/add', 'CustomerTicketController@addAjax');
+    Route::post('isp-cpanel/customers/customer_ticket/hint', 'CustomerTicketController@addHint');
     Route::post('isp-cpanel/customers/customer_ticket/close_ticket', 'CustomerTicketController@closeTicket');
 
 

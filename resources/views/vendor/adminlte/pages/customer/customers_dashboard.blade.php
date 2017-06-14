@@ -39,7 +39,8 @@
     </section>
     <!-- /.content -->
     @include('adminlte::pages.customer.partials.refill.modals.refill')
-    @include('adminlte::pages.customer.partials.dashboard.add_ticket_view')
+    @include('adminlte::pages.customer.partials.ticket.modals.open_ticket')
+    @include('adminlte::pages.customer.partials.ticket.modals.hint')
     @include('adminlte::pages.customer.partials.customer_peek_view')
 @endsection
 
@@ -47,7 +48,8 @@
     @include('adminlte::pages.customer.partials.dashboard.customer_table_one_script')
     @include('adminlte::pages.customer.partials.customer_peek_script')
     @include('adminlte::pages.customer.partials.refill.script.refill_script')
-    @include('adminlte::pages.customer.partials.dashboard.add_ticket_script')
-
+    @include('adminlte::pages.customer.partials.refill.script.refill_script')
+    @include('adminlte::pages.customer.partials.ticket.script.open_ticket_script')
+    @include('adminlte::pages.customer.partials.ticket.script.hint_script')
 @endsection
 

@@ -37,7 +37,9 @@ class CustomerTicketController extends Controller
                             Action <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                        <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket('.$tickets->id.')">View</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket('.$tickets->id.')">Peek Ticket</a></li>
+                        <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$tickets->customer->id.')" >Peek Customer</a></li>
+                        <li><a href="'.$tickets->customer->id.'">View Customer</a></li>
                         <li><a href="" data-toggle="modal" data-target="#close_message" onclick="fun_close_ticket('.$tickets->id.')">Close Ticket</a></li>
                         </ul>
                     </div>
@@ -59,10 +61,12 @@ class CustomerTicketController extends Controller
             return Datatables::of(CustomerTicket::with('user')->where('customer_id', $tickets->id))
                 ->orderBy('created_at', 'id $1')
                 ->editColumn('status', function ($tickets) {
-                    if ($tickets->status == 1) {
-                        return '<div class="text-red" >Open</div>';
-                    } elseif ($tickets->status == 0) {
+                    if ($tickets->status == 0) {
                         return '<div class="text-green" >Closed</div>';
+                    } elseif ($tickets->status == 1) {
+                        return '<div class="text-red" >open</div>';
+                    } elseif ($tickets->status == 2) {
+                        return '<div class="text-blue" >Hint</div>';
                     };
                 })
                 ->editColumn('created_at', function ($tickets) {
@@ -116,13 +120,35 @@ class CustomerTicketController extends Controller
                 ->withErrors($validator);
         } else {
             $data = new CustomerTicket;
-            $data->customer_id              = $request->customer_id;
+            $data->customer_id           = $request->customer_id;
             $data->message               = $request->message;
             $data->created_by            = Auth::User()->id;
             $data->updated_by            = Auth::User()->id;
             $data->save();
             return back()
-                ->with('message_ticket', 'Ticket Opened successfully.');
+                ->with('message', 'Ticket Opened successfully.');
+        }
+    }
+
+    public function addHint(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'customer_id'                => 'required',
+            'message'                    => 'required | max:150',
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator);
+        } else {
+            $data = new CustomerTicket;
+            $data->customer_id           = $request->customer_id;
+            $data->message               = $request->message;
+            $data->status                = 2 ;
+            $data->created_by            = Auth::User()->id;
+            $data->updated_by            = Auth::User()->id;
+            $data->save();
+            return back()
+                ->with('message', 'Hint Add successfully.');
         }
     }
 

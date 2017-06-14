@@ -44,7 +44,9 @@
     <!-- /.content -->
     <input type="hidden" name="hidden_view_ticket" id="hidden_view_ticket" value="{{url('isp-cpanel/customers/customer_ticket/view')}}">
     <input type="hidden" name="hidden_view_ticket" id="hidden_view_ticket" value="{{url('isp-cpanel/customers/customer_ticket/close_ticket')}}">
+    <input type="hidden" name="hidden_customer_peek" id="hidden_customer_peek" value="{{url('customer_peek')}}">
     @include('adminlte::pages.customer.partials.ticket.modals.ticket_peek')
+    @include('adminlte::pages.customer.partials.customer_peek_view')
     @include('adminlte::pages.customer.partials.ticket.modals.close_ticket')
 @endsection
 
@@ -52,6 +54,7 @@
 @section('page-scripts')
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     @include('adminlte::pages.customer.partials.ticket.script.ticket_peek_script')
+    @include('adminlte::pages.customer.partials.customer_peek_script')
     @include('adminlte::pages.customer.partials.ticket.script.table_all_open_tickets_script')
     @include('adminlte::pages.customer.partials.ticket.script.close_ticket_script')
 @endsection
