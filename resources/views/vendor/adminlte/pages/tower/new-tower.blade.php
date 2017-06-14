@@ -40,12 +40,12 @@
                 @endif
             </div>
 
-            <div  class="col-lg-3 form-group{{ $errors->has('agent') ? ' has-error' : '' }}">
-                <label><div for="agent" class="glyphicon glyphicon-info-sign control-label" ></div> Agent / Admine</label>
-                <input id="agent" type="text" class="form-control" name="agent" value="{{ old('agent') }}" placeholder="Name of agent" >
-                @if ($errors->has('agent'))
+            <div  class="col-lg-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label><div for="name" class="glyphicon glyphicon-info-sign control-label" ></div> name / Admine</label>
+                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name of name" >
+                @if ($errors->has('name'))
                     <span  class="help-block">
-                                            <strong>{{ $errors->first('agent') }}</strong>
+                                            <strong>{{ $errors->first('name') }}</strong>
                                         </span>
                 @endif
             </div>

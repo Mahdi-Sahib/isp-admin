@@ -82,7 +82,7 @@ class TowerController extends Controller
         } else {
             $tower = new Tower();
             $tower->name = $request->name;
-            $tower->agent = $request->agent;
+            $tower->name = $request->name;
             $tower->location = $request->location;
             $tower->google_location = $request->google_location;
             $tower->created_by = Auth::User()->id;
