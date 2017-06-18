@@ -125,10 +125,32 @@ class TowerLinkController extends Controller
      */
     public function viewAjax(Request $request)
     {
+        // make array in helper as variable
+        $cw = channel_width();
+        $wt = wireless_type();
+        $fc = fiber_core_count();
+        $fd = fiber_type();
+        $fst = adaptor_type();
+
         if($request->ajax()){
             $id = $request->id;
             $info = TowerLink::find($id);
-            //echo json_decode($info);
+            if ($info->fiber_core){
+                $info->link_fiber_core = $fc[$info->fiber_core];
+            }
+            if ($info->channel_width){
+                $info->link_channel_width = $cw[$info->channel_width];
+            }
+            if ($info->wireless_type){
+                $info->link_wireless_type = $wt[$info->wireless_type];
+            }
+            if ($info->fiber_type){
+                $info->link_fiber_type = $fd[$info->fiber_type];
+            }
+            if ($info->fiber_sfp_type){
+                $info->link_fiber_sfp_type = $fst[$info->fiber_sfp_type];
+            }
+            // echo json_decode($info);
             return response()->json($info);
         }
     }
@@ -139,20 +161,27 @@ class TowerLinkController extends Controller
     public function updateAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'repeater_name'               => 'required | max:20',
-            'ssid'               => 'max:30',
-            'master_ip'               => 'ip',
-            'slave_ip'               => 'ip',
-            'master_mac'               => 'max:17',
-            'slave_mac'               => 'max:17',
+            'repeater_name'               => 'nullable | max:20',
+            'ssid'                        => 'max:30',
+            'master_ip'                   => 'nullable | ip',
+            'slave_ip'                    => 'nullable | ip',
+            'master_mac'                  => 'max:17',
+            'slave_mac'                   => 'max:17',
             'slave_antenna'               => 'max:20',
-            'slave_brand'               => 'max:20',
-            'slave_username'               => 'max:20',
-            'slave_password'               => 'max:20',
-            'master_antenna'               => 'max:20',
-            'master_brand'               => 'max:20',
-            'master_username'               => 'max:20',
-            'master_password'               => 'max:20',
+            'slave_brand'                 => 'max:20',
+            'slave_username'              => 'max:20',
+            'slave_password'              => 'max:20',
+            'master_antenna'              => 'max:20',
+            'master_brand'                => 'max:20',
+            'master_username'             => 'max:20',
+            'master_password'             => 'max:20',
+
+            'fiber_type'                  => 'max:5 | numeric',
+            'fiber_core'                  => 'max:5 | numeric',
+            'fiber_sfp_type'              => 'max:5 | numeric',
+            'fiber_distance'              => 'nullable | max:2000 | numeric',
+            'fiber_master_port_number'    => 'nullable | max:48 | numeric',
+            'fiber_clint_port_number'     => 'nullable | max:48 | numeric',
         ]);
         if ($validator->fails()) {
             return back()

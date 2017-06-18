@@ -73,7 +73,7 @@
                                 Message :</label>
                             <textarea type="text" rows="5" class="form-control" name="message"> </textarea>
                         </div>
-                        <input id="category" name="category" value="1" hidden>
+                        <input id="category" name="category" value="0" hidden>
                         <input id="tower_id" name="tower_id" value="{{ $tower->id }}" hidden>
                     </div>
                     <br>

@@ -107,6 +107,7 @@ class BroadcastController extends Controller
                         <ul class="dropdown-menu">
                             <li><a href="" data-toggle="modal" data-target="#viewModal_broadcast" onclick="fun_view_broadcast(' . $broadcast->id . ')">View</a></li>
                             <li><a href="" data-toggle="modal" data-target="#editModal_broadcast" onclick="fun_edit_broadcast(' .  $broadcast->id  . ')">Edit</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_broadcast_ticket">Ticket</a></li>
                         </ul>
                     </div>
                 </td>       
@@ -168,10 +169,12 @@ class BroadcastController extends Controller
      */
     public function viewAjax(Request $request)
     {
+        $cw = channel_width();
         if($request->ajax()){
             $id = $request->id;
             $info = Broadcast::find($id);
             //echo json_decode($info);
+            $info->channel_width = $cw[$info->channal_width];
             return response()->json($info);
         }
     }
@@ -182,13 +185,13 @@ class BroadcastController extends Controller
     public function updateAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'number_sign'       => 'max:5 | unique:broadcasts',
-            'name'       => 'max:20 | unique:broadcasts',
-            'ssid'       => 'max:30 | required',
-            'antenna'       => 'max:20',
-            'direction'       => 'max:50',
-            'device_id'         => 'required',
-            'ip'                => 'ip | required | unique:broadcasts',
+            'number_sign'       => 'max:5',
+            'name'              => 'max:20',
+            'ssid'              => 'max:30 | required',
+            'antenna'           => 'max:20',
+            'direction'         => 'max:50',
+            'device_id'         => 'max:5 | required',
+            'ip'                => 'ip | required',
         ]);
 
         if ($validator->fails()) {

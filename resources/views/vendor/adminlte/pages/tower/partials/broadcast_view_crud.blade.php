@@ -259,7 +259,7 @@
                                        href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left"
                                        title="any sign for hint the broadcast"></label></td>
                             <td>Channal Width (CW) :</td>
-                            <td><span id="view_channal_width"></span></td>
+                            <td><span id="view_channel_width"></span></td>
                         </tr>
                         <tr>
                             <td><label class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;"
@@ -335,8 +335,26 @@
             <div class="modal-body">
                 <form action="{{ url('isp-cpanel/tower/tower_broadcast/update') }}" method="post">
                     {{ csrf_field() }}
+                    <div class="box box-warning box-solid">
+                        <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-lg-3 form-group">
+                            <div class="form-group">
+                                <label for="edit_number_Sign">Label (#): </label>
+                                <input type="text" class="form-control" id="edit_number_Sign" name="number_sign"
+                                       maxlength="10">
+                            </div>
+                        </div>
+                        <div class="col-lg-9 form-group">
+                            <div class="form-group">
+                                <label for="edit_name">Name : </label>
+                                <input type="text" class="form-control" id="edit_name" name="name" maxlength="20">
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6 form-group">
                         <label for="edit_device_id">
                             <div class="fa fa-gears"></div>
                             Station Type</label>
@@ -350,67 +368,60 @@
                             </select>
                         @endif
                     </div>
+                    <div class="col-lg-6 form-group">
+                        <div class="form-group">
+                            <label for="edit_antenna">Edit Antenna : </label>
+                            <input type="text" class="form-control" id="edit_antenna" name="antenna" maxlength="20">
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="form-group">
-                            <label for="edit_number_Sign">Label (#): </label>
-                            <input type="text" class="form-control" id="edit_number_Sign" name="number_sign"
-                                   maxlength="10">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-group">
-                            <label for="edit_name">Name : </label>
-                            <input type="text" class="form-control" id="edit_name" name="name" maxlength="20">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <div class="form-group">
                             <label for="edit_ssid">SSID : </label>
                             <input type="text" class="form-control" id="edit_ssid" name="ssid" maxlength="30">
                         </div>
                     </div>
-                    <div class="form-group">
+
+                <div class="row">
+                    <div class="col-lg-6 form-group">
                         <div class="form-group">
                             <label for="edit_ip">IP : </label>
-                            <input type="text" class="form-control" id="edit_ip" name="ip">
+                            <input type="tel" class="form-control" id="edit_ip" name="ip">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="col-lg-6 form-group">
                         <div class="form-group">
                             <label for="edit_mac">MAC Assress : </label>
                             <input type="text" class="form-control" id="edit_mac" name="mac" maxlength="17">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="form-group">
-                            <label for="edit_antenna">Edit Antenna : </label>
-                            <input type="text" class="form-control" id="edit_antenna" name="antenna" maxlength="20">
-                        </div>
-                    </div>
-                    <div class="form-group">
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 form-group">
                         <div class="form-group">
                             <label for="edit_degree">Edit Degree : </label>
-                            <input type="text" class="form-control" id="edit_degree" name="degree" maxlength="3">
+                            <input type="tel" class="form-control" id="edit_degree" name="degree" maxlength="3">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="col-lg-3 form-group">
                         <div class="form-group">
                             <label for="edit_gin">Edit Gin : </label>
-                            <input type="text" class="form-control" id="edit_gin" name="gin" maxlength="3">
+                            <input type="tel" class="form-control" id="edit_gin" name="gin" maxlength="3">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="col-lg-3 form-group">
                         <div class="form-group">
                             <label for="edit_channal">Edit Channal : </label>
                             <input type="text" class="form-control" id="edit_channal" name="channal" maxlength="17">
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="edit_channal_width" class="fa fa-gears"> Channal Width (CW):</label>
+                    <div class="col-lg-3 form-group">
+                        <label for="edit_channal_width">Channal Width:</label>
                         {!! Form::select("channel_width", channel_width(), null ,['class'=>'form-control','id'=>'edit_channal_width','name'=>'channal_width']) !!}
                     </div>
+                </div>
+
                     <div class="form-group">
                         <div class="form-group">
                             <label for="edit_direction">Direction : </label>
@@ -424,7 +435,8 @@
                                    maxlength="255">
                         </div>
                     </div>
-
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-default">Update</button>
                     <input type="hidden" id="edit_id" name="edit_id">
                 </form>
@@ -471,7 +483,7 @@
                                 Message :</label>
                             <textarea type="text" rows="5" class="form-control" name="message"> </textarea>
                         </div>
-                        <input id="category" name="category" value="2" hidden>
+                        <input id="category" name="category" value="1" hidden>
                         @if ( count($broadcast) > 0 )
                             <input id="category" name="broadcast_id" hidden>
                         @endif

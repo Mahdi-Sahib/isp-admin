@@ -7,7 +7,6 @@
         <th>Type</th>
         <th>Pon Count</th>
         <th>Splitting Level</th>
-        <th>Splitting Ratio</th>
         <th>model</th>
         <th>Navigation's</th>
         <th>Action</th>
@@ -23,7 +22,6 @@
         <th>Type</th>
         <th>Pon Count</th>
         <th>Splitting Level</th>
-        <th>Splitting Ratio</th>
         <th>model</th>
         <th>Navigation's</th>
         <th>Action</th>

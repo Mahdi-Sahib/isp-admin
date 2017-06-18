@@ -47,13 +47,13 @@ class CustomerController extends Controller
         return Datatables::of($customers)->take(5)
             ->orderBy('created_at', 'id $1')
             ->editColumn('connection_method',function ($customers){
-                if ($customers->connection_method == 1){
+                if ($customers->connection_method == 0){
                     return "Unknown!" ;
-                }elseif ($customers->connection_method == 2){
+                }elseif ($customers->connection_method == 1){
                     return "Wireless" ;
-                }elseif ($customers->connection_method == 3){
+                }elseif ($customers->connection_method == 2){
                     return "LAN" ;
-                }elseif ($customers->connection_method == 4){
+                }elseif ($customers->connection_method == 3){
                     return "Fiber Obtic";
                 }
             })

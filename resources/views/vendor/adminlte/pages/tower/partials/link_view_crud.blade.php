@@ -141,7 +141,7 @@
                                 Message :</label>
                             <textarea type="text" rows="5" class="form-control" name="message"> </textarea>
                         </div>
-                        <input id="category" name="category" value="3" hidden>
+                        <input id="category" name="category" value="2" hidden>
                         @if ( count($link) > 0 )
                             <input id="category" name="tower_link_id" hidden>
                         @endif
@@ -195,7 +195,7 @@
                         <td><label class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;"
                                    href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left"
                                    title="any sign for hint the broadcast"></label></td>
-                        <td>Repeater Name :</td>
+                        <td>Repeater / Source Name :</td>
                         <td><span id="view_repeater_name"></span></td>
                     </tr>
                     <tr class="Active">
@@ -210,7 +210,7 @@
                                    href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left"
                                    title="any sign for hint the broadcast"></label></td>
                         <td>Channal Width (CW) :</td>
-                        <td><span id="view_channel_width"></span></td>
+                        <td><span id="view_link_channel_width"></span></td>
                     </tr>
                     <tr class="Active">
                         <td><label class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;"
@@ -451,7 +451,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 form-group">
                                         <label for="edit_slave_ip">Slave IP : </label>
-                                        <input type="text" class="form-control" id="edit_slave_ip" name="slave_ip">
+                                        <input type="tel" class="form-control" id="edit_slave_ip" name="slave_ip">
                                     </div>
                                     <div class="col-lg-6 form-group">
                                         <label for="edit_slave_mac">Slave MAC : </label>
@@ -483,7 +483,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 form-group">
                                         <label for="edit_master_ip">Master IP : </label>
-                                        <input type="text" class="form-control" id="edit_master_ip" name="master_ip">
+                                        <input type="tel" class="form-control" id="edit_master_ip" name="master_ip">
                                     </div>
                                     <div class="col-lg-6 form-group">
                                         <label for="edit_master_mac">Master MAC : </label>
@@ -519,13 +519,15 @@
                             <div class="box-header with-border">
                                 <div class="row">
                                     <div class="col-lg-6 form-group">
-                                        <label for="edit_fiber_type">Fiber Type : </label>
-                                        <input type="text" class="form-control" id="edit_fiber_type" name="fiber_type">
+                                        <label for="edit_channal_width">
+                                            <div class="fa fa-gears"></div>
+                                            Fiber Type :</label>
+                                        {!! Form::select("fiber_type", fiber_type(), null ,['class'=>'form-control','id'=>'edit_fiber_type','name'=>'fiber_type']) !!}
                                     </div>
                                     <div class="col-lg-6 form-group">
                                         <label for="edit_channal_width">
                                             <div class="fa fa-gears"></div>
-                                            Authentication Type :</label>
+                                            Fiber core Count:</label>
                                         {!! Form::select("fiber_core", fiber_core_count(), null ,['class'=>'form-control','id'=>'edit_fiber_core','name'=>'fiber_core']) !!}
                                     </div>
                                 </div>
@@ -533,24 +535,24 @@
                                     <div class="col-lg-6 form-group">
                                         <label for="edit_channal_width">
                                             <div class="fa fa-gears"></div>
-                                            Core Count :</label>
+                                            Adaptor Type :</label>
                                         {!! Form::select("fiber_sfp_type", adaptor_type(), null ,['class'=>'form-control','id'=>'edit_fiber_sfp_type','name'=>'fiber_sfp_type']) !!}
                                     </div>
                                     <div class="col-lg-6 form-group">
-                                        <label for="edit_fiber_distance">Fiber Distance : </label>
-                                        <input type="text" class="form-control" id="edit_fiber_distance"
+                                        <label for="edit_fiber_distance">Fiber Distance (m) : </label>
+                                        <input type="tel" class="form-control" id="edit_fiber_distance"
                                                name="fiber_distance">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 form-group">
                                         <label for="edit_fiber_master_port_number">Fiber Master Port Number : </label>
-                                        <input type="text" class="form-control" id="edit_fiber_master_port_number"
+                                        <input type="tel" class="form-control" id="edit_fiber_master_port_number"
                                                name="fiber_master_port_number">
                                     </div>
                                     <div class="col-lg-6 form-group">
                                         <label for="edit_fiber_clint_port_number">Fiber Clint Port Number : </label>
-                                        <input type="text" class="form-control" id="edit_fiber_clint_port_number"
+                                        <input type="tel" class="form-control" id="edit_fiber_clint_port_number"
                                                name="fiber_clint_port_number">
                                     </div>
                                 </div>

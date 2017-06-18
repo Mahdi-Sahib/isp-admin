@@ -66,3 +66,7 @@ function fiber_core_count(){
     $array = ['Single Core','Dual Core','Quad Core','Octa Core'];
     return $array;
 }
+function fiber_type(){
+    $array = ['Single Mode cable','Multi-Mode cable'];
+    return $array;
+}

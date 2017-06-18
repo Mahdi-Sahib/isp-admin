@@ -22,11 +22,11 @@ class TowerTicketController extends Controller
 
 
                 ->editColumn('category', function ($tickets) {
-                    if ($tickets->category == 1){
+                    if ($tickets->category == 0){
                         return "Point/Tower";
-                    }elseif ($tickets->category == 2){
+                    }elseif ($tickets->category == 1){
                         return "Broadcast";
-                    }elseif ($tickets->category == 3){
+                    }elseif ($tickets->category == 2){
                         return "Link";
                     };
                 })
@@ -115,10 +115,14 @@ class TowerTicketController extends Controller
      */
     public function viewAjax(Request $request)
     {
+        $priority = tower_ticket_priority();
+        $category = tower_ticket_category();
         if($request->ajax()){
             $id = $request->id;
             $info = TowerTicket::with('user')->find($id);
             //echo json_decode($info);
+            $info->view_category = $category[$info->category];
+            $info->view_priority = $priority[$info->priority];
             return response()->json($info);
         }
     }
@@ -141,7 +145,7 @@ class TowerTicketController extends Controller
     public function closeTicket(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'message'                 => 'required | max:150',
+            'close_message'                 => 'required | max:150',
         ]);
         if ($validator->fails()) {
             return back()
@@ -151,7 +155,7 @@ class TowerTicketController extends Controller
             $data = TowerTicket::find($id);
             $data->status               = 0;
             $data->close_message        = $request->close_message;
-            $data->updated_by            = Auth::User()->id;
+            $data->updated_by           = Auth::User()->id;
             $data -> save();
             return back()
                 ->with('message_ticket','Ticket Closed successfully.');

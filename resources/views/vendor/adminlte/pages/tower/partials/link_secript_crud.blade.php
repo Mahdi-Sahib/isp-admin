@@ -13,7 +13,6 @@
                 $("#view_connection_type_id").text(result.connection_type_id);
                 $("#view_source_name").text(result.source_name);
                 $("#view_repeater_id").text(result.repeater_id);
-                $("#view_channel_width").text(result.channel_width);
                 $("#view_ssid").text(result.ssid);
                 $("#view_authentication_method").text(result.authentication_method);
                 $("#view_authentication").text(result.authentication);
@@ -30,8 +29,12 @@
                 $("#view_master_username").text(result.master_username);
                 $("#view_master_password").text(result.master_password);
                 $("#view_link_info").text(result.link_info);
+                $("#view_link_channel_width").text(result.link_channel_width); // if you use channel_width will doublet this id with broadcast
+                $("#view_wireless_type").text(result.link_wireless_type);
                 // fiber
-                $("#view_fiber_type").text(result.fiber_type);
+                $("#view_fiber_type").text(result.link_fiber_type);
+                $("#view_fiber_core").text(result.link_fiber_core);
+                $("#view_fiber_sfp_type").text(result.link_fiber_sfp_type);
                 $("#view_fiber_distance").text(result.fiber_distance);
                 $("#view_fiber_master_port_number").text(result.fiber_master_port_number);
                 $("#view_fiber_clint_port_number").text(result.fiber_clint_port_number);
@@ -53,93 +56,6 @@
                     $("#wirless_show").hide();
                     $("#show_message_lanx").hide();
                 }
-
-
-                $('#view_wireless_type').each(
-                    function()
-                    {
-                        if ((result.wireless_type) === 0) {
-                            return $("#view_wireless_type").text('2.4 GHz (802.11b/g/n)');
-                        } else if ((result.fiber_core) === 1) {
-                            return $("#view_wireless_type").text('3.65 GHz (802.11y)');
-                        } else if ((result.fiber_core) === 2) {
-                            return $("#view_wireless_type").text("4.9 GHz (802.11j)");
-                        } else if ((result.wireless_type) === 3) {
-                            return $("#view_wireless_type").text('5 GHz (802.11a/h/j/n/ac)');
-                        } else if ((result.wireless_type) === 4) {
-                            return $("#view_wireless_type").text('5.9 GHz (802.11p)');
-                        } else if ((result.wireless_type) === 5) {
-                            return $("#view_wireless_type").text('24 GHz');
-                        } else if ((result.wireless_type) === 6) {
-                            return $("#view_wireless_type").text('60 GHz (802.11ad)');
-                        }
-                    }
-                );
-
-
-                $('#view_fiber_core').each(
-                    function()
-                    {
-                    if ((result.fiber_core) === 0) {
-                        return $("#view_fiber_core").text('Single Core');
-                    } else if ((result.fiber_core) === 1) {
-                        return $("#view_fiber_core").text('Dual Core');
-                    } else if ((result.fiber_core) === 2) {
-                        return $("#view_fiber_core").text("Quad Core");
-                    } else if ((result.fiber_core) === 3) {
-                        return $("#view_fiber_core").text('Octa Core');
-                    }
-                }
-                );
-
-                $('#view_channel_width').each(
-                    function()
-                    {
-                        if ((result.channel_width) === 0) {
-                            return $("#view_channel_width").text('5');
-                        } else if ((result.channel_width) === 1) {
-                            return $("#view_channel_width").text('10');
-                        } else if ((result.channel_width) === 2) {
-                            return $("#view_channel_width").text("15");
-                        } else if ((result.channel_width) === 3) {
-                            return $("#view_channel_width").text('20');
-                        }else if ((result.channel_width) === 4) {
-                            return $("#view_channel_width").text('25');
-                        }else if ((result.channel_width) === 5) {
-                            return $("#view_channel_width").text('30');
-                        }else if ((result.channel_width) === 6) {
-                            return $("#view_channel_width").text('35');
-                        }else if ((result.channel_width) === 7) {
-                            return $("#view_channel_width").text('40');
-                        }else if ((result.channel_width) === 8) {
-                            return $("#view_channel_width").text('50');
-                        }else if ((result.channel_width) === 9) {
-                            return $("#view_channel_width").text('60');
-                        }else if ((result.channel_width) === 10) {
-                            return $("#view_channel_width").text('80');
-                        }else if ((result.channel_width) === 11) {
-                            return $("#view_channel_width").text('120');
-                        }else if ((result.channel_width) === 12) {
-                            return $("#view_channel_width").text('160');
-                        }
-                    }
-                );
-
-                $('#view_fiber_sfp_type').each(
-                    function()
-                    {
-                        if ((result.fiber_sfp_type) === 0) {
-                            return $("#view_fiber_sfp_type").text('SC / APC');
-                        } else if ((result.fiber_sfp_type) === 1) {
-                            return $("#view_fiber_sfp_type").text('FC / PAC');
-                        } else if ((result.fiber_sfp_type) === 2) {
-                            return $("#view_fiber_sfp_type").text("SC / PC");
-                        } else if ((result.fiber_sfp_type) === 3) {
-                            return $("#view_fiber_sfp_type").text('FC / PC');
-                        }
-                    }
-                );
-
 
 
             }
@@ -227,5 +143,16 @@
             return false;
         }
     }
+
+    $(function(){
+        // HTML Text Input allow only Numeric input
+        $('[type=tel]').on('change', function(e) {
+            $(e.target).val($(e.target).val().replace(/[^\d\.]/g, ''))
+        })
+        $('[type=tel]').on('keypress', function(e) {
+            keys = ['0','1','2','3','4','5','6','7','8','9','.']
+            return keys.indexOf(event.key) > -1
+        });
+    })
 
 </script>

@@ -181,7 +181,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,  // laravelcollective/html
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class, // Acacha AdminLTE template provider
         Yajra\Datatables\DatatablesServiceProvider::class,  // Yajra - Datatables
-        // Barryvdh\Debugbar\ServiceProvider::class,  // Laravel Debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,  // Laravel Debugbar
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, // barryvdh/laravel-ide-helper
         UxWeb\SweetAlert\SweetAlertServiceProvider::class  //  uxweb/sweet-alert
 
@@ -236,7 +236,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // add by mahdi
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class, // Acacha AdminLTE template alias
-        // 'Debugbar' => Barryvdh\Debugbar\Facade::class,  // Laravel Debugbar
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,  // Laravel Debugbar
         'Form' => Collective\Html\FormFacade::class,  // laravelcollective/html
         'Html' => Collective\Html\HtmlFacade::class,  // laravelcollective/html
         'Alert' => UxWeb\SweetAlert\SweetAlert::class, //  uxweb/sweet-alert

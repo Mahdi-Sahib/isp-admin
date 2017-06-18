@@ -2,8 +2,6 @@
 
 <script type="text/javascript">
 
-
-
     function fun_view_refill(id)
     {
         var view_url = $("#hidden_view_refill").val();

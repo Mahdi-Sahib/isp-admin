@@ -51,32 +51,13 @@
                 $("#view_created_by").text(result.user.name);
                 $("#view_closed_by").text(result.user.name);
                 $("#view_close_message").text(result.close_message);
-
-                if ((result.category) === 1) {
-                    $("#view_category").text('Tower');
-                } else if ((result.category) === 2) {
-                    $("#view_category").text('Broadcast');
-                } else if ((  (result.category) === 3 )) {
-                    $("#view_category").text('Link');
-                }
-
-                if ((result.priority) === 1) {
-                    $("#view_priority").text('Low');
-                } else if ((result.priority) === 2) {
-                    $("#view_priority").text('Normal');
-                } else if ((  (result.priority) === 3 )) {
-                    $("#view_priority").text('High');
-                } else if ((  (result.priority) === 4 )) {
-                    $("#view_priority").text('Urgent');
-                }
-
+                $("#view_priority").text(result.view_priority);
+                $("#view_category").text(result.view_category);
                 if ((result.status) === 1) {
                     $("#view_status").text('Open');
                 } else if ((result.status) === 0) {
                     $("#view_status").text('Closed');
                 }
-
-
             },
             error: function (exception) {
                 alert('Exeption:' + exception);

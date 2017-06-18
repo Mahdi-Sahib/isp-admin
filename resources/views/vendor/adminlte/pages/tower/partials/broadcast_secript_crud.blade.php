@@ -42,12 +42,13 @@
     function fun_view_broadcast(id)
     {
         var view_url = $("#hidden_view").val();
+
         $.ajax({
             url: view_url,
             type:"GET",
             data: {"id":id},
             success: function(result){
-                console.log(result);
+                // console.log(result);
                 $("#view_device_id").text(result.device_id);
                 $("#view_number_Sign").text(result.number_sign);
                 $("#view_name").text(result.name);
@@ -58,13 +59,14 @@
                 $("#view_degree").text(result.degree);
                 $("#view_gin").text(result.gin);
                 $("#view_channal").text(result.channal);
-                $("#view_channal_width").text(result.channal_width);
+                $("#view_channel_width").text(result.channel_width);
                 $("#view_direction").text(result.direction);
                 $("#view_broadcasts_info").text(result.broadcasts_info);
                 $("#view_created").text(result.broadcast_created_by.name);
                 $("#view_updated").text(result.broadcast_updated_by.name);
                 $("#view_broadcast_created_at").text(result.broadcast_updated_by.name);
                 $("#view_broadcast_updated_at").text(result.updated_at);
+
             }
         });
     }

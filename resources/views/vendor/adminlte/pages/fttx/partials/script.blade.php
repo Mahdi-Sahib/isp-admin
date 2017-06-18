@@ -13,12 +13,11 @@
         "paging": true,
         "ajax": '{{ url('isp-cpanel/fttx/table') }}',
         "columns": [
-            { data: 'number_sign',        name: 'number_sign' },
+            { data: 'number_sign',        name: 'number_sign' , searchable: false , width:'5%' , class:'text-center'},
             { data: 'title',        name: 'title' },
             { data: 'type',         name: 'type', width:'8%' },
             { data: 'pon_count',         name: 'pon_count', width:'8%' },
             { data: 'splitting_level',      name: 'splitting_level', width:'10%'},
-            { data: 'splitting_ratio',     name: 'splitting_ratio', width:'20%', orderable: false, searchable: false },
             { data: 'model',     name: 'model', width:'20%', orderable: false, searchable: false },
             { data: 'navigation',     name: 'navigation', width:'20%', orderable: false, searchable: false },
             { data: 'action',         name: 'action', orderable: false, searchable: false , width:'10%' , class:'text-center'}
@@ -37,7 +36,7 @@
                 $("#view_title").text(result.title);
                 $("#view_type").text(result.type);
                 $("#view_number_sign").text(result.number_sign);
-                $("#view_adaptor_typ").text(result.adaptor_typ);
+                $("#view_adaptor_typ").text(adaptor_type(result.adaptor_typ));
                 $("#view_accommodate").text(result.accommodate);
                 $("#view_brand").text(result.brand);
                 $("#view_model").text(result.model);
@@ -49,6 +48,8 @@
                 $("#view_created_by").text(result.created_by);
                 $("#view_updated_at").text(result.updated_by);
                 $("#view_updated_by").text(result.updated_at);
+
+
             }
         });
     }
