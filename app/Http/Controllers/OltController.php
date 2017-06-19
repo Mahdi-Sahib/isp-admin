@@ -19,20 +19,12 @@ class OltController extends Controller
         $olt = Olt::select('olts.*');
         return Datatables::of($olt)
             ->editColumn('type', function ($olt) {
-                if($olt->type == 0){
-                    return "G-PON";
-                }elseif ($olt->type == 1){
-                    return "E-PON";
-                }
+                $key = olt_type();
+                return $olt->type = $key[$olt->type];
             })
             ->editColumn('splitting_level', function ($olt) {
-                if($olt->splitting_level == 0){
-                    return "ingle Splitting";
-                }elseif ($olt->splitting_level == 1){
-                    return "Two-level Splitting";
-                }elseif ($olt->splitting_level == 2){
-                    return "Multi-level Splitting";
-                }
+                $key = splitting_level();
+                return $olt->splitting_level = $key[$olt->splitting_level];
             })
             ->addColumn('navigation', function ($olt) {
 

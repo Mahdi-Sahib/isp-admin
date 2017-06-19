@@ -74,7 +74,7 @@
                     <label>
                         <div for="mobile_1" class="fa fa-phone control-label"></div>
                         Mobile <i style="color: red">*</i></label>
-                    <input id="mobile_1" type="text" class="form-control" name="mobile_1" value="{{ old('mobile_1') }}"
+                    <input id="mobile_1" type="tel" class="form-control" name="mobile_1" value="{{ old('mobile_1') }}"
                            placeholder="Mobile" maxlength="11">
                     @if ($errors->has('mobile_1'))
                         <span class="help-block">
@@ -87,7 +87,7 @@
                     <label>
                         <div for="mobile_2" class="fa fa-phone control-label"></div>
                         Other Mobile</label>
-                    <input id="mobile_2" type="text" class="form-control" name="mobile_2" value="{{ old('mobile_2') }}"
+                    <input id="mobile_2" type="tel" class="form-control" name="mobile_2" value="{{ old('mobile_2') }}"
                            placeholder="other namber" maxlength="11">
                     @if ($errors->has('mobile_2'))
                         <span class="help-block">
@@ -390,6 +390,18 @@
                 }
             });
         });
+
+        $(function(){
+            // HTML Text Input allow only Numeric input
+            $('[type=tel]').on('change', function(e) {
+                $(e.target).val($(e.target).val().replace(/[^\d\.]/g, ''))
+            })
+            $('[type=tel]').on('keypress', function(e) {
+                keys = ['0','1','2','3','4','5','6','7','8','9','.']
+                return keys.indexOf(event.key) > -1
+            });
+        })
+
     </script>
 
 @endsection

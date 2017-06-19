@@ -6,14 +6,17 @@
 
 
 @section('contentheader_title')
+    Edit Customer
 @endsection
 
 
 @section('contentheader_description')
+    Edit Customer Information
 @endsection
 
 
 @section('page-name')
+    Edit {{ $customer->fullname }}
 @endsection
 
 

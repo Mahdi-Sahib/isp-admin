@@ -20,15 +20,9 @@ class TowerTicketController extends Controller
             $tickets = Tower::find($id);
             return Datatables::of(TowerTicket::with('user')->where('tower_id', $tickets->id))
 
-
                 ->editColumn('category', function ($tickets) {
-                    if ($tickets->category == 0){
-                        return "Point/Tower";
-                    }elseif ($tickets->category == 1){
-                        return "Broadcast";
-                    }elseif ($tickets->category == 2){
-                        return "Link";
-                    };
+                    $key = tower_ticket_category();
+                    return $tickets->category = $key[$tickets->category];
                 })
 
                 ->editColumn('status', function ($tickets) {

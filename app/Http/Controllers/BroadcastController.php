@@ -95,6 +95,10 @@ class BroadcastController extends Controller
         if ($request->ajax()) {
             $broadcast = Tower::find($id);
             return Datatables::of(Broadcast::with('user','device')->where('tower_id', $broadcast->id))
+                ->editColumn('channal_width', function ($tickets) {
+                    $cw = channel_width();
+                    return $tickets->channel_width = $cw[$tickets->channal_width];
+                })
                 ->rawColumns(['action'])
                 ->addColumn('action', function ($broadcast) {
                         return '

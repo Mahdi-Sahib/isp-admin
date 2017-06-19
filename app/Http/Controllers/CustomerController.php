@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Hub;
 use App\Olt;
 use App\RefillCard;
 use App\RefillCustomer;
@@ -46,18 +47,12 @@ class CustomerController extends Controller
         $customers = Customer::select('id','fullname','username','mobile_1','connection_method');
         return Datatables::of($customers)->take(5)
             ->orderBy('created_at', 'id $1')
-            ->editColumn('connection_method',function ($customers){
-                if ($customers->connection_method == 0){
-                    return "Unknown!" ;
-                }elseif ($customers->connection_method == 1){
-                    return "Wireless" ;
-                }elseif ($customers->connection_method == 2){
-                    return "LAN" ;
-                }elseif ($customers->connection_method == 3){
-                    return "Fiber Obtic";
-                }
+
+            ->editColumn('connection_method', function ($customers) {
+                $array = connection_method_value();
+                return $customers->connection_method = $array[$customers->connection_method];
             })
-            ->rawColumns(['action','navigation','fullname'])
+
             ->editColumn('fullname',function ($customers){
                 if ($customers->unpaidSum() > 0 or $customers->openTicketCount() > 0){
                     return '<div class="text-red" >'.$customers->fullname.'</div>';
@@ -76,6 +71,7 @@ class CustomerController extends Controller
                     return '' ;
                 }
             })
+            ->rawColumns(['action','navigation','fullname'])
             ->addColumn('action', function ($customers) {
                 return '
                 <td class="text-center">
@@ -196,7 +192,7 @@ class CustomerController extends Controller
         $apmac              = Broadcast::all();
         $ticket             = CustomerTicket::all();
         $customer           = Customer::find($id);
-        return view('vendor.adminlte.pages.customer.view-customer' , compact('customer','device','tower','broadcast','apmac','ticket','user','fiberbox','fibernode','refills')) ;
+        return view('vendor.adminlte.pages.customer.view-customer' , compact('customer','device','tower','broadcast','apmac','ticket','user','fiberbox','fibernode','refills','hubs')) ;
 
     }
 
@@ -208,15 +204,16 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $towers       = Tower::all();
-        $address       = AddressHelper::all();
-        $broadcasts   = Broadcast::all();
-        $device      = Device::all();
-        $apmac       = Broadcast::all();
-        $olt            = Olt::all();
-        $connection         = ConnectionType::all();
-        $customer    = Customer::find($id);
-        return view('vendor.adminlte.pages.customer.edit-customer' , compact('customer','device','towers','broadcasts','apmac','fiberbox','fibernode','address','connection','olt')) ;
+        $towers          = Tower::all();
+        $hubs            = Hub::all();
+        $address         = AddressHelper::all();
+        $broadcasts      = Broadcast::all();
+        $device          = Device::all();
+        $apmac           = Broadcast::all();
+        $olt             = Olt::all();
+        $connection      = ConnectionType::all();
+        $customer        = Customer::find($id);
+        return view('vendor.adminlte.pages.customer.edit-customer' , compact('customer','device','towers','broadcasts','apmac','fiberbox','fibernode','address','connection','olt','hubs')) ;
     }
 
     /**
@@ -229,8 +226,8 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'fullname'       => 'required|unique:customers',
-            'username'       => 'required|unique:customers',
+            'fullname'       => 'required|unique:customers,fullname,'. $id,
+            'username'       => 'required|unique:customers,username,'. $id,
             'mobile_1'       => 'required|numeric',
             'address_2'      => 'required'
         ]);
@@ -241,20 +238,26 @@ class CustomerController extends Controller
                 ->withInput();
         }else {
             $customer = Customer::find($id);
-            $customer->fullname = $request->fullname;
-            $customer->username = $request->username;
-            $customer->mobile_1 = $request->mobile_1;
-            $customer->mobile_2 = $request->mobile_2;
-            $customer->address_1 = $request->address_1;
-            $customer->address_2 = $request->address_2;
-            $customer->about = $request->about;
-            $customer->mac = $request->mac;
-            $customer->ip = $request->ip;
-            $customer->device_id = $request->device_id;
-            $customer->broadcast_id = $request->broadcast_id;
-            $customer->tower_id = $request->tower_id;
-            $customer->apmac_id = $request->apmac_id;
-            $customer->updated_by = Auth::User()->id;
+            $customer->fullname           = $request->fullname;
+            $customer->username           = $request->username;
+            $customer->mobile_1           = $request->mobile_1;
+            $customer->mobile_2           = $request->mobile_2;
+            $customer->address_1          = $request->address_1;
+            $customer->address_2          = $request->address_2;
+            $customer->about              = $request->about;
+            $customer->mac                = $request->mac;
+            $customer->ip                 = $request->ip;
+            $customer->device_id          = $request->device_id;
+            $customer->broadcast_id       = $request->broadcast_id;
+            $customer->tower_id           = $request->tower_id;
+            $customer->apmac_id           = $request->apmac_id;
+            $customer->wireless_type_id   = $request->wireless_type_id;
+            $customer->olt_id             = $request->olt_id;
+            $customer->splitter_id        = $request->splitter_id;
+            $customer->hub_id             = $request->hub_id;
+            $customer->switch_port        = $request->switch_port;
+            $customer->connection_method  = $request->connection_method;
+            $customer->updated_by         = Auth::User()->id;
             $customer->save();
             Session::flash('message', 'Successfuly updated ' . '( ' . $customer->fullname . ' )' . ' ! ');
             return redirect('isp-cpanel/customers');

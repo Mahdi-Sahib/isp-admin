@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use Validator, Input, Redirect ,Session;
-use App\User;
 use App\Customer;
 use App\CustomerTicket;
 
