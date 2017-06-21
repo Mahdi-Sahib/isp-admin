@@ -6,7 +6,7 @@
                 <th>Message</th>
                 <th>Customer</th>
                 <th>Created by</th>
-                <th>Created at</th>
+                <th>Date</th>
                 <th>Options</th>
             </tr>
             </thead>
@@ -18,7 +18,7 @@
                 <th>Message</th>
                 <th>Customer</th>
                 <th>Created by</th>
-                <th>Created at</th>
+                <th>Date</th>
                 <th>Options</th>
             </tr>
             </tfoot>

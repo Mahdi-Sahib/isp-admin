@@ -58,6 +58,7 @@
                     <br>
                 </div>
                 <input type="hidden" id="edit_id_refill" name="edit_id_refill">
+                <input type="hidden" id="edit_second_paid" name="second_paid">
                 {!! Form::close() !!}
             </div>
             <div class="modal-footer">

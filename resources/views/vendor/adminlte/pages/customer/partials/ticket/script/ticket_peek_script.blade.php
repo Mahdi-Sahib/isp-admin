@@ -12,15 +12,16 @@
                 $("#view_title").text(result.title);
                 $("#view_message").text(result.message);
                 $("#view_created_by").text(result.user.name);
+                $("#view_created_at").text(result.created_at);
                 $("#view_closed_by").text(result.user.name);
-                $("#view_updated_by").text(result.user.name);
+                $("#view_closed_at").text(result.updated_at);
                 $("#view_close_message").text(result.close_message);
 
-                if(  (result.status) == 1 )
+                if(  (result.status) === 1 )
                 {
-                    $("#view_status").text('Open');
-                } else if (  (result.status) == 0 ) {
-                    $("#view_status").text('Closed');
+                    $("#view_status").html(" <dev class='label bg-red' style='font-size: 21px;'> Open </dev> ");
+                } else if (  (result.status) === 0 ) {
+                    $("#view_status").html(" <dev class='label bg-green' style='font-size: 21px;'> Closed </dev> ");
                 }
 
             },

@@ -24,7 +24,7 @@ class CustomerTicketController extends Controller
         $tickets = CustomerTicket::with('customer','user')->where('status','1')->select('customer_tickets.*');
         return Datatables::of($tickets)->take(20)
             ->editColumn('created_at', function ($tickets) {
-                return $tickets->created_at->format('(D g:i A) d-n-Y');
+                return $tickets->created_at->diffForHumans();
             })
             ->rawColumns(['action'])
             ->addColumn('action', function ($tickets) {
@@ -157,6 +157,7 @@ class CustomerTicketController extends Controller
             $id = $request->id;
             $info = CustomerTicket::with('user')->find($id);
             //echo json_decode($info);
+            $info->created_at->format('(D g:i A) d-n-Y');
             return response()->json($info);
         }
     }

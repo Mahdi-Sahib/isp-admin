@@ -94,7 +94,7 @@
         </div>
 
         <div  class="col-lg-6 form-group{{ $errors->has('about') ? ' has-error' : '' }}">
-            <label><div for="about" class="fa fa-user control-label" ></div> More Information</label>
+            <label><div for="about" class="fa fa-info control-label" ></div> More Information</label>
             <input id="about" type="text" class="form-control" name="about" value="{{ $customer->about }}" >
             @if ($errors->has('about'))
                 <span  class="help-block">
@@ -150,7 +150,7 @@
         <div class="col-lg-3">
             <div class="form-group">
                 <label>
-                    <div class="fa fa-home"></div>
+                    <div class="fa fa-connectdevelop"></div>
                     Connection Method</label>
                 <select id="connection_method" name="connection_method" class="form-control">
                     @foreach (connection_method_value() as $key => $value) {
@@ -307,10 +307,11 @@
         @endif
     </div>
 </div>
+    <hr>
 </div>
 
 
-<hr>
+
 <div class="form-group">
     <input type="submit" class="btn btn-success" value="Update" name="save">
 </div>

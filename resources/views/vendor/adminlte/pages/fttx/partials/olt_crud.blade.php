@@ -105,7 +105,7 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label>Level (1) Ratio:</label>
+                                    <label>Level (1) Ratio :</label>
                                     <select id="splitting_ratio_level_1" name="splitting_ratio_level_1" class="form-control">
                                         @foreach (splitting_ratio_level() as $key => $value) {
                                         <option value="{!! $key !!}">{!! $value !!}</option>
@@ -167,57 +167,67 @@
                         </tr>
                         <tr>
                             <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Name :</td>
+                            <td> Title :</td>
                             <td><span  id="view_title"></span></td>
                         </tr>
                         <tr>
+                            <td> <label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td> Device :</td>
+                            <td><span  id="view_device_id"></span></td>
+                        </tr>
+                        <tr>
                             <td><label  class="glyphicon glyphicon-question-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Phone :</td>
+                            <td> Type :</td>
                             <td><span id="view_type"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Email :</td>
+                            <td> Hint :</td>
                             <td><span id="view_number_sign"  ></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Address :</td>
-                            <td><span id="view_adaptor_typ"  ></span></td>
+                            <td> Adaptor Type :</td>
+                            <td><span id="view_adaptor_type"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Contact :</td>
+                            <td> Accommodate :</td>
                             <td><span id="view_accommodate"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Website :</td>
+                            <td> Brand :</td>
                             <td><span id="view_brand"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Bank Account :</td>
+                            <td> Model :</td>
                             <td><span id="view_model"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Currency :</td>
+                            <td> Splitting Level :</td>
                             <td><span id="view_splitting_level"  ></span></td>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Payment Terms :</td>
-                            <td><span id="view_splitting_ratio"  ></span></td>
+                            <td> Splitting Method:</td>
+                            <td><span id="view_splitting_method"  ></span></td>
                         </tr>
                         </tr>                        <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Tax Included :</td>
-                            <td><span id="view_max_splitting_ratio"  ></span></td>
+                            <td> Level (1) Ratio : :</td>
+                            <td><span id="view_splitting_ratio_level_1"  ></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Created at :</td>
+                            <td> Level (2) Ratio :</td>
+                            <td><span id="view_splitting_ratio_level_2"></span></td>
+                        </tr>
+                        <tr>
+                            <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
+                            <td> Pon Number</td>
                             <td><span id="view_pon_count"></span></td>
                         </tr>
                         <tr>
                             <td><label  class="glyphicon glyphicon-info-sign" style="color: green ; font-size: 21px;" href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left" title="any sign for hint the broadcast"></label></td>
-                            <td> Last Update at :</td>
+                            <td> Location</td>
                             <td><span id="view_location"></span></td>
                         </tr>
                         </tbody>
@@ -236,7 +246,7 @@
 
 <!-- Edit Modal start -->
 <div class="modal fade" id="editModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -245,64 +255,87 @@
                 <h4 class="modal-title">Edit this Supplier</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/fttx/olt/edit') }}" method="post">
+                <form action="{{ url('olt/edit') }}" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <div class="form-group">
-                            <label>title :</label>
-                            <input type="text" class="form-control" id="edit_title" name="name">
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <label for="brand">Title:</label>
+                                    <input type="text" class="form-control" id="edit_title" name="title">
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="brand_model">Number / Hint:</label>
+                                    <input type="text" class="form-control" id="edit_number_sign" name="number_sign">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>type :</label>
-                            <input type="text" class="form-control" id="edit_type" name="phone">
+
+                        <div class="row">
+                            <div class="col-lg-4 form-group">
+                                <label for="edit_type">
+                                    <div class="fa fa-gears"></div>
+                                    Olt Type :</label>
+                                {!! Form::select("type", olt_type(), null ,['class'=>'form-control','id'=>'edit_type','name'=>'type']) !!}
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="brand_model"> Brand:</label>
+                                    <input type="text" class="form-control" id="edit_brand" name="brand">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="brand_model"> Model:</label>
+                                    <input type="text" class="form-control" id="edit_model" name="model">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>number_sign :</label>
-                            <input type="text" class="form-control" id="edit_number_sign" name="email">
+
+                        <div class="row">
+                            <div class="col-lg-4 form-group">
+                                <label for="edit_type">
+                                    <div class="fa fa-gears"></div>
+                                    Adaptor Type:</label>
+                                {!! Form::select("adaptor_type", adaptor_type(), null ,['class'=>'form-control','id'=>'edit_adaptor_type','name'=>'adaptor_type']) !!}
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="brand">PON Count:</label>
+                                    <input type="text" class="form-control" id="edit_pon_count" name="pon_count">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>adaptor_type :</label>
-                            <input type="text" class="form-control" id="edit_adaptor_type" name="address">
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-3 form-group">
+                                <label for="edit_type"><span class="fa fa-gears"></span> Splitting Method :</label>
+                                {!! Form::select("splitting_method", splitting_method(), null ,['class'=>'form-control','id'=>'edit_splitting_method','name'=>'splitting_method']) !!}
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label for="edit_type"><span class="fa fa-gears"></span> Splitting Level :</label>
+                                {!! Form::select("splitting_level", splitting_level(), null ,['class'=>'form-control','id'=>'edit_splitting_level','name'=>'splitting_level']) !!}
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label for="edit_type"><span class="fa fa-gears"></span> Level (1) Ratio :</label>
+                                {!! Form::select("splitting_ratio_level", splitting_ratio_level(), null ,['class'=>'form-control','id'=>'edit_splitting_ratio_level_1','name'=>'splitting_ratio_level']) !!}
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label for="edit_type"><span class="fa fa-gears"></span> Level (2) Ratio :</label>
+                                {!! Form::select("splitting_ratio_level", splitting_ratio_level(), null ,['class'=>'form-control','id'=>'edit_splitting_ratio_level_2','name'=>'splitting_ratio_level']) !!}
+                            </div>
                         </div>
+                        <hr>
                         <div class="form-group">
-                            <label>Contact :</label>
-                            <input type="text" class="form-control" id="edit_accommodate" name="contact">
-                        </div>
-                        <div class="form-group">
-                            <label>accommodate :</label>
-                            <input type="text" class="form-control" id="edit_brand" name="website">
-                        </div>
-                        <div class="form-group">
-                            <label>model :</label>
-                            <input type="text" class="form-control" id="edit_model" name="bank_account">
-                        </div>
-                        <div class="form-group">
-                            <label>splitting_level :</label>
-                            <input type="text" class="form-control" id="edit_splitting_level" name="currency">
-                        </div>
-                        <div class="form-group">
-                            <label>splitting_ratio :</label>
-                            <input type="text" class="form-control" id="edit_splitting_ratio" name="payment_terms">
-                        </div>
-                        <div class="form-group">
-                            <label>Tax Included :</label>
-                            <input type="text" class="form-control" id="edit_max_splitting_ratio" name="tax_included">
-                        </div>
-                        <div class="form-group">
-                            <label>max_splitting_ratio :</label>
-                            <input type="text" class="form-control" id="edit_max_splitting_ratio" name="tax_included">
-                        </div>
-                        <div class="form-group">
-                            <label>pon_count :</label>
-                            <input type="text" class="form-control" id="edit_pon_count" name="tax_included">
-                        </div>
-                        <div class="form-group">
-                            <label>location :</label>
-                            <input type="text" class="form-control" id="edit_location" name="tax_included">
+                            <label for="brand">location:</label>
+                            <input type="text" class="form-control" id="edit_location" name="location">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Update</button>
                     <input type="hidden" id="edit_id" name="edit_id">
+                    <button type="submit" class="btn btn-default">Update</button>
                 </form>
             </div>
             <div class="modal-footer">

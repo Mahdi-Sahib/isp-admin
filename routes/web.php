@@ -145,7 +145,8 @@ Route::group(['middleware' => 'admin'], function () {
 
     // FTTX - olt
     Route::resource('isp-cpanel/fttx/olt', 'OltController');
-    Route::get('isp-cpanel/fttx/table', 'OltController@table');
+    Route::post('olt/edit', 'OltController@update');
+    Route::get('olt/table', 'OltController@table');
 
 
 

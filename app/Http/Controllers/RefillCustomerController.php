@@ -193,12 +193,15 @@ class RefillCustomerController extends Controller
         }elseif ($request->payment_status == 1) {
             if ($request->amount_paid > 0) {
                 $refill->amount_paid              = $request->amount_paid;
+                $refill->first_piad               = $request->amount_paid;
             }elseif ($request->amount_paid == 0) {
-            $refill->amount_paid              = 0 ;
+                $refill->amount_paid              = 0 ;
+                $refill->first_piad               = $request->amount_paid;
             }
             $refill->payment_status           = 1;
             $refill->customer_id              = $request->customer_id;
             $refill->refill_card_id           = $request->refill_card_id;
+            $refill->updated_at               = null;
             $refill->description              = $request->description;
             $refill->card_price               = RefillCard::find($refill->refill_card_id)->selling_price;
             $refill->by_person                = $request->by_person;
@@ -211,7 +214,7 @@ class RefillCustomerController extends Controller
                     $refill->save();
                     return back();
                 }elseif ($request->amount_paid > $refill->card_price){
-                    Session::flash('message_danger', 'try again!     Dude the amount paid much more then card price be careful');
+                    Session::flash('message_danger', 'try again!     Dude the amount paid much more than card price! ^ be careful ^');
                     return back();
                 }
 
@@ -224,7 +227,8 @@ class RefillCustomerController extends Controller
         $id = $request -> edit_id_refill;
         $data = RefillCustomer::find($id);
         $data->payment_status        = 0;
-        $data->amount_paid           = RefillCard::find($data->refill_card_id)->selling_price;;
+        $data->amount_paid           = RefillCard::find($data->refill_card_id)->selling_price;
+        $data->second_paid           = $request->second_paid;;
         $data->created_by            = Auth::User()->id;
         $data -> save();
         return back()

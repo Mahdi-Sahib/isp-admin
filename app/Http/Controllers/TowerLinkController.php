@@ -148,7 +148,7 @@ class TowerLinkController extends Controller
                 $info->link_fiber_type = $fd[$info->fiber_type];
             }
             if ($info->fiber_sfp_type){
-                $info->link_fiber_sfp_type = $fst[$info->fiber_sfp_type];
+                    $info->link_fiber_sfp_type = $fst[$info->fiber_sfp_type];
             }
             // echo json_decode($info);
             return response()->json($info);

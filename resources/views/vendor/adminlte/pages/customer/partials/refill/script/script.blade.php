@@ -21,10 +21,8 @@
                 $("#view_created_by").text(result.created_by);
                 $("#view_updated_by").text(result.updated_by);
 
-                $("#view_created_at").text(result.created_at);
-                $("#view_updated_by").text(result.updated_at);
 
-                if ((result.payment_status) == 1){
+                if ((result.payment_status) === 1){
                     $("#view_payment_status").text('Unpaid');
                 }else {
                     $("#view_payment_status").text('paid');
@@ -49,6 +47,7 @@
                 $("#edit_description").val(result.description);
                 $("#edit_by_person").val(result.by_person);
                 $("#edit_by_remaining").val(result.card_price - result.amount_paid);
+                $("#edit_second_paid").val(result.card_price - result.amount_paid);
 
                 $("#edit_created_by").val(result.user.name);
                 $("#edit_updated_by").val(result.updated_by);

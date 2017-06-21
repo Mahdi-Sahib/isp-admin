@@ -125,7 +125,7 @@ class RefillCardController extends Controller
     public function update(Request $request, RefillCard $refillCard)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:refill_cards'
+
         ]);
         if ($validator->fails()) {
             return back()

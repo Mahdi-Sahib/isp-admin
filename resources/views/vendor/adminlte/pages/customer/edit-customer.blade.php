@@ -16,7 +16,7 @@
 
 
 @section('page-name')
-    Edit {{ $customer->fullname }}
+    Edit  ( {{ $customer->fullname }} )
 @endsection
 
 

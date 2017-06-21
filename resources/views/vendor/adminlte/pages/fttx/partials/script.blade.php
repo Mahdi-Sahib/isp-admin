@@ -11,7 +11,7 @@
         "info": true,
         "autoWidth": true,
         "paging": true,
-        "ajax": '{{ url('isp-cpanel/fttx/table') }}',
+        "ajax": '{{ url('olt/table') }}',
         "columns": [
             { data: 'number_sign',        name: 'number_sign' , searchable: false , width:'5%' , class:'text-center'},
             { data: 'title',        name: 'title' },
@@ -35,21 +35,21 @@
                 //console.log(result);
                 $("#view_title").text(result.title);
                 $("#view_type").text(result.type);
+                $("#view_device_id").text(result.device_id);
                 $("#view_number_sign").text(result.number_sign);
-                $("#view_adaptor_typ").text(adaptor_type(result.adaptor_typ));
+                $("#view_adaptor_type").text(result.adaptor_type);
                 $("#view_accommodate").text(result.accommodate);
                 $("#view_brand").text(result.brand);
                 $("#view_model").text(result.model);
                 $("#view_splitting_level").text(result.splitting_level);
-                $("#view_splitting_ratio").text(result.splitting_ratio);
-                $("#view_max_splitting_ratio").text(result.max_splitting_ratio);
+                $("#view_splitting_method").text(result.splitting_method);
+                $("#view_splitting_ratio_level_1").text(result.splitting_ratio_level_1);
+                $("#view_splitting_ratio_level_2").text(result.splitting_ratio_level_2);
                 $("#view_pon_count").text(result.pon_count);
                 $("#view_location").text(result.location);
                 $("#view_created_by").text(result.created_by);
                 $("#view_updated_at").text(result.updated_by);
                 $("#view_updated_by").text(result.updated_at);
-
-
             }
         });
     }
@@ -66,16 +66,21 @@
                 $("#edit_id").val(result.id);
                 $("#edit_title").val(result.title);
                 $("#edit_type").val(result.type);
+                $("#edit_device_id").val(result.device_id);
                 $("#edit_number_sign").val(result.number_sign);
-                $("#edit_adaptor_type").val(result.adaptor_typ);
+                $("#edit_adaptor_type").val(result.adaptor_type);
                 $("#edit_accommodate").val(result.accommodate);
                 $("#edit_brand").val(result.brand);
                 $("#edit_model").val(result.model);
                 $("#edit_splitting_level").val(result.splitting_level);
-                $("#edit_splitting_ratio").val(result.splitting_ratio);
-                $("#edit_max_splitting_ratio").val(result.max_splitting_ratio);
+                $("#edit_splitting_method").val(result.splitting_method);
+                $("#edit_splitting_ratio_level_1").val(result.splitting_ratio_level_1);
+                $("#edit_splitting_ratio_level_2").val(result.splitting_ratio_level_2);
                 $("#edit_pon_count").val(result.pon_count);
                 $("#edit_location").val(result.location);
+                $("#edit_created_by").val(result.created_by);
+                $("#edit_updated_at").val(result.updated_by);
+                $("#edit_updated_by").val(result.updated_at);
             }
         });
     }

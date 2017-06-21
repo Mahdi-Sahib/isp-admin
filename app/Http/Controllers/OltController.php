@@ -12,7 +12,8 @@ class OltController extends Controller
 {
 
     public function index(){
-        return view('vendor.adminlte.pages.fttx.dashboard');
+        $olt = Olt::all();
+        return view('vendor.adminlte.pages.fttx.dashboard',compact('olt'));
     }
 
     public function table(){
@@ -76,8 +77,9 @@ class OltController extends Controller
             $data->brand                           = $request->brand;
             $data->model                           = $request->model;
             $data->splitting_level                 = $request->splitting_level;
-            $data->splitting_ratio                 = $request->splitting_ratio;
-            $data->max_splitting_ratio             = $request->max_splitting_ratio;
+            $data->splitting_method                = $request->splitting_method;
+            $data->splitting_ratio_level_1         = $request->splitting_ratio_level_1;
+            $data->splitting_ratio_level_2         = $request->splitting_ratio_level_2;
             $data->pon_count                       = $request->pon_count;
             $data->location                        = $request->location;
             $data->created_by                      = Auth::User()->id;
@@ -106,7 +108,7 @@ class OltController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:olts'
+
         ]);
         if ($validator->fails()) {
             return back()
@@ -122,8 +124,9 @@ class OltController extends Controller
             $data->brand                           = $request->brand;
             $data->model                           = $request->model;
             $data->splitting_level                 = $request->splitting_level;
-            $data->splitting_ratio                 = $request->splitting_ratio;
-            $data->max_splitting_ratio             = $request->max_splitting_ratio;
+            $data->splitting_method                = $request->splitting_method;
+            $data->splitting_ratio_level_1         = $request->splitting_ratio_level_1;
+            $data->splitting_ratio_level_2         = $request->splitting_ratio_level_2;
             $data->pon_count                       = $request->pon_count;
             $data->location                        = $request->location;
             $data->updated_by                      = Auth::User()->id;
