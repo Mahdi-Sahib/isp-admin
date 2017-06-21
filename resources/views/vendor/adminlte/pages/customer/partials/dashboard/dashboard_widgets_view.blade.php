@@ -65,7 +65,7 @@
             <div class="info-box-content" style="padding-top:5px;">
                 <small class="info-box-text">Status  <i style="color: #9f191f;">  </i></small>
                 <small class="info-box-number" style="margin-top: 10px;"><small style="color: red;">{{ number_format(App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->pluck('card_price')->sum() - App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->pluck('amount_paid')->sum()) }}</small> &nbsp; Total Amount Unpaid</small>
-                <small class="info-box-number">{{ number_format(App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->pluck('amount_paid')->sum()) }} Total Income</small>
+                <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::with('user')->where('created_by', Auth::user()->id)->where('created_at', '>=', Carbon\Carbon::now()->subDay(1))->pluck('amount_paid')->sum()) }}</small> Total Income</small>
             </div>
         </div>
     </div>
