@@ -16,8 +16,6 @@
         <th>#</th>
         <th>ssid</th>
         <th>Direction / Target point</th>
-        <th>IP</th>
-        <th>MAC</th>
         <th>CW</th>
         <th>Brand</th>
         <th>Options</th>
@@ -31,8 +29,6 @@
         <th>#</th>
         <th>ssid</th>
         <th>Direction / Target point</th>
-        <th>IP</th>
-        <th>MAC</th>
         <th>CW</th>
         <th>Brand</th>
         <th>Options</th>

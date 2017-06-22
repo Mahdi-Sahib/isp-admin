@@ -6,7 +6,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adminlte-laravel - {{ trans('adminlte_lang::message.landingdescription') }} ">
+    <meta name="description" content="ISP  -  ">
     <meta name="author" content="Sergi Tur Badenas - acacha.org">
 
     <meta property="og:title" content="Adminlte-laravel" />
@@ -46,7 +46,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><b>adminlte-laravel</b></a>
+                <a class="navbar-brand" href="#"><b>ISP-CPanel</b></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -73,25 +73,21 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="container">
             <div class="row centered">
                 <div class="col-lg-12">
-                    <h1>Acacha <b><a href="https://github.com/acacha/adminlte-laravel">adminlte-laravel</a></b></h1>
-                    <h3>A <a href="https://laravel.com/">Laravel</a> {{ trans('adminlte_lang::message.laravelpackage') }}
-                        scaffolding/boilerplate {{ trans('adminlte_lang::message.to') }} <a href="https://almsaeedstudio.com/preview">AdminLTE</a> {{ trans('adminlte_lang::message.templatewith') }}
-                        <a href="http://getbootstrap.com/">Bootstrap</a> 3.0 {{ trans('adminlte_lang::message.and') }} <a href="http://blacktie.co/demo/pratt/">Pratt</a> Landing page</h3>
+                    <h3>A <a href="https://01codes.com/">ISP-CPanel</a> is one of some of web application
+                        designed by <a href="https://01codes.com">01 Codes </a>
                     <h3><a href="{{ url('/register') }}" class="btn btn-lg btn-success">{{ trans('adminlte_lang::message.gedstarted') }}</a></h3>
                 </div>
                 <div class="col-lg-2">
                     <h5>{{ trans('adminlte_lang::message.amazing') }}</h5>
-                    <p>{{ trans('adminlte_lang::message.basedadminlte') }}</p>
                     <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow1.png') }}">
                 </div>
                 <div class="col-lg-8">
-                    <img class="img-responsive" src="{{ asset('/img/app-bg.png') }}" alt="">
+                    <img class="img-responsive" src="{{ asset('/img/222.png') }}" alt="">
                 </div>
                 <div class="col-lg-2">
                     <br>
                     <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow2.png') }}">
                     <h5>{{ trans('adminlte_lang::message.awesomepackaged') }}</h5>
-                    <p>... {{ trans('adminlte_lang::message.by') }} <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a> {{ trans('adminlte_lang::message.at') }} <a href="http://acacha.org">acacha.org</a> {{ trans('adminlte_lang::message.readytouse') }}</p>
                 </div>
             </div>
         </div> <!--/ .container -->
@@ -108,18 +104,18 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <br>
                 <div class="col-lg-4">
                     <img src="{{ asset('/img/intro01.png') }}" alt="">
-                    <h3>{{ trans('adminlte_lang::message.community') }}</h3>
-                    <p>{{ trans('adminlte_lang::message.see') }} <a href="https://github.com/acacha/adminlte-laravel">{{ trans('adminlte_lang::message.githubproject') }}</a>, {{ trans('adminlte_lang::message.post') }} <a href="https://github.com/acacha/adminlte-laravel/issues">{{ trans('adminlte_lang::message.issues') }}</a> {{ trans('adminlte_lang::message.and') }} <a href="https://github.com/acacha/adminlte-laravel/pulls">{{ trans('adminlte_lang::message.pullrequests') }}</a></p>
+                    <h3>Ticket System</h3>
+                    <p>Nice Ticket for CRM and Hardware</p>
                 </div>
                 <div class="col-lg-4">
                     <img src="{{ asset('/img/intro02.png') }}" alt="">
-                    <h3>{{ trans('adminlte_lang::message.schedule') }}</h3>
+                    <h3> Schedule </h3>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                 </div>
                 <div class="col-lg-4">
                     <img src="{{ asset('/img/intro03.png') }}" alt="">
                     <h3>{{ trans('adminlte_lang::message.monitoring') }}</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p>monitor your devices and extract and save configuration .</p>
                 </div>
             </div>
             <br>
@@ -135,7 +131,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <br>
                 <br>
                 <div class="col-lg-6 centered">
-                    <img class="centered" src="{{ asset('/img/mobile.png') }}" alt="">
+                    <img class="centered" src="{{ asset('/img/mobile1.png') }}" alt="">
                 </div>
 
                 <div class="col-lg-6">
@@ -146,12 +142,12 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         <div class="accordion-group">
                             <div class="accordion-heading">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                    {{ trans('adminlte_lang::message.design') }}
+                                    Light Design
                                 </a>
                             </div><!-- /accordion-heading -->
                             <div id="collapseOne" class="accordion-body collapse in">
                                 <div class="accordion-inner">
-                                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <p> A complete and powerful admin dashboard providing extensive and reusable style for your web applications using the latest Bootstrap 4 .</p>
                                 </div><!-- /accordion-inner -->
                             </div><!-- /collapse -->
                         </div><!-- /accordion-group -->
@@ -160,12 +156,12 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         <div class="accordion-group">
                             <div class="accordion-heading">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                                    {{ trans('adminlte_lang::message.retina') }}
+                                    High Performance Cloud
                                 </a>
                             </div>
                             <div id="collapseTwo" class="accordion-body collapse">
                                 <div class="accordion-inner">
-                                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <p>Latest generation Intel CPUs guarantee consistent performance, Integrate with our API to quickly spin up, destroy, and control your instances.</p>
                                 </div><!-- /accordion-inner -->
                             </div><!-- /collapse -->
                         </div><!-- /accordion-group -->
@@ -179,24 +175,12 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                             </div>
                             <div id="collapseThree" class="accordion-body collapse">
                                 <div class="accordion-inner">
-                                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <p>provides an optimized viewing experience for easy reading and navigation with minimal resizing, panning, and scrolling. Do your clients regularly submit tickets on the go? Awesome Support is responsive, so they’ll enjoy a seamless experience from the convenience of their mobile phone.</p>
                                 </div><!-- /accordion-inner -->
                             </div><!-- /collapse -->
                         </div><!-- /accordion-group -->
                         <br>
 
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
-                                    {{ trans('adminlte_lang::message.responsive') }}
-                                </a>
-                            </div>
-                            <div id="collapseFour" class="accordion-body collapse">
-                                <div class="accordion-inner">
-                                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                </div><!-- /accordion-inner -->
-                            </div><!-- /collapse -->
-                        </div><!-- /accordion-group -->
                         <br>
                     </div><!-- Accordion -->
                 </div>
@@ -222,10 +206,13 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img src="{{ asset('/img/item-01.png') }}" alt="">
+                                <img src="{{ asset('/img/1.png') }}" alt="">
                             </div>
                             <div class="item">
-                                <img src="{{ asset('/img/item-02.png') }}" alt="">
+                                <img src="{{ asset('/img/2.png') }}" alt="">
+                            </div>
+                            <div class="item">
+                                <img src="{{ asset('/img/3.png') }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -242,12 +229,22 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <div id="footerwrap">
         <div class="container">
             <div class="col-lg-5">
-                <h3>{{ trans('adminlte_lang::message.address') }}</h3>
+                <h3>{{ trans('adminlte_lang::message.address') }} 1</h3>
                 <p>
-                    Av. Greenville 987,<br/>
-                    New York,<br/>
-                    90873<br/>
+                    4283 Express Lane,<br/>
+                    Suite 2127-377,<br/>
+                    Sarasota, FL 34249,<br/>
+                    +1(530) 377 0320<br/>
                     United States
+                </p>
+
+
+                <h3>{{ trans('adminlte_lang::message.address') }} 2</h3>
+                <p>
+                    River Street,<br/>
+                    Baghdad, Al Risafa,<br/>
+                    +9647711669119<br/>
+                    Iraq
                 </p>
             </div>
 
@@ -268,21 +265,14 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         <textarea class="form-control" name="Message" rows="3"></textarea>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-large btn-success">{{ trans('adminlte_lang::message.submit') }}</button>
+                  <!--  <button type="submit" class="btn btn-large btn-success">submit</button> -->
                 </form>
             </div>
         </div>
     </div>
     <div id="c">
         <div class="container">
-            <p>
-                <a href="https://github.com/acacha/adminlte-laravel"></a><b>admin-lte-laravel</b></a>. {{ trans('adminlte_lang::message.descriptionpackage') }}.<br/>
-                <strong>Copyright &copy; 2015 <a href="http://acacha.org">Acacha.org</a>.</strong> {{ trans('adminlte_lang::message.createdby') }} <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a>. {{ trans('adminlte_lang::message.seecode') }} <a href="https://github.com/acacha/adminlte-laravel">Github</a>
-                <br/>
-                AdminLTE {{ trans('adminlte_lang::message.createdby') }} Abdullah Almsaeed <a href="https://almsaeedstudio.com/">almsaeedstudio.com</a>
-                <br/>
-                 Pratt Landing Page {{ trans('adminlte_lang::message.createdby') }} <a href="http://www.blacktie.co">BLACKTIE.CO</a>
-            </p>
+                <p>©2017 www.01codes.com.  All rights reserved.</p>
 
         </div>
     </div>

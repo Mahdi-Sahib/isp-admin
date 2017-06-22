@@ -13,23 +13,7 @@
         "columns": [
             {data: 'number_sign', name: 'number_sign', orderable: false, searchable: false, width: '5%', class: 'text-center'},
             {data: 'ssid', name: 'ssid', orderable: false, searchable: false},
-            {data: 'direction', name: 'direction', orderable: false, searchable: true},
-            {
-                data: 'ip',
-                name: 'ip',
-                orderable: true,
-                searchable: false,
-                width: '10%',
-                class: 'text-center'
-            },
-            {
-                data: 'mac',
-                name: 'mac',
-                orderable: true,
-                searchable: false,
-                width: '10%',
-                class: 'text-center'
-            },
+            {data: 'direction', name: 'direction', orderable: false, searchable: true, class: 'text-center'},
             {data: 'channal_width', name: 'channal_width', searchable: false, width: '5%', class: 'text-center'},
             {data: 'device.brand_model', name: 'device.brand_model', searchable: false, width: '10%', class: 'text-center'},
             {data: 'action', name: 'action', orderable: false, searchable: false, width: '11%', class: 'text-center'}

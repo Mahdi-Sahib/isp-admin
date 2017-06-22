@@ -39,19 +39,19 @@
                 $("#view_fiber_master_port_number").text(result.fiber_master_port_number);
                 $("#view_fiber_clint_port_number").text(result.fiber_clint_port_number);
 
-                if ((result.connection_method) === "0") {
+                if ((result.connection_method) == "0") {            //  don't use ===  instead ==
                     $("#fiber_show").hide();
                     $("#wirless_show").hide();
                     $("#show_message_lanx").show();
-                } else if ((result.connection_method) === "1") {
+                } else if ((result.connection_method) == "1") {
                     $("#fiber_show").hide();
                     $("#wirless_show").show();
                     $("#show_message_lanx").hide();
-                }   else if ((result.connection_method) === "2") {
+                }   else if ((result.connection_method) == "2") {
                     $("#fiber_show").hide();
                     $("#wirless_show").hide();
                     $("#show_message_lanx").show();
-                } else if ((result.connection_method) === "3") {
+                } else if ((result.connection_method) == "3") {
                     $("#fiber_show").show();
                     $("#wirless_show").hide();
                     $("#show_message_lanx").hide();
@@ -102,19 +102,19 @@
                 $("#edit_fiber_master_port_number").val(result.fiber_master_port_number);
                 $("#edit_fiber_clint_port_number").val(result.fiber_clint_port_number);
 
-                if ((result.connection_method) === "0") {
+                if ((result.connection_method) == "0") {            //  don't use ===  instead ==
                     $("#fiber_edit").hide();
                     $("#wirless_edit").hide();
                     $("#show_message_lan").show();
-                } else if ((result.connection_method) === "1") {
+                } else if ((result.connection_method) == "1") {
                     $("#fiber_edit").hide();
                     $("#wirless_edit").show();
                     $("#show_message_lan").hide();
-                }   else if ((result.connection_method) === "2") {
+                }   else if ((result.connection_method) == "2") {
                     $("#fiber_edit").hide();
                     $("#wirless_edit").hide();
                     $("#show_message_lan").show();
-                } else if ((result.connection_method) === "3") {
+                } else if ((result.connection_method) == "3") {
                     $("#fiber_edit").show();
                     $("#wirless_edit").hide();
                     $("#show_message_lan").hide();

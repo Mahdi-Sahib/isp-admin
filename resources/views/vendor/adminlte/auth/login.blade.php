@@ -9,7 +9,7 @@
     <div id="app">
         <div class="login-box">
             <div class="login-logo">
-                <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+                <a href="{{ url('/home') }}"><b>ISP</b> CPanel</a>
             </div><!-- /.login-logo -->
 
         @if (count($errors) > 0)
@@ -39,7 +39,7 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox" name="remember"> {{ trans('adminlte_lang::message.remember') }}
+                            <input type="checkbox" name="remember">{{ trans('adminlte_lang::message.remember') }}
                         </label>
                     </div>
                 </div><!-- /.col -->

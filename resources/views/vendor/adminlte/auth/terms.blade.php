@@ -7,8 +7,12 @@
             </div>
 
             <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet, veniam numquam has te. No suas nonumes recusabo mea, est ut graeci definitiones. His ne melius vituperata scriptorem, cum paulo copiosae conclusionemque at. Facer inermis ius in, ad brute nominati referrentur vis. Dicat erant sit ex. Phaedrum imperdiet scribentur vix no, ad latine similique forensibus vel.</p>
-                <p>Dolore populo vivendum vis eu, mei quaestio liberavisse ex. Electram necessitatibus ut vel, quo at probatus oportere, molestie conclusionemque pri cu. Brute augue tincidunt vim id, ne munere fierent rationibus mei. Ut pro volutpat praesent qualisque, an iisque scripta intellegebat eam.</p>
+                <p>By using ISP Control Panel services, you are explicitly agreeing to the terms of service mentioned in this Agreement below.</p>
+                <p>You may use these services for personal and professional use. To use these services, you need to create an account on www.01codes.com website. You may create, edit or remove content within your account that you are authorized to use.</p>
+                <p>For any queries on fees and payments, please contact founder@01codes.com</p>
+                <p>We may choose to give a free evaluation period (or trial) where you can evaluate our services. You will not be charged for the entire length of the trial period. Your billing will start at the end of the trial period.</p>
+                <p>You agree to use the services in a fair manner for your personal or professional use. You shall not transfer our services to another user or third party. You shall not resell our Services to other users without prior written permission from Bista Solutions. You shall not provide additional services on top of our Services without prior written permission from Bista Solutions. You shall not post links to third party website without agreeing to their terms and conditions.</p>
+                <p>You are solely responsible for contents that you upload, create or edit at www.01codes.com You agree not to violate intellectual property rights of another user. You shall not use www.01codes.com for spamming or phishing activities. You shall not upload or create any material that is illegal,</p>
             </div>
 
             <div class="modal-footer">
