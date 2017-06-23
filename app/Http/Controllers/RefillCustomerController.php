@@ -153,24 +153,26 @@ class RefillCustomerController extends Controller
                 if ($refill->payment_status == 1){
                     return '<div class="text-red" >Unpaid</div>' ;
                 }elseif ($refill->payment_status == 0){
-                    return "Paid" ;
+                    return '<div class="text-green" >Paid</div>' ;
                 }
             })
             ->editColumn('created_at', function ($refill) {
                 return $refill->created_at->format('(D g:i A) d-n-Y');
             })
-            ->editColumn('created_at', function ($refill) {
-                return $refill->created_at->format('(D g:i A) d-n-Y');
-            })
-            ->addColumn('navigation',function ($query){
-                $total_unpaid = $query->where('payment_status', '=', 1)->where('customer_id', $query->customer->id)->pluck('card_price')->sum() - $query->where('payment_status', '=', 1)->where('customer_id', $query->customer->id)->pluck('amount_paid')->sum() ;
-                $card_amount_paid = $query->card_price - $query->amount_paid;
-
+            ->addColumn('navigation',function ($refill){
+                $total_unpaid = $refill->where('payment_status', '=', 1)->where('customer_id', $refill->customer->id)->pluck('card_price')->sum() - $refill->where('payment_status', '=', 1)->where('customer_id', $refill->customer->id)->pluck('amount_paid')->sum() ;
+                $card_amount_paid = $refill->card_price - $refill->amount_paid;
                 if (($total_unpaid - $card_amount_paid) == 0) {
-                    return '<small class="label bg-yellow"> Total  ' . number_format($card_amount_paid / 1, 0) . ' </small>';
+                    if ($refill->payment_status == 0){
+                        return '';
+                    }
+                    return '<small class="label bg-blue"> Unpaid  ' . number_format($card_amount_paid / 1, 0) . ' </small>';
                 }elseif (($total_unpaid - $card_amount_paid) > 0){
-
-                    return '<small class="label bg-yellow"> Total  ' . number_format($card_amount_paid / 1, 0) . ' </small>'. '<br><br>' .
+                    if ($refill->payment_status == 0){
+                        return '<small class="label bg-red-active"> Total  ' . number_format($total_unpaid / 1, 0) . ' </small>'
+                            ;
+                    }
+                    return '<small class="label bg-blue"> Unpaid  ' . number_format($card_amount_paid / 1, 0) . ' </small>' . '<br><br>' .
                         '<small class="label bg-red-active"> Total  ' . number_format($total_unpaid / 1, 0) . ' </small>'
                         ;
                 }
