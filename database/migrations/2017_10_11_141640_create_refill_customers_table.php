@@ -21,6 +21,8 @@ class CreateRefillCustomersTable extends Migration
             $table->boolean('payment_status')->unsigned();
             $table->decimal('card_price')->unsigned();
             $table->decimal('amount_paid')->default(0);
+            $table->decimal('first_piad')->default(0);
+            $table->decimal('second_paid')->default(0);
             $table->string('description','60')->nullable();
             $table->string('by_person','20')->nullable();
             $table->unsignedTinyInteger('created_by')->nullable();
