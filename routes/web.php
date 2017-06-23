@@ -18,6 +18,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('customer_peek', 'CustomerController@Peek');
 
 
+    Route::get('isp-cpanel/customers/refill_time_line', 'RefillCustomerController@RefillLine');
+    Route::get('refill_time_line', 'RefillCustomerController@RefillTimeLine');
+
+
     Route::get('isp-cpanel/customers/customer_refill/view', 'RefillCustomerController@viewAjax');
     Route::post('isp-cpanel/customers/customer_refill', 'RefillCustomerController@refillCustomer');
     Route::post('isp-cpanel/customers/debt_repayment', 'RefillCustomerController@repayment');

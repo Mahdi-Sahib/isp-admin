@@ -134,6 +134,87 @@ class RefillCustomerController extends Controller
             ->make(true);
     }
 
+    public function RefillLine()
+    {
+        return view('vendor.adminlte.pages.customer.refill_time_line');
+    }
+
+    public function RefillTimeLine()
+    {
+        $query = RefillCustomer::with('customer','user','card')->select('refill_customers.*');
+        return Datatables::of($query)
+            ->editColumn('card.title', function ($refill) {
+                return $refill->card->title . ' ' . number_format($refill->card->selling_price/ 1, 0);
+            })
+            ->editColumn('amount_paid', function ($refill) {
+                return number_format( $refill->amount_paid / 1, 0);
+            })
+            ->editColumn('payment_status',function ($refill){
+                if ($refill->payment_status == 1){
+                    return '<div class="text-red" >Unpaid</div>' ;
+                }elseif ($refill->payment_status == 0){
+                    return "Paid" ;
+                }
+            })
+            ->editColumn('created_at', function ($refill) {
+                return $refill->created_at->format('(D g:i A) d-n-Y');
+            })
+            ->editColumn('created_at', function ($refill) {
+                return $refill->created_at->format('(D g:i A) d-n-Y');
+            })
+            ->addColumn('navigation',function ($query){
+                $total_unpaid = $query->where('payment_status', '=', 1)->where('customer_id', $query->customer->id)->pluck('card_price')->sum() - $query->where('payment_status', '=', 1)->where('customer_id', $query->customer->id)->pluck('amount_paid')->sum() ;
+                $card_amount_paid = $query->card_price - $query->amount_paid;
+
+                if (($total_unpaid - $card_amount_paid) == 0) {
+                    return '<small class="label bg-yellow"> Total  ' . number_format($card_amount_paid / 1, 0) . ' </small>';
+                }elseif (($total_unpaid - $card_amount_paid) > 0){
+
+                    return '<small class="label bg-yellow"> Total  ' . number_format($card_amount_paid / 1, 0) . ' </small>'. '<br><br>' .
+                        '<small class="label bg-red-active"> Total  ' . number_format($total_unpaid / 1, 0) . ' </small>'
+                        ;
+                }
+            })
+            ->addColumn('action', function ($query) {
+                if ($query->amount_paid == $query->card_price){
+                    return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_refill_view" onclick="fun_view_refill('.$query->id.')" >Peek Refill</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$query->customer->id.')" >Peek Customer</a></li>
+                             <li><a href="'.$query->customer->id.'">View Customer</a></li>
+                        </ul>
+                    </div>
+                </td>
+                ';
+                }else{
+                    return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_refill_view" onclick="fun_view_refill(' . $query->id . ')" >Peek Refill</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#addModal_repayment" onclick="fun_repayment(' . $query->id . ')" disabled="disabled">Repayment</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer(' . $query->customer->id . ')" >Peek Customer</a></li>
+                             <li><a href="' . $query->customer->id . '">View Customer</a></li>
+                        </ul>
+                    </div>
+                </td>
+                ';
+                }
+            })
+            ->orderBy('created_at', 'id $1')
+            ->rawColumns(['payment_status','action','navigation'])
+            ->make(true);
+    }
 
     public function viewAjax(Request $request)
     {
