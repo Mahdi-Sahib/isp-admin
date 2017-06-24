@@ -34,17 +34,10 @@
 
             <li class="header">{{ Carbon\Carbon::now()  }}</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('isp-cpanel/customers/refill_time_line') }}"><i class='fa fa-dashboard'></i> <span> Refill Line</span>
+            <li class="active"><a href="{{ url('isp-cpanel/customers/refill_dashboard') }}"><i class='fa fa-dashboard'></i> <span> Refill Dashboard</span>
                     <small class="label pull-right bg-green">3</small></a></li>
-            <li class="active"><a href="{{ url('home1') }}"><i class='fa fa-pie-chart'></i> <span>{{ trans('layout.dashboard-sales') }}</span>
+            <li class="active"><a href="{{ url('isp-cpanel/customers/ticket_dashboard') }}"><i class='fa fa-pie-chart'></i> <span> Ticket Dashboard</span>
                     <small class="label pull-right bg-green">3</small></a></li>
-            <li class="active"><a href="{{ url('home2') }}"><i class='fa fa-warning'></i> <span >{{ trans('layout.dashboard-tickets') }}</span>
-                    <small class="label pull-right bg-green">7</small>
-                    <small class="label pull-right bg-red">16</small>
-                </a></li>
-            <li class="active"><a href="{{ url('home3') }}"><i class='fa fa-area-chart'></i> <span>{{ trans('layout.dashboard-devices') }}</span>
-                    <small class="label pull-right bg-blue">3</small></a></li>
-
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>{{ trans('layout.crm') }}</span>
@@ -87,7 +80,6 @@
                     <li><a href="{{ url('isp-cpanel/financial/supplier') }}"><i class="fa fa-hospital-o"></i> Supplier</a></li>
                     <li><a href="{{ url('isp-cpanel/financial/product') }}"><i class="fa fa-cube"></i> Product</a></li>
                     <li><a href="{{ url('isp-cpanel/financial/refill_cards') }}"><i class="fa fa-cube"></i> Refill Cards</a></li>
-                    <li><a href="{{ url('isp-cpanel/financial/inventory') }}"><i class="fa fa-cubes"></i> Inventory<small class="label pull-right bg-green">new</small></a></li>
                 </ul>
             </li>
 

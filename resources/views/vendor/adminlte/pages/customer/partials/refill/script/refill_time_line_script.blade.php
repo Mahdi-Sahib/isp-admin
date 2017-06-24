@@ -11,7 +11,7 @@
         "info": true,
         "autoWidth": true,
         "paging": true,
-        "ajax": '{{ url('refill_time_line') }}',
+        "ajax": '{{ url('refill_dashboard_table') }}',
 
         "columns": [
             { data: 'customer.fullname',          name: 'customer.fullname' , orderable: false, searchable: true ,class:'text-center'},

@@ -48,6 +48,8 @@ class CustomerTicketController extends Controller
             ->make(true);
     }
 
+
+
     public function CustomerTicketView()
     {
         return view('vendor.adminlte.pages.customer.partials.customer_view_table_ticket');
@@ -61,11 +63,11 @@ class CustomerTicketController extends Controller
                 ->orderBy('created_at', 'id $1')
                 ->editColumn('status', function ($tickets) {
                     if ($tickets->status == 0) {
-                        return '<div class="text-green" >Closed</div>';
+                        return '<strong class="text-green" >Closed</strong>';
                     } elseif ($tickets->status == 1) {
-                        return '<div class="text-red" >open</div>';
+                        return '<strong class="text-red" >open</strong>';
                     } elseif ($tickets->status == 2) {
-                        return '<div class="text-blue" >Hint</div>';
+                        return '<strong class="text-blue" >Hint</strong>';
                     };
                 })
                 ->editColumn('created_at', function ($tickets) {
@@ -89,6 +91,20 @@ class CustomerTicketController extends Controller
                 </td>       
                              ';
                     }elseif ($tickets->status == 0){
+                        return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li><a href="" data-toggle="modal" data-target="#viewModal_ticket" onclick="fun_view_ticket('.$tickets->id.')">View</a></li>
+                        </ul>
+                    </div>
+                </td>       
+                             ';
+                    }elseif ($tickets->status == 2){
                         return '
                 <td class="text-center">
                     <!-- Single button -->

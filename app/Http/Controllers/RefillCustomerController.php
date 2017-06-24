@@ -26,9 +26,9 @@ class RefillCustomerController extends Controller
                 ->orderBy('created_at', 'id $1')
                 ->editColumn('payment_status',function ($refill){
                     if ($refill->payment_status == 1){
-                        return '<div class="text-red" >Unpaid</div>' ;
+                        return '<strong class="text-red" >Unpaid</strong>' ;
                     }elseif ($refill->payment_status == 0){
-                        return "Paid" ;
+                        return '<strong class="text-green" >Paid</strong>' ;
                     }
                 })
                 ->editColumn('card.title', function ($refill) {
@@ -93,9 +93,9 @@ class RefillCustomerController extends Controller
             })
             ->editColumn('payment_status',function ($refill){
                 if ($refill->payment_status == 1){
-                    return '<div class="text-red" >Unpaid</div>' ;
+                    return '<strong class="text-red" >Unpaid</strong>' ;
                 }elseif ($refill->payment_status == 0){
-                    return "Paid" ;
+                    return '<strong class="text-green" >Paid</strong>' ;
                 }
             })
             ->editColumn('created_at', function ($refill) {
@@ -151,9 +151,9 @@ class RefillCustomerController extends Controller
             })
             ->editColumn('payment_status',function ($refill){
                 if ($refill->payment_status == 1){
-                    return '<div class="text-red" >Unpaid</div>' ;
+                    return '<strong class="text-red" >Unpaid</strong>' ;
                 }elseif ($refill->payment_status == 0){
-                    return '<div class="text-green" >Paid</div>' ;
+                    return '<strong class="text-green" >Paid</strong>' ;
                 }
             })
             ->editColumn('created_at', function ($refill) {
