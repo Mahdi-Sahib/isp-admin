@@ -10,10 +10,10 @@ class TicketsDashboardController extends Controller
 {
     public function tickets_dashboard()
     {
-        return view('vendor.adminlte.pages.one-page.tickets_dashboard');
+        return view('vendor.adminlte.pages.dashboards.customers_tickets_dashboard');
     }
 
-    public function all_customers_tickets()
+    public function customers_tickets_table()
     {
         $tickets = CustomerTicket::with('customer','user')->select('customer_tickets.*');
         return Datatables::of($tickets)->take(20)

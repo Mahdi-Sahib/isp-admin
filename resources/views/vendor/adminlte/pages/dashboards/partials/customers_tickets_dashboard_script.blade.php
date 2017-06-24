@@ -9,7 +9,7 @@
         "info": true,
         "autoWidth": true,
         "paging": true,
-        "ajax": '{{ url('all_customer_tickets') }}',
+        "ajax": '{{ url('customers_tickets_table') }}',
         "columns": [
             { data: 'message',        name: 'message', searchable: false , orderable: false, class:'text-center'},
             { data: 'customer.fullname',         name: 'customer.fullname', width:'18%' , class:'text-center', orderable: false},

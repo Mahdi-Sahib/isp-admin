@@ -33,7 +33,7 @@
                     @include('adminlte::layouts.partials.notifications')
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            @include('adminlte::pages.customer.partials.ticket.all_customers_tickets_view')
+                            @include('adminlte::pages.dashboards.partials.customers_tickets_dashboard_view')
                         </div>
                     </div>
                 </div>
@@ -55,6 +55,6 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     @include('adminlte::pages.customer.partials.ticket.script.ticket_peek_script')
     @include('adminlte::pages.customer.partials.customer_peek_script')
-    @include('adminlte::pages.customer.partials.ticket.script.all_customers_tickets_script')
+    @include('adminlte::pages.dashboards.partials.customers_tickets_dashboard_script')
     @include('adminlte::pages.customer.partials.ticket.script.close_ticket_script')
 @endsection

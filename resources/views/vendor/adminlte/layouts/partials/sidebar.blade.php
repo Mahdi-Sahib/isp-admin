@@ -39,6 +39,9 @@
             <li class="active"><a href="{{ url('isp-cpanel/customers/ticket_dashboard') }}"><i class='fa fa-pie-chart'></i> <span> Ticket Dashboard</span>
                     <small class="label pull-right bg-blue">new</small></a></li>
             <li class="treeview">
+            <li class="active"><a href="{{ url('isp-cpanel/customers/sales_dashboard') }}"><i class='fa fa-pie-chart'></i> <span> Sales Dashboard</span>
+                    <small class="label pull-right bg-blue">new</small></a></li>
+            <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>{{ trans('layout.crm') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
