@@ -12,7 +12,7 @@
 
 
 @section('contentheader_description')
-    Income , Money Time Flow
+    Income , Money Time Flow / {{ number_format(App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::today())->pluck('card_price')->sum() - App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::today())->pluck('card_cost')->sum()) }} &nbsp; Today Total Profits
 @endsection
 
 
@@ -37,7 +37,6 @@
                         </div>
                     </div>
                 </div>
-                @include('adminlte::pages.dashboards.partials.profits_widgets')
             </div>
         </div>
         <!-- /.row -->
