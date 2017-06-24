@@ -25,7 +25,6 @@
         <div class="row">
             @include('adminlte::layouts.partials.notifications')
             <div class="row">
-                @include('adminlte::pages.customer.partials.dashboard.dashboard_widgets_view')
                     <div class="col-lg-12" class="container-fluid spark-screen">
                         <div class="panel panel-default">
                             <div class="panel-body">
