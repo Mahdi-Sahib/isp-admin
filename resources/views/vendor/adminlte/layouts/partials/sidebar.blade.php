@@ -35,9 +35,9 @@
             <li class="header">{{ Carbon\Carbon::now()  }}</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="{{ url('isp-cpanel/customers/refill_dashboard') }}"><i class='fa fa-dashboard'></i> <span> Refill Dashboard</span>
-                    <small class="label pull-right bg-green">3</small></a></li>
+                    <small class="label pull-right bg-blue">new</small></a></li>
             <li class="active"><a href="{{ url('isp-cpanel/customers/ticket_dashboard') }}"><i class='fa fa-pie-chart'></i> <span> Ticket Dashboard</span>
-                    <small class="label pull-right bg-green">3</small></a></li>
+                    <small class="label pull-right bg-blue">new</small></a></li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>{{ trans('layout.crm') }}</span>

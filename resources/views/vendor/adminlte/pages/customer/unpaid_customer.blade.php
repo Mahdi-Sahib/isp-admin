@@ -12,7 +12,7 @@
 
 
 @section('contentheader_description')
-    customers have a debt
+    <strong class="text-red"> Unpaid : {{ number_format(App\RefillCustomer::where('payment_status','=', 1)->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->pluck('amount_paid')->sum()) }}</strong>
 @endsection
 
 
