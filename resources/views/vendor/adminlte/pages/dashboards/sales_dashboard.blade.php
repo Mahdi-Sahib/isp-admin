@@ -37,6 +37,7 @@
                         </div>
                     </div>
                 </div>
+                @include('adminlte::pages.dashboards.partials.profits_widgets')
             </div>
         </div>
         <!-- /.row -->
