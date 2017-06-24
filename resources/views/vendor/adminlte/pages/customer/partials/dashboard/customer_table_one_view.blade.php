@@ -6,7 +6,7 @@
             <th>User Name</th>
             <th>Mobile</th>
             <th>Connection Method</th>
-            <th>Navigation's</th>
+            <th>Alerts</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -19,7 +19,7 @@
             <th>User Name</th>
             <th>Mobile</th>
             <th>Connection Method</th>
-            <th>Navigation's</th>
+            <th>Alerts</th>
             <th>Action</th>
         </tr>
         </tfoot>

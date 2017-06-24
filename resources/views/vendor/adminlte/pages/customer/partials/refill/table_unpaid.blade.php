@@ -9,7 +9,7 @@
         <th>Refill By</th>
         <th>By Pearson</th>
         <th>Date</th>
-        <th>Navigation's</th>
+        <th>Alerts</th>
         <th>Action</th>
 
     </tr>
@@ -26,7 +26,7 @@
         <th>Refill By</th>
         <th>By Pearson</th>
         <th>Date</th>
-        <th>Navigation's</th>
+        <th>Alerts</th>
         <th>Action</th>
     </tr>
     </tfoot>

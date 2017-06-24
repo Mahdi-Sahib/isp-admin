@@ -266,6 +266,7 @@ class RefillCustomerController extends Controller
             $refill->refill_card_id           = $request->refill_card_id;
             $refill->amount_paid              = RefillCard::find($refill->refill_card_id)->selling_price;
             $refill->card_price               = RefillCard::find($refill->refill_card_id)->selling_price;
+            $refill->card_cost                = RefillCard::find($refill->refill_card_id)->cost_price;
             $refill->description              = $request->description;
             $refill->by_person                = $request->by_person;
             $refill->created_by               = Auth::User()->id;
@@ -281,12 +282,14 @@ class RefillCustomerController extends Controller
                 $refill->amount_paid              = 0 ;
                 $refill->first_piad               = $request->amount_paid;
             }
-            $refill->payment_status           = 1;
+
+            $refill->payment_status           = 1 ;
             $refill->customer_id              = $request->customer_id;
             $refill->refill_card_id           = $request->refill_card_id;
             $refill->updated_at               = null;
             $refill->description              = $request->description;
             $refill->card_price               = RefillCard::find($refill->refill_card_id)->selling_price;
+            $refill->card_cost                = RefillCard::find($refill->refill_card_id)->cost_price;
             $refill->by_person                = $request->by_person;
             $refill->created_by               = Auth::User()->id;
                 if($request->amount_paid < $refill->card_price) {

@@ -36,7 +36,7 @@
                 <th>Agent / Admin</th>
                 <th>Location</th>
                 <th>Statistics</th>
-                <th>Navigation's</th>
+                <th>Alerts</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -49,7 +49,7 @@
                 <th>Agent / Admin</th>
                 <th>Location</th>
                 <th>Statistics</th>
-                <th>Navigation's</th>
+                <th>Alerts</th>
                 <th>Action</th>
             </tr>
             </tfoot>
