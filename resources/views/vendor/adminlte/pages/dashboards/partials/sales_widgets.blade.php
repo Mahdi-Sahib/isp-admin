@@ -27,7 +27,7 @@
         <div class="info-box-content" style="padding-top:5px;">
             <small class="info-box-text"><strong class="text-green">Today</strong> Status</small>
             <small class="info-box-number"><small style="color: red;">{{ number_format(App\RefillCustomer::where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::today())->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::today())->pluck('amount_paid')->sum()) }}</small> &nbsp; Total Amount Unpaid</small>
-            <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::whereColumn('created_at', 'created_at')->where('created_at', '>=', Carbon\Carbon::today())->pluck('amount_paid')->sum() + App\RefillCustomer::where('updated_at', '>=', Carbon\Carbon::today())->pluck('second_paid')->sum()) }}</small> Total Income</small>
+            <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::whereColumn('created_at', 'updated_at')->where('created_at', '>=', Carbon\Carbon::today())->pluck('amount_paid')->sum() + App\RefillCustomer::where('updated_at', '>=', Carbon\Carbon::today())->pluck('second_paid')->sum()) }}</small> Total Income</small>
             <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::today())->pluck('card_price')->sum() - App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::today())->pluck('card_cost')->sum()) }}</small> Total Profits</small>
         </div>
     </div>
@@ -65,7 +65,7 @@
         <div class="info-box-content" style="padding-top:5px;">
             <small class="info-box-text"><strong class="text-green">Yesterday</strong> Status</small>
             <small class="info-box-number"><small style="color: red;">{{ number_format(App\RefillCustomer::where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::yesterday())->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::yesterday())->pluck('amount_paid')->sum()) }}</small> &nbsp; Total Amount Unpaid</small>
-            <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::whereColumn('created_at', 'created_at')->where('created_at', '>=', Carbon\Carbon::yesterday())->pluck('amount_paid')->sum() + App\RefillCustomer::where('updated_at', '>=', Carbon\Carbon::yesterday())->pluck('second_paid')->sum()) }}</small> Total Income</small>
+            <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::whereColumn('created_at', 'updated_at')->where('created_at', '>=', Carbon\Carbon::yesterday())->pluck('amount_paid')->sum() + App\RefillCustomer::where('updated_at', '>=', Carbon\Carbon::yesterday())->pluck('second_paid')->sum()) }}</small> Total Income</small>
             <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::yesterday())->pluck('card_price')->sum() - App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::yesterday())->pluck('card_cost')->sum()) }}</small> Total Profits</small>
         </div>
     </div>
@@ -101,7 +101,7 @@
         <div class="info-box-content" style="padding-top:5px;">
             <small class="info-box-text"><strong class="text-green">week</strong> Status</small>
             <small class="info-box-number"><small style="color: red;">{{ number_format(App\RefillCustomer::where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::now()->subWeek())->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::now()->subWeek())->pluck('amount_paid')->sum()) }}</small> &nbsp; Total Amount Unpaid</small>
-            <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::whereColumn('created_at', 'created_at')->where('created_at', '>=', Carbon\Carbon::now()->subWeek())->pluck('amount_paid')->sum() + App\RefillCustomer::where('updated_at', '>=', Carbon\Carbon::now()->subWeek())->pluck('second_paid')->sum()) }}</small> Total Income</small>
+            <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::whereColumn('created_at', 'updated_at')->where('created_at', '>=', Carbon\Carbon::now()->subWeek())->pluck('amount_paid')->sum() + App\RefillCustomer::where('updated_at', '>=', Carbon\Carbon::now()->subWeek())->pluck('second_paid')->sum()) }}</small> Total Income</small>
             <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::now()->subWeek())->pluck('card_price')->sum() - App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::now()->subWeek())->pluck('card_cost')->sum()) }}</small> Total Profits</small>
         </div>
     </div>
@@ -139,7 +139,7 @@
         <div class="info-box-content" style="padding-top:5px;">
             <small class="info-box-text"><strong class="text-green">Month</strong> Status</small>
             <small class="info-box-number"><small style="color: red;">{{ number_format(App\RefillCustomer::where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::now()->subMonth())->pluck('card_price')->sum() - App\RefillCustomer::where('payment_status','=', 1)->where('created_at', '>=', Carbon\Carbon::now()->subMonth())->pluck('amount_paid')->sum()) }}</small> &nbsp; Total Amount Unpaid</small>
-            <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::whereColumn('created_at', 'created_at')->where('created_at', '>=', Carbon\Carbon::now()->subMonth())->pluck('amount_paid')->sum() + App\RefillCustomer::where('updated_at', '>=', Carbon\Carbon::now()->subMonth())->pluck('second_paid')->sum()) }}</small> Total Income</small>
+            <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::whereColumn('created_at', 'updated_at')->where('created_at', '>=', Carbon\Carbon::now()->subMonth())->pluck('amount_paid')->sum() + App\RefillCustomer::where('updated_at', '>=', Carbon\Carbon::now()->subMonth())->pluck('second_paid')->sum()) }}</small> Total Income</small>
             <small class="info-box-number"><small style="color: blue;">{{ number_format(App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::now()->subMonth())->pluck('card_price')->sum() - App\RefillCustomer::where('created_at', '>=', Carbon\Carbon::now()->subMonth())->pluck('card_cost')->sum()) }}</small> Total Profits</small>
 
         </div>
