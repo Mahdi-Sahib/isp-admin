@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Carbon\Carbon;
+
 use App\RefillCustomer;
 use Yajra\Datatables\Datatables;
 
@@ -21,16 +22,18 @@ class SalesController extends Controller
         return Datatables::of($query)->take(20)
 
             ->addColumn('total_refill_income', function ($query) {
-                return '<strong class="text-green"> ' . number_format(RefillCustomer::where('created_by', $query->id)->whereColumn('created_at','updated_at')->where('created_at', '>=', Carbon::today())->pluck('amount_paid')->sum() + RefillCustomer::where('created_by', $query->id)->where('created_at', '>=', Carbon::today())->pluck('first_piad')->sum())  . '</strong>';
+                $total_refill_income = number_format(RefillCustomer::where('created_by', $query->id)->whereColumn('created_at','updated_at')->where('created_at', '>=', Carbon::today())->pluck('amount_paid')->sum() + RefillCustomer::where('created_by', $query->id)->where('created_at', '>=', Carbon::today())->pluck('first_piad')->sum()) ;
+                return '<strong class="text-green"> ' . $total_refill_income  . '</strong>';
             })
             ->addColumn('total_repayment', function ($query) {
-                return '<strong class="text-green"> ' . number_format(RefillCustomer::where('created_by', $query->id)->where('updated_at', '>=', Carbon::today())->pluck('second_paid')->sum())  . '</strong>';
+                $total_repayment = number_format(RefillCustomer::where('created_by', $query->id)->where('updated_at', '>=', Carbon::today())->pluck('second_paid')->sum()) ;
+                return '<strong class="text-green"> ' . $total_repayment  . '</strong>';
             })
             ->addColumn('total_unpaid_refill', function ($query) {
                 return '<strong class="text-red"> ' . number_format(RefillCustomer::where('created_by', $query->id)->where('payment_status','=', 1)->where('created_at', '>=', Carbon::today())->pluck('card_price')->sum() - RefillCustomer::where('created_by', $query->id)->where('payment_status','=', 1)->where('created_at', '>=', Carbon::today())->pluck('amount_paid')->sum())  . '</strong>';
             })
             ->addColumn('total_income', function ($query) {
-                return '<strong class="text-blue"> ' . number_format(RefillCustomer::where('created_by', $query->id)->whereColumn('created_at', 'created_at')->where('created_at', '>=', Carbon::today())->pluck('amount_paid')->sum() + RefillCustomer::where('created_by', $query->id)->where('updated_at', '>=', Carbon::today())->pluck('second_paid')->sum())  . '</strong>';
+                return '<strong class="text-blue"> ' . number_format(RefillCustomer::where('created_by', $query->id)->whereColumn('created_at', 'updated_at')->where('created_at', '>=', Carbon::today())->pluck('amount_paid')->sum() + RefillCustomer::where('created_by', $query->id)->where('updated_at', '>=', Carbon::today())->pluck('second_paid')->sum())  . '</strong>';
             })
             ->rawColumns(['total_refill_income','total_repayment','total_unpaid_refill','total_income'])
             ->make(true);
