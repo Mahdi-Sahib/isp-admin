@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" > <label class="fa fa-ticket"></label> Debt Repayment</h4>
+                <h4 class="modal-title" > <label class="fa fa-money"></label> Debt Repayment</h4>
             </div>
             <div class="modal-body">
                 {!! Form::open( ['url' => 'isp-cpanel/customers/debt_repayment' , 'method' => 'post']) !!}
@@ -46,13 +46,13 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-xs-3">
+                        <div class="col-xs-4">
                             <label>Paid Amount:</label>
                             <input id="edit_by_remaining" type="text" class="form-control" readonly>
                         </div>
                         <div class="col-xs-3">
                             <label>&nbsp</label>
-                            <button type="submit" class="btn btn-warning"><i class="fa fa-btn fa-ticket"></i> I,m {{ Auth::User()->name }} and I receved the Remaining amount</button>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-btn fa-money"></i> Remaining amount</button>
                         </div>
                     </div>
                     <br>

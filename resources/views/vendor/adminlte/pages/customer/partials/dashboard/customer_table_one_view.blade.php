@@ -1,3 +1,16 @@
+<style>
+    @media (orientation:landscape) {
+        .hide-on-landscape {
+            display: none;
+        }
+    }
+
+    @media (orientation:portrait) {
+        .hide-on-portrait {
+            display: none;
+        }
+    }
+</style>
 
     <table id="data" class="table table-bordered table-striped">
         <thead>
@@ -5,7 +18,7 @@
             <th>Full Name</th>
             <th>User Name</th>
             <th>Mobile</th>
-            <th>Connection Method</th>
+            <th class='hide-on-portrait'>Connection Method</th>
             <th>Alerts</th>
             <th>Action</th>
         </tr>
@@ -18,7 +31,7 @@
             <th>Full Name</th>
             <th>User Name</th>
             <th>Mobile</th>
-            <th>Connection Method</th>
+            <th class="hide-on-portrait">Connection Method</th>
             <th>Alerts</th>
             <th>Action</th>
         </tr>

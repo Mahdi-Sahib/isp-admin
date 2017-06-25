@@ -16,7 +16,9 @@
     ALL CUSTOMERS
 @endsection
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.15/r-2.1.1/datatables.min.css"/>
+
+
 
 @section('main-content')
     <!-- Main content -->
@@ -45,6 +47,7 @@
 @endsection
 
 @section('page-scripts')
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/r-2.1.1/datatables.min.js"></script>
     @include('adminlte::pages.customer.partials.dashboard.customer_table_one_script')
     @include('adminlte::pages.customer.partials.customer_peek_script')
     @include('adminlte::pages.customer.partials.refill.script.refill_script')

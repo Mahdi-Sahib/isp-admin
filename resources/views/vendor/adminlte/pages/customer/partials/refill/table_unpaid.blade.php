@@ -3,15 +3,14 @@
     <thead>
     <tr>
         <th>Customer</th>
-        <th>Card Name / Type</th>
-        <th>Status</th>
-        <th>Amount Paid</th>
-        <th>Refill By</th>
-        <th>By Pearson</th>
-        <th>Date</th>
+        <th class="visible-md visible-lg">Card Name / Type</th>
+        <th class="visible-md visible-lg">Status</th>
+        <th class="visible-md visible-lg">Amount Paid</th>
+        <th class="visible-md visible-lg">Refill By</th>
+        <th class="visible-md visible-lg">By Pearson</th>
+        <th class="visible-md visible-lg">Date</th>
         <th>Alerts</th>
         <th>Action</th>
-
     </tr>
     </thead>
     <tbody>
@@ -20,12 +19,12 @@
     <tfoot>
     <tr>
         <th>Customer</th>
-        <th>Card Name / Type</th>
-        <th>Status</th>
-        <th>Amount Paid</th>
-        <th>Refill By</th>
-        <th>By Pearson</th>
-        <th>Date</th>
+        <th class="visible-md visible-lg">Card Name / Type</th>
+        <th class="visible-md visible-lg">Status</th>
+        <th class="visible-md visible-lg">Amount Paid</th>
+        <th class="visible-md visible-lg">Refill By</th>
+        <th class="visible-md visible-lg">By Pearson</th>
+        <th class="visible-md visible-lg">Date</th>
         <th>Alerts</th>
         <th>Action</th>
     </tr>
