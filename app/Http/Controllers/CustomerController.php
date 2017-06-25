@@ -54,7 +54,7 @@ class CustomerController extends Controller
             })
 
             ->editColumn('fullname',function ($customers){
-                if ($customers->unpaidSum() > 0 or $customers->openTicketCount() > 0){
+                if ($customers->getUnpaid() > 0 or $customers->openTicketCount() > 0){
                     return '<div class="text-red" >'.$customers->fullname.'</div>';
                 }else{
                     return $customers->fullname ;
