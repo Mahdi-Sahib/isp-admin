@@ -51,7 +51,8 @@
             </div>
 
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/tower/tower_broadcast') }}" method="post">
+                <form action="{{ url('isp-cpanel/tower/tower_broadcast') }}" method="post" onsubmit="document.getElementById('submit_new_ap').disabled=true;
+document.getElementById('submit_new_ap').value='Submitting, please wait...';">
                     {{ csrf_field() }}
 
                     <br>
@@ -139,7 +140,7 @@
                         <input id="tower_id" name="tower_id" value="{{ $tower->id }}" hidden>
 
                     </div>
-                    <button type="submit" class="btn btn-info">This is a new Access Point</button>
+                    <button type="submit" id="submit_new_ap" class="btn btn-info">This is a new Access Point</button>
                 </form>
             </div>
             <div class="modal-footer">

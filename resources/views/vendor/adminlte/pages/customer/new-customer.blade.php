@@ -22,7 +22,8 @@
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
 
-    <form action="{{ url('isp-cpanel/customers') }}" method="post">
+    <form action="{{ url('isp-cpanel/customers') }}" method="post" onsubmit="document.getElementById('submit_add_customer').disabled=true;
+document.getElementById('submit_add_customer').value='Submitting, please wait...';">
         {{ csrf_field() }}
         <div>
             <div class="box-body">
@@ -350,7 +351,7 @@
             <hr>
             <div class="panel-body">
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="save" name="save">
+                    <input type="submit" id="submit_add_customer" class="btn btn-primary" value="save" name="save">
                 </div>
             </div>
 

@@ -7,7 +7,8 @@
                 <h4 class="modal-title" > <label class="fa fa-ticket"></label> Open new ticket</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/customers/customer_ticket/add') }}" method="post">
+                <form action="{{ url('isp-cpanel/customers/customer_ticket/add') }}" method="post" onsubmit="document.getElementById('submit_ticket').disabled=true;
+document.getElementById('submit_ticket').value='Submitting, please wait...';">
                     {{ csrf_field() }}
                     <input id="z" name="customer_id" hidden>
                     @if (isset($customer))
@@ -20,13 +21,13 @@
                     <input id="category"  name="category"  value="1" hidden>
 
                     <br>
-                    <button type="submit" class="btn btn-warning">
+                    <button type="submit"  id="submit_ticket" class="btn btn-warning">
                         <i class="fa fa-btn fa-ticket"></i> Open Ticket
                     </button>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

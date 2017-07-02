@@ -8,7 +8,8 @@
                 <h4 class="modal-title" > <label class="fa fa-money"></label> Refill</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/customers/customer_refill') }}" method="post">
+                <form action="{{ url('isp-cpanel/customers/customer_refill') }}" method="post" onsubmit="document.getElementById('submit_refill').disabled=true;
+document.getElementById('submit_refill').value='Submitting, please wait...';">
                     {{ csrf_field() }}
                     <input id="x" name="customer_id" hidden>
                     <div class="form-group">

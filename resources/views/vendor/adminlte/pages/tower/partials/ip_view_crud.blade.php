@@ -63,7 +63,8 @@
             </div>
 
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/tower/tower_ip') }}" method="post">
+                <form action="{{ url('isp-cpanel/tower/tower_ip') }}" method="post" onsubmit="document.getElementById('submit_new_ip').disabled=true;
+document.getElementById('submit_new_ip').value='Submitting, please wait...';">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="box-body">
@@ -82,7 +83,7 @@
                         </div>
                         <input id="tower_id" name="tower_id" value="{{ $tower->id }}" hidden>
                     </div>
-                    <button type="submit" class="btn btn-info">this new IP</button>
+                    <button type="submit" id="submit_new_ip" class="btn btn-info">this new IP</button>
                 </form>
             </div>
             <div class="modal-footer">

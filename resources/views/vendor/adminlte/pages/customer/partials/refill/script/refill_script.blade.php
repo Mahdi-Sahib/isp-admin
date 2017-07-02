@@ -31,7 +31,7 @@
         document.getElementById("x").value = id;
     }
 
-    
+
     function calc()
     {
         if (document.getElementById('checkbox').checked)
@@ -43,6 +43,7 @@
             document.getElementById('submit_refill').className = 'btn btn-success';
         }
     }
+
 
 
 </script>

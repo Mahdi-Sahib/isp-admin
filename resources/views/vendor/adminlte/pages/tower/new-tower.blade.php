@@ -21,7 +21,8 @@
 
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
-    <form action="{{ url('isp-cpanel/towers') }}" method="post">
+    <form action="{{ url('isp-cpanel/towers') }}" method="post" onsubmit="document.getElementById('submit_new_tower').disabled=true;
+document.getElementById('submit_new_tower').value='Submitting, please wait...';">
 
     {{ csrf_field() }}
 
@@ -30,22 +31,22 @@
             <label><div class="fa fa-info-circle"></div>   Point information</label>
             <br>
             <br>
-            <div  class="col-lg-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label><div for="name" class="glyphicon glyphicon-info-sign control-label" ></div> Wireless Point Name</label>
-                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Enter the  Name" >
-                @if ($errors->has('name'))
+            <div  class="col-lg-3 form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                <label><div for="title" class="glyphicon glyphicon-info-sign control-label" ></div> Wireless Point Name</label>
+                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="Enter the  Name" >
+                @if ($errors->has('title'))
                     <span  class="help-block">
-                                            <strong>{{ $errors->first('name') }}</strong>
+                                            <strong>{{ $errors->first('title') }}</strong>
                                         </span>
                 @endif
             </div>
 
-            <div  class="col-lg-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label><div for="name" class="glyphicon glyphicon-info-sign control-label" ></div> name / Admine</label>
-                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name of name" >
-                @if ($errors->has('name'))
+            <div  class="col-lg-3 form-group{{ $errors->has('agent') ? ' has-error' : '' }}">
+                <label><div for="agent" class="glyphicon glyphicon-info-sign control-label" ></div> name / Admine</label>
+                <input id="agent" type="text" class="form-control" name="agent" value="{{ old('agent') }}" placeholder="Name of name" >
+                @if ($errors->has('agent'))
                     <span  class="help-block">
-                                            <strong>{{ $errors->first('name') }}</strong>
+                                            <strong>{{ $errors->first('agent') }}</strong>
                                         </span>
                 @endif
             </div>
@@ -77,7 +78,7 @@
 
         <div class="panel-body">
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="save" name="save">
+                <input type="submit" id="submit_new_tower" class="btn btn-primary" value="save" name="save">
             </div>
         </div>
 

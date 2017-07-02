@@ -15,7 +15,8 @@ class CreateTowersTable extends Migration
     {
         Schema::create('towers', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('name','25')->unique()->index();
+            $table->string('title','25')->unique()->index();
+            $table->string('agent','25')->unique()->index();
             $table->string('location','50')->nullable();
             $table->string('google_location','50')->nullable();
             $table->string('tower_info')->nullable();

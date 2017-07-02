@@ -48,7 +48,8 @@
                 <h4 class="modal-title"><label class="fa fa-ticket"></label> Open new ticket</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/tower/tower_ticket') }}" method="post">
+                <form action="{{ url('isp-cpanel/tower/tower_ticket') }}" method="post" onsubmit="document.getElementById('submit_tower_ticket').disabled=true;
+document.getElementById('submit_tower_ticket').value='Submitting, please wait...';">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="row">
@@ -77,7 +78,7 @@
                         <input id="tower_id" name="tower_id" value="{{ $tower->id }}" hidden>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-warning">
+                    <button type="submit" id="submit_tower_ticket" class="btn btn-warning">
                         <i class="fa fa-btn fa-ticket"></i> Open Ticket
                     </button>
                 </form>

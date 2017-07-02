@@ -73,7 +73,8 @@
                 <h4 class="modal-title">Add New Source Link</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ url('isp-cpanel/tower/tower_link') }}" method="post">
+                <form action="{{ url('isp-cpanel/tower/tower_link') }}" method="post" onsubmit="document.getElementById('submit_new_link').disabled=true;
+document.getElementById('submit_new_link').value='Submitting, please wait...';">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <div class="form-group">
@@ -95,7 +96,7 @@
                         </div>
                         <input id="tower_id" name="tower_id" value="{{ $tower->id }}" hidden>
                     </div>
-                    <button type="submit" class="btn btn-info">New Link</button>
+                    <button type="submit" id="submit_new_link" class="btn btn-info">New Link</button>
                 </form>
             </div>
             <div class="modal-footer">
