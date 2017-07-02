@@ -6,7 +6,7 @@
 
 
 @section('contentheader_title')
-    New ًWireless Point
+    New ًWireless Point OR Access Point
 @endsection
 
 
