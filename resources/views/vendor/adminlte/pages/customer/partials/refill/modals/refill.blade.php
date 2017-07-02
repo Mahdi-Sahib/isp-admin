@@ -11,6 +11,11 @@
                 <form action="{{ url('isp-cpanel/customers/customer_refill') }}" method="post">
                     {{ csrf_field() }}
                     <input id="x" name="customer_id" hidden>
+                    @if(App\RefillCustomer::where('customer_id', 3)->where('created_at', '>=', Carbon\Carbon::today()))
+                    <div class="form-group">
+                        <strong class="text-red"> This Customer Refilled Today</strong>
+                    </div>
+                    @endif
                     <div class="form-group">
                         <div class="form-group">
                             <label><div class="fa fa-gears"></div> Card Name / Type : </label>

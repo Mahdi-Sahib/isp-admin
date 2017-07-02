@@ -1,5 +1,5 @@
 <!-- Main content -->
-<section class="content ">
+<section class="box-body">
     <!-- Info boxes -->
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12">

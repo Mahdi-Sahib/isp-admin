@@ -31,6 +31,13 @@
         document.getElementById("x").value = id;
     }
 
+    function if_refilled(id)
+    {
+        document.getElementById("x").value = id;
+        var refill_customer_id = <php $customer->customer_id ?>
+
+    }
+
 
 
     function calc()

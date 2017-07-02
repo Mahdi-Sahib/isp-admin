@@ -21,6 +21,7 @@
 
 
 @section('main-content')
+    @include('adminlte::layouts.partials.notifications')
     @include('adminlte::layouts.partials.pageheader')
     @include('adminlte::pages.customer.partials.edit_customer_view')
     @include('adminlte::layouts.partials.pagefooter')

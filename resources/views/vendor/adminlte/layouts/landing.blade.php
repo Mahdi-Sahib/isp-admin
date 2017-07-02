@@ -67,14 +67,14 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         </div>
     </div>
 
-
     <section id="home" name="home"></section>
     <div id="headerwrap">
         <div class="container">
             <div class="row centered">
                 <div class="col-lg-12">
-                    <h3>A <a href="https://01codes.com/">ISP-CPanel</a> is one of some of web application
-                        designed by <a href="https://01codes.com">01 Codes </a>
+                    <h1>@include('adminlte::layouts.partials.notifications')</h1>
+
+                    <h3>A <a href="https://01codes.com/">ISP-CPanel</a> is one of some of web applicationdesigned by <a href="https://01codes.com">01 Codes </a></h3>
                     <h3><a href="{{ url('/register') }}" class="btn btn-lg btn-success">{{ trans('adminlte_lang::message.gedstarted') }}</a></h3>
                 </div>
                 <div class="col-lg-2">

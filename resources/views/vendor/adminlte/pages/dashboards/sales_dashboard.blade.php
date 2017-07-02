@@ -23,7 +23,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
 
 @section('main-content')
-
+    @include('adminlte::layouts.partials.notifications')
     <!-- Main content -->
     <section class="content">
         <!-- Small boxes (Stat box) -->

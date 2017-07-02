@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
 
 @section('main-content')
+    @include('adminlte::layouts.partials.notifications')
     <!-- Main content -->
     <section class="content">
         <!-- Small boxes (Stat box) -->
@@ -29,7 +30,6 @@
             <div class="row">
                 @include('adminlte::pages.customer.partials.refill.money_widgets')
                 <div class="col-lg-12" class="container-fluid spark-screen">
-                    @include('adminlte::layouts.partials.notifications')
                     <div class="panel panel-default">
                         <div class="panel-body">
                             @include('adminlte::pages.customer.partials.refill.refill_time_line_view')

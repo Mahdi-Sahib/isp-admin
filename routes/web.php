@@ -24,7 +24,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('isp-cpanel/customers/ticket_dashboard', 'TicketsDashboardController@tickets_dashboard');
     Route::get('customers_tickets_table', 'TicketsDashboardController@customers_tickets_table');
 
-    Route::get('isp-cpanel/customers/sales_dashboard', 'SalesController@sales_dashboard_layout');
+    Route::get('isp-cpanel/customers/sales_dashboard', 'SalesController@sales_dashboard_layout')->middleware('salesManager');
     Route::get('users_Income_table', 'SalesController@users_Income_table');
 
 

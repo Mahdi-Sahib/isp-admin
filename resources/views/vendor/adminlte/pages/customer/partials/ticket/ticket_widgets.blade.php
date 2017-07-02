@@ -1,9 +1,8 @@
 <!-- Main content -->
-<section class="content ">
+<section class="box-body">
     <!-- Info boxes -->
     <div class="row">
-
-    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="fa fa-ticket" style="padding-top:20px;"></i></span>
             <div class="info-box-content" style="padding-top:5px;">
@@ -15,7 +14,7 @@
         </div>
     </div>
 
-    <div class="col-md-4 col-sm-6 col-xs-12 " >
+    <div class="col-md-4 col-sm-6 col-xs-12" >
         <div class="info-box">
             <span class="info-box-icon bg-yellow" ><i class="fa fa-ticket" style="padding-top:20px;"></i></span>
             <div class="info-box-content" style="padding-top:5px;">
