@@ -163,6 +163,8 @@ Route::group(['middleware' => 'admin'], function () {
     ##############################################################################################
 });
 
+
+
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware

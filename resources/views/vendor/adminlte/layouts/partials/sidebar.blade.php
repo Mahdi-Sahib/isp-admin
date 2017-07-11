@@ -38,9 +38,11 @@
                     <small class="label pull-right bg-blue">new</small></a></li>
             <li class="active"><a href="{{ url('isp-cpanel/customers/ticket_dashboard') }}"><i class='fa fa-pie-chart'></i> <span> Ticket Dashboard</span>
                     <small class="label pull-right bg-blue">new</small></a></li>
+            @if (Auth::user()->status == 5)
             <li class="treeview">
             <li class="active"><a href="{{ url('isp-cpanel/customers/sales_dashboard') }}"><i class='fa fa-pie-chart'></i> <span> Sales Dashboard</span>
                     <small class="label pull-right bg-blue">new</small></a></li>
+            @endif
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>{{ trans('layout.crm') }}</span>
@@ -68,6 +70,7 @@
             </li>
 
             <!-- --------------------------------------------------------------------------------- -->
+            @if (Auth::user()->status == 5)
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-gears"></i> <span> Financial</span>
@@ -85,9 +88,10 @@
                     <li><a href="{{ url('isp-cpanel/financial/refill_cards') }}"><i class="fa fa-cube"></i> Refill Cards</a></li>
                 </ul>
             </li>
+            @endif
 
             <!-- --------------------------------------------------------------------------------- -->
-
+            @if (Auth::user()->status == 10)
 
             <li class="treeview">
                 <a href="#">
@@ -119,7 +123,7 @@
                     </li>
                 </ul>
             </li>
-
+            @endif
 
         </ul><!-- /.sidebar-menu -->
     </section>
