@@ -83,7 +83,7 @@
 
     function fun_delete_broadcast(id)
     {
-        var conf = confirm("When you delete Broadcast all ticket's for this broadcast will deleted.");
+        var conf = confirm("When you delete Access Point  all ticket's for this AP will deleted.");
         if(conf){
             var delete_url = $("#hidden_delete").val();
             $.ajax({

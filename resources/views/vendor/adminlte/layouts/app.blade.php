@@ -29,7 +29,14 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-purple sidebar-mini">
+@if (Auth::user()->status == 10)
+    <body class="skin-red sidebar-mini">
+@elseif(Auth::user()->status == 5)
+    <body class="skin-purple sidebar-mini">
+@elseif(Auth::user()->status == 1)
+    <body class="skin-blue sidebar-mini">
+@endif
+
 <div id="app">
     <div class="wrapper">
 

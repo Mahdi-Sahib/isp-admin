@@ -81,13 +81,18 @@ class TowerIpController extends Controller
     */
     public function deleteAjax(Request $request)
     {
-        $id = $request -> id;
-        $data = TowerIp::find($id);
-        $response = $data -> delete();
-        if($response)
-            echo "IP Deleted successfully.";
-        else
-            echo "There was a problem. Please try again later.";
+
+        if(Auth::user()->status == 10) {
+            $id = $request -> id;
+            $data = TowerIp::find($id);
+            $response = $data -> delete();
+            if($response)
+                echo "IP Deleted successfully.";
+            else
+                echo "There was a problem. Please try again later.";
+        }else{
+            echo "you didn't have this permissions.";
+        }
     }
 
 }

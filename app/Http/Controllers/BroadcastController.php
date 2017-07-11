@@ -10,86 +10,6 @@ use Validator, Input, Redirect ,Session ;
 
 class BroadcastController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-
-/*
-* Display all data
-*/
 
     public function BroadcastTable(Request $request , $id){
         if ($request->ajax()) {
@@ -111,7 +31,7 @@ class BroadcastController extends Controller
                         <ul class="dropdown-menu">
                             <li><a href="" data-toggle="modal" data-target="#viewModal_broadcast" onclick="fun_view_broadcast(' . $broadcast->id . ')">View</a></li>
                             <li><a href="" data-toggle="modal" data-target="#editModal_broadcast" onclick="fun_edit_broadcast(' .  $broadcast->id  . ')">Edit</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#addModal_broadcast_ticket">Ticket</a></li>
+                            <li><a href="" onclick="fun_delete_broadcast( ' . $broadcast -> id .')">Delete</a></li>                            <li><a href="" data-toggle="modal" data-target="#addModal_broadcast_ticket">Ticket</a></li>
                         </ul>
                     </div>
                 </td>       
@@ -132,7 +52,7 @@ class BroadcastController extends Controller
     public function addAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'number_sign'       => 'max:10',
+            'number_sign'       => 'max:10|unique:broadcasts',
             'name'              => 'max:20',
             'ssid'              => 'max:30 | required',
             'antenna'           => 'max:20',
@@ -186,16 +106,16 @@ class BroadcastController extends Controller
     /*
     *   Update data
     */
-    public function updateAjax(Request $request)
+    public function updateAjax(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'number_sign'       => 'max:5',
+            'number_sign'       => 'max:5 | unique:broadcasts,number_sign,'. $id,
             'name'              => 'max:20',
             'ssid'              => 'max:30 | required',
             'antenna'           => 'max:20',
             'direction'         => 'max:50',
             'device_id'         => 'max:5 | required',
-            'ip'                => 'ip | required',
+            'ip'                => 'ip | required | unique:broadcasts,ip,'. $id,
         ]);
 
         if ($validator->fails()) {
@@ -220,7 +140,7 @@ class BroadcastController extends Controller
             $data->updated_by            = Auth::User()->id;
         $data -> save();
         return back()
-            ->with('message_broadcast','Broadcast Updated successfully.');
+            ->with('message_broadcast','Access Point Updated successfully.');
          }
     }
 
@@ -229,13 +149,18 @@ class BroadcastController extends Controller
     */
     public function deleteAjax(Request $request)
     {
-        $id = $request -> id;
-        $data = Broadcast::find($id);
-        $response = $data -> delete();
-        if($response)
-            echo "Record Deleted successfully.";
-        else
-            echo "There was a problem. Please try again later.";
+        if(Auth::user()->status == 10) {
+            $id = $request -> id;
+            $data = Broadcast::find($id);
+            $response = $data -> delete();
+            if($response)
+                echo "Record Deleted successfully. and all tickets about this AP also deleted";
+            else
+                echo "There was a problem. Please try again later.";
+        }else{
+                echo "you didn't have this permissions.";
+        }
+
     }
 
 }

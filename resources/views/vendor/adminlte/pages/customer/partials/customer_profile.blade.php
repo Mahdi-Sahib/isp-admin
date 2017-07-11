@@ -49,12 +49,12 @@
         <label><div class="fa fa-ticket"></div> Open Ticket Count</label>
         <input type="text" class="form-control" value="{{ $customer->openTicketCount() }}" readonly >
     </div>
-    @if($customer->connectionMmethod)
+
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-sitemap"></div> Connection Method :</label>
-        <input type="text" class="form-control"  value="{{ $customer->connectionMmethod->method }}" readonly >
+        <input type="text" class="form-control"  value="{{ $customer->connection_method }}" readonly >
     </div>
-    @endif
+
         <input id="connection_method" value="{{ $customer->connection_method }}" hidden>
 
 </div>
@@ -81,7 +81,7 @@
 
     <div  class="col-lg-3 form-group">
         <label><div class="fa fa-wifi"></div> Wireless Method</label>
-        <input type="text" class="form-control" @if($customer->wirelessType) value="{{ $customer->wirelessType->type }}" @endif readonly >
+        <input type="text" class="form-control"  value="{{ $customer->wireless_type_id }}"  readonly >
     </div>
 
 </div>

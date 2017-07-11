@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use App\AddressHelper;
 use App\Broadcast;
-use App\ConnectionType;
 use App\Device;
 use App\Tower;
 use App\TowerLink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Input;
-use Redirect;
-use Session;
-use Validator;
+use Validator, Redirect ,Session ;
 use Yajra\Datatables\Facades\Datatables;
 
 class TowerController extends Controller
@@ -73,7 +69,7 @@ class TowerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:towers',
+            'title' => 'required|unique:towers',
         ]);
         if ($validator->fails()) {
             return redirect('isp-cpanel/towers/create')
@@ -81,12 +77,12 @@ class TowerController extends Controller
                 ->withInput();
         } else {
             $tower = new Tower();
-            $tower->name = $request->name;
-            $tower->name = $request->name;
-            $tower->location = $request->location;
-            $tower->google_location = $request->google_location;
-            $tower->created_by = Auth::User()->id;
-            $tower->updated_by = Auth::User()->id;
+            $tower->title             = $request->title;
+            $tower->agent             = $request->agent;
+            $tower->location          = $request->location;
+            $tower->google_location   = $request->google_location;
+            $tower->created_by        = Auth::User()->id;
+            $tower->updated_by        = Auth::User()->id;
             $tower->save();
             Session::flash('message', 'Successfuly Add ' . $tower->name . ' !');
             return redirect('isp-cpanel/towers');
@@ -98,15 +94,13 @@ class TowerController extends Controller
     {
         $cw = array(5, 10, 20, 30, 40, 80);
         $tower = Tower::find($id);
-        $connection = ConnectionType::all();
-        $connectionx = ConnectionType::all();
         $broadcast = Broadcast::all();
         $link = TowerLink::all();
         $device = Device::all();
         $devicex = Device::all();
         $devicev = Device::all();
         $address = AddressHelper::all();
-        return view('vendor.adminlte.pages.tower.view-tower', compact('tower', 'address', 'connection', 'connectionx', 'device', 'devicex', 'cw', 'devicev', 'broadcast', 'link'));
+        return view('vendor.adminlte.pages.tower.view-tower', compact('tower', 'address', 'device', 'devicex', 'cw', 'devicev', 'broadcast', 'link'));
     }
 
 
@@ -119,22 +113,32 @@ class TowerController extends Controller
 
     public function update(Request $request, $id)
     {
-        $tower = Tower::find($id);
-        $tower->name = $request->name;
-        $tower->location = $request->location;
-        $tower->ip = $request->ip;
-        $tower->google_location = $request->google_location;
-        $tower->towerinfo = $request->towerinfo;
-        $tower->updated_by = Auth::User()->id;
-        $tower->save();
-        Session::flash('message', 'Successfuly updated ' . '( ' . $tower->name . ' )' . ' ! ');
-        return Redirect::to('isp-cpanel/towers/towers-table-one-view');
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|unique:towers' . $id,
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $tower = Tower::find($id);
+            $tower->title             = $request->title;
+            $tower->agent             = $request->agent;
+            $tower->location          = $request->location;
+            $tower->google_location   = $request->google_location;
+            $tower->created_by        = Auth::User()->id;
+            $tower->updated_by        = Auth::User()->id;
+            $tower->updated_by = Auth::User()->id;
+            $tower->save();
+            Session::flash('message', 'Successfuly updated ' . '( ' . $tower->name . ' )' . ' ! ');
+            return redirect('isp-cpanel/towers');
+        }
     }
 
     public function destroy($id)
     {
-        $customer = Tower::find($id);
-        $customer->destroy($id);
+        $tower = Tower::find($id);
+        $tower->destroy($id);
         Session::flash('message', 'Successfuly deleted ' . $tower->name . ' !');
         return Redirect::to('admin/tower');
     }

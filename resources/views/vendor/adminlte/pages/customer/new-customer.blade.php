@@ -275,11 +275,10 @@ document.getElementById('submit_add_customer').value='Submitting, please wait...
                             <label>
                                 <div class="fa fa-gears"></div>
                                 Wireless Method</label>
-                            <select name="connection_type_id" class="form-control"
-                                    value="{{ old('connection_type_id') }}">
-                                @foreach ($connection_types as $connection_types)
-                                    <option value="{{ $connection_types->id }}"
-                                            @if(old('connection_type_id') == $connection_types->id) selected="selected" @endif >{{ $connection_types->type }}</option>
+                            <select id="wireless_type_id" name="wireless_type_id" class="form-control">
+                                @foreach (wireless_type() as $key => $value) {
+                                <option value="{!! $key !!}">{!! $value !!}</option>
+                                }
                                 @endforeach
                             </select>
                         </div>

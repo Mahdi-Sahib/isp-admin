@@ -98,7 +98,6 @@
                     <li>
                         <a href="#"><i class="glyphicon glyphicon-log-in"></i> BASIC INPUT<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ url('isp-cpanel/settings/connection_types') }}"><i class="glyphicon glyphicon-transfer"></i> Connection Types</a></li>
                             <li><a href="{{ url('isp-cpanel/settings/devices') }}"><i class="fa fa-plug"></i> Devices</a></li>
                             <li><a href="{{ url('isp-cpanel/settings/address') }}"><i class="fa fa-map-o"></i> Address</a></li>
                         </ul>

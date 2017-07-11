@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Tower;
+
 use App\TowerLink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -230,13 +230,24 @@ class TowerLinkController extends Controller
     */
     public function deleteAjax(Request $request)
     {
-        $id = $request -> id;
-        $data = TowerLink::find($id);
-        $response = $data -> delete();
-        if($response)
-            echo "Link Deleted successfully.";
-        else
-            echo "There was a problem. Please try again later.";
+
+        if(Auth::user()->status == 10) {
+            $id = $request -> id;
+            $data = TowerLink::find($id);
+            $response = $data -> delete();
+            if($response)
+                echo "Link Deleted successfully.";
+            else
+                echo "There was a problem. Please try again later.";
+
+        }else{
+            echo "you didn't have this permissions.";
+        }
+
+
     }
+
+
+
 
 }

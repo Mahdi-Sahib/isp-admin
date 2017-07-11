@@ -19,6 +19,7 @@ class CreateRefillCustomersTable extends Migration
             $table->unsignedSmallInteger('customer_id');
             $table->unsignedSmallInteger('refill_card_id');
             $table->boolean('payment_status')->unsigned();
+            $table->decimal('card_cost')->unsigned();
             $table->decimal('card_price')->unsigned();
             $table->decimal('amount_paid')->default(0);
             $table->decimal('first_piad')->default(0);

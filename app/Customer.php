@@ -29,13 +29,7 @@ class Customer extends Model
         return $this->belongsTo('App\Device','device_id','id');
     }
 
-    public function connectionMmethod(){
-        return $this->belongsTo('App\ConnectionType','connection_method','id');
-    }
 
-    public function wirelessType(){
-        return $this->belongsTo('App\ConnectionType','wireless_type_id','id');
-    }
 
     public function unpaid(){
         return $this->belongsTo('App\RefillCustomer')->where('payment_status','=', 1);

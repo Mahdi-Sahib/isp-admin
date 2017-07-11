@@ -11,12 +11,11 @@ use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Support\Facades\Auth;
 use App\Customer;
 use App\AddressHelper;
-use App\ConnectionType;
 use App\Device;
 use App\Tower;
 use App\CustomerTicket;
 use App\Broadcast;
-use Validator, Input, Redirect ,Session ;
+use Validator, Redirect ,Session ;
 
 
 
@@ -84,6 +83,7 @@ class CustomerController extends Controller
                             <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$customers->id.')" >Peek</a></li>
                             <li><a href="customers/'.$customers->id.'">View</a></li>
                             <li><a href="customers/'.$customers->id.'/edit">Edit</a></li>
+                            <li><a href="customers/delete/'.$customers->id.'">Delete</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_refill" onclick="fun_get_id('.$customers->id.')">Refill</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_hint" onclick="fun_get_hint_id('.$customers->id.')">Hint</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_tower_ticket" onclick="fun_get_Ticket_id('.$customers->id.')">Ticket</a></li>
@@ -120,7 +120,6 @@ class CustomerController extends Controller
         $customer           = Customer::all();
         $towers             = Tower::all();
         $broadcast          = Broadcast::all();
-        $connection_types   = ConnectionType::all();
         $device             = Device::all();
         $address            = AddressHelper::all();
         $apmac              = Broadcast::all();
@@ -132,10 +131,14 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'fullname'       => 'required|unique:customers',
-            'username'       => 'required|unique:customers',
-            'mobile_1'       => 'required|numeric',
-            'address_2'      => 'required'
+            'fullname'       => 'required|max:30|unique:customers',
+            'username'       => 'required|max:30|unique:customers',
+            'password'       => 'max:10',
+            'mobile_1'       => 'nullable|numeric|digits:11|unique:customers',
+            'mobile_2'       => 'nullable|numeric|digits:11',
+            'address_2'      => 'required|max:50',
+            'about'          => 'nullable|max:50',
+            'ip'             => 'nullable|ip|unique:customers'
         ]);
 
         if ($validator->fails()) {
@@ -148,6 +151,11 @@ class CustomerController extends Controller
             $customer = new Customer;
             $customer->fullname           = $request->fullname;
             $customer->username           = $request->username;
+                if($request->password == null) {
+                    $customer->password           ='0000';
+                }elseif ($request->password){
+                    $customer->password           = $request->password;
+                }
             $customer->mobile_1           = $request->mobile_1;
             $customer->mobile_2           = $request->mobile_2;
             $customer->address_1          = $request->address_1;
@@ -211,9 +219,8 @@ class CustomerController extends Controller
         $device          = Device::all();
         $apmac           = Broadcast::all();
         $olt             = Olt::all();
-        $connection      = ConnectionType::all();
         $customer        = Customer::find($id);
-        return view('vendor.adminlte.pages.customer.edit-customer' , compact('customer','device','towers','broadcasts','apmac','fiberbox','fibernode','address','connection','olt','hubs')) ;
+        return view('vendor.adminlte.pages.customer.edit-customer' , compact('customer','device','towers','broadcasts','apmac','fiberbox','fibernode','address','olt','hubs')) ;
     }
 
     /**
@@ -226,20 +233,30 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'fullname'       => 'required|unique:customers,fullname,'. $id,
-            'username'       => 'required|unique:customers,username,'. $id,
-            'mobile_1'       => 'required|numeric',
-            'address_2'      => 'required'
+            'fullname'       => 'required|max:30|unique:customers,fullname,'. $id,
+            'username'       => 'required|max:30|unique:customers,username,'. $id,
+            'password'       => 'max:10',
+            'mobile_1'       => 'nullable|numeric|digits:11|unique:customers,mobile_1,'. $id,
+            'mobile_2'       => 'nullable|numeric|digits:11',
+            'address_2'      => 'required|max:50',
+            'about'          => 'nullable|max:50',
+            'ip'             => 'nullable|ip|unique:customers,ip,'. $id,
         ]);
 
         if ($validator->fails()) {
-            return redirect('isp-cpanel/customers/create')
+            return back()
                 ->withErrors($validator)
                 ->withInput();
-        }else {
+        } else {
+
             $customer = Customer::find($id);
             $customer->fullname           = $request->fullname;
             $customer->username           = $request->username;
+                if($request->password == null) {
+                    $customer->password           ='0000';
+                }elseif ($request->password){
+                    $customer->password           = $request->password;
+                }
             $customer->mobile_1           = $request->mobile_1;
             $customer->mobile_2           = $request->mobile_2;
             $customer->address_1          = $request->address_1;
@@ -276,6 +293,8 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         $customer->destroy($id);
         Session::flash('message','Successfuly deleted ' . $customer->fullname.' !');
-        return Redirect::to('isp-cpanel/customers');
+        return back();
     }
+
+
 }

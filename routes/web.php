@@ -47,6 +47,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 
     Route::resource('isp-cpanel/customers', 'CustomerController');
+    Route::get('isp-cpanel/customers/delete/{id}', 'CustomerController@destroy')->middleware('superAdmin');
 
 
 
@@ -87,15 +88,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/tower/tower_ticket', 'TowerTicketController@addAjax');
     Route::post('isp-cpanel/tower/tower_ticket/close_ticket', 'TowerTicketController@closeTicket');
     Route::resource('isp-cpanel/towers', 'TowerController');
+    Route::get('isp-cpanel/towers/delete/{id}', 'TowerController@destroy')->middleware('superAdmin');
     ##############################################################################################
 
     ############################################  settings  ############################################
-    // connection_types
-    Route::get('isp-cpanel/settings/connection_types', 'ConnectionTypeController@index');
-    Route::post('isp-cpanel/settings/connection_types', 'ConnectionTypeController@add');
-    Route::get('isp-cpanel/settings/connection_types/view', 'ConnectionTypeController@view');
-    Route::post('isp-cpanel/settings/connection_types/update', 'ConnectionTypeController@update');
-    Route::post('isp-cpanel/settings/connection_types/delete', 'ConnectionTypeController@delete');
+
 
 
 
@@ -103,13 +100,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/settings/devices', 'DeviceController@add');
     Route::get('isp-cpanel/settings/devices/view', 'DeviceController@view');
     Route::post('isp-cpanel/settings/devices/update', 'DeviceController@update');
-    Route::post('isp-cpanel/settings/devices/delete', 'DeviceController@delete');
+    Route::post('isp-cpanel/settings/devices/delete', 'DeviceController@delete')->middleware('superAdmin');
 
     Route::get('isp-cpanel/settings/address', 'AddressHelperController@index');
     Route::post('isp-cpanel/settings/address', 'AddressHelperController@add');
     Route::get('isp-cpanel/settings/address/view', 'AddressHelperController@view');
     Route::post('isp-cpanel/settings/address/update', 'AddressHelperController@update');
-    Route::post('isp-cpanel/settings/address/delete', 'AddressHelperController@delete');
+    Route::post('isp-cpanel/settings/address/delete', 'AddressHelperController@delete')->middleware('superAdmin');
 
     ##############################################################################################
 
@@ -121,7 +118,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/financial/product', 'ProductsController@add');
     Route::get('isp-cpanel/financial/product/view', 'ProductsController@view');
     Route::post('isp-cpanel/financial/product/update', 'ProductsController@update');
-    Route::post('isp-cpanel/financial/product/delete', 'ProductsController@delete');
+    Route::post('isp-cpanel/financial/product/delete', 'ProductsController@delete')->middleware('superAdmin');
     // ---------  product  ------------
 
 
@@ -135,7 +132,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('isp-cpanel/financial/supplier', 'SupplierController');
     Route::get('isp-cpanel/financial/supplier/view', 'SupplierController@view');
     Route::post('isp-cpanel/financial/supplier/update', 'SupplierController@update');
-    Route::post('isp-cpanel/financial/supplier/delete', 'SupplierController@delete');
+    Route::post('isp-cpanel/financial/supplier/delete', 'SupplierController@delete')->middleware('superAdmin');
     Route::get('isp-cpanel/financial/supplier_table', 'SupplierController@SupplierTableAjax');
     Route::resource('isp-cpanel/financial/supplier', 'SupplierController');
     // ---------  supplier  ------------

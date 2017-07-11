@@ -49,6 +49,10 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\salesManager::class,
         ],
 
+        'superAdmin'=>[
+            \App\Http\Middleware\superAdmin::class,
+        ],
+
 
     ];
 
