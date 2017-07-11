@@ -229,7 +229,6 @@ class RefillCustomerController extends Controller
         }
     }
 
-
     public function updateAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -248,7 +247,6 @@ class RefillCustomerController extends Controller
                 ->with('message_ip','ip Updated successfully.');
         }
     }
-
 
     public function refillCustomer(Request $request)
     {

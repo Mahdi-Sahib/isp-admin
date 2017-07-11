@@ -115,16 +115,16 @@ Route::group(['middleware' => 'admin'], function () {
     ############################################  settings  ############################################
 
     // ---------  product  ------------
-    Route::get('isp-cpanel/financial/product', 'ProductsController@index');
-    Route::post('isp-cpanel/financial/product', 'ProductsController@add');
-    Route::get('isp-cpanel/financial/product/view', 'ProductsController@view');
-    Route::post('isp-cpanel/financial/product/update', 'ProductsController@update');
+    Route::get('isp-cpanel/financial/product', 'ProductsController@index')->middleware('salesManager');
+    Route::post('isp-cpanel/financial/product', 'ProductsController@add')->middleware('salesManager');
+    Route::get('isp-cpanel/financial/product/view', 'ProductsController@view')->middleware('salesManager');
+    Route::post('isp-cpanel/financial/product/update', 'ProductsController@update')->middleware('salesManager');
     Route::post('isp-cpanel/financial/product/delete', 'ProductsController@delete')->middleware('superAdmin');
     // ---------  product  ------------
 
 
     // ---------  balance_recharges  ------------
-    Route::get('isp-cpanel/financial/balance_recharges_table', 'BalanceRechargesController@BalanceRechargeTable');
+    Route::get('isp-cpanel/financial/balance_recharges_table', 'BalanceRechargesController@BalanceRechargeTable')->middleware('salesManager');
     Route::resource('isp-cpanel/financial/balance_recharges', 'BalanceRechargesController');
     // ---------  balance_recharges  ------------
 
@@ -134,18 +134,18 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('isp-cpanel/financial/supplier/view', 'SupplierController@view');
     Route::post('isp-cpanel/financial/supplier/update', 'SupplierController@update');
     Route::post('isp-cpanel/financial/supplier/delete', 'SupplierController@delete')->middleware('superAdmin');
-    Route::get('isp-cpanel/financial/supplier_table', 'SupplierController@SupplierTableAjax');
+    Route::get('isp-cpanel/financial/supplier_table', 'SupplierController@SupplierTableAjax')->middleware('salesManager');
     Route::resource('isp-cpanel/financial/supplier', 'SupplierController');
     // ---------  supplier  ------------
 
 
 
-    Route::get('isp-cpanel/financial/supplier_balance_recharge_table_view', 'SupplierController@SupplierBalanceRechargeTableView');
-    Route::get('isp-cpanel/financial/supplier_dashboard/{id?}', 'SupplierController@SupplierBalanceRechargeTableAjax');
+    Route::get('isp-cpanel/financial/supplier_balance_recharge_table_view', 'SupplierController@SupplierBalanceRechargeTableView')->middleware('salesManager');
+    Route::get('isp-cpanel/financial/supplier_dashboard/{id?}', 'SupplierController@SupplierBalanceRechargeTableAjax')->middleware('salesManager');
 
     // refill_cards
     Route::resource('isp-cpanel/financial/refill_cards', 'RefillCardController');
-    Route::get('isp-cpanel/financial/refill_card_table', 'RefillCardController@RefillCardsTableAjax');
+    Route::get('isp-cpanel/financial/refill_card_table', 'RefillCardController@RefillCardsTableAjax')->middleware('salesManager');
 
 
     // Customer Transaction
