@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\RefillCard;
+use Carbon\Carbon;
 use App\RefillCustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,9 +53,7 @@ class RefillCustomerController extends Controller
                         </button>
                         <ul class="dropdown-menu">
                         <li><a href="" data-toggle="modal" data-target="#viewModal_refill_view" onclick="fun_view_refill('.$refill->id.')">Refill Info</a></li>
-                        
                         <li><a href="" data-toggle="modal" data-target="#addModal_repayment" onclick="fun_repayment('.$refill->id.')">Repayment</a></li>
-                      
                         </ul>
                     </div>
                 </td>       
@@ -189,7 +188,8 @@ class RefillCustomerController extends Controller
                         <ul class="dropdown-menu">
                             <li><a href="" data-toggle="modal" data-target="#viewModal_refill_view" onclick="fun_view_refill('.$query->id.')" >Peek Refill</a></li>
                             <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer('.$query->customer->id.')" >Peek Customer</a></li>
-                             <li><a href="'.$query->customer->id.'">View Customer</a></li>
+                            <li><a href="'.$query->customer->id.'">View Customer</a></li>
+                            <li><a href="customer_refill/'.$query->id.'">Delete</a></li>
                         </ul>
                     </div>
                 </td>
@@ -206,7 +206,8 @@ class RefillCustomerController extends Controller
                             <li><a href="" data-toggle="modal" data-target="#viewModal_refill_view" onclick="fun_view_refill(' . $query->id . ')" >Peek Refill</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_repayment" onclick="fun_repayment(' . $query->id . ')" disabled="disabled">Repayment</a></li>
                             <li><a href="" data-toggle="modal" data-target="#viewModal_customer_peek" onclick="fun_peek_customer(' . $query->customer->id . ')" >Peek Customer</a></li>
-                             <li><a href="' . $query->customer->id . '">View Customer</a></li>
+                            <li><a href="' . $query->customer->id . '">View Customer</a></li>
+                            <li><a href="customer_refill/'.$query->id.'">Delete</a></li>
                         </ul>
                     </div>
                 </td>
@@ -320,5 +321,26 @@ class RefillCustomerController extends Controller
         return back()
             ->with('message_ticket','Ticket Closed successfully.');
     }
+
+    public function destroy($id)
+    {
+        $refill = RefillCustomer::find($id);
+        if ($refill->created_at > Carbon::today() AND  Auth::user()->id === $refill->created_by){
+            $refill->destroy($id);
+            Session::flash('message','Successfuly deleted');
+            return back();
+        }elseif ($refill->created_at < Carbon::today()) {
+            Session::flash('message_danger','You can not delete refill from Yesterday');
+            return back();
+        }elseif (Auth::user()->id != $refill->created_by) {
+            Session::flash('message_danger','You can not delete refill by other employee');
+            return back();
+        }else{
+            Session::flash('message_danger','Error can not be delete');
+            return back();
+        }
+
+    }
+
 
 }

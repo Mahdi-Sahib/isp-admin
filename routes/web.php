@@ -29,6 +29,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 
     Route::get('isp-cpanel/customers/customer_refill/view', 'RefillCustomerController@viewAjax');
+    Route::get('isp-cpanel/customers/customer_refill/{id}', 'RefillCustomerController@destroy');
     Route::post('isp-cpanel/customers/customer_refill', 'RefillCustomerController@refillCustomer');
     Route::post('isp-cpanel/customers/debt_repayment', 'RefillCustomerController@repayment');
 
