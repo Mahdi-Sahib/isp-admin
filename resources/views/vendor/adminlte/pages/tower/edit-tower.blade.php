@@ -24,7 +24,15 @@
 @section('main-content')
     @include('adminlte::layouts.partials.pageheader')
 
-    {!! Form::open(['action'=>'TowerController@store', 'onsubmit'=>'onsubmit()']) !!}
+    {!! Form::open([
+    'method' => 'PATCH',
+    'action'=>'TowerController@store',
+    'url'  => ['isp-cpanel/towers' , $tower->id],
+    'onsubmit'=>'onsubmit()'
+
+    ])!!}
+
+
     {{ csrf_field() }}
 
     <div>

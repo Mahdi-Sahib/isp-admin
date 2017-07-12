@@ -1,7 +1,9 @@
 {!! Form::Model ( $customer ,[
     'method' => 'PATCH' ,
     'url'  => ['isp-cpanel/customers' , $customer->id]
-    ]) !!}
+    ])
+
+!!}
 
 {{ csrf_field() }}
 

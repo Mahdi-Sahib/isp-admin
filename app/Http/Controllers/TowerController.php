@@ -24,7 +24,7 @@ class TowerController extends Controller
     {
         $towers = Tower::select('towers.*');
         return Datatables::of($towers)
-            ->addColumn('navigation', function ($towers) {
+            ->addColumn('alert', function ($towers) {
                 if ($towers->TowerTicketCount()) {
                     return '<small class="label bg-yellow-active"> ' . $towers->TowerTicketCount() . ' Open Ticket  </small>';
                 }
@@ -36,7 +36,7 @@ class TowerController extends Controller
                            '<small class="label bg-blue"> ' . $towers->TowerLinkCount() . ' Links Count </small>';
                 }
             })
-            ->rawColumns(['action', 'navigation','statistics'])
+            ->rawColumns(['action', 'alert','statistics'])
             ->addColumn('action', function ($towers) {
                 return '
                 <td class="text-center">
@@ -69,10 +69,13 @@ class TowerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:towers',
+            'title'                 => 'required|max:25|unique:towers',
+            'agent'                 => 'max:25',
+            'location'              => 'max:50',
+            'google_location'       => 'max:50',
         ]);
         if ($validator->fails()) {
-            return redirect('isp-cpanel/towers/create')
+            return back()
                 ->withErrors($validator)
                 ->withInput();
         } else {
@@ -114,7 +117,10 @@ class TowerController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|unique:towers' . $id,
+            'title'              => 'required|max:25|unique:towers,title,'. $id,
+            'agent'              => 'max:25',
+            'location'           => 'max:50',
+            'google_location'    => 'max:50',
         ]);
         if ($validator->fails()) {
             return back()
@@ -140,6 +146,6 @@ class TowerController extends Controller
         $tower = Tower::find($id);
         $tower->destroy($id);
         Session::flash('message', 'Successfuly deleted ' . $tower->name . ' !');
-        return Redirect::to('admin/tower');
+        return back();
     }
 }

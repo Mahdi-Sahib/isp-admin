@@ -83,8 +83,8 @@
                 {data: 'location', name: 'location', orderable: false, searchable: true},
                 {data: 'statistics', name: 'statistics', orderable: false, searchable: true},
                 {
-                    data: 'navigation',
-                    name: 'navigation',
+                    data: 'alert',
+                    name: 'alert',
                     orderable: false,
                     searchable: false,
                     width: '11%',
