@@ -73,8 +73,8 @@ document.getElementById('submit_new_ap').value='Submitting, please wait...';">
 
 
                         <div class="form-group">
-                            <label for="number_Sign" class="fa fa-gears"> Label or Sign (#):</label>
-                            <input type="text" class="form-control" id="number_Sign" name="number_sign" maxlength="10">
+                            <label for="label" class="fa fa-gears"> Label or Sign (#):</label>
+                            <input type="text" class="form-control" id="label" name="label" maxlength="10">
                         </div>
 
                         <div class="form-group">
@@ -190,7 +190,7 @@ document.getElementById('submit_new_ap').value='Submitting, please wait...';">
                                        href="#" class="tooltip-large" data-toggle="tooltip" data-placement="left"
                                        title="any sign for hint the broadcast"></label></td>
                             <td>Label (#) :</td>
-                            <td><span class="badge bg-yellow" id="view_number_Sign"
+                            <td><span class="badge bg-yellow" id="view_label"
                                       style="color: yellow ; font-size: 21px;"></span></td>
                         </tr>
                         <tr>
@@ -337,8 +337,8 @@ document.getElementById('submit_new_ap').value='Submitting, please wait...';">
                     <div class="row">
                         <div class="col-lg-3 form-group">
                             <div class="form-group">
-                                <label for="edit_number_Sign">Label (#): </label>
-                                <input type="text" class="form-control" id="edit_number_Sign" name="number_sign"
+                                <label for="edit_label">Label (#): </label>
+                                <input type="text" class="form-control" id="edit_label" name="label"
                                        maxlength="10">
                             </div>
                         </div>

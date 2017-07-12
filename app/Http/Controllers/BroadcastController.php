@@ -52,7 +52,7 @@ class BroadcastController extends Controller
     public function addAjax(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'number_sign'       => 'max:10|unique:broadcasts',
+            'label'             => 'max:10|unique:broadcasts',
             'name'              => 'max:20',
             'ssid'              => 'max:30 | required',
             'antenna'           => 'max:20',
@@ -67,7 +67,7 @@ class BroadcastController extends Controller
         } else {
             $data = new Broadcast;
             $data->device_id             = $request->device_id;
-            $data->number_sign           = $request->number_sign;
+            $data->label           = $request->label;
             $data->name                  = $request->name;
             $data->ssid                  = $request->ssid;
             $data->ip                    = $request->ip;
@@ -106,10 +106,11 @@ class BroadcastController extends Controller
     /*
     *   Update data
     */
-    public function updateAjax(Request $request, $id)
+    public function updateAjax(Request $request)
     {
+        $id = $request -> edit_id;
         $validator = Validator::make($request->all(), [
-            'number_sign'       => 'max:5 | unique:broadcasts,number_sign,'. $id,
+            'label'             => 'max:5 | unique:broadcasts,label,'. $id,
             'name'              => 'max:20',
             'ssid'              => 'max:30 | required',
             'antenna'           => 'max:20',
@@ -125,7 +126,7 @@ class BroadcastController extends Controller
         $id = $request -> edit_id;
         $data = Broadcast::find($id);
             $data->device_id             = $request->device_id;
-            $data->number_sign           = $request->number_sign;
+            $data->label                 = $request->label;
             $data->name                  = $request->name;
             $data->ssid                  = $request->ssid;
             $data->ip                    = $request->ip;

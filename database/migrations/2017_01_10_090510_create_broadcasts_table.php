@@ -17,7 +17,7 @@ class CreateBroadcastsTable extends Migration
             $table->smallIncrements('id');
             $table->unsignedTinyInteger('tower_id');
             $table->unsignedTinyInteger('device_id')->nullable();
-            $table->string('number_sign','10')->nullable();
+            $table->string('label','10')->nullable();
             $table->string('name','20')->nullable();
             $table->string('ssid','30');
             $table->ipAddress('ip');

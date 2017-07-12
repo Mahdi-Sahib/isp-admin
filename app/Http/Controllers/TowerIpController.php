@@ -59,8 +59,9 @@ class TowerIpController extends Controller
     */
     public function updateAjax(Request $request)
     {
+        $id = $request -> edit_id_ip;
         $validator = Validator::make($request->all(), [
-            'tower_ip'         => 'ip | required|unique:tower_ips'
+            'tower_ip'         => 'ip|required|unique:tower_ips,tower_ip,'. $id
         ]);
         if ($validator->fails()) {
             return back()

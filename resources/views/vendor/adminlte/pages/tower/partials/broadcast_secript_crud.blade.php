@@ -11,7 +11,7 @@
         "paging": true,
         "ajax": '{{ url('isp-cpanel/tower/tower_broadcast/ajax_table/'.$tower->id) }}',
         "columns": [
-            {data: 'number_sign', name: 'number_sign', orderable: false, searchable: false, width: '5%', class: 'text-center'},
+            {data: 'label', name: 'label', orderable: false, searchable: false, width: '5%', class: 'text-center'},
             {data: 'ssid', name: 'ssid', orderable: false, searchable: false},
             {data: 'direction', name: 'direction', orderable: false, searchable: true, class: 'text-center'},
             {data: 'channal_width', name: 'channal_width', searchable: false, width: '5%', class: 'text-center'},
@@ -34,7 +34,7 @@
             success: function(result){
                 // console.log(result);
                 $("#view_device_id").text(result.device_id);
-                $("#view_number_Sign").text(result.number_sign);
+                $("#view_label").text(result.label);
                 $("#view_name").text(result.name);
                 $("#view_ssid").text(result.ssid);
                 $("#view_ip").text(result.ip);
@@ -65,7 +65,7 @@
             success: function(result){
                 console.log(result);
                 $("#edit_id").val(result.id);
-                $("#edit_number_Sign").val(result.number_sign);
+                $("#edit_label").val(result.label);
                 $("#edit_name").val(result.name);
                 $("#edit_ssid").val(result.ssid);
                 $("#edit_ip").val(result.ip);
