@@ -422,7 +422,7 @@ document.getElementById('submit_new_ap').value='Submitting, please wait...';">
                     <div class="form-group">
                         <div class="form-group">
                             <label for="edit_direction">Direction : </label>
-                            <input type="text" class="form-control" id="edit_direction" name="direction" maxlength="50">
+                            <input type="text" class="form-control" id="edit_direction" name="direction" maxlength="100">
                         </div>
                     </div>
                     <div class="form-group">
