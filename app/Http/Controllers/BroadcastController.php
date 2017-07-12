@@ -114,7 +114,7 @@ class BroadcastController extends Controller
             'name'              => 'max:20',
             'ssid'              => 'max:30 | required',
             'antenna'           => 'max:20',
-            'direction'         => 'max:50',
+            'direction'         => 'max:100',
             'device_id'         => 'max:5 | required',
             'ip'                => 'ip | required | unique:broadcasts,ip,'. $id,
         ]);
