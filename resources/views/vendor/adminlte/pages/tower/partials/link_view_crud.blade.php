@@ -5,9 +5,11 @@
     </div>
 @endif
 
+@if(Auth::user()->status === 10)
 <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal_tl">Add New
     Source Link
 </button>
+@endif
 <br>
 <br>
 
@@ -40,9 +42,11 @@
                     <ul class="dropdown-menu">
                         <li><a href="" data-toggle="modal" data-target="#viewModal_tl"
                                onclick="fun_view_tl('{{$tower_link -> id}}')">View</a></li>
+                        @if(Auth::user()->status === 10)
                         <li><a href="" data-toggle="modal" data-target="#editModal_tl"
                                onclick="fun_edit_tl('{{$tower_link -> id}}')">Edit</a></li>
                         <li><a href="" onclick="fun_delete_tl('{{$tower_link -> id}}')">Delete</a></li>
+                        @endif
                         <li><a href="" data-toggle="modal" data-target="#addModal_link_ticket">Ticket</a></li>
                     </ul>
                 </div>

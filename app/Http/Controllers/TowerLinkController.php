@@ -11,6 +11,10 @@ use Validator, Input, Redirect ,Session ;
 
 class TowerLinkController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('superAdmin', ['only' => ['updateAjax', 'deleteAjax','addAjax']]);
+    }
 
     public function indexAjax()
     {

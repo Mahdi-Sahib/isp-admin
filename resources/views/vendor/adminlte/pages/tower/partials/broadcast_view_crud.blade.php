@@ -4,9 +4,10 @@
         <strong>{{ $message }}</strong>
     </div>
 @endif
-
+@if(Auth::user()->status === 10)
 <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal">Add Access Point
 </button>
+@endif
 <br>
 <br>
 
@@ -318,6 +319,7 @@ document.getElementById('submit_new_ap').value='Submitting, please wait...';">
     </div>
 </div>
 <!-- view modal ends -->
+
 
 <!-- Edit Modal start -->
 <div class="modal fade" id="editModal_broadcast" role="dialog">

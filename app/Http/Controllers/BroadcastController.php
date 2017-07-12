@@ -11,6 +11,11 @@ use Validator, Input, Redirect ,Session ;
 class BroadcastController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('superAdmin', ['only' => ['updateAjax', 'deleteAjax','addAjax']]);
+    }
+
     public function BroadcastTable(Request $request , $id){
         if ($request->ajax()) {
             $broadcast = Tower::find($id);
@@ -21,21 +26,35 @@ class BroadcastController extends Controller
                 })
                 ->rawColumns(['action'])
                 ->addColumn('action', function ($broadcast) {
+                    if (Auth::user()->status == 10) {
                         return '
                 <td class="text-center">
                     <!-- Single button -->
                     <div class="btn-group" >
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action <span class="caret"></span>
-                        </button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a href="" data-toggle="modal" data-target="#viewModal_broadcast" onclick="fun_view_broadcast(' . $broadcast->id . ')">View</a></li>
-                            <li><a href="" data-toggle="modal" data-target="#editModal_broadcast" onclick="fun_edit_broadcast(' .  $broadcast->id  . ')">Edit</a></li>
-                            <li><a href="" onclick="fun_delete_broadcast( ' . $broadcast -> id .')">Delete</a></li>                            <li><a href="" data-toggle="modal" data-target="#addModal_broadcast_ticket">Ticket</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#editModal_broadcast" onclick="fun_edit_broadcast(' . $broadcast->id . ')">Edit</a></li>
+                            <li><a href="" onclick="fun_delete_broadcast( ' . $broadcast->id . ')">Delete</a></li>                
+                            <li><a href="" data-toggle="modal" data-target="#addModal_broadcast_ticket">Ticket</a></li>
                         </ul>
                     </div>
                 </td>       
                              ';
+                    }elseif(Auth::user()->status != 10){
+                        return '
+                <td class="text-center">
+                    <!-- Single button -->
+                    <div class="btn-group" >
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#viewModal_broadcast" onclick="fun_view_broadcast(' . $broadcast->id . ')">View</a></li>                          
+                            <li><a href="" data-toggle="modal" data-target="#addModal_broadcast_ticket">Ticket</a></li>
+                        </ul>
+                    </div>
+                </td>       
+                             ';
+                    }
                 })
                 ->make(true);
         }

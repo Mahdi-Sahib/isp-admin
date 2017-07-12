@@ -5,8 +5,10 @@
     </div>
 @endif
 
+@if(Auth::user()->status === 10)
 <button type="button" class="btn btn-info btn-sm pull-right" data-toggle="modal" data-target="#addModal_ip">Add New IP
 </button>
+@endif
 <br>
 <br>
 
@@ -31,9 +33,11 @@
                     <ul class="dropdown-menu">
                         <li><a href="" data-toggle="modal" data-target="#viewModal_ip"
                                onclick="fun_view_ip('{{$tower_ip -> id}}')">View</a></li>
+                        @if(Auth::user()->status === 10)
                         <li><a href="" data-toggle="modal" data-target="#editModal_ip"
                                onclick="fun_edit_ip('{{$tower_ip -> id}}')">Edit</a></li>
                         <li><a href="" onclick="fun_delete_ip('{{$tower_ip -> id}}')">Delete</a></li>
+                        @endif
                     </ul>
                 </div>
             </td>

@@ -14,6 +14,12 @@ use Yajra\Datatables\Facades\Datatables;
 
 class TowerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('superAdmin', ['only' => ['edit', 'destroy']]);
+    }
+
     public function index()
     {
         return view('vendor.adminlte.pages.tower.towers_index');
@@ -48,6 +54,7 @@ class TowerController extends Controller
                         <ul class="dropdown-menu">
                             <li><a href="towers/'.$towers->id.'">View</a></li>
                             <li><a href="towers/'.$towers->id.'/edit">Edit</a></li>
+                            <li><a href="towers/delete/'.$towers->id.'">Delete</a></li>
                             <li><a href="" data-toggle="modal" data-target="#addModal_tower_ticket" onclick="fun_get_Ticket_id('.$towers->id.')">Ticket</a></li>
                         </ul>
                     </div>

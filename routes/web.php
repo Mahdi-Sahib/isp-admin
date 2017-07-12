@@ -89,7 +89,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('isp-cpanel/tower/tower_ticket', 'TowerTicketController@addAjax');
     Route::post('isp-cpanel/tower/tower_ticket/close_ticket', 'TowerTicketController@closeTicket');
     Route::resource('isp-cpanel/towers', 'TowerController');
-    Route::get('isp-cpanel/towers/delete/{id}', 'TowerController@destroy')->middleware('superAdmin');
+    Route::get('isp-cpanel/towers/delete/{id}', 'TowerController@destroy');
     ##############################################################################################
 
     ############################################  settings  ############################################

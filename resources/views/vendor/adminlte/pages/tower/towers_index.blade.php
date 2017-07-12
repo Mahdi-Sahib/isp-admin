@@ -24,6 +24,7 @@
 
 
 @section('main-content')
+    @include('adminlte::layouts.partials.notifications')
     @include('adminlte::layouts.partials.pageheader')
     <a href="towers/create"  class="btn btn-info btn-sm pull-right">New Tower</a>
     <br>

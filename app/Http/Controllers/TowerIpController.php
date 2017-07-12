@@ -9,6 +9,11 @@ use Validator, Input, Redirect ,Session ;
 class TowerIpController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('superAdmin', ['only' => ['updateAjax', 'deleteAjax','addAjax']]);
+    }
+
     /*
     * Display all data
     */
@@ -82,8 +87,6 @@ class TowerIpController extends Controller
     */
     public function deleteAjax(Request $request)
     {
-
-        if(Auth::user()->status == 10) {
             $id = $request -> id;
             $data = TowerIp::find($id);
             $response = $data -> delete();
@@ -91,9 +94,6 @@ class TowerIpController extends Controller
                 echo "IP Deleted successfully.";
             else
                 echo "There was a problem. Please try again later.";
-        }else{
-            echo "you didn't have this permissions.";
-        }
     }
 
 }
