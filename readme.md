@@ -1,10 +1,4 @@
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
 ## About ISP Admin
 
 ISPadmin is a web applicatione, elegant syntax. I believe development must be an enjoyable, creative experience to be truly fulfilling. isp admin attempts to take the pain out of development by easing common tasks used in the majority of web isp, such as:
